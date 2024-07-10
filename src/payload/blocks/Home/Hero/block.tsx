@@ -43,8 +43,26 @@ export const Hero_Block: Block = {
     },
     {
       name: 'contact_info',
-      type: 'text',
+      type: 'array',
       label: 'Contact Info',
+      fields: [
+        {
+          name: 'title',
+          label: 'Title',
+          type: 'text',
+        },
+        {
+          name: 'sub_title',
+          label: 'Sub Title',
+          type: 'text',
+        },
+        {
+          name: 'icon_image',
+          label: 'Icon Image',
+          type: 'upload',
+          relationTo: 'media',
+        },
+      ],
     },
     {
       name: 'button_text',
