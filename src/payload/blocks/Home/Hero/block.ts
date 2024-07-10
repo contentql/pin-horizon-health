@@ -57,10 +57,14 @@ export const Hero_Block: Block = {
           type: 'text',
         },
         {
-          name: 'icon_image',
-          label: 'Icon Image',
-          type: 'upload',
-          relationTo: 'media',
+          name: 'contact_icon',
+          label: 'Contact Icon',
+          type: 'select',
+          options: [
+            { label: 'Phone', value: '1' },
+            { label: 'Stethoscope', value: '2' },
+            { label: 'Location', value: '3' },
+          ],
         },
       ],
     },

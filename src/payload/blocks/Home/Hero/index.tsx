@@ -5,6 +5,12 @@ import Link from 'next/link'
 
 import VideoModal from '@/components/marketing/home/VideoModal'
 
+const infoList = {
+  '1': '/images/contact/icon_1.svg',
+  '2': '/images/icons/ambulance.svg',
+  '3': '/images/icons/pin.svg',
+}
+
 export default function Hero(data: HeroType) {
   return (
     <section className='cs_hero cs_style_1'>
@@ -40,8 +46,8 @@ export default function Hero(data: HeroType) {
                 <div className='cs_hero_info d-flex align-items-center'>
                   <div className='cs_hero_info_icon cs_center rounded-circle cs_accent_bg'>
                     <Image
-                      src={(item?.icon_image as Media)?.url || ''}
-                      alt={(item?.icon_image as Media)?.alt || 'Icon'}
+                      src={infoList[item?.contact_icon!]}
+                      alt='Icon'
                       height={33}
                       width={33}
                     />

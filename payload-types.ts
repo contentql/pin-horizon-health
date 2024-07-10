@@ -177,7 +177,7 @@ export interface Page {
   id: string;
   title: string;
   isHome?: boolean | null;
-  blocks?: TestType[] | null;
+  blocks?: (TestType | HeroType | FeaturesType | AboutType | DepartmentType)[] | null;
   slug?: string | null;
   path?: string | null;
   parent?: (string | null) | Page;
@@ -202,6 +202,88 @@ export interface TestType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'Test';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroType".
+ */
+export interface HeroType {
+  title?: string | null;
+  sub_title?: string | null;
+  hero_image?: string | Media | null;
+  background_image?: string | Media | null;
+  video_button_text?: string | null;
+  video_url?: string | null;
+  contact_info?:
+    | {
+        title?: string | null;
+        sub_title?: string | null;
+        contact_icon?: ('1' | '2' | '3') | null;
+        id?: string | null;
+      }[]
+    | null;
+  button_text?: string | null;
+  button_url?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'Hero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeaturesType".
+ */
+export interface FeaturesType {
+  title?: string | null;
+  features?:
+    | {
+        title?: string | null;
+        description?: string | null;
+        feature_icon?: ('1' | '2' | '3' | '4' | '5') | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'Features';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AboutType".
+ */
+export interface AboutType {
+  image?: string | Media | null;
+  spin_image?: string | Media | null;
+  spin_logo?: string | Media | null;
+  title?: string | null;
+  sub_title?: string | null;
+  points?:
+    | {
+        title?: string | null;
+        sub_title?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'About';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DepartmentType".
+ */
+export interface DepartmentType {
+  title?: string | null;
+  departments?:
+    | {
+        title?: string | null;
+        department_icon?: ('1' | '2' | '3' | '4' | '5' | '6') | null;
+        url_path?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'Department';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
