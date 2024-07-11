@@ -28,7 +28,7 @@ export default function Hero(data: HeroType) {
             <div className='cs_hero_btn_wrap'>
               <VideoModal
                 videoUrl={data?.video_url}
-                videoBtnText={data?.button_text}
+                videoBtnText={data?.video_button_text}
                 variant='cs_heading_color'
               />
             </div>

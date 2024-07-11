@@ -15,7 +15,7 @@ export default function Department(data: DepartmentType) {
           <div
             className='cs_departments_bg cs_radius_25'
             style={{
-              backgroundImage: '/images/home_1/department_bg.svg',
+              backgroundImage: `url(/images/home_1/department_bg.svg)`,
             }}
           />
           <SectionHeading title={data?.title} center />

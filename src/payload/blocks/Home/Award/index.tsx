@@ -12,7 +12,7 @@ export default function Award(data: AwardType) {
         <SectionHeading title={data?.title} />
         <Spacing md='72' lg='50' />
         <div className='row gy-4'>
-          {data?.awards?.map(({ award, index }: any) => (
+          {data?.awards?.map((award, index) => (
             <div className='col-xxl-3 col-md-6' key={index}>
               <IconBoxStyle1 {...award} />
             </div>

@@ -14,7 +14,9 @@ export default function About(data: AboutType) {
               <Image
                 src={(data?.image as Media)?.url || ''}
                 alt={(data?.image as Media)?.alt || 'About'}
-                placeholder='blur'
+                // placeholder='blur'
+                width={676}
+                height={579}
               />
               <div className='cs_about_mini_img'>
                 <Image
