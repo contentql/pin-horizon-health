@@ -177,7 +177,7 @@ export interface Page {
   id: string;
   title: string;
   isHome?: boolean | null;
-  blocks?: (TestType | HeroType | FeaturesType | AboutType | DepartmentType)[] | null;
+  blocks?: (TestType | HeroType | FeaturesType | AboutType | DepartmentType | AwardType | TestimonialsType)[] | null;
   slug?: string | null;
   path?: string | null;
   parent?: (string | null) | Page;
@@ -284,6 +284,45 @@ export interface DepartmentType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'Department';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AwardType".
+ */
+export interface AwardType {
+  title?: string | null;
+  awards?:
+    | {
+        title?: string | null;
+        sub_title?: string | null;
+        award_image?: string | Media | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'Award';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestimonialsType".
+ */
+export interface TestimonialsType {
+  title?: string | null;
+  sub_title?: string | null;
+  testimonials?:
+    | {
+        title?: string | null;
+        sub_title?: string | null;
+        image?: string | Media | null;
+        review?: string | null;
+        rating?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'Testimonials';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
