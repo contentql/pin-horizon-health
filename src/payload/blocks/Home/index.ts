@@ -2,6 +2,8 @@ import About from './About'
 import { About_Block } from './About/block'
 import Award from './Award'
 import { Award_Block } from './Award/block'
+import Banner from './Banner'
+import { Banner_Block } from './Banner/block'
 import Department from './Department'
 import { Department_Block } from './Department/block'
 import Features from './Features'
@@ -16,6 +18,8 @@ export {
   About_Block,
   Award,
   Award_Block,
+  Banner,
+  Banner_Block,
   Department,
   Department_Block,
   Features,

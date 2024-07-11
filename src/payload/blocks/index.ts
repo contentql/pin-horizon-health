@@ -8,6 +8,8 @@ import {
   About_Block,
   Award,
   Award_Block,
+  Banner,
+  Banner_Block,
   Department,
   Department_Block,
   Features,
@@ -26,6 +28,7 @@ export const blocksJSX = {
   Department,
   Award,
   Testimonials,
+  Banner,
 }
 
 export type SlugType = keyof typeof blocksJSX
@@ -38,4 +41,5 @@ export const blocks = [
   Department_Block,
   Award_Block,
   Testimonials_Block,
+  Banner_Block,
 ]

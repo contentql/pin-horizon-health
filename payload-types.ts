@@ -177,7 +177,9 @@ export interface Page {
   id: string;
   title: string;
   isHome?: boolean | null;
-  blocks?: (TestType | HeroType | FeaturesType | AboutType | DepartmentType | AwardType | TestimonialsType)[] | null;
+  blocks?:
+    | (TestType | HeroType | FeaturesType | AboutType | DepartmentType | AwardType | TestimonialsType | BannerType)[]
+    | null;
   slug?: string | null;
   path?: string | null;
   parent?: (string | null) | Page;
@@ -323,6 +325,18 @@ export interface TestimonialsType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'Testimonials';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BannerType".
+ */
+export interface BannerType {
+  title?: string | null;
+  sub_title?: string | null;
+  image?: string | Media | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'Banner';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
