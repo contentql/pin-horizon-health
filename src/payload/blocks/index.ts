@@ -3,18 +3,20 @@
 import { Test } from '@/payload/blocks/Test'
 import { Test_Block } from '@/payload/blocks/Test/block'
 
-import About from './Home/About'
-import { About_Block } from './Home/About/block'
-import Award from './Home/Award'
-import { Award_Block } from './Home/Award/block'
-import Department from './Home/Department'
-import { Department_Block } from './Home/Department/block'
-import Features from './Home/Features'
-import { Features_Block } from './Home/Features/block'
-import Hero from './Home/Hero'
-import { Hero_Block } from './Home/Hero/block'
-import Testimonials from './Home/Testimonials'
-import { Testimonials_Block } from './Home/Testimonials/block'
+import {
+  About,
+  About_Block,
+  Award,
+  Award_Block,
+  Department,
+  Department_Block,
+  Features,
+  Features_Block,
+  Hero,
+  Hero_Block,
+  Testimonials,
+  Testimonials_Block,
+} from './Home'
 
 export const blocksJSX = {
   Test,
