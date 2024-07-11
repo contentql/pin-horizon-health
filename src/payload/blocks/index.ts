@@ -6,6 +6,8 @@ import { Test_Block } from '@/payload/blocks/Test/block'
 import {
   About,
   About_Block,
+  Appointment,
+  Appointment_Block,
   Award,
   Award_Block,
   Banner,
@@ -29,6 +31,7 @@ export const blocksJSX = {
   Award,
   Testimonials,
   Banner,
+  Appointment,
 }
 
 export type SlugType = keyof typeof blocksJSX
@@ -42,4 +45,5 @@ export const blocks = [
   Award_Block,
   Testimonials_Block,
   Banner_Block,
+  Appointment_Block,
 ]

@@ -1,5 +1,7 @@
 import About from './About'
 import { About_Block } from './About/block'
+import Appointment from './Appointment'
+import { Appointment_Block } from './Appointment/block'
 import Award from './Award'
 import { Award_Block } from './Award/block'
 import Banner from './Banner'
@@ -16,6 +18,8 @@ import { Testimonials_Block } from './Testimonials/block'
 export {
   About,
   About_Block,
+  Appointment,
+  Appointment_Block,
   Award,
   Award_Block,
   Banner,

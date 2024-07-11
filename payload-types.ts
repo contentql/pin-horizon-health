@@ -178,7 +178,17 @@ export interface Page {
   title: string;
   isHome?: boolean | null;
   blocks?:
-    | (TestType | HeroType | FeaturesType | AboutType | DepartmentType | AwardType | TestimonialsType | BannerType)[]
+    | (
+        | TestType
+        | HeroType
+        | FeaturesType
+        | AboutType
+        | DepartmentType
+        | AwardType
+        | TestimonialsType
+        | BannerType
+        | AppointmentType
+      )[]
     | null;
   slug?: string | null;
   path?: string | null;
@@ -337,6 +347,18 @@ export interface BannerType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'Banner';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AppointmentType".
+ */
+export interface AppointmentType {
+  title?: string | null;
+  sub_title?: string | null;
+  image?: string | Media | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'Appointment';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
