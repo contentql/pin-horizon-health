@@ -1,12 +1,13 @@
-"use client"
-import React, { useState } from 'react';
+'use client'
 
-export default function DropDown({ children }) {
+import React, { useState } from 'react'
+
+export default function DropDown({ children }: { children: React.ReactNode }) {
   // Mobile Toggle
-  const [mobileToggle, setMobileToggle] = useState(false);
+  const [mobileToggle, setMobileToggle] = useState(false)
   const handelMobileToggle = () => {
-    setMobileToggle(!mobileToggle);
-  };
+    setMobileToggle(!mobileToggle)
+  }
   return (
     <>
       <span
@@ -15,11 +16,10 @@ export default function DropDown({ children }) {
             ? 'cs_munu_dropdown_toggle active'
             : 'cs_munu_dropdown_toggle'
         }
-        onClick={handelMobileToggle}
-      >
+        onClick={handelMobileToggle}>
         <span></span>
       </span>
       {children}
     </>
-  );
+  )
 }
