@@ -37,7 +37,9 @@ export default function Hero(data: HeroType) {
             <Image
               src={(data?.hero_image as Media)?.url || ''}
               alt={(data?.hero_image as Media)?.alt || 'Hero'}
-              placeholder='blur'
+              // placeholder='blur'
+              height={811}
+              width={930}
             />
           </div>
           <div className='cs_hero_info_wrap cs_shadow_1 cs_white_bg cs_radius_15'>
