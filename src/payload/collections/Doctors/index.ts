@@ -14,6 +14,9 @@ export const Doctors: CollectionConfig = {
   versions: {
     drafts: true,
   },
+  admin: {
+    useAsTitle: 'title',
+  },
   fields: [
     {
       type: 'tabs',
@@ -166,5 +169,16 @@ export const Doctors: CollectionConfig = {
       ],
     },
     slugField('name'),
+    {
+      name: 'category',
+      type: 'relationship',
+      relationTo: 'category',
+      label: 'Category',
+      required: true,
+      hasMany: true,
+      admin: {
+        position: 'sidebar',
+      },
+    },
   ],
 }

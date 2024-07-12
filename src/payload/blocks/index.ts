@@ -4,6 +4,12 @@ import { Test } from '@/payload/blocks/Test'
 import { Test_Block } from '@/payload/blocks/Test/block'
 
 import {
+  DoctorBanner,
+  DoctorHero,
+  Doctor_Banner_Block,
+  Doctor_Hero_Block,
+} from './Doctor'
+import {
   AboutAwards,
   AboutAwards_Block,
   AboutBanner,
@@ -19,6 +25,7 @@ import {
   AboutStatistics,
   AboutStatistics_Block,
 } from './About'
+
 import {
   About,
   About_Block,
@@ -48,6 +55,8 @@ export const blocksJSX = {
   Department,
   Award,
   Testimonials,
+  DoctorHero,
+  DoctorBanner,
   Banner,
   Appointment,
   Faqs,
@@ -70,6 +79,8 @@ export const blocks = [
   Department_Block,
   Award_Block,
   Testimonials_Block,
+  Doctor_Hero_Block,
+  Doctor_Banner_Block,
   Banner_Block,
   Appointment_Block,
   Faqs_Block,

@@ -11,6 +11,7 @@ export interface Config {
     users: User;
     media: Media;
     doctors: Doctor;
+    category: Category;
     tags: Tag;
     blogs: Blog;
     pages: Page;
@@ -142,6 +143,19 @@ export interface Doctor {
   phone_number: number;
   mail: string;
   slug?: string | null;
+  category: (string | Category)[];
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "category".
+ */
+export interface Category {
+  id: string;
+  title: string;
+  slug?: string | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -226,6 +240,8 @@ export interface Page {
         | DepartmentType
         | AwardType
         | TestimonialsType
+        | DoctorHeroType
+        | DoctorBannerType
         | BannerType
         | AppointmentType
         | FaqsType
@@ -236,6 +252,7 @@ export interface Page {
         | AboutGalleryType
         | AboutAwardsType
         | AboutBannerType
+
       )[]
     | null;
   slug?: string | null;
@@ -376,6 +393,30 @@ export interface TestimonialsType {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+
+ * via the `definition` "DoctorHeroType".
+ */
+export interface DoctorHeroType {
+  title: string;
+  sub_title: string;
+  imgUrl: string | Media;
+  bgUrl?: string | Media | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'DoctorHero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DoctorBannerType".
+ */
+export interface DoctorBannerType {
+  title: string;
+  sub_title: string;
+  bgUrl?: string | Media | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'DoctorBanner';
+
  * via the `definition` "BannerType".
  */
 export interface BannerType {
@@ -528,6 +569,7 @@ export interface AboutBannerType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'AboutBanner';
+
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
