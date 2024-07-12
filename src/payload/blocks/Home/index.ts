@@ -8,6 +8,8 @@ import Banner from './Banner'
 import { Banner_Block } from './Banner/block'
 import Department from './Department'
 import { Department_Block } from './Department/block'
+import Faqs from './Faqs'
+import { Faqs_Block } from './Faqs/block'
 import Features from './Features'
 import { Features_Block } from './Features/block'
 import Hero from './Hero'
@@ -26,6 +28,8 @@ export {
   Banner_Block,
   Department,
   Department_Block,
+  Faqs,
+  Faqs_Block,
   Features,
   Features_Block,
   Hero,
