@@ -224,16 +224,6 @@ export interface HeroType {
   sub_title?: string | null;
   hero_image?: string | Media | null;
   background_image?: string | Media | null;
-  video_button_text?: string | null;
-  video_url?: string | null;
-  contact_info?:
-    | {
-        title?: string | null;
-        sub_title?: string | null;
-        contact_icon?: ('1' | '2' | '3') | null;
-        id?: string | null;
-      }[]
-    | null;
   button_text?: string | null;
   button_url?: string | null;
   id?: string | null;
