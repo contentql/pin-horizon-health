@@ -133,7 +133,7 @@ importers:
         specifier: ^19.0.0-rc-f994737d14-20240522
         version: 19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614)
       react-hook-form:
-        specifier: ^7.51.4
+        specifier: ^7.52.0
         version: 7.52.0(react@19.0.0-rc-fb9a90fa48-20240614)
       react-icons:
         specifier: ^5.2.1
@@ -156,6 +156,9 @@ importers:
       slick-carousel:
         specifier: ^1.8.1
         version: 1.8.1(jquery@3.7.1)
+      sonner:
+        specifier: ^1.5.0
+        version: 1.5.0(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
       tailwind-merge:
         specifier: ^2.3.0
         version: 2.3.0

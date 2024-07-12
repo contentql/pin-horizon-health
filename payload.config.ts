@@ -14,6 +14,7 @@ import { buildConfig } from 'payload/config'
 import sharp from 'sharp'
 import { fileURLToPath } from 'url'
 
+import { Appointments } from '@/payload/collections/Appoinments'
 import { Blogs } from '@/payload/collections/Blogs'
 import { Category } from '@/payload/collections/Category'
 import { Doctors } from '@/payload/collections/Doctors'
@@ -88,7 +89,9 @@ export default buildConfig({
   },
   cors: [env.PAYLOAD_URL],
   csrf: [env.PAYLOAD_URL],
-  collections: [Users, Media, Doctors, Category, Tags, Blogs, Pages, Sessions],
+
+  collections: [Users, Media, Doctors, Category, Tags, Blogs, Pages, Sessions,Appointments],
+
   globals: [siteSettings],
   plugins: [
     nestedDocsPlugin({
