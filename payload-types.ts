@@ -242,6 +242,17 @@ export interface Page {
         | TestimonialsType
         | DoctorHeroType
         | DoctorBannerType
+        | BannerType
+        | AppointmentType
+        | FaqsType
+        | AboutHeroType
+        | AboutServicesType
+        | AboutFeaturesType
+        | AboutStatisticsType
+        | AboutGalleryType
+        | AboutAwardsType
+        | AboutBannerType
+
       )[]
     | null;
   slug?: string | null;
@@ -278,16 +289,6 @@ export interface HeroType {
   sub_title?: string | null;
   hero_image?: string | Media | null;
   background_image?: string | Media | null;
-  video_button_text?: string | null;
-  video_url?: string | null;
-  contact_info?:
-    | {
-        title?: string | null;
-        sub_title?: string | null;
-        contact_icon?: ('1' | '2' | '3') | null;
-        id?: string | null;
-      }[]
-    | null;
   button_text?: string | null;
   button_url?: string | null;
   id?: string | null;
@@ -392,6 +393,7 @@ export interface TestimonialsType {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+
  * via the `definition` "DoctorHeroType".
  */
 export interface DoctorHeroType {
@@ -414,6 +416,160 @@ export interface DoctorBannerType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'DoctorBanner';
+
+ * via the `definition` "BannerType".
+ */
+export interface BannerType {
+  title?: string | null;
+  sub_title?: string | null;
+  image?: string | Media | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'Banner';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AppointmentType".
+ */
+export interface AppointmentType {
+  title?: string | null;
+  sub_title?: string | null;
+  image?: string | Media | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'Appointment';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FaqsType".
+ */
+export interface FaqsType {
+  title?: string | null;
+  sub_title?: string | null;
+  faqs?:
+    | {
+        question?: string | null;
+        answer?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'Faqs';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AboutHeroType".
+ */
+export interface AboutHeroType {
+  title?: string | null;
+  sub_title?: string | null;
+  image?: string | Media | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'AboutHero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AboutServicesType".
+ */
+export interface AboutServicesType {
+  title?: string | null;
+  sub_title?: string | null;
+  services?:
+    | {
+        title?: string | null;
+        sub_title?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'AboutServices';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AboutFeaturesType".
+ */
+export interface AboutFeaturesType {
+  title?: string | null;
+  image?: string | Media | null;
+  features?:
+    | {
+        title?: string | null;
+        sub_title?: string | null;
+        feature_icon?: ('1' | '2' | '3' | '4') | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'AboutFeatures';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AboutStatisticsType".
+ */
+export interface AboutStatisticsType {
+  statistics?:
+    | {
+        number?: string | null;
+        title?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'AboutStatistics';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AboutGalleryType".
+ */
+export interface AboutGalleryType {
+  title?: string | null;
+  sub_title?: string | null;
+  gallery?:
+    | {
+        image?: string | Media | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'AboutGallery';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AboutAwardsType".
+ */
+export interface AboutAwardsType {
+  title?: string | null;
+  sub_title?: string | null;
+  description?: string | null;
+  awards?:
+    | {
+        title?: string | null;
+        image?: string | Media | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'AboutAwards';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AboutBannerType".
+ */
+export interface AboutBannerType {
+  title?: string | null;
+  sub_title?: string | null;
+  background_image?: string | Media | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'AboutBanner';
+
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
