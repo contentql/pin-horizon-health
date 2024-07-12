@@ -10,6 +10,7 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    doctors: Doctor;
     tags: Tag;
     blogs: Blog;
     pages: Page;
@@ -105,6 +106,45 @@ export interface Media {
       filename?: string | null;
     };
   };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "doctors".
+ */
+export interface Doctor {
+  id: string;
+  name: string;
+  department: string;
+  designation: string;
+  description: string;
+  doctor_image: string | Media;
+  qualifications?:
+    | {
+        qualification?: ('High School Diploma' | 'Bachelor’s Degree' | 'Medical Degree (MD/DO)' | 'Residency') | null;
+        institute?: string | null;
+        year?: string | null;
+        specialization: string;
+        id?: string | null;
+      }[]
+    | null;
+  experience?:
+    | {
+        title?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  achievements?:
+    | {
+        title?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  phone_number: number;
+  mail: string;
+  slug?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
