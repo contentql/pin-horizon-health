@@ -252,7 +252,6 @@ export interface Page {
         | AboutGalleryType
         | AboutAwardsType
         | AboutBannerType
-
       )[]
     | null;
   slug?: string | null;
@@ -393,7 +392,6 @@ export interface TestimonialsType {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
-
  * via the `definition` "DoctorHeroType".
  */
 export interface DoctorHeroType {
@@ -416,7 +414,9 @@ export interface DoctorBannerType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'DoctorBanner';
-
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "BannerType".
  */
 export interface BannerType {
@@ -569,7 +569,6 @@ export interface AboutBannerType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'AboutBanner';
-
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
