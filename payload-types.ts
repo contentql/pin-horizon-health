@@ -191,6 +191,8 @@ export interface Page {
         | FaqsType
         | AboutHeroType
         | AboutServicesType
+        | AboutFeaturesType
+        | AboutStatisticsType
       )[]
     | null;
   slug?: string | null;
@@ -400,6 +402,41 @@ export interface AboutServicesType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'AboutServices';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AboutFeaturesType".
+ */
+export interface AboutFeaturesType {
+  title?: string | null;
+  image?: string | Media | null;
+  features?:
+    | {
+        title?: string | null;
+        sub_title?: string | null;
+        feature_icon?: ('1' | '2' | '3' | '4') | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'AboutFeatures';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AboutStatisticsType".
+ */
+export interface AboutStatisticsType {
+  statistics?:
+    | {
+        number?: string | null;
+        title?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'AboutStatistics';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
