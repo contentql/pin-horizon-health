@@ -188,6 +188,9 @@ export interface Page {
         | TestimonialsType
         | BannerType
         | AppointmentType
+        | FaqsType
+        | AboutHeroType
+        | AboutServicesType
       )[]
     | null;
   slug?: string | null;
@@ -349,6 +352,54 @@ export interface AppointmentType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'Appointment';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FaqsType".
+ */
+export interface FaqsType {
+  title?: string | null;
+  sub_title?: string | null;
+  faqs?:
+    | {
+        question?: string | null;
+        answer?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'Faqs';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AboutHeroType".
+ */
+export interface AboutHeroType {
+  title?: string | null;
+  sub_title?: string | null;
+  image?: string | Media | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'AboutHero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AboutServicesType".
+ */
+export interface AboutServicesType {
+  title?: string | null;
+  sub_title?: string | null;
+  services?:
+    | {
+        title?: string | null;
+        sub_title?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'AboutServices';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
