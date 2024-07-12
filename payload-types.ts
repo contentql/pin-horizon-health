@@ -152,7 +152,10 @@ export interface Doctor {
   phone_number: number;
   mail: string;
   slug?: string | null;
-  category: (string | Category)[];
+  category: {
+    relationTo: 'category';
+    value: string | Category;
+  };
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;

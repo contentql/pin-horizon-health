@@ -1,5 +1,6 @@
 import configPromise from '@payload-config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
+import { z } from 'zod'
 
 import { publicProcedure, router } from '@/trpc'
 
@@ -22,4 +23,33 @@ export const doctorRouter = router({
       throw new Error(error.message)
     }
   }),
+  getDoctorsByCategory: publicProcedure
+    .input(z.object({ slug: z.string() }))
+    ?.query(async ({ input }) => {
+      const { slug } = input
+      const categoryId = await payload.find({
+        collection: 'category',
+        where: {
+          slug: {
+            equals: slug,
+          },
+        },
+      })
+
+      const doctors = await payload.find({
+        collection: 'doctors',
+        draft: false,
+        depth: 5,
+        pagination: false,
+        where: {
+          ...(slug !== 'all' && {
+            'category.value': {
+              equals: categoryId?.docs?.at(0)?.id,
+            },
+          }),
+        },
+      })
+
+      return doctors?.docs
+    }),
 })
