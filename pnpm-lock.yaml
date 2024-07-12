@@ -81,6 +81,9 @@ importers:
       '@trpc/server':
         specifier: next
         version: 11.0.0-rc.403
+      D:
+        specifier: ^1.0.0
+        version: 1.0.0
       bootstrap:
         specifier: ^5.3.3
         version: 5.3.3(@popperjs/core@2.11.8)
@@ -123,6 +126,9 @@ importers:
       react:
         specifier: ^19.0.0-rc-f994737d14-20240522
         version: 19.0.0-rc-fb9a90fa48-20240614
+      react-datepicker:
+        specifier: ^7.3.0
+        version: 7.3.0(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
       react-dom:
         specifier: ^19.0.0-rc-f994737d14-20240522
         version: 19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614)
@@ -132,6 +138,9 @@ importers:
       react-icons:
         specifier: ^5.2.1
         version: 5.2.1(react@19.0.0-rc-fb9a90fa48-20240614)
+      react-modal-image:
+        specifier: ^2.6.0
+        version: 2.6.0
       react-slick:
         specifier: ^0.30.2
         version: 0.30.2(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
@@ -169,6 +178,9 @@ importers:
       '@types/react-dom':
         specifier: npm:types-react-dom@19.0.0-beta.2
         version: types-react-dom@19.0.0-beta.2
+      '@types/react-modal-image':
+        specifier: ^2.6.3
+        version: 2.6.3
       '@types/react-slick':
         specifier: ^0.23.13
         version: 0.23.13
@@ -1763,6 +1775,9 @@ packages:
   '@types/prettier@2.7.3':
     resolution: {integrity: sha512-+68kP9yzs4LMp7VNh8gdzMSPZFL44MLGqiHWvttYJe+6qnuVr4Ek9wSBQoveqY/r+LwjCcU29kNVkidwim+kYA==}
 
+  '@types/react-modal-image@2.6.3':
+    resolution: {integrity: sha512-Uh4joinWiyRD2e4Q+MRiMiQfz7K7W16peF2xfEx821t7p6O6sG4xi42uuN5tsYhx1mTOsagUPqIQiWcYgKtkww==}
+
   '@types/react-slick@0.23.13':
     resolution: {integrity: sha512-bNZfDhe/L8t5OQzIyhrRhBr/61pfBcWaYJoq6UDqFtv5LMwfg4NsVDD2J8N01JqdAdxLjOt66OZEp6PX+dGs/A==}
 
@@ -1811,6 +1826,10 @@ packages:
 
   '@ungap/structured-clone@1.2.0':
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
+
+  D@1.0.0:
+    resolution: {integrity: sha512-nQvrCBu7K2pSSEtIM0EEF03FVjcczCXInMt3moLNFbjlWx6bZrX72uT6/1uAXDbnzGUAx9gTyDiQ+vrFi663oA==}
+    deprecated: Package no longer supported. Contact support@npmjs.com for more info.
 
   abbrev@2.0.0:
     resolution: {integrity: sha512-6/mh1E2u2YgEsCHdY0Yx5oW+61gZU+1vXaoiHHrpKeuRNNgFvS+/jrwHiQhB5apAf5oB7UB7E19ol2R2LKH8hQ==}
@@ -3768,6 +3787,12 @@ packages:
       react: ^16.9.0 || ^17 || ^18
       react-dom: ^16.9.0 || ^17 || ^18
 
+  react-datepicker@7.3.0:
+    resolution: {integrity: sha512-EqRKLAtLZUTztiq6a+tjSjQX9ES0Xd229JPckAtyZZ4GoY3rtvNWAzkYZnQUf6zTWT50Ki0+t+W9VRQIkSJLfg==}
+    peerDependencies:
+      react: ^16.9.0 || ^17 || ^18
+      react-dom: ^16.9.0 || ^17 || ^18
+
   react-diff-viewer-continued@3.2.6:
     resolution: {integrity: sha512-GrzyqQnjIMoej+jMjWvtVSsQqhXgzEGqpXlJ2dAGfOk7Q26qcm8Gu6xtI430PBUyZsERe8BJSQf+7VZZo8IBNQ==}
     engines: {node: '>= 8'}
@@ -3814,6 +3839,9 @@ packages:
 
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
+
+  react-modal-image@2.6.0:
+    resolution: {integrity: sha512-NNc1xPKzFAn0VsNMdJ8NXt6c54aL/z0fcoYmw9qn4SBUONdGl+8LOQ0sTfo0wtdzcjLiby/ncloHcAL+UI+wIA==}
 
   react-onclickoutside@6.13.1:
     resolution: {integrity: sha512-LdrrxK/Yh9zbBQdFbMTXPp3dTSN9B+9YJQucdDu3JNKRrbdU+H+/TVONJoWtOwy4II8Sqf1y/DTI6w/vGPYW0w==}
@@ -6587,6 +6615,10 @@ snapshots:
 
   '@types/prettier@2.7.3': {}
 
+  '@types/react-modal-image@2.6.3':
+    dependencies:
+      '@types/react': types-react@19.0.0-beta.2
+
   '@types/react-slick@0.23.13':
     dependencies:
       '@types/react': types-react@19.0.0-beta.2
@@ -6645,6 +6677,8 @@ snapshots:
       eslint-visitor-keys: 3.4.3
 
   '@ungap/structured-clone@1.2.0': {}
+
+  D@1.0.0: {}
 
   abbrev@2.0.0: {}
 
@@ -8849,6 +8883,16 @@ snapshots:
       react-dom: 19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614)
       react-onclickoutside: 6.13.1(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
 
+  react-datepicker@7.3.0(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614):
+    dependencies:
+      '@floating-ui/react': 0.26.17(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
+      clsx: 2.1.1
+      date-fns: 3.3.1
+      prop-types: 15.8.1
+      react: 19.0.0-rc-fb9a90fa48-20240614
+      react-dom: 19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614)
+      react-onclickoutside: 6.13.1(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
+
   react-diff-viewer-continued@3.2.6(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614):
     dependencies:
       '@emotion/css': 11.11.2
@@ -8895,6 +8939,8 @@ snapshots:
       react: 19.0.0-rc-fb9a90fa48-20240614
 
   react-is@16.13.1: {}
+
+  react-modal-image@2.6.0: {}
 
   react-onclickoutside@6.13.1(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614):
     dependencies:

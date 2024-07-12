@@ -3,8 +3,6 @@ import parse from 'html-react-parser'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import VideoModal from '@/components/marketing/home/VideoModal'
-
 const infoList = {
   '1': '/images/contact/icon_1.svg',
   '2': '/images/icons/ambulance.svg',
@@ -25,12 +23,33 @@ export default function Hero(data: HeroType) {
             <p className='cs_hero_subtitle cs_fs_20 cs_heading_color'>
               {parse(data?.sub_title!)}
             </p>
-            <div className='cs_hero_btn_wrap'>
+            {/* <div className='cs_hero_btn_wrap'>
               <VideoModal
                 videoUrl={data?.video_url}
                 videoBtnText={data?.video_button_text}
                 variant='cs_heading_color'
               />
+            </div> */}
+            <div className='cs_hero_info_col'>
+              <Link
+                href={data?.button_url || '/'}
+                className='cs_btn cs_style_1'>
+                <span>{data?.button_text}</span>
+                <i>
+                  <Image
+                    src='/images/icons/arrow_white.svg'
+                    alt='Icon'
+                    height={11}
+                    width={16}
+                  />
+                  <Image
+                    src='/images/icons/arrow_white.svg'
+                    alt='Icon'
+                    height={11}
+                    width={16}
+                  />
+                </i>
+              </Link>
             </div>
           </div>
           <div className='cs_hero_img'>
@@ -42,7 +61,7 @@ export default function Hero(data: HeroType) {
               width={930}
             />
           </div>
-          <div className='cs_hero_info_wrap cs_shadow_1 cs_white_bg cs_radius_15'>
+          {/* <div className='cs_hero_info_wrap cs_shadow_1 cs_white_bg cs_radius_15'>
             {data?.contact_info?.map((item, index) => (
               <div className='cs_hero_info_col' key={index}>
                 <div className='cs_hero_info d-flex align-items-center'>
@@ -86,7 +105,7 @@ export default function Hero(data: HeroType) {
                 </i>
               </Link>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
