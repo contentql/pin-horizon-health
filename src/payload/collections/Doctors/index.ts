@@ -172,10 +172,9 @@ export const Doctors: CollectionConfig = {
     {
       name: 'category',
       type: 'relationship',
-      relationTo: 'category',
+      relationTo: ['category'],
       label: 'Category',
       required: true,
-      hasMany: true,
       admin: {
         position: 'sidebar',
       },
