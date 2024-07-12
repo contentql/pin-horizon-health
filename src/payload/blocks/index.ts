@@ -4,19 +4,6 @@ import { Test } from '@/payload/blocks/Test'
 import { Test_Block } from '@/payload/blocks/Test/block'
 
 import {
-
-  AppointmentBanner,
-  AppointmentContact,
-  Appointment_Banner_Block,
-  Appointment_Contact_Block,
-} from './Appointment'
-
-  DoctorBanner,
-  DoctorHero,
-  Doctor_Banner_Block,
-  Doctor_Hero_Block,
-} from './Doctor'
-import {
   AboutAwards,
   AboutAwards_Block,
   AboutBanner,
@@ -32,7 +19,18 @@ import {
   AboutStatistics,
   AboutStatistics_Block,
 } from './About'
-
+import {
+  AppointmentBanner,
+  AppointmentContact,
+  Appointment_Banner_Block,
+  Appointment_Contact_Block,
+} from './Appointment'
+import {
+  DoctorBanner,
+  DoctorHero,
+  Doctor_Banner_Block,
+  Doctor_Hero_Block,
+} from './Doctor'
 import {
   About,
   About_Block,
@@ -78,7 +76,6 @@ export const blocksJSX = {
   AboutGallery,
   AboutAwards,
   AboutBanner,
-
 }
 
 export type SlugType = keyof typeof blocksJSX
@@ -107,5 +104,4 @@ export const blocks = [
   AboutGallery_Block,
   AboutAwards_Block,
   AboutBanner_Block,
-
 ]
