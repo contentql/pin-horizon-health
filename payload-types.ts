@@ -193,6 +193,9 @@ export interface Page {
         | AboutServicesType
         | AboutFeaturesType
         | AboutStatisticsType
+        | AboutGalleryType
+        | AboutAwardsType
+        | AboutBannerType
       )[]
     | null;
   slug?: string | null;
@@ -437,6 +440,54 @@ export interface AboutStatisticsType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'AboutStatistics';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AboutGalleryType".
+ */
+export interface AboutGalleryType {
+  title?: string | null;
+  sub_title?: string | null;
+  gallery?:
+    | {
+        image?: string | Media | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'AboutGallery';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AboutAwardsType".
+ */
+export interface AboutAwardsType {
+  title?: string | null;
+  sub_title?: string | null;
+  description?: string | null;
+  awards?:
+    | {
+        title?: string | null;
+        image?: string | Media | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'AboutAwards';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AboutBannerType".
+ */
+export interface AboutBannerType {
+  title?: string | null;
+  sub_title?: string | null;
+  background_image?: string | Media | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'AboutBanner';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
