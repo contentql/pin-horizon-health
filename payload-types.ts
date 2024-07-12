@@ -11,6 +11,7 @@ export interface Config {
     users: User;
     media: Media;
     doctors: Doctor;
+    category: Category;
     tags: Tag;
     blogs: Blog;
     pages: Page;
@@ -142,6 +143,19 @@ export interface Doctor {
   phone_number: number;
   mail: string;
   slug?: string | null;
+  category: (string | Category)[];
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "category".
+ */
+export interface Category {
+  id: string;
+  title: string;
+  slug?: string | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -227,6 +241,7 @@ export interface Page {
         | AwardType
         | TestimonialsType
         | DoctorHeroType
+        | DoctorBannerType
       )[]
     | null;
   slug?: string | null;
@@ -387,6 +402,18 @@ export interface DoctorHeroType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'DoctorHero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DoctorBannerType".
+ */
+export interface DoctorBannerType {
+  title: string;
+  sub_title: string;
+  bgUrl?: string | Media | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'DoctorBanner';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

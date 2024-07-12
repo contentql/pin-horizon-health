@@ -3,7 +3,12 @@
 import { Test } from '@/payload/blocks/Test'
 import { Test_Block } from '@/payload/blocks/Test/block'
 
-import { DoctorHero, Doctor_Hero_Block } from './Doctor'
+import {
+  DoctorBanner,
+  DoctorHero,
+  Doctor_Banner_Block,
+  Doctor_Hero_Block,
+} from './Doctor'
 import {
   About,
   About_Block,
@@ -28,6 +33,7 @@ export const blocksJSX = {
   Award,
   Testimonials,
   DoctorHero,
+  DoctorBanner,
 }
 
 export type SlugType = keyof typeof blocksJSX
@@ -41,4 +47,5 @@ export const blocks = [
   Award_Block,
   Testimonials_Block,
   Doctor_Hero_Block,
+  Doctor_Banner_Block,
 ]
