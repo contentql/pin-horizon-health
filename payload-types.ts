@@ -252,6 +252,7 @@ export interface Page {
         | AboutGalleryType
         | AboutAwardsType
         | AboutBannerType
+        | BlogsType
       )[]
     | null;
   slug?: string | null;
@@ -569,6 +570,19 @@ export interface AboutBannerType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'AboutBanner';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlogsType".
+ */
+export interface BlogsType {
+  heading?: string | null;
+  image?: string | Media | null;
+  title?: string | null;
+  sub_title?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'Blogs';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
