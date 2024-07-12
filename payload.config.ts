@@ -16,6 +16,8 @@ import { fileURLToPath } from 'url'
 
 import { Appointments } from '@/payload/collections/Appoinments'
 import { Blogs } from '@/payload/collections/Blogs'
+import { Category } from '@/payload/collections/Category'
+import { Doctors } from '@/payload/collections/Doctors'
 import { Media } from '@/payload/collections/Media'
 import { Pages } from '@/payload/collections/Pages'
 import { Sessions } from '@/payload/collections/Sessions'
@@ -87,7 +89,9 @@ export default buildConfig({
   },
   cors: [env.PAYLOAD_URL],
   csrf: [env.PAYLOAD_URL],
-  collections: [Users, Media, Tags, Blogs, Pages, Sessions, Appointments],
+
+  collections: [Users, Media, Doctors, Category, Tags, Blogs, Pages, Sessions,Appointments],
+
   globals: [siteSettings],
   plugins: [
     nestedDocsPlugin({
