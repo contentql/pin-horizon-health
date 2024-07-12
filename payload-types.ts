@@ -217,7 +217,18 @@ export interface Page {
   id: string;
   title: string;
   isHome?: boolean | null;
-  blocks?: (TestType | HeroType | FeaturesType | AboutType | DepartmentType | AwardType | TestimonialsType)[] | null;
+  blocks?:
+    | (
+        | TestType
+        | HeroType
+        | FeaturesType
+        | AboutType
+        | DepartmentType
+        | AwardType
+        | TestimonialsType
+        | DoctorHeroType
+      )[]
+    | null;
   slug?: string | null;
   path?: string | null;
   parent?: (string | null) | Page;
@@ -363,6 +374,19 @@ export interface TestimonialsType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'Testimonials';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DoctorHeroType".
+ */
+export interface DoctorHeroType {
+  title: string;
+  sub_title: string;
+  imgUrl: string | Media;
+  bgUrl?: string | Media | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'DoctorHero';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
