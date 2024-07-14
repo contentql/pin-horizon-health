@@ -1,4 +1,4 @@
-import Blogs from './Blogs'
-import { Blogs_Block } from './Blogs/block'
+import AllBlogs from './AllBlogs'
+import { AllBlogs_Block } from './AllBlogs/block'
 
-export { Blogs, Blogs_Block }
+export { AllBlogs, AllBlogs_Block }

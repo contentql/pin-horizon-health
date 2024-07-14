@@ -196,8 +196,14 @@ export interface Blog {
         value: string | Tag;
       }[]
     | null;
-  sub_title: string;
   blog_image: string | Media;
+  social_media?:
+    | {
+        icon: 'fa-brands:linkedin-in' | 'fa-brands:facebook-f' | 'fa-brands:twitter';
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
   description: {
     root: {
       type: string;
@@ -252,7 +258,7 @@ export interface Page {
         | AboutGalleryType
         | AboutAwardsType
         | AboutBannerType
-        | BlogsType
+        | AllBlogsType
       )[]
     | null;
   slug?: string | null;
@@ -573,16 +579,16 @@ export interface AboutBannerType {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "BlogsType".
+ * via the `definition` "AllBlogsType".
  */
-export interface BlogsType {
+export interface AllBlogsType {
   heading?: string | null;
   image?: string | Media | null;
   title?: string | null;
   sub_title?: string | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'Blogs';
+  blockType: 'AllBlogs';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

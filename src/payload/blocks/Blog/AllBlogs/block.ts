@@ -1,12 +1,12 @@
 import { Block } from 'payload/types'
 
-export const Blogs_Block: Block = {
-  slug: 'Blogs',
+export const AllBlogs_Block: Block = {
+  slug: 'AllBlogs',
   // imageURL: '',
-  interfaceName: 'BlogsType',
+  interfaceName: 'AllBlogsType',
   labels: {
-    singular: 'Blogs Block',
-    plural: 'Blogs Blocks',
+    singular: 'AllBlogs Block',
+    plural: 'AllBlogs Blocks',
   },
   fields: [
     {
