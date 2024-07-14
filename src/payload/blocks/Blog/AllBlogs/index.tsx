@@ -12,16 +12,15 @@ export default function AllBlogs(data: AllBlogsType) {
   return (
     <>
       <Section topMd={170} bottomMd={96} bottomLg={70}>
-        <Breadcrumb heading={data?.heading!} />
+        <Breadcrumb heading={data?.heading || ''} />
       </Section>
       <Section bottomMd={200} bottomLg={150} bottomXl={110}>
         <BlogSectionStyle2 blogsData={blogsData} />
       </Section>
-      {/* <Section className='cs_footer_margin_0'> */}
-      <Section>
+      <Section className='cs_footer_margin_0'>
         <BannerSectionStyle9
-          title={data?.title!}
-          subTitle={data?.sub_title!}
+          title={data?.title || ''}
+          subTitle={data?.sub_title || ''}
           imgUrl={(data?.image as Media)?.url || ''}
         />
       </Section>

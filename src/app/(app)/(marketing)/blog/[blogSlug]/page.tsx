@@ -1,7 +1,7 @@
 import { Blog } from '@payload-types'
 import { Metadata } from 'next'
 
-import BlogPostView from '@/components/marketing/blog'
+import BlogDetails from '@/components/marketing/blog/BlogDetails/page'
 import { serverClient } from '@/trpc/serverClient'
 import { generateMeta } from '@/utils/generate-meta'
 
@@ -22,13 +22,7 @@ const Page = async ({ params }: PageProps) => {
   const blog = await serverClient.blog.getBlogBySlug({ slug: decodedSlug })
   const blogsData = await serverClient.blog.getAllBlogs()
 
-  return (
-    <BlogPostView
-      decodedSlug={decodedSlug}
-      blog={blog as Blog}
-      blogsData={blogsData}
-    />
-  )
+  return <BlogDetails blogData={blog} blogsData={blogsData} />
 }
 
 export async function generateStaticParams() {

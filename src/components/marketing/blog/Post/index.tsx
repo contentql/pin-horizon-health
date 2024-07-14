@@ -14,8 +14,8 @@ export default function Post({ blogData }: { blogData: Blog }) {
         <Image
           src={(blogData?.blog_image as Media)?.url || ''}
           alt={(blogData?.blog_image as Media)?.alt || ''}
-          height={379}
-          width={526}
+          height={309}
+          width={429}
         />
       </Link>
       <div className='cs_post_info'>
