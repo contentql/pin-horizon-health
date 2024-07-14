@@ -1,12 +1,12 @@
-import { BlogsType, Media } from '@payload-types'
+import { AllBlogsType, Media } from '@payload-types'
 
-import BannerSectionStyle9 from '@/components/common/BannerSection/BannerSectionStyle9'
-import BlogSectionStyle2 from '@/components/common/BlogSection/BlogSectionStyle2'
-import Breadcrumb from '@/components/common/Breadcrumb'
 import Section from '@/components/common/Section'
+import BannerSectionStyle9 from '@/components/marketing/blog/BannerSection/BannerSectionStyle9'
+import BlogSectionStyle2 from '@/components/marketing/blog/BlogSection/BlogSectionStyle2'
+import Breadcrumb from '@/components/marketing/blog/Breadcrumb'
 import { trpc } from '@/trpc/client'
 
-export default function AllBlogs(data: BlogsType) {
+export default function AllBlogs(data: AllBlogsType) {
   const { data: blogsData } = trpc.blog.getAllBlogs.useQuery()
 
   return (

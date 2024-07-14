@@ -9,7 +9,7 @@ export default function Post({ blogData }: { blogData: Blog }) {
   return (
     <div className={`cs_post cs_style_1`}>
       <Link
-        href={`/blog/${blogData?.title}`}
+        href={`/blog/${blogData?.slug}`}
         className='cs_post_thumb cs_view_mouse'>
         <Image
           src={(blogData?.blog_image as Media)?.url || ''}
@@ -37,13 +37,13 @@ export default function Post({ blogData }: { blogData: Blog }) {
             )}
           </div>
           <h2 className='cs_post_title cs_semibold cs_fs_32'>
-            <Link href={`/blog/${blogData?.title}`}>{blogData?.title}</Link>
+            <Link href={`/blog/${blogData?.slug}`}>{blogData?.title}</Link>
           </h2>
         </div>
         {/* {btnText && ( */}
         {true && (
           <div className='cs_heading_color cs_medium'>
-            <Link href={`/blog/${blogData?.title}`} className='cs_post_btn'>
+            <Link href={`/blog/${blogData?.slug}`} className='cs_post_btn'>
               Learn more
             </Link>
           </div>
