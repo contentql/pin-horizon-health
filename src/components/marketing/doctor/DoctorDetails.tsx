@@ -1,5 +1,5 @@
 import Spacing from '../home/Spacing'
-import { Doctor, Media } from '@payload-types'
+import { Department, Doctor, Media } from '@payload-types'
 import Image from 'next/image'
 
 import List from './List'
@@ -32,7 +32,7 @@ export default function DoctorDetails({
                 width={664}
               />
               <h3 className='cs_white_color cs_accent_bg cs_semibold cs_fs_24 mb-0 text-center'>
-                {doctorDetails?.department}
+                {(doctorDetails?.department as Department)?.title}
               </h3>
             </div>
             <Spacing md='94' lg='60' />
