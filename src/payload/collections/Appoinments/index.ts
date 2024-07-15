@@ -20,16 +20,30 @@ export const Appointments: CollectionConfig = {
   },
   fields: [
     {
-      name: 'name',
-      label: 'Name',
-      type: 'text',
-      required: true,
+      type: 'row',
+      fields: [
+        {
+          name: 'name',
+          label: 'Name',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'phoneNumber',
+          label: 'Phone Number',
+          type: 'text',
+          required: true,
+        },
+      ],
     },
     {
-      name: 'phoneNumber',
-      label: 'Phone Number',
-      type: 'textarea',
-      required: true,
+      name: 'gender',
+      label: 'Gender',
+      type: 'radio',
+      options: [
+        { label: 'Male', value: 'male' },
+        { label: 'Female', value: 'female' },
+      ],
     },
 
     {
@@ -41,32 +55,42 @@ export const Appointments: CollectionConfig = {
     {
       name: 'preferredDateAndTime',
       label: 'Preferred Date and Time',
-      type: 'text',
+      type: 'date',
+      admin: {
+        date: {
+          pickerAppearance: 'dayAndTime',
+        },
+      },
     },
 
     {
-      name: 'reason',
-      label: 'Reason for visit',
-      type: 'radio',
-      options: [
-        { label: 'Routine Checkup', value: 'routineCheckup' },
-        { label: 'New Patient visit', value: 'newPatientVisit' },
-        { label: 'Specific concern', value: 'specificConcern' },
-        { label: 'Other', value: 'other' },
-      ],
-    },
-    {
-      name: 'department',
-      label: 'Department',
-      type: 'radio',
-      options: [
-        { label: 'Pediatric', value: 'pediatric' },
+      type: 'row',
+      fields: [
         {
-          label: 'Obstetrics and Gynecology',
-          value: 'obstetricsGynecology',
+          name: 'reason',
+          label: 'Reason for visit',
+          type: 'select',
+          options: [
+            { label: 'Routine Checkup', value: 'routineCheckup' },
+            { label: 'New Patient visit', value: 'newPatientVisit' },
+            { label: 'Specific concern', value: 'specificConcern' },
+            { label: 'Other', value: 'other' },
+          ],
         },
-        { label: 'Cardiology', value: 'cardiology' },
-        { label: 'Neurology', value: 'neurology' },
+        {
+          name: 'department',
+          label: 'Department',
+          type: 'select',
+          options: [
+            { label: 'Pediatric', value: 'pediatric' },
+            {
+              label: 'Obstetrics and Gynecology',
+              value: 'obstetricsGynecology',
+            },
+            { label: 'Cardiology', value: 'cardiology' },
+            { label: 'Neurology', value: 'neurology' },
+          ],
+        },
       ],
     },
   ],

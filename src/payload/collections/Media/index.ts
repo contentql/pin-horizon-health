@@ -33,7 +33,7 @@ export const Media: CollectionConfig = {
       {
         name: 'appointment_contact_image',
         width: 547,
-        height: 327,
+        height: undefined,
         position: 'centre',
       },
     ],

@@ -92,8 +92,10 @@ export default function Header({
                       <Link href='/blog'>Blog</Link>
                     </li>
                     <li>
-                      <Link href='/appointments'>Appointments</Link> */}
-                    {/* <DropDown>
+
+                      <Link href='/appointment'>Appointment</Link>
+                      {/* <DropDown>
+
                         <ul>
                           <li>
                             <Link href='/appointments'>Appointments</Link>

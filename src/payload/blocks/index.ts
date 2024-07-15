@@ -26,6 +26,8 @@ import {
   Appointment_Banner_Block,
   Appointment_Contact_Block,
 } from './Appointment'
+import Contact from './Contact/ContactBanner'
+import { Contact_Banner_Block } from './Contact/ContactBanner/block'
 import {
   DoctorBanner,
   DoctorHero,
@@ -79,8 +81,12 @@ export const blocksJSX = {
   AboutGallery,
   AboutAwards,
   AboutBanner,
+
+  Contact,
+
   AllBlogs,
   LatestBlogs,
+
 }
 
 export type SlugType = keyof typeof blocksJSX
@@ -109,6 +115,10 @@ export const blocks = [
   AboutGallery_Block,
   AboutAwards_Block,
   AboutBanner_Block,
+
+  Contact_Banner_Block,
+
   AllBlogs_Block,
   LatestBlogs_Block,
+
 ]
