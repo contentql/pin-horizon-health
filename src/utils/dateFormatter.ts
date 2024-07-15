@@ -3,5 +3,5 @@ export function formatDate(isoDateString: string) {
   const month = date.toLocaleString('default', { month: 'short' })
   const day = date.getDate()
   const year = date.getFullYear()
-  return ` ${day} ${month}, ${year}`
+  return ` ${day} ${month} ${year}`
 }

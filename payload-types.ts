@@ -12,6 +12,7 @@ export interface Config {
     media: Media;
     doctors: Doctor;
     category: Category;
+    department: Department;
     tags: Tag;
     blogs: Blog;
     pages: Page;
@@ -124,7 +125,7 @@ export interface Media {
 export interface Doctor {
   id: string;
   name: string;
-  department: string;
+  department: string | Department;
   designation: string;
   description: string;
   doctor_image: string | Media;
@@ -151,11 +152,27 @@ export interface Doctor {
     | null;
   phone_number: number;
   mail: string;
+  linkedin?: string | null;
+  twitter?: string | null;
+  facebook?: string | null;
   slug?: string | null;
   category: {
     relationTo: 'category';
     value: string | Category;
   };
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "department".
+ */
+export interface Department {
+  id: string;
+  title: string;
+  description: string;
+  slug?: string | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
