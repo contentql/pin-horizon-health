@@ -10,6 +10,7 @@ export default function Section({
   bottomLg = '_',
   bottomXl = '_',
   children,
+  className,
   ...props
 }: {
   topMd?: string | number
@@ -19,6 +20,7 @@ export default function Section({
   bottomLg?: string | number
   bottomXl?: string | number
   children?: React.ReactNode
+  className?: string
 }) {
   return (
     <section {...props}>

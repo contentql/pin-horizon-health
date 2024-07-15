@@ -1,4 +1,4 @@
-import { AllBlogsType, Media } from '@payload-types'
+import { AllBlogsType, Blog, Media } from '@payload-types'
 
 import Section from '@/components/common/Section'
 import BannerSectionStyle9 from '@/components/marketing/blog/BannerSection/BannerSectionStyle9'
@@ -15,7 +15,7 @@ export default function AllBlogs(data: AllBlogsType) {
         <Breadcrumb heading={data?.heading || ''} />
       </Section>
       <Section bottomMd={200} bottomLg={150} bottomXl={110}>
-        <BlogSectionStyle2 blogsData={blogsData} />
+        <BlogSectionStyle2 blogsData={blogsData as Blog[]} />
       </Section>
       <Section className='cs_footer_margin_0'>
         <BannerSectionStyle9
