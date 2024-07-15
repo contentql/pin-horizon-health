@@ -293,6 +293,8 @@ export interface Page {
         | ContactBannerType
         | AllBlogsType
         | LatestBlogsType
+        | GalleryType
+        | BlogBannerType
       )[]
     | null;
   slug?: string | null;
@@ -655,10 +657,7 @@ export interface ContactBannerType {
  * via the `definition` "AllBlogsType".
  */
 export interface AllBlogsType {
-  heading?: string | null;
-  image?: string | Media | null;
   title?: string | null;
-  sub_title?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'AllBlogs';
@@ -673,6 +672,33 @@ export interface LatestBlogsType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'LatestBlogs';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GalleryType".
+ */
+export interface GalleryType {
+  gallery?:
+    | {
+        image?: string | Media | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'Gallery';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlogBannerType".
+ */
+export interface BlogBannerType {
+  image?: string | Media | null;
+  title?: string | null;
+  sub_title?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'BlogBanner';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

@@ -10,24 +10,8 @@ export const AllBlogs_Block: Block = {
   },
   fields: [
     {
-      name: 'heading',
-      label: 'Heading',
-      type: 'text',
-    },
-    {
-      name: 'image',
-      label: 'Image',
-      type: 'upload',
-      relationTo: 'media',
-    },
-    {
       name: 'title',
       label: 'Title',
-      type: 'text',
-    },
-    {
-      name: 'sub_title',
-      label: 'Sub Title',
       type: 'text',
     },
   ],
