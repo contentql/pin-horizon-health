@@ -115,12 +115,12 @@ export const Blogs: CollectionConfig = {
       relationTo: ['tags'],
       hasMany: true,
     },
-    {
-      name: 'sub_title',
-      label: 'Sub Title',
-      type: 'text',
-      required: true,
-    },
+    // {
+    //   name: 'sub_title',
+    //   label: 'Sub Title',
+    //   type: 'text',
+    //   required: true,
+    // },
     {
       name: 'blog_image',
       label: 'Blog Image',
@@ -130,6 +130,30 @@ export const Blogs: CollectionConfig = {
       admin: {
         description: 'upload blog image',
       },
+    },
+    {
+      name: 'social_media',
+      label: 'Social Media',
+      type: 'array',
+      fields: [
+        {
+          name: 'icon',
+          label: 'Icon',
+          required: true,
+          type: 'select',
+          options: [
+            { label: 'Linkedin', value: 'fa-brands:linkedin-in' },
+            { label: 'Facebook', value: 'fa-brands:facebook-f' },
+            { label: 'Twitter', value: 'fa-brands:twitter' },
+          ],
+        },
+        {
+          name: 'url',
+          label: 'Url',
+          type: 'text',
+          required: true,
+        },
+      ],
     },
     {
       name: 'description',

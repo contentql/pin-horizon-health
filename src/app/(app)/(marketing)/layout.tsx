@@ -18,11 +18,11 @@ export default async function Layout({
     draft: false,
   })
   const user = await getCurrentUser()
-
+  console.log('init data:....................', initData)
   return (
     <div className='flex min-h-screen flex-col'>
       {/* Navbar */}
-      <Header logoSrc='/images/logo.svg' variant='cs_heading_color' />
+      <Header headerData={initData?.header!} variant='cs_heading_color' />
       <div className='flex-grow'>{children}</div>
       <Footer />
       {/* Footer */}
