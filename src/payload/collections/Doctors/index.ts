@@ -39,7 +39,7 @@ export const Doctors: CollectionConfig = {
                   name: 'department',
                   label: 'Department',
                   type: 'relationship',
-                  relationTo: 'department',
+                  relationTo: ['department'],
                   required: true,
                 },
                 {
@@ -190,15 +190,5 @@ export const Doctors: CollectionConfig = {
       ],
     },
     slugField('name'),
-    {
-      name: 'category',
-      type: 'relationship',
-      relationTo: ['category'],
-      label: 'Category',
-      required: true,
-      admin: {
-        position: 'sidebar',
-      },
-    },
   ],
 }

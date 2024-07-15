@@ -11,7 +11,6 @@ export interface Config {
     users: User;
     media: Media;
     doctors: Doctor;
-    category: Category;
     department: Department;
     tags: Tag;
     blogs: Blog;
@@ -126,7 +125,10 @@ export interface Media {
 export interface Doctor {
   id: string;
   name: string;
-  department: string | Department;
+  department: {
+    relationTo: 'department';
+    value: string | Department;
+  };
   designation: string;
   description: string;
   doctor_image: string | Media;
@@ -157,10 +159,6 @@ export interface Doctor {
   twitter?: string | null;
   facebook?: string | null;
   slug?: string | null;
-  category: {
-    relationTo: 'category';
-    value: string | Category;
-  };
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -173,18 +171,7 @@ export interface Department {
   id: string;
   title: string;
   description: string;
-  slug?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "category".
- */
-export interface Category {
-  id: string;
-  title: string;
+  image: string | Media;
   slug?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -293,6 +280,8 @@ export interface Page {
         | ContactBannerType
         | AllBlogsType
         | LatestBlogsType
+        | DepartmentBannerType
+        | DepartmentHeroType
       )[]
     | null;
   slug?: string | null;
@@ -673,6 +662,31 @@ export interface LatestBlogsType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'LatestBlogs';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DepartmentBannerType".
+ */
+export interface DepartmentBannerType {
+  title: string;
+  sub_title: string;
+  imgUrl: string | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'DepartmentBanner';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DepartmentHeroType".
+ */
+export interface DepartmentHeroType {
+  title: string;
+  sub_title: string;
+  imgUrl: string | Media;
+  bgUrl?: string | Media | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'DepartmentHero';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

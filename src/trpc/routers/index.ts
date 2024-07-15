@@ -9,6 +9,7 @@ import { tagRouter } from '@/trpc/routers/tag'
 import { appointmentRouter } from './appointment'
 import { categoryRouter } from './category'
 import { contactRouter } from './contact'
+import { departmentRouter } from './department'
 import { doctorRouter } from './doctor'
 
 export const appRouter = router({
@@ -22,6 +23,7 @@ export const appRouter = router({
   seed: seedRouter,
   appointment: appointmentRouter,
   contact: contactRouter,
+  department: departmentRouter,
 })
 
 export type AppRouter = typeof appRouter
