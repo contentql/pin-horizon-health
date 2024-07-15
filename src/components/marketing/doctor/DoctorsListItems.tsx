@@ -1,49 +1,58 @@
 'use client'
 
 import Spacing from '../home/Spacing'
-import { Category, Doctor } from '@payload-types'
+import { Category } from '@payload-types'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
+
+import { trpc } from '@/trpc/client'
 
 import DoctorItem from './DoctorItem'
 
 export default function DoctorListItem({
-  doctorsData,
   categoriesData,
 }: {
-  doctorsData: Doctor[]
   categoriesData: Category[]
 }) {
+  const searchParams = useSearchParams()
+  const pathname = usePathname()
+  const router = useRouter()
+
   const [view, setView] = useState('grid')
-  const [active, setActive] = useState('all')
-  // const [filteredData, setFilteredData] = useState(data)
+  const [active, setActive] = useState(
+    searchParams?.get('category') ? searchParams?.get('category') : 'all',
+  )
+  const [filteredData, setFilteredData] = useState(
+    searchParams.get('category') ? searchParams?.get('category') : 'all',
+  )
+
+  const { data: doctorsData } = trpc.doctor.getDoctorsByCategory.useQuery({
+    slug: filteredData!,
+  })
   // Extracting unique categories from teamData
   // const uniqueCategories = [...new Set(data.map(doctor => doctor.category))]
-  // const handleFilter = category => {
-  //   if (category === 'all') {
-  //     setFilteredData(data)
-  //   } else {
-  //     const filtered = data.filter(doctor => doctor.category === category)
-  //     setFilteredData(filtered)
-  //   }
-  //   setActive(category)
-  // }
+  const handleFilter = (category: string) => {
+    const search = new URLSearchParams(searchParams)
+    search.set('category', category)
+    router.push(`${pathname}?${search.toString()}#doctors`)
+    setActive(category)
+    setFilteredData(category)
+  }
 
   return (
     <div className='container'>
-      <div className='cs_doctors_heading'>
+      <div className='cs_doctors_heading' id='doctors'>
         <div className='cs_isotop_filter cs_style1'>
           <p className='mb-0'>Sort by</p>
           <ul className='cs_mp0'>
-            {/* <li className={active === 'all' ? 'active' : ''}>
+            <li className={active === 'all' ? 'active' : ''}>
               <span onClick={() => handleFilter('all')}>All</span>
-            </li> */}
+            </li>
             {categoriesData?.map(category => (
               <li
                 className={active === category?.title ? 'active' : ''}
                 key={category?.id}>
-                <span
-                //  onClick={() => handleFilter(item)}
-                >
+                <span onClick={() => handleFilter(category?.slug!)}>
                   {category?.title}
                 </span>
               </li>

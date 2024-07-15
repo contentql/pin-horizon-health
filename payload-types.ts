@@ -16,6 +16,7 @@ export interface Config {
     blogs: Blog;
     pages: Page;
     sessions: Session;
+    appointments: Appointment;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -106,6 +107,14 @@ export interface Media {
       filesize?: number | null;
       filename?: string | null;
     };
+    appointment_contact_image?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
   };
 }
 /**
@@ -143,7 +152,10 @@ export interface Doctor {
   phone_number: number;
   mail: string;
   slug?: string | null;
-  category: (string | Category)[];
+  category: {
+    relationTo: 'category';
+    value: string | Category;
+  };
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -246,6 +258,8 @@ export interface Page {
         | DepartmentType
         | AwardType
         | TestimonialsType
+        | AppointmentBannerType
+        | AppointmentContactType
         | DoctorHeroType
         | DoctorBannerType
         | BannerType
@@ -397,6 +411,33 @@ export interface TestimonialsType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'Testimonials';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AppointmentBannerType".
+ */
+export interface AppointmentBannerType {
+  title: string;
+  slug?: string | null;
+  description: string;
+  image: string | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'AppointmentBanner';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AppointmentContactType".
+ */
+export interface AppointmentContactType {
+  title: string;
+  phoneNumber: string;
+  email: string;
+  location: string;
+  image: string | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'AppointmentContact';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -613,6 +654,22 @@ export interface Session {
   expires?: string | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "appointments".
+ */
+export interface Appointment {
+  id: string;
+  name: string;
+  phoneNumber: string;
+  medicalRecordNumber: string;
+  preferredDateAndTime?: string | null;
+  reason?: ('routineCheckup' | 'newPatientVisit' | 'specificConcern' | 'other') | null;
+  department?: ('pediatric' | 'obstetricsGynecology' | 'cardiology' | 'neurology') | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
