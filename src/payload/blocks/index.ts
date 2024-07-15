@@ -19,19 +19,21 @@ import {
   AboutStatistics,
   AboutStatistics_Block,
 } from './About'
-import { AllBlogs, AllBlogs_Block } from './Blog'
 import {
   AppointmentBanner,
   AppointmentContact,
   Appointment_Banner_Block,
   Appointment_Contact_Block,
 } from './Appointment'
+import { AllBlogs, AllBlogs_Block, BlogBanner, BlogBanner_Block } from './Blog'
 import {
   DoctorBanner,
   DoctorHero,
   Doctor_Banner_Block,
   Doctor_Hero_Block,
 } from './Doctor'
+import { Gallery_Block } from './Gallery/block'
+import Gallery from './Gallery/gallery'
 import {
   About,
   About_Block,
@@ -81,6 +83,8 @@ export const blocksJSX = {
   AboutBanner,
   AllBlogs,
   LatestBlogs,
+  Gallery,
+  BlogBanner,
 }
 
 export type SlugType = keyof typeof blocksJSX
@@ -111,4 +115,6 @@ export const blocks = [
   AboutBanner_Block,
   AllBlogs_Block,
   LatestBlogs_Block,
+  Gallery_Block,
+  BlogBanner_Block,
 ]
