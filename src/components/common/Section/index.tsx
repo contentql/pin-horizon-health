@@ -23,7 +23,7 @@ export default function Section({
   className?: string
 }) {
   return (
-    <section {...props}>
+    <section {...props} className='cs_footer_margin_0'>
       <Spacing md={topMd} lg={topLg} xl={topXl} />
       {children}
       <Spacing md={bottomMd} lg={bottomLg} xl={bottomXl} />

@@ -52,4 +52,20 @@ export const doctorRouter = router({
 
       return doctors?.docs
     }),
+
+  getDoctorByName: publicProcedure
+    .input(z.object({ doctorName: z.string() }))
+    .query(async ({ input }) => {
+      const { doctorName } = input
+
+      const doctorDetails = payload.find({
+        collection: 'doctors',
+        where: {
+          slug: {
+            equals: doctorName,
+          },
+        },
+      })
+      return (await doctorDetails).docs.at(0)
+    }),
 })
