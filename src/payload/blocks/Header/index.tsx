@@ -75,7 +75,7 @@ export default function Header({ logoSrc, variant }: any) {
                       <Link href='/blog'>Blog</Link>
                     </li>
                     <li>
-                      <Link href='/appointments'>Appointments</Link>
+                      <Link href='/appointment'>Appointment</Link>
                       {/* <DropDown>
                         <ul>
                           <li>

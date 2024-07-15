@@ -92,7 +92,7 @@ export default function AppointmentForm() {
         <div className='cs_with_icon_input'>
           <Controller
             control={control}
-            name='preferredDate'
+            name='preferredDateAndTime'
             render={({ field }) => (
               //@ts-ignore
               <DatePicker
@@ -102,10 +102,12 @@ export default function AppointmentForm() {
                   setSelectedDate(date)
                   field.onChange(date)
                 }}
-                dateFormat='dd/MM/yyyy'
+                dateFormat='MMMM d, yyyy h:mm aa'
+                showTimeSelect
+                todayButton
                 minDate={new Date()}
                 isClearable
-                placeholderText='dd/mm/yyyy'
+                placeholderText='MMMM d, yyyy h:mm'
               />
             )}
           />
@@ -113,31 +115,44 @@ export default function AppointmentForm() {
             <Icon icon='fa6-solid:calendar-days' />
           </i>
         </div>
-        {errors.preferredDate && (
-          <p className='error'>{errors.preferredDate.message as string}</p>
+        {errors.preferredDateAndTime && (
+          <p className='error'>
+            {errors.preferredDateAndTime.message as string}
+          </p>
         )}
         <div className='cs_height_42 cs_height_xl_25' />
       </div>
       <div className='col-lg-6'>
-        <label className='cs_input_label cs_heading_color'>
-          Preferred Time
-        </label>
-        <div className='cs_with_icon_input'>
-          <input
-            type='time'
-            className='cs_form_field cs_timepicker'
-            placeholder='10:00AM'
-            {...register('preferredTime')}
-          />
-          <i>
-            <Icon icon='fa6-regular:clock' />
-          </i>
+        <label className='cs_input_label cs_heading_color'>Gender</label>
+        <div className='cs_radio_group'>
+          <div className='cs_radio_wrap'>
+            <input
+              className='cs_radio_input'
+              type='radio'
+              id='male'
+              value='male'
+              {...register('gender')}
+            />
+            <label className='cs_radio_label' htmlFor='male'>
+              Male
+            </label>
+          </div>
+          <div className='cs_radio_wrap'>
+            <input
+              className='cs_radio_input'
+              type='radio'
+              id='female'
+              value='female'
+              {...register('gender')}
+            />
+            <label className='cs_radio_label' htmlFor='female'>
+              female
+            </label>
+          </div>
         </div>
-        {errors.preferredTime && (
-          <p className='error'>{errors.preferredTime.message as string}</p>
-        )}
         <div className='cs_height_42 cs_height_xl_25' />
       </div>
+
       <div className='col-lg-12'>
         <label className='cs_input_label cs_heading_color'>
           Reason for Visit

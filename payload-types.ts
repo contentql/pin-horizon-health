@@ -17,6 +17,7 @@ export interface Config {
     pages: Page;
     sessions: Session;
     appointments: Appointment;
+    contact: Contact;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -263,6 +264,7 @@ export interface Page {
         | AboutGalleryType
         | AboutAwardsType
         | AboutBannerType
+        | ContactBannerType
       )[]
     | null;
   slug?: string | null;
@@ -610,6 +612,18 @@ export interface AboutBannerType {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactBannerType".
+ */
+export interface ContactBannerType {
+  title: string;
+  description: string;
+  image: string | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'Contact';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "sessions".
  */
 export interface Session {
@@ -628,10 +642,25 @@ export interface Appointment {
   id: string;
   name: string;
   phoneNumber: string;
+  gender?: ('male' | 'female') | null;
   medicalRecordNumber: string;
   preferredDateAndTime?: string | null;
   reason?: ('routineCheckup' | 'newPatientVisit' | 'specificConcern' | 'other') | null;
   department?: ('pediatric' | 'obstetricsGynecology' | 'cardiology' | 'neurology') | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact".
+ */
+export interface Contact {
+  id: string;
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;

@@ -16,10 +16,11 @@ export const appointmentRouter = router({
         name,
         phoneNumber,
         department,
-        preferredDate,
-        preferredTime,
+        preferredDateAndTime,
+        gender,
         reasonForVisit,
       } = input
+      console.log('Inputt', preferredDateAndTime)
       try {
         await payload.create({
           collection: 'appointments',
@@ -28,7 +29,8 @@ export const appointmentRouter = router({
             medicalRecordNumber,
             phoneNumber,
             department,
-            preferredDateAndTime: preferredDate + preferredTime,
+            preferredDateAndTime,
+            gender,
             reason: reasonForVisit,
           },
         })

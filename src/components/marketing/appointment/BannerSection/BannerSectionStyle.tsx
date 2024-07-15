@@ -1,4 +1,4 @@
-import Button from '../Button'
+import Button from '../../about/Button'
 import parse from 'html-react-parser'
 import Image from 'next/image'
 

@@ -17,6 +17,7 @@ import { fileURLToPath } from 'url'
 import { Appointments } from '@/payload/collections/Appoinments'
 import { Blogs } from '@/payload/collections/Blogs'
 import { Category } from '@/payload/collections/Category'
+import { Contact } from '@/payload/collections/Contact'
 import { Doctors } from '@/payload/collections/Doctors'
 import { Media } from '@/payload/collections/Media'
 import { Pages } from '@/payload/collections/Pages'
@@ -90,7 +91,18 @@ export default buildConfig({
   cors: [env.PAYLOAD_URL],
   csrf: [env.PAYLOAD_URL],
 
-  collections: [Users, Media, Doctors, Category, Tags, Blogs, Pages, Sessions,Appointments],
+  collections: [
+    Users,
+    Media,
+    Doctors,
+    Category,
+    Tags,
+    Blogs,
+    Pages,
+    Sessions,
+    Appointments,
+    Contact,
+  ],
 
   globals: [siteSettings],
   plugins: [
