@@ -1,5 +1,6 @@
 'use client'
 
+import { Media, Page, SiteSetting } from '@payload-types'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -9,11 +10,18 @@ import Spacing from '@/components/marketing/home/Spacing'
 import Newsletter from '@/components/marketing/home/Widget/Newsletter'
 import SocialWidget from '@/components/marketing/home/Widget/SocialWidget'
 
-export default function Header({ logoSrc, variant }: any) {
+export default function Header({
+  headerData,
+  variant,
+}: {
+  headerData: SiteSetting['header']
+  variant: string
+}) {
   const [isSticky, setIsSticky] = useState(false)
   const [mobileToggle, setMobileToggle] = useState(false)
   const [sideNav, setSideNav] = useState(false)
   const [searchToggle, setSearchToggle] = useState(false)
+  console.log('links...................', headerData?.menuItems)
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -39,7 +47,12 @@ export default function Header({ logoSrc, variant }: any) {
             <div className='cs_main_header_in'>
               <div className='cs_main_header_left'>
                 <Link className='cs_site_branding' href='/'>
-                  <Image src={logoSrc} alt='Logo' height={28} width={173} />
+                  <Image
+                    src={(headerData?.logo_image as Media)?.url || ''}
+                    alt='Logo'
+                    height={28}
+                    width={173}
+                  />
                 </Link>
                 <nav className='cs_nav'>
                   <ul
@@ -65,18 +78,24 @@ export default function Header({ logoSrc, variant }: any) {
                         </ul>
                       </DropDown>
                     </li> */}
-                    <li>
-                      <Link href='/about'>About</Link>
-                    </li>
-                    <li>
+                    {headerData?.menuItems?.map((link, index) => (
+                      <li key={index}>
+                        <Link href={(link?.page?.value as Page)?.path || ''}>
+                          {(link?.page?.value as Page)?.title}
+                        </Link>
+                      </li>
+                    ))}
+                    {/* <li>
                       <Link href='/doctors'>Find Doctor</Link>
                     </li>
                     <li>
                       <Link href='/blog'>Blog</Link>
                     </li>
                     <li>
+
                       <Link href='/appointment'>Appointment</Link>
                       {/* <DropDown>
+
                         <ul>
                           <li>
                             <Link href='/appointments'>Appointments</Link>
@@ -108,10 +127,10 @@ export default function Header({ logoSrc, variant }: any) {
                           </li>
                         </ul>
                       </DropDown> */}
-                    </li>
+                    {/* </li>
                     <li>
                       <Link href='/contact'>Contact</Link>
-                    </li>
+                    </li> */}
                   </ul>
                   <span
                     className={
@@ -190,7 +209,12 @@ export default function Header({ logoSrc, variant }: any) {
             />
           </button>
           <div className='cs_logo_box'>
-            <Image src={logoSrc} alt='Logo' height={28} width={173} />
+            <Image
+              src={(headerData?.logo_image as Media)?.url || ''}
+              alt='Logo'
+              height={28}
+              width={173}
+            />
             <div className='cs_height_15' />
             <h3 className='cs_fs_24 cs_semibold mb-0'>
               Your Partner in Health and Wellness

@@ -1,0 +1,42 @@
+import { Icon } from '@iconify/react'
+import Link from 'next/link'
+
+export default function RecentPostWidget({
+  title,
+  data,
+}: {
+  title: string
+  data: {
+    title: string
+    author: string
+    date: string
+    href: string
+  }[]
+}) {
+  return (
+    <>
+      <h2 className='cs_sidebar_widget_title'>{title}</h2>
+      <ul className='cs_popular_posts'>
+        {data?.map((item, index) => (
+          <li key={index}>
+            <div className='cs_popular_post'>
+              <h2 className='cs_popular_post_title'>
+                <Link href={item.href}>{item.title}</Link>
+              </h2>
+              <ul className='cs_popular_post_meta'>
+                <li className='cs_posted_author'>
+                  <Icon icon='fa6-solid:circle-user' />
+                  <Link href='/'>{item.author}</Link>
+                </li>
+                <li className='cs_posted_by'>
+                  <Icon icon='fa6-solid:clock' />
+                  {item.date}
+                </li>
+              </ul>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </>
+  )
+}

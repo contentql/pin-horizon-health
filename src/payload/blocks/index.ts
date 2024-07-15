@@ -19,6 +19,7 @@ import {
   AboutStatistics,
   AboutStatistics_Block,
 } from './About'
+import { AllBlogs, AllBlogs_Block } from './Blog'
 import {
   AppointmentBanner,
   AppointmentContact,
@@ -50,6 +51,8 @@ import {
   Features_Block,
   Hero,
   Hero_Block,
+  LatestBlogs,
+  LatestBlogs_Block,
   Testimonials,
   Testimonials_Block,
 } from './Home'
@@ -78,7 +81,12 @@ export const blocksJSX = {
   AboutGallery,
   AboutAwards,
   AboutBanner,
+
   Contact,
+
+  AllBlogs,
+  LatestBlogs,
+
 }
 
 export type SlugType = keyof typeof blocksJSX
@@ -107,5 +115,10 @@ export const blocks = [
   AboutGallery_Block,
   AboutAwards_Block,
   AboutBanner_Block,
+
   Contact_Banner_Block,
+
+  AllBlogs_Block,
+  LatestBlogs_Block,
+
 ]

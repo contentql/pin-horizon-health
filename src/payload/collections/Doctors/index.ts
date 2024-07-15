@@ -38,7 +38,8 @@ export const Doctors: CollectionConfig = {
                 {
                   name: 'department',
                   label: 'Department',
-                  type: 'text',
+                  type: 'relationship',
+                  relationTo: 'department',
                   required: true,
                 },
                 {
@@ -164,6 +165,26 @@ export const Doctors: CollectionConfig = {
               type: 'email',
               required: true,
             },
+            {
+              type: 'row',
+              fields: [
+                {
+                  name: 'linkedin',
+                  type: 'text',
+                  label: 'Linkedin Url',
+                },
+                {
+                  name: 'twitter',
+                  type: 'text',
+                  label: 'Twitter Url',
+                },
+                {
+                  name: 'facebook',
+                  type: 'text',
+                  label: 'Facebook Url',
+                },
+              ],
+            },
           ],
         },
       ],
@@ -172,10 +193,9 @@ export const Doctors: CollectionConfig = {
     {
       name: 'category',
       type: 'relationship',
-      relationTo: 'category',
+      relationTo: ['category'],
       label: 'Category',
       required: true,
-      hasMany: true,
       admin: {
         position: 'sidebar',
       },
