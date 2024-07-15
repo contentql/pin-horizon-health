@@ -259,6 +259,7 @@ export interface Page {
         | AboutAwardsType
         | AboutBannerType
         | AllBlogsType
+        | LatestBlogsType
       )[]
     | null;
   slug?: string | null;
@@ -589,6 +590,17 @@ export interface AllBlogsType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'AllBlogs';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LatestBlogsType".
+ */
+export interface LatestBlogsType {
+  title?: string | null;
+  sub_title?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'LatestBlogs';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

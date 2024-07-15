@@ -14,6 +14,8 @@ import Features from './Features'
 import { Features_Block } from './Features/block'
 import Hero from './Hero'
 import { Hero_Block } from './Hero/block'
+import LatestBlogs from './LatestBlogs'
+import { LatestBlogs_Block } from './LatestBlogs/block'
 import Testimonials from './Testimonials'
 import { Testimonials_Block } from './Testimonials/block'
 
@@ -34,6 +36,8 @@ export {
   Features_Block,
   Hero,
   Hero_Block,
+  LatestBlogs,
+  LatestBlogs_Block,
   Testimonials,
   Testimonials_Block,
 }
