@@ -33,6 +33,12 @@ import {
   ContactDetails_Block,
 } from './Contact'
 import {
+  DepartmentBanner,
+  DepartmentHero,
+  Department_Banner_Block,
+  Department_Hero_Block,
+} from './Department'
+import {
   DoctorBanner,
   DoctorHero,
   Doctor_Banner_Block,
@@ -88,6 +94,10 @@ export const blocksJSX = {
   AboutBanner,
   AllBlogs,
   LatestBlogs,
+
+  DepartmentHero,
+  DepartmentBanner,
+
   Gallery,
   BlogBanner,
   ContactBanner,
@@ -121,6 +131,9 @@ export const blocks = [
   AboutBanner_Block,
   AllBlogs_Block,
   LatestBlogs_Block,
+
+  Department_Banner_Block,
+  Department_Hero_Block,
   Gallery_Block,
   BlogBanner_Block,
   ContactBanner_Block,

@@ -29,9 +29,13 @@ export const Contact: CollectionConfig = {
       name: 'email',
       label: 'E-mail',
       type: 'email',
+    },
+    {
+      name: 'phoneNumber',
+      label: 'Phone Number',
+      type: 'text',
       required: true,
     },
-
     {
       name: 'subject',
       label: 'Subject',
