@@ -15,8 +15,10 @@ export const Doctors: CollectionConfig = {
     drafts: true,
   },
   admin: {
-    useAsTitle: 'title',
+    useAsTitle: 'name',
   },
+
+  auth: true,
   fields: [
     {
       type: 'tabs',

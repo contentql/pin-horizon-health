@@ -9,6 +9,7 @@ export const AppointmentValidator = z.object({
   gender: z.any(),
   reasonForVisit: z.any(),
   department: z.any(), // Pass the array of allowed values directly
+  doctorId: z.optional(z.string()),
 })
 
 export type TAppointmentValidator = z.infer<typeof AppointmentValidator>
