@@ -7,16 +7,16 @@ const payload = await getPayloadHMR({
   config: configPromise,
 })
 
-export const categoryRouter = router({
-  getallCategories: publicProcedure.query(async () => {
+export const departmentRouter = router({
+  getallDepartments: publicProcedure.query(async () => {
     try {
-      const categories = await payload.find({
-        collection: 'category',
+      const departments = await payload.find({
+        collection: 'department',
         depth: 5,
         pagination: false,
         draft: false,
       })
-      return categories?.docs
+      return departments?.docs
     } catch (error: any) {
       console.log(error)
       throw new Error(error.message)

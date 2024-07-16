@@ -10,7 +10,6 @@ const page = async ({ params }: PageProps) => {
   const doctorDetails = await serverClient.doctor.getDoctorByName({
     doctorName: params?.doctorName,
   })
-  console.log('params', params, doctorDetails)
   return <DoctorDetailsView doctorDetails={doctorDetails as Doctor} />
 }
 

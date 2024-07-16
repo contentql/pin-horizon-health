@@ -29,6 +29,24 @@ export const Departments: CollectionConfig = {
       type: 'textarea',
       required: true,
     },
+    {
+      name: 'image',
+      label: 'Image',
+      type: 'upload',
+      relationTo: 'media',
+      required: true,
+    },
+    {
+      name: 'department_type',
+      type: 'select',
+      hasMany: true,
+      options: [
+        { label: 'Doctor', value: 'Doctor' },
+        { label: 'Hospital', value: 'Hospital' },
+        { label: 'Yoga', value: 'Yoga' },
+        { label: 'Travel', value: 'Travel' },
+      ],
+    },
     slugField(),
   ],
 }

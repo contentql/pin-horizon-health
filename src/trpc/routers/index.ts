@@ -7,8 +7,8 @@ import { siteSettingsRouter } from '@/trpc/routers/site-settings'
 import { tagRouter } from '@/trpc/routers/tag'
 
 import { appointmentRouter } from './appointment'
-import { categoryRouter } from './category'
 import { contactRouter } from './contact'
+import { departmentRouter } from './department'
 import { doctorRouter } from './doctor'
 
 export const appRouter = router({
@@ -18,10 +18,10 @@ export const appRouter = router({
   tag: tagRouter,
   author: authorRouter,
   doctor: doctorRouter,
-  category: categoryRouter,
   seed: seedRouter,
   appointment: appointmentRouter,
   contact: contactRouter,
+  department: departmentRouter,
 })
 
 export type AppRouter = typeof appRouter

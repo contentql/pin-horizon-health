@@ -15,7 +15,7 @@ export default function DoctorItem({ doctor }: { doctor: Doctor }) {
           />
         </Link>
         <div className='cs_label cs_white_color cs_accent_bg'>
-          {(doctor?.department as Department)?.title}
+          {(doctor?.department?.value as Department)?.title}
         </div>
       </div>
       <div className='cs_team_meta cs_white_bg'>

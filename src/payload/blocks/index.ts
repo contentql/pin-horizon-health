@@ -25,6 +25,8 @@ import {
   Appointment_Banner_Block,
   Appointment_Contact_Block,
 } from './Appointment'
+import { AllBlogs, AllBlogs_Block } from './Blog'
+
 import { AllBlogs, AllBlogs_Block, BlogBanner, BlogBanner_Block } from './Blog'
 import {
   ContactBanner,
@@ -32,6 +34,12 @@ import {
   ContactDetails,
   ContactDetails_Block,
 } from './Contact'
+import {
+  DepartmentBanner,
+  DepartmentHero,
+  Department_Banner_Block,
+  Department_Hero_Block,
+} from './Department'
 import {
   DoctorBanner,
   DoctorHero,
@@ -87,6 +95,10 @@ export const blocksJSX = {
   AboutBanner,
   AllBlogs,
   LatestBlogs,
+
+  DepartmentHero,
+  DepartmentBanner,
+
   Gallery,
   BlogBanner,
   ContactBanner,
@@ -119,6 +131,9 @@ export const blocks = [
   AboutBanner_Block,
   AllBlogs_Block,
   LatestBlogs_Block,
+
+  Department_Banner_Block,
+  Department_Hero_Block,
   Gallery_Block,
   BlogBanner_Block,
   ContactBanner_Block,
