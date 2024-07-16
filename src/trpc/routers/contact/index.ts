@@ -11,12 +11,12 @@ export const contactRouter = router({
     .input(ContactFormValidator)
     .mutation(async ({ input }) => {
       console.log('Data', input)
-      const { email, message, name, subject } = input
+      const { email, message, name, subject, phoneNumber } = input
 
       try {
         await payload.create({
           collection: 'contact',
-          data: { email, message, name, subject },
+          data: { email, message, name, subject, phoneNumber },
         })
 
         return { success: 'true' }

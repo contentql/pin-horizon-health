@@ -72,6 +72,21 @@ export default function ContactForm() {
             <div className='cs_height_42 cs_height_xl_25' />
           </div>
           <div className='col-lg-12'>
+            <label className='cs_input_label cs_heading_color'>
+              Phone Number
+            </label>
+            <input
+              type='text'
+              className='cs_form_field'
+              placeholder='Your Phone Number'
+              {...register('phoneNumber')}
+            />
+            {errors.phoneNumber && (
+              <p className='error'>{errors.phoneNumber?.message}</p>
+            )}
+            <div className='cs_height_42 cs_height_xl_25' />
+          </div>
+          <div className='col-lg-12'>
             <label className='cs_input_label cs_heading_color'>Message</label>
             <textarea
               cols={30}

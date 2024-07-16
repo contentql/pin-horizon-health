@@ -36,13 +36,6 @@ export const Doctors: CollectionConfig = {
               type: 'row',
               fields: [
                 {
-                  name: 'department',
-                  label: 'Department',
-                  type: 'relationship',
-                  relationTo: 'department',
-                  required: true,
-                },
-                {
                   name: 'designation',
                   label: 'Designation',
                   type: 'text',
@@ -54,14 +47,12 @@ export const Doctors: CollectionConfig = {
               name: 'description',
               label: 'Description',
               type: 'textarea',
-              required: true,
             },
             {
               name: 'doctor_image',
               label: 'Doctor Image',
               type: 'upload',
               relationTo: 'media',
-              required: true,
               admin: {
                 description: 'upload doctor image',
               },
@@ -113,7 +104,6 @@ export const Doctors: CollectionConfig = {
                   name: 'specialization',
                   label: 'Major/Specialization',
                   type: 'text',
-                  required: true,
                 },
               ],
             },
@@ -191,11 +181,17 @@ export const Doctors: CollectionConfig = {
     },
     slugField('name'),
     {
-      name: 'category',
+      name: 'department',
+      label: 'Department',
       type: 'relationship',
-      relationTo: ['category'],
-      label: 'Category',
-      required: true,
+      relationTo: ['department'],
+      filterOptions: ({ relationTo, data, siblingData }) => {
+        return {
+          department_type: {
+            contains: 'Doctor',
+          },
+        }
+      },
       admin: {
         position: 'sidebar',
       },
