@@ -18,6 +18,7 @@ export interface Config {
     sessions: Session;
     appointments: Appointment;
     contact: Contact;
+    yoga: Yoga;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -126,14 +127,14 @@ export interface Doctor {
   id: string;
   name: string;
   designation: string;
-  description: string;
-  doctor_image: string | Media;
+  description?: string | null;
+  doctor_image?: string | Media | null;
   qualifications?:
     | {
         qualification?: ('High School Diploma' | 'Bachelor’s Degree' | 'Medical Degree (MD/DO)' | 'Residency') | null;
         institute?: string | null;
         year?: string | null;
-        specialization: string;
+        specialization?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -155,10 +156,10 @@ export interface Doctor {
   twitter?: string | null;
   facebook?: string | null;
   slug?: string | null;
-  department: {
+  department?: {
     relationTo: 'department';
     value: string | Department;
-  };
+  } | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -286,6 +287,7 @@ export interface Page {
         | BlogBannerType
         | ContactBannerType
         | ContactDetailsType
+        | YogaPostsType
       )[]
     | null;
   slug?: string | null;
@@ -736,6 +738,18 @@ export interface ContactDetailsType {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "YogaPostsType".
+ */
+export interface YogaPostsType {
+  title: string;
+  sub_title: string;
+  image: string | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'YogaPosts';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "sessions".
  */
 export interface Session {
@@ -774,6 +788,36 @@ export interface Contact {
   phoneNumber: string;
   subject: string;
   message: string;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "yoga".
+ */
+export interface Yoga {
+  id: string;
+  title: string;
+  sub_title: string;
+  image: string | Media;
+  slug?: string | null;
+  description: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  description_html?: string | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
