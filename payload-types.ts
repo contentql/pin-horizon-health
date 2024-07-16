@@ -126,14 +126,14 @@ export interface Doctor {
   id: string;
   name: string;
   designation: string;
-  description: string;
-  doctor_image: string | Media;
+  description?: string | null;
+  doctor_image?: string | Media | null;
   qualifications?:
     | {
         qualification?: ('High School Diploma' | 'Bachelor’s Degree' | 'Medical Degree (MD/DO)' | 'Residency') | null;
         institute?: string | null;
         year?: string | null;
-        specialization: string;
+        specialization?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -155,10 +155,10 @@ export interface Doctor {
   twitter?: string | null;
   facebook?: string | null;
   slug?: string | null;
-  department: {
+  department?: {
     relationTo: 'department';
     value: string | Department;
-  };
+  } | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
