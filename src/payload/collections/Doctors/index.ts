@@ -47,14 +47,12 @@ export const Doctors: CollectionConfig = {
               name: 'description',
               label: 'Description',
               type: 'textarea',
-              required: true,
             },
             {
               name: 'doctor_image',
               label: 'Doctor Image',
               type: 'upload',
               relationTo: 'media',
-              required: true,
               admin: {
                 description: 'upload doctor image',
               },
@@ -106,7 +104,6 @@ export const Doctors: CollectionConfig = {
                   name: 'specialization',
                   label: 'Major/Specialization',
                   type: 'text',
-                  required: true,
                 },
               ],
             },
@@ -188,7 +185,6 @@ export const Doctors: CollectionConfig = {
       label: 'Department',
       type: 'relationship',
       relationTo: ['department'],
-      required: true,
       filterOptions: ({ relationTo, data, siblingData }) => {
         return {
           department_type: {
