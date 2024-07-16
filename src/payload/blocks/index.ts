@@ -62,6 +62,7 @@ import {
   Testimonials,
   Testimonials_Block,
 } from './Home'
+import { YogaPosts, YogaPosts_Block } from './Yoga'
 
 export const blocksJSX = {
   Test,
@@ -91,6 +92,7 @@ export const blocksJSX = {
   BlogBanner,
   ContactBanner,
   ContactDetails,
+  YogaPosts,
 }
 
 export type SlugType = keyof typeof blocksJSX
@@ -123,4 +125,5 @@ export const blocks = [
   BlogBanner_Block,
   ContactBanner_Block,
   ContactDetails_Block,
+  YogaPosts_Block,
 ]
