@@ -26,9 +26,13 @@ export interface Config {
     'site-settings': SiteSetting;
   };
   locale: null;
-  user: User & {
-    collection: 'users';
-  };
+  user:
+    | (User & {
+        collection: 'users';
+      })
+    | (Doctor & {
+        collection: 'doctors';
+      });
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -164,6 +168,17 @@ export interface Doctor {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+  enableAPIKey?: boolean | null;
+  apiKey?: string | null;
+  apiKeyIndex?: string | null;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  password?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -699,6 +714,7 @@ export interface Appointment {
   preferredDateAndTime?: string | null;
   reason?: ('routineCheckup' | 'newPatientVisit' | 'specificConcern' | 'other') | null;
   department?: ('pediatric' | 'obstetricsGynecology' | 'cardiology' | 'neurology') | null;
+  doctor?: (string | null) | Doctor;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -723,10 +739,15 @@ export interface Contact {
  */
 export interface PayloadPreference {
   id: string;
-  user: {
-    relationTo: 'users';
-    value: string | User;
-  };
+  user:
+    | {
+        relationTo: 'users';
+        value: string | User;
+      }
+    | {
+        relationTo: 'doctors';
+        value: string | Doctor;
+      };
   key?: string | null;
   value?:
     | {

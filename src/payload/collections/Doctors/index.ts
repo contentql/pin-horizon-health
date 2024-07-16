@@ -10,6 +10,8 @@ export const Doctors: CollectionConfig = {
   },
   access: {
     read: () => true,
+    admin: () => true,
+    unlock: () => true,
   },
   versions: {
     drafts: true,
@@ -18,7 +20,9 @@ export const Doctors: CollectionConfig = {
     useAsTitle: 'name',
   },
 
-  auth: true,
+  auth: {
+    useAPIKey: true,
+  },
   fields: [
     {
       type: 'tabs',
