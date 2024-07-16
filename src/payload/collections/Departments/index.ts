@@ -36,6 +36,17 @@ export const Departments: CollectionConfig = {
       relationTo: 'media',
       required: true,
     },
+    {
+      name: 'department_type',
+      type: 'select',
+      hasMany: true,
+      options: [
+        { label: 'Doctor', value: 'Doctor' },
+        { label: 'Hospital', value: 'Hospital' },
+        { label: 'Yoga', value: 'Yoga' },
+        { label: 'Travel', value: 'Travel' },
+      ],
+    },
     slugField(),
   ],
 }

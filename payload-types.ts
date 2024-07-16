@@ -172,6 +172,7 @@ export interface Department {
   title: string;
   description: string;
   image: string | Media;
+  department_type?: ('Doctor' | 'Hospital' | 'Yoga' | 'Travel')[] | null;
   slug?: string | null;
   updatedAt: string;
   createdAt: string;
