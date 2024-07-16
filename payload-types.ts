@@ -755,7 +755,8 @@ export interface Appointment {
 export interface Contact {
   id: string;
   name: string;
-  email: string;
+  email?: string | null;
+  phoneNumber: string;
   subject: string;
   message: string;
   updatedAt: string;
