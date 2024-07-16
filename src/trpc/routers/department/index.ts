@@ -1,5 +1,6 @@
 import configPromise from '@payload-config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
+import { z } from 'zod'
 
 import { publicProcedure, router } from '@/trpc'
 
@@ -22,4 +23,21 @@ export const departmentRouter = router({
       throw new Error(error.message)
     }
   }),
+  getDepartmentsByType: publicProcedure
+    .input(z.object({ name: z.string() }))
+    .query(async ({ input }) => {
+      try {
+        const { name } = input
+        const departments = await payload.find({
+          collection: 'department',
+          draft: false,
+          where: {
+            department_type: {
+              contains: name,
+            },
+          },
+        })
+        return departments?.docs
+      } catch (error) {}
+    }),
 })

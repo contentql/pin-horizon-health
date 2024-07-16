@@ -36,13 +36,6 @@ export const Doctors: CollectionConfig = {
               type: 'row',
               fields: [
                 {
-                  name: 'department',
-                  label: 'Department',
-                  type: 'relationship',
-                  relationTo: ['department'],
-                  required: true,
-                },
-                {
                   name: 'designation',
                   label: 'Designation',
                   type: 'text',
@@ -190,5 +183,29 @@ export const Doctors: CollectionConfig = {
       ],
     },
     slugField('name'),
+    {
+      name: 'department',
+      label: 'Department',
+      type: 'relationship',
+      relationTo: ['department'],
+      required: true,
+      // filterOptions: ({ relationTo, data }) => {
+      //   console.log('doctors', data)
+      //   if (relationTo === 'department') {
+      //     console.log('first')
+      //     return {
+      //       department_type: {
+      //         contains: 'Doctor',
+      //       },
+      //     }
+      //   } else {
+      //     console.log('second')
+      //     return false
+      //   }
+      // },
+      admin: {
+        position: 'sidebar',
+      },
+    },
   ],
 }

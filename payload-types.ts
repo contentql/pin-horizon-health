@@ -125,10 +125,6 @@ export interface Media {
 export interface Doctor {
   id: string;
   name: string;
-  department: {
-    relationTo: 'department';
-    value: string | Department;
-  };
   designation: string;
   description: string;
   doctor_image: string | Media;
@@ -159,6 +155,10 @@ export interface Doctor {
   twitter?: string | null;
   facebook?: string | null;
   slug?: string | null;
+  department: {
+    relationTo: 'department';
+    value: string | Department;
+  };
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -654,6 +654,31 @@ export interface LatestBlogsType {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DepartmentBannerType".
+ */
+export interface DepartmentBannerType {
+  title: string;
+  sub_title: string;
+  imgUrl: string | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'DepartmentBanner';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DepartmentHeroType".
+ */
+export interface DepartmentHeroType {
+  title: string;
+  sub_title: string;
+  imgUrl: string | Media;
+  bgUrl?: string | Media | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'DepartmentHero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "GalleryType".
  */
 export interface GalleryType {
@@ -708,31 +733,6 @@ export interface ContactDetailsType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'ContactDetails';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "DepartmentBannerType".
- */
-export interface DepartmentBannerType {
-  title: string;
-  sub_title: string;
-  imgUrl: string | Media;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'DepartmentBanner';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "DepartmentHeroType".
- */
-export interface DepartmentHeroType {
-  title: string;
-  sub_title: string;
-  imgUrl: string | Media;
-  bgUrl?: string | Media | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'DepartmentHero';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

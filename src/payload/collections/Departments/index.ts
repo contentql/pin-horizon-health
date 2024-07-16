@@ -15,6 +15,9 @@ export const Departments: CollectionConfig = {
   versions: {
     drafts: true,
   },
+  admin: {
+    useAsTitle: 'title',
+  },
   fields: [
     {
       name: 'title',
@@ -40,6 +43,7 @@ export const Departments: CollectionConfig = {
       name: 'department_type',
       type: 'select',
       hasMany: true,
+      label: 'Department',
       options: [
         { label: 'Doctor', value: 'Doctor' },
         { label: 'Hospital', value: 'Hospital' },
