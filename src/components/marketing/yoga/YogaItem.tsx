@@ -1,4 +1,4 @@
-import { Department, Doctor, Media } from '@payload-types'
+import { Doctor, Media } from '@payload-types'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -15,7 +15,7 @@ export default function YogaItem({ doctor }: { doctor: Doctor }) {
           />
         </Link>
         <div className='cs_label cs_white_color cs_accent_bg'>
-          {(doctor?.department as Department)?.title}
+          {/* {(doctor?.department as Department)?.title} */}
         </div>
       </div>
       <div className='cs_team_meta cs_white_bg'>
