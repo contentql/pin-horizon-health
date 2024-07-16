@@ -168,9 +168,6 @@ export interface Doctor {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
-  enableAPIKey?: boolean | null;
-  apiKey?: string | null;
-  apiKeyIndex?: string | null;
   email: string;
   resetPasswordToken?: string | null;
   resetPasswordExpiration?: string | null;

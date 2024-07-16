@@ -17,11 +17,8 @@ import { fileURLToPath } from 'url'
 import { Appointments } from '@/payload/collections/Appoinments'
 import { Blogs } from '@/payload/collections/Blogs'
 import { Category } from '@/payload/collections/Category'
-
 import { Contact } from '@/payload/collections/Contact'
-
 import { Departments } from '@/payload/collections/Departments'
-
 import { Doctors } from '@/payload/collections/Doctors'
 import { Media } from '@/payload/collections/Media'
 import { Pages } from '@/payload/collections/Pages'
@@ -45,7 +42,7 @@ const dirname = path.dirname(filename)
 
 export default buildConfig({
   admin: {
-    user: Users.slug,
+    user: Doctors.slug,
     meta: {
       titleSuffix: '- ContentQL',
       // favicon: '/images/favicon.ico',
@@ -110,7 +107,6 @@ export default buildConfig({
     Appointments,
 
     Contact,
-
   ],
 
   globals: [siteSettings],
@@ -165,4 +161,5 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
+  onInit: () => {},
 })

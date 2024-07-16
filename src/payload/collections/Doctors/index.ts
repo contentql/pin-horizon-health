@@ -8,11 +8,6 @@ export const Doctors: CollectionConfig = {
     singular: 'Doctor',
     plural: 'Doctors',
   },
-  access: {
-    read: () => true,
-    admin: () => true,
-    unlock: () => true,
-  },
   versions: {
     drafts: true,
   },
@@ -20,9 +15,7 @@ export const Doctors: CollectionConfig = {
     useAsTitle: 'name',
   },
 
-  auth: {
-    useAPIKey: true,
-  },
+  auth: true,
   fields: [
     {
       type: 'tabs',
