@@ -28,9 +28,7 @@ export default function DepartmentsList({
               <p className='cs_iconbox_subtitle m-0'>
                 {parser(department?.description)}
               </p>
-              <Link
-                href={`/department/${department?.slug!}`}
-                className='cs_iconbox_btn cs_center'>
+              <Link href='#' className='cs_iconbox_btn cs_center'>
                 <Image
                   src='/images/icons/arrow_white.svg'
                   alt='Icon'

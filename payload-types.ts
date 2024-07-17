@@ -17,6 +17,7 @@ export interface Config {
     pages: Page;
     sessions: Session;
     appointments: Appointment;
+    tours: Tour;
     contact: Contact;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -286,6 +287,8 @@ export interface Page {
         | BlogBannerType
         | ContactBannerType
         | ContactDetailsType
+        | HospitalHeroType
+        | TravelHeroType
       )[]
     | null;
   slug?: string | null;
@@ -736,6 +739,32 @@ export interface ContactDetailsType {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HospitalHeroType".
+ */
+export interface HospitalHeroType {
+  title: string;
+  sub_title: string;
+  imgUrl: string | Media;
+  bgUrl?: string | Media | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'HospitalHero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TravelHeroType".
+ */
+export interface TravelHeroType {
+  title: string;
+  sub_title: string;
+  imgUrl: string | Media;
+  bgUrl?: string | Media | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'TravelHero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "sessions".
  */
 export interface Session {
@@ -759,6 +788,55 @@ export interface Appointment {
   preferredDateAndTime?: string | null;
   reason?: ('routineCheckup' | 'newPatientVisit' | 'specificConcern' | 'other') | null;
   department?: ('pediatric' | 'obstetricsGynecology' | 'cardiology' | 'neurology') | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tours".
+ */
+export interface Tour {
+  id: string;
+  title: string;
+  hero_url?: string | Media | null;
+  gallery?:
+    | {
+        image?: string | Media | null;
+        id?: string | null;
+      }[]
+    | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  price?: number | null;
+  duration?: string | null;
+  location?: string | null;
+  services?:
+    | {
+        service?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  highlights?:
+    | {
+        highlight?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;

@@ -68,6 +68,8 @@ import {
   Testimonials,
   Testimonials_Block,
 } from './Home'
+import { HospitalHero, Hospital_Hero_Block } from './Hospital'
+import { TravelHero, Travel_Hero_Block } from './Travel'
 
 export const blocksJSX = {
   Test,
@@ -101,6 +103,10 @@ export const blocksJSX = {
   BlogBanner,
   ContactBanner,
   ContactDetails,
+
+  HospitalHero,
+
+  TravelHero,
 }
 
 export type SlugType = keyof typeof blocksJSX
@@ -132,8 +138,13 @@ export const blocks = [
 
   Department_Banner_Block,
   Department_Hero_Block,
+
   Gallery_Block,
   BlogBanner_Block,
   ContactBanner_Block,
   ContactDetails_Block,
+
+  Hospital_Hero_Block,
+
+  Travel_Hero_Block,
 ]
