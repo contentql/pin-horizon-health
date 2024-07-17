@@ -1,7 +1,7 @@
 'use client'
 
 import Spacing from '../home/Spacing'
-import { Category } from '@payload-types'
+import { Department, Doctor } from '@payload-types'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 
@@ -10,9 +10,9 @@ import { trpc } from '@/trpc/client'
 import DoctorItem from './DoctorItem'
 
 export default function DoctorListItem({
-  categoriesData,
+  departmentDetails,
 }: {
-  categoriesData: Category[]
+  departmentDetails: Department[]
 }) {
   const searchParams = useSearchParams()
   const pathname = usePathname()
@@ -20,23 +20,23 @@ export default function DoctorListItem({
 
   const [view, setView] = useState('grid')
   const [active, setActive] = useState(
-    searchParams?.get('category') ? searchParams?.get('category') : 'all',
+    searchParams?.get('department') ? searchParams?.get('department') : 'all',
   )
   const [filteredData, setFilteredData] = useState(
-    searchParams.get('category') ? searchParams?.get('category') : 'all',
+    searchParams.get('department') ? searchParams?.get('department') : 'all',
   )
 
-  const { data: doctorsData } = trpc.doctor.getDoctorsByCategory.useQuery({
+  const { data: doctorsData } = trpc.doctor.getDoctorsByDepartment.useQuery({
     slug: filteredData!,
   })
   // Extracting unique categories from teamData
   // const uniqueCategories = [...new Set(data.map(doctor => doctor.category))]
-  const handleFilter = (category: string) => {
+  const handleFilter = (department: string) => {
     const search = new URLSearchParams(searchParams)
-    search.set('category', category)
+    search.set('department', department)
     router.push(`${pathname}?${search.toString()}#doctors`)
-    setActive(category)
-    setFilteredData(category)
+    setActive(department)
+    setFilteredData(department)
   }
 
   return (
@@ -48,9 +48,9 @@ export default function DoctorListItem({
             <li className={active === 'all' ? 'active' : ''}>
               <span onClick={() => handleFilter('all')}>All</span>
             </li>
-            {categoriesData?.map(category => (
+            {departmentDetails?.map(category => (
               <li
-                className={active === category?.title ? 'active' : ''}
+                className={active === category?.slug ? 'active' : ''}
                 key={category?.id}>
                 <span onClick={() => handleFilter(category?.slug!)}>
                   {category?.title}
@@ -100,7 +100,7 @@ export default function DoctorListItem({
       <Spacing md='65' />
       <div className={`cs_team_grid cs_${view}_view_wrap`}>
         {doctorsData?.map((doctor, index) => (
-          <DoctorItem doctor={doctor} key={index} />
+          <DoctorItem doctor={doctor as Doctor} key={index} />
         ))}
       </div>
       <Spacing md='90' />

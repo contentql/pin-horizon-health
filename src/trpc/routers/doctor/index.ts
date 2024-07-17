@@ -23,12 +23,12 @@ export const doctorRouter = router({
       throw new Error(error.message)
     }
   }),
-  getDoctorsByCategory: publicProcedure
+  getDoctorsByDepartment: publicProcedure
     .input(z.object({ slug: z.string() }))
     ?.query(async ({ input }) => {
       const { slug } = input
-      const categoryId = await payload.find({
-        collection: 'category',
+      const department = await payload.find({
+        collection: 'department',
         where: {
           slug: {
             equals: slug,
@@ -43,8 +43,8 @@ export const doctorRouter = router({
         pagination: false,
         where: {
           ...(slug !== 'all' && {
-            'category.value': {
-              equals: categoryId?.docs?.at(0)?.id,
+            'department.value': {
+              equals: department?.docs?.at(0)?.id,
             },
           }),
         },

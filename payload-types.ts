@@ -11,7 +11,6 @@ export interface Config {
     users: User;
     media: Media;
     doctors: Doctor;
-    category: Category;
     department: Department;
     tags: Tag;
     blogs: Blog;
@@ -130,7 +129,6 @@ export interface Media {
 export interface Doctor {
   id: string;
   name: string;
-  department: string | Department;
   designation: string;
   description: string;
   doctor_image: string | Media;
@@ -161,9 +159,9 @@ export interface Doctor {
   twitter?: string | null;
   facebook?: string | null;
   slug?: string | null;
-  category: {
-    relationTo: 'category';
-    value: string | Category;
+  department: {
+    relationTo: 'department';
+    value: string | Department;
   };
   updatedAt: string;
   createdAt: string;
@@ -185,18 +183,8 @@ export interface Department {
   id: string;
   title: string;
   description: string;
-  slug?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "category".
- */
-export interface Category {
-  id: string;
-  title: string;
+  image: string | Media;
+  department_type?: ('Doctor' | 'Hospital' | 'Yoga' | 'Travel')[] | null;
   slug?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -302,9 +290,14 @@ export interface Page {
         | AboutGalleryType
         | AboutAwardsType
         | AboutBannerType
-        | ContactBannerType
         | AllBlogsType
         | LatestBlogsType
+        | DepartmentBannerType
+        | DepartmentHeroType
+        | GalleryType
+        | BlogBannerType
+        | ContactBannerType
+        | ContactDetailsType
       )[]
     | null;
   slug?: string | null;
@@ -652,25 +645,10 @@ export interface AboutBannerType {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ContactBannerType".
- */
-export interface ContactBannerType {
-  title: string;
-  description: string;
-  image: string | Media;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'Contact';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "AllBlogsType".
  */
 export interface AllBlogsType {
-  heading?: string | null;
-  image?: string | Media | null;
   title?: string | null;
-  sub_title?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'AllBlogs';
@@ -685,6 +663,88 @@ export interface LatestBlogsType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'LatestBlogs';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DepartmentBannerType".
+ */
+export interface DepartmentBannerType {
+  title: string;
+  sub_title: string;
+  imgUrl: string | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'DepartmentBanner';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DepartmentHeroType".
+ */
+export interface DepartmentHeroType {
+  title: string;
+  sub_title: string;
+  imgUrl: string | Media;
+  bgUrl?: string | Media | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'DepartmentHero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GalleryType".
+ */
+export interface GalleryType {
+  gallery?:
+    | {
+        image?: string | Media | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'Gallery';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlogBannerType".
+ */
+export interface BlogBannerType {
+  image?: string | Media | null;
+  title?: string | null;
+  sub_title?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'BlogBanner';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactBannerType".
+ */
+export interface ContactBannerType {
+  title?: string | null;
+  sub_title?: string | null;
+  image?: string | Media | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'ContactBanner';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactDetailsType".
+ */
+export interface ContactDetailsType {
+  title?: string | null;
+  contact_info?:
+    | {
+        title?: string | null;
+        sub_title?: string | null;
+        contact_icon?: ('1' | '2' | '3') | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'ContactDetails';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -723,7 +783,8 @@ export interface Appointment {
 export interface Contact {
   id: string;
   name: string;
-  email: string;
+  email?: string | null;
+  phoneNumber: string;
   subject: string;
   message: string;
   updatedAt: string;

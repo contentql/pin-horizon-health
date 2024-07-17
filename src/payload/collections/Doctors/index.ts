@@ -35,13 +35,6 @@ export const Doctors: CollectionConfig = {
               type: 'row',
               fields: [
                 {
-                  name: 'department',
-                  label: 'Department',
-                  type: 'relationship',
-                  relationTo: 'department',
-                  required: true,
-                },
-                {
                   name: 'designation',
                   label: 'Designation',
                   type: 'text',
@@ -190,11 +183,18 @@ export const Doctors: CollectionConfig = {
     },
     slugField('name'),
     {
-      name: 'category',
+      name: 'department',
+      label: 'Department',
       type: 'relationship',
-      relationTo: ['category'],
-      label: 'Category',
+      relationTo: ['department'],
       required: true,
+      filterOptions: ({ relationTo, data, siblingData }) => {
+        return {
+          department_type: {
+            contains: 'Doctor',
+          },
+        }
+      },
       admin: {
         position: 'sidebar',
       },

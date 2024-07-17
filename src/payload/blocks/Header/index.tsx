@@ -10,6 +10,8 @@ import Spacing from '@/components/marketing/home/Spacing'
 import Newsletter from '@/components/marketing/home/Widget/Newsletter'
 import SocialWidget from '@/components/marketing/home/Widget/SocialWidget'
 
+import DropDown from './DropDown'
+
 export default function Header({
   headerData,
   variant,
@@ -78,13 +80,33 @@ export default function Header({
                         </ul>
                       </DropDown>
                     </li> */}
-                    {headerData?.menuItems?.map((link, index) => (
-                      <li key={index}>
-                        <Link href={(link?.page?.value as Page)?.path || ''}>
-                          {(link?.page?.value as Page)?.title}
-                        </Link>
-                      </li>
-                    ))}
+                    {headerData?.menuItems?.map((link, index) =>
+                      link?.subMenuItems?.length === 0 ? (
+                        <li key={index}>
+                          <Link href={(link?.page?.value as Page)?.path || ''}>
+                            {(link?.page?.value as Page)?.title}
+                          </Link>
+                        </li>
+                      ) : (
+                        <li key={index} className='menu-item-has-children'>
+                          <Link href={''}>Services</Link>
+                          <DropDown>
+                            <ul>
+                              {link?.subMenuItems?.map((subMenu, index) => (
+                                <li key={index}>
+                                  <Link
+                                    href={
+                                      (subMenu?.page?.value as Page)?.path || ''
+                                    }>
+                                    {(subMenu?.page?.value as Page)?.title}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </DropDown>
+                        </li>
+                      ),
+                    )}
                     {/* <li>
                       <Link href='/doctors'>Find Doctor</Link>
                     </li>
