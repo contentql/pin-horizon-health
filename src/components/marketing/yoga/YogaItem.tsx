@@ -6,8 +6,9 @@ export default function YogaItem({ yoga }: { yoga: Yoga }) {
   return (
     <div className='cs_team cs_style_1 cs_type_2 cs_radius_20 overflow-hidden text-center'>
       <div className='cs_member_img'>
-        <Link href={`/yoga/${yoga?.slug!}`} className='d-block'>
+        <Link href={`/yoga/${yoga?.slug!}`} className='d-block '>
           <Image
+            className='h-96 w-full object-cover'
             src={(yoga?.image as Media)?.url || ''}
             alt='Yoga'
             height={487}
