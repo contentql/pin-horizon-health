@@ -46,7 +46,7 @@ export default function Testimonial({
         {testimonials?.map((testimonial, index) => {
           return (
             activeTab === index + 1 && (
-              <div className='cs_testimonial cs_style_1'>
+              <div key={index} className='cs_testimonial cs_style_1'>
                 <Image
                   src='/images/icons/quote.svg'
                   alt='Icon'
