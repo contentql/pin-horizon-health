@@ -23,7 +23,6 @@ export default function Header({
   const [mobileToggle, setMobileToggle] = useState(false)
   const [sideNav, setSideNav] = useState(false)
   const [searchToggle, setSearchToggle] = useState(false)
-  console.log('links...................', headerData?.menuItems)
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
