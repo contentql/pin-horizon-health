@@ -51,7 +51,6 @@ export const Doctors: CollectionConfig = {
               label: 'Doctor Image',
               type: 'upload',
               relationTo: 'media',
-
               admin: {
                 description: 'upload doctor image',
               },
@@ -178,7 +177,6 @@ export const Doctors: CollectionConfig = {
       label: 'Department',
       type: 'relationship',
       relationTo: ['department'],
-
       filterOptions: ({ relationTo, data, siblingData }) => {
         return {
           department_type: {
