@@ -11,6 +11,7 @@ export interface Config {
     users: User;
     media: Media;
     doctors: Doctor;
+    category: Category;
     department: Department;
     tags: Tag;
     blogs: Blog;
@@ -128,6 +129,7 @@ export interface Media {
  */
 export interface Doctor {
   id: string;
+  role?: ('admin' | 'doctor') | null;
   name?: string | null;
   designation?: string | null;
   description?: string | null;
@@ -191,6 +193,18 @@ export interface Department {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "category".
+ */
+export interface Category {
+  id: string;
+  title: string;
+  slug?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "tags".
  */
 export interface Tag {
@@ -212,8 +226,8 @@ export interface Blog {
   id: string;
   author?:
     | {
-        relationTo: 'users';
-        value: string | User;
+        relationTo: 'doctors';
+        value: string | Doctor;
       }[]
     | null;
   select_blog_size?: ('1' | '2') | null;
@@ -751,7 +765,7 @@ export interface ContactDetailsType {
  */
 export interface Session {
   id: string;
-  user: string | User;
+  user: string | Doctor;
   sessionToken: string;
   expires?: string | null;
   updatedAt: string;

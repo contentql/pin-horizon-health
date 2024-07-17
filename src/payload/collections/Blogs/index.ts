@@ -37,7 +37,7 @@ export const Blogs: CollectionConfig = {
       name: 'author',
       type: 'relationship',
       label: 'Author',
-      relationTo: ['users'],
+      relationTo: ['doctors'],
       hasMany: true,
       // defaultValue: ({ user }: { user: User }) => {
       //   if (!user) return undefined
@@ -48,10 +48,10 @@ export const Blogs: CollectionConfig = {
         beforeChange: [assignUserId],
       },
       filterOptions: ({ relationTo, data }) => {
-        if (relationTo === 'users') {
+        if (relationTo === 'doctors') {
           return {
             role: {
-              equals: 'author',
+              equals: 'doctor',
             },
           }
         } else {

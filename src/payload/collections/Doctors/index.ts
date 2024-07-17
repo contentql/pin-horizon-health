@@ -1,5 +1,10 @@
 import type { CollectionConfig } from 'payload/types'
 
+import {
+  ADMIN_ACCESS_ROLES,
+  DEFAULT_USER_ROLE,
+} from '@/lib/authjs-payload-adapter/auth/config'
+import { isAdmin, isAdminOrCurrentUser } from '@/payload/access'
 import { slugField } from '@/payload/fields'
 
 export const Doctors: CollectionConfig = {
@@ -16,8 +21,51 @@ export const Doctors: CollectionConfig = {
   },
 
   auth: true,
+  access: {
+    admin: async ({ req }) => {
+      return ADMIN_ACCESS_ROLES.includes(req?.user?.role || DEFAULT_USER_ROLE)
+    },
+    read: isAdminOrCurrentUser,
+    create: () => true,
+    update: isAdmin,
+    delete: isAdminOrCurrentUser,
+  },
+  hooks: {
+    beforeChange: [
+      async ({ data, req, operation, originalDoc }) => {
+        if (operation === 'create') {
+          const { payload, context } = req
 
+          // this is an aggregation background
+
+          const { totalDocs: totalUsers } = await payload.count({
+            collection: 'doctors',
+            where: {
+              role: {
+                equals: 'admin',
+              },
+            },
+          })
+
+          if (totalUsers === 0) {
+            return { ...data, role: 'admin' }
+          }
+
+          return data
+        }
+
+        return data
+      },
+    ],
+  },
   fields: [
+    {
+      name: 'role',
+      type: 'select',
+      options: ['admin', 'doctor'],
+      defaultValue: 'doctor',
+      saveToJWT: true,
+    },
     {
       type: 'tabs',
 
