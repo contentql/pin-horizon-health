@@ -16,9 +16,11 @@ export const Doctors: CollectionConfig = {
   },
 
   auth: true,
+
   fields: [
     {
       type: 'tabs',
+
       tabs: [
         // doctor personal details tab
         {
@@ -28,8 +30,6 @@ export const Doctors: CollectionConfig = {
               name: 'name',
               label: 'Name',
               type: 'text',
-              required: true,
-              unique: true,
             },
             {
               type: 'row',
@@ -38,7 +38,6 @@ export const Doctors: CollectionConfig = {
                   name: 'designation',
                   label: 'Designation',
                   type: 'text',
-                  required: true,
                 },
               ],
             },
@@ -46,14 +45,13 @@ export const Doctors: CollectionConfig = {
               name: 'description',
               label: 'Description',
               type: 'textarea',
-              required: true,
             },
             {
               name: 'doctor_image',
               label: 'Doctor Image',
               type: 'upload',
               relationTo: 'media',
-              required: true,
+
               admin: {
                 description: 'upload doctor image',
               },
@@ -105,7 +103,6 @@ export const Doctors: CollectionConfig = {
                   name: 'specialization',
                   label: 'Major/Specialization',
                   type: 'text',
-                  required: true,
                 },
               ],
             },
@@ -149,14 +146,8 @@ export const Doctors: CollectionConfig = {
               name: 'phone_number',
               label: 'Phone Number',
               type: 'number',
-              required: true,
             },
-            {
-              name: 'mail',
-              label: 'Email',
-              type: 'email',
-              required: true,
-            },
+
             {
               type: 'row',
               fields: [
@@ -187,7 +178,7 @@ export const Doctors: CollectionConfig = {
       label: 'Department',
       type: 'relationship',
       relationTo: ['department'],
-      required: true,
+
       filterOptions: ({ relationTo, data, siblingData }) => {
         return {
           department_type: {

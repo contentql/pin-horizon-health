@@ -128,16 +128,16 @@ export interface Media {
  */
 export interface Doctor {
   id: string;
-  name: string;
-  designation: string;
-  description: string;
-  doctor_image: string | Media;
+  name?: string | null;
+  designation?: string | null;
+  description?: string | null;
+  doctor_image?: string | Media | null;
   qualifications?:
     | {
         qualification?: ('High School Diploma' | 'Bachelor’s Degree' | 'Medical Degree (MD/DO)' | 'Residency') | null;
         institute?: string | null;
         year?: string | null;
-        specialization: string;
+        specialization?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -153,16 +153,15 @@ export interface Doctor {
         id?: string | null;
       }[]
     | null;
-  phone_number: number;
-  mail: string;
+  phone_number?: number | null;
   linkedin?: string | null;
   twitter?: string | null;
   facebook?: string | null;
   slug?: string | null;
-  department: {
+  department?: {
     relationTo: 'department';
     value: string | Department;
-  };
+  } | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
