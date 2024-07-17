@@ -7,6 +7,7 @@ export default function IconBoxStyle4({
   service: {
     title?: string | null
     sub_title?: string | null
+    service_path?: string | null
     id?: string | null
   }
 }) {
@@ -22,7 +23,9 @@ export default function IconBoxStyle4({
       </div>
       <h2 className='cs_iconbox_title cs_fs_32'>{service?.title}</h2>
       <p className='cs_iconbox_subtitle m-0'>{service?.sub_title}</p>
-      <Link href={'/'} className='cs_iconbox_btn cs_center'>
+      <Link
+        href={service?.service_path || '/'}
+        className='cs_iconbox_btn cs_center'>
         <Image
           src='/images/icons/arrow_white.svg'
           alt='Icon'

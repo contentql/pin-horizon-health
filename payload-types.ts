@@ -486,6 +486,8 @@ export interface BannerType {
   title?: string | null;
   sub_title?: string | null;
   image?: string | Media | null;
+  button_text?: string | null;
+  button_path?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'Banner';
@@ -543,6 +545,7 @@ export interface AboutServicesType {
     | {
         title?: string | null;
         sub_title?: string | null;
+        service_path?: string | null;
         id?: string | null;
       }[]
     | null;
