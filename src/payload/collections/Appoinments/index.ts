@@ -93,5 +93,11 @@ export const Appointments: CollectionConfig = {
         },
       ],
     },
+    {
+      name: 'doctor',
+      label: 'Doctor',
+      type: 'relationship',
+      relationTo: 'doctors',
+    },
   ],
 }

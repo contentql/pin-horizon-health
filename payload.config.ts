@@ -41,7 +41,7 @@ const dirname = path.dirname(filename)
 
 export default buildConfig({
   admin: {
-    user: Users.slug,
+    user: Doctors.slug,
     meta: {
       titleSuffix: '- ContentQL',
       // favicon: '/images/favicon.ico',
@@ -157,4 +157,5 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
+  onInit: () => {},
 })

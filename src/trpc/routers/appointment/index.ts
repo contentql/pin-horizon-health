@@ -19,6 +19,7 @@ export const appointmentRouter = router({
         preferredDateAndTime,
         gender,
         reasonForVisit,
+        doctorId,
       } = input
       console.log('Inputt', preferredDateAndTime)
       try {
@@ -32,6 +33,7 @@ export const appointmentRouter = router({
             preferredDateAndTime,
             gender,
             reason: reasonForVisit,
+            doctor: doctorId,
           },
         })
 

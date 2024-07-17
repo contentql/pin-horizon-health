@@ -8,18 +8,19 @@ export const Doctors: CollectionConfig = {
     singular: 'Doctor',
     plural: 'Doctors',
   },
-  access: {
-    read: () => true,
-  },
   versions: {
     drafts: true,
   },
   admin: {
-    useAsTitle: 'title',
+    useAsTitle: 'name',
   },
+
+  auth: true,
+
   fields: [
     {
       type: 'tabs',
+
       tabs: [
         // doctor personal details tab
         {
@@ -29,8 +30,6 @@ export const Doctors: CollectionConfig = {
               name: 'name',
               label: 'Name',
               type: 'text',
-              required: true,
-              unique: true,
             },
             {
               type: 'row',
@@ -39,7 +38,6 @@ export const Doctors: CollectionConfig = {
                   name: 'designation',
                   label: 'Designation',
                   type: 'text',
-                  required: true,
                 },
               ],
             },
@@ -147,14 +145,8 @@ export const Doctors: CollectionConfig = {
               name: 'phone_number',
               label: 'Phone Number',
               type: 'number',
-              required: true,
             },
-            {
-              name: 'mail',
-              label: 'Email',
-              type: 'email',
-              required: true,
-            },
+
             {
               type: 'row',
               fields: [

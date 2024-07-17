@@ -8,11 +8,13 @@ export default function Appointment({
   imgUrl,
   sectionTitle,
   sectionTitleUp,
+  doctorId,
 }: {
   bgUrl: string
   imgUrl: any
   sectionTitle: string
   sectionTitleUp: string
+  doctorId?: string
 }) {
   return (
     <section
@@ -29,7 +31,7 @@ export default function Appointment({
           <div className='offset-lg-6 col-lg-6'>
             <SectionHeading title={sectionTitle} titleUp={sectionTitleUp} />
             <Spacing md='57' />
-            <AppointmentForm />
+            <AppointmentForm doctorId={doctorId} />
           </div>
         </div>
         <div className='cs_height_120' />
