@@ -15,6 +15,7 @@ import sharp from 'sharp'
 import { fileURLToPath } from 'url'
 
 import { Appointments } from '@/payload/collections/Appoinments'
+import { Ayurveda } from '@/payload/collections/Ayurveda'
 import { Blogs } from '@/payload/collections/Blogs'
 import { Category } from '@/payload/collections/Category'
 import { Contact } from '@/payload/collections/Contact'
@@ -110,6 +111,7 @@ export default buildConfig({
     Tours,
     Contact,
     Yoga,
+    Ayurveda,
   ],
 
   globals: [siteSettings],

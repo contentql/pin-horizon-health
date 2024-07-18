@@ -21,6 +21,7 @@ export interface Config {
     tours: Tour;
     contact: Contact;
     yoga: Yoga;
+    ayurveda: Ayurveda;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -332,6 +333,9 @@ export interface Page {
         | HospitalHeroType
         | TravelHeroType
         | YogaPostsType
+        | AyurvedaPostsType
+        | AyurvedaHeroType
+        | AyurvedaAboutType
       )[]
     | null;
   slug?: string | null;
@@ -823,6 +827,47 @@ export interface YogaPostsType {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AyurvedaPostsType".
+ */
+export interface AyurvedaPostsType {
+  title?: string | null;
+  sub_title?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'AyurvedaPosts';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AyurvedaHeroType".
+ */
+export interface AyurvedaHeroType {
+  title: string;
+  sub_title: string;
+  image: string | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'AyurvedaHero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AyurvedaAboutType".
+ */
+export interface AyurvedaAboutType {
+  image?: string | Media | null;
+  title?: string | null;
+  points?:
+    | {
+        title?: string | null;
+        sub_title?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'AyurvedaAbout';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "sessions".
  */
 export interface Session {
@@ -923,6 +968,36 @@ export interface Contact {
  * via the `definition` "yoga".
  */
 export interface Yoga {
+  id: string;
+  title: string;
+  sub_title: string;
+  image: string | Media;
+  slug?: string | null;
+  description: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  description_html?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ayurveda".
+ */
+export interface Ayurveda {
   id: string;
   title: string;
   sub_title: string;

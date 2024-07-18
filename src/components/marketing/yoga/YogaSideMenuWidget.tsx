@@ -1,7 +1,7 @@
 import { Yoga } from '@payload-types'
 import Link from 'next/link'
 
-export default function SideMenuWidget({
+export default function YogaSideMenuWidget({
   title,
   data,
 }: {
