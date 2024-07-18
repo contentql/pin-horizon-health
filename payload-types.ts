@@ -130,6 +130,22 @@ export interface Media {
 export interface Doctor {
   id: string;
   role?: ('admin' | 'doctor') | null;
+  emailVerified?: string | null;
+  accounts?:
+    | {
+        provider?: string | null;
+        providerAccountId?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  verificationTokens?:
+    | {
+        identifier?: string | null;
+        token?: string | null;
+        expires?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   name?: string | null;
   designation?: string | null;
   description?: string | null;

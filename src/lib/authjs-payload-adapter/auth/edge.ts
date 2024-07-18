@@ -1,6 +1,6 @@
 /** Edge friendly functions only in here */
 import { getToken } from '@auth/core/jwt'
-import type { User } from '@payload-types'
+import { Doctor } from '@payload-types'
 import { unstable_cache } from 'next/cache'
 import { parseCookie } from 'next/dist/compiled/@edge-runtime/cookies'
 import type { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies'
@@ -113,7 +113,7 @@ type BaseParams = {
 }
 
 async function executeWithCacheControl(
-  fetchFunction: () => Promise<User | null>,
+  fetchFunction: () => Promise<Doctor | null>,
   cacheKey: string,
   cache: boolean = false,
 ) {
@@ -130,7 +130,7 @@ export const getCurrentUser = async ({
   headers,
   payload,
   cache = false,
-}: { headers: Headers } & BaseParams): Promise<User | null> => {
+}: { headers: Headers } & BaseParams): Promise<Doctor | null> => {
   const userIdOrSessionToken = await getUserIdOrSessionToken(headers)
   if (!userIdOrSessionToken) return null
   const cacheKey =
@@ -164,7 +164,7 @@ export const getUserById = async ({
   id,
   payload,
   cache = false,
-}: { id: string } & BaseParams): Promise<User | null> => {
+}: { id: string } & BaseParams): Promise<Doctor | null> => {
   const cacheKey = `get-user-by-id-${id}`
   return executeWithCacheControl(
     async () => {
@@ -179,7 +179,7 @@ export const getUserByEmail = async ({
   email,
   payload,
   cache = false,
-}: { email: string } & BaseParams): Promise<User | null> => {
+}: { email: string } & BaseParams): Promise<Doctor | null> => {
   const cacheKey = `get-user-by-email-${email}`
   return executeWithCacheControl(
     async () => {

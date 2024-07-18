@@ -10,9 +10,9 @@ import {
 
 export const SESSION_STRATEGY = 'jwt' as 'jwt' | 'database'
 export const SESSION_MAX_AGE = 86400 as const
-export const DEFAULT_USER_ROLE = 'user' as const
+export const DEFAULT_USER_ROLE = 'doctor' as const
 export const FIELDS_USER_IS_ALLOWED_TO_CHANGE = ['name', 'password']
-export const ADMIN_ACCESS_ROLES = ['admin', 'author']
+export const ADMIN_ACCESS_ROLES = ['admin', 'doctor']
 
 const payloadAdapterConfig = {
   collectionNames: {

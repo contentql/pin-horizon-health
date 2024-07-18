@@ -1,14 +1,14 @@
 'use client'
 
-import type { User } from '@payload-types'
+import type { Doctor } from '@payload-types'
 import { useState } from 'react'
 import { useFormState } from 'react-dom'
 
 import DeleteAccountSection from './DeleteAccountSection'
 import { updateUser } from './actions'
 
-const ProfileForm = ({ user }: { user: User }) => {
-  const [formData, setFormData] = useState<User>(user)
+const ProfileForm = ({ user }: { user: Doctor }) => {
+  const [formData, setFormData] = useState<Doctor>(user)
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -43,14 +43,12 @@ const ProfileForm = ({ user }: { user: User }) => {
             <div className='flex flex-col space-y-5 sm:ml-8'>
               <button
                 type='button'
-                className='rounded-lg border border-indigo-200 bg-[#202142] px-7 py-3.5 text-base font-medium text-indigo-100 hover:bg-indigo-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-indigo-200 '
-              >
+                className='rounded-lg border border-indigo-200 bg-[#202142] px-7 py-3.5 text-base font-medium text-indigo-100 hover:bg-indigo-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-indigo-200 '>
                 Change picture
               </button>
               <button
                 type='button'
-                className='rounded-lg border border-indigo-200 bg-white px-7 py-3.5 text-base font-medium text-indigo-900 hover:bg-indigo-100 hover:text-[#202142] focus:z-10 focus:outline-none focus:ring-4 focus:ring-indigo-200 '
-              >
+                className='rounded-lg border border-indigo-200 bg-white px-7 py-3.5 text-base font-medium text-indigo-900 hover:bg-indigo-100 hover:text-[#202142] focus:z-10 focus:outline-none focus:ring-4 focus:ring-indigo-200 '>
                 Delete picture
               </button>
             </div>
@@ -58,13 +56,11 @@ const ProfileForm = ({ user }: { user: User }) => {
 
           <form
             action={updateUserAction}
-            className='mt-8 items-center text-[#202142] sm:mt-14'
-          >
+            className='mt-8 items-center text-[#202142] sm:mt-14'>
             <div className='mb-4 sm:mb-6'>
               <label
                 htmlFor='name'
-                className='block text-sm font-medium text-gray-700'
-              >
+                className='block text-sm font-medium text-gray-700'>
                 Name
               </label>
               <input
@@ -81,8 +77,7 @@ const ProfileForm = ({ user }: { user: User }) => {
             <div className='mb-4 sm:mb-6'>
               <label
                 htmlFor='email'
-                className='block text-sm font-medium text-gray-700'
-              >
+                className='block text-sm font-medium text-gray-700'>
                 E-Mail
               </label>
               <input
@@ -100,8 +95,7 @@ const ProfileForm = ({ user }: { user: User }) => {
               <div className='w-full'>
                 <label
                   htmlFor='password'
-                  className='block text-sm font-medium text-gray-700'
-                >
+                  className='block text-sm font-medium text-gray-700'>
                   New Password
                 </label>
                 <input
@@ -117,8 +111,7 @@ const ProfileForm = ({ user }: { user: User }) => {
               <div className='w-full'>
                 <label
                   htmlFor='confirmPassword'
-                  className='block text-sm font-medium text-gray-700'
-                >
+                  className='block text-sm font-medium text-gray-700'>
                   Confirm Password
                 </label>
                 <input
@@ -135,8 +128,7 @@ const ProfileForm = ({ user }: { user: User }) => {
             <div className='flex justify-end'>
               <button
                 type='submit'
-                className='w-full rounded-lg  bg-indigo-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-indigo-800 focus:outline-none focus:ring-4 focus:ring-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800 sm:w-auto'
-              >
+                className='w-full rounded-lg  bg-indigo-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-indigo-800 focus:outline-none focus:ring-4 focus:ring-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800 sm:w-auto'>
                 {isPending ? 'Updating...' : 'Update Profile'}
               </button>
             </div>
