@@ -1,6 +1,6 @@
 'use server'
 
-import { User } from '@payload-types'
+import { Doctor } from '@payload-types'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { getFieldsToSign } from 'payload/auth'
@@ -13,7 +13,7 @@ import {
 import { FIELDS_USER_IS_ALLOWED_TO_CHANGE } from '@/lib/authjs-payload-adapter/auth/config'
 import { getPayload } from '@/lib/authjs-payload-adapter/payload'
 import { revalidateUser } from '@/lib/authjs-payload-adapter/payload/actions'
-import { Users } from '@/payload/collections/Users'
+import { Doctors } from '@/payload/collections/Doctors'
 import { COLLECTION_SLUG_USER } from '@/payload/collections/constants'
 
 const sanitizeUserData = (data: Record<string, any>) => {
@@ -37,7 +37,7 @@ const sanitizeUserData = (data: Record<string, any>) => {
   return newData
 }
 
-export const updateUser = async (userData: User) => {
+export const updateUser = async (userData: Doctor) => {
   const session = await auth()
   if (!session || !session.user) {
     redirect('/sign-in')
@@ -51,14 +51,17 @@ export const updateUser = async (userData: User) => {
       id: user.id,
       data: sanitizedUserData,
     })
-    .then(user => ({ ...user, collection: COLLECTION_SLUG_USER }))) as User & {
+    .then(user => ({
+      ...user,
+      collection: COLLECTION_SLUG_USER,
+    }))) as Doctor & {
     collection: typeof COLLECTION_SLUG_USER
   }
   // No need to revalidate here, because that is handled in afterChange hook in Payload.
   const fieldsToSign = getFieldsToSign({
     user: newUser,
     email: session.user.email,
-    collectionConfig: Users,
+    collectionConfig: Doctors,
   })
   const newSession = await unstable_update({ user: fieldsToSign })
   return newSession

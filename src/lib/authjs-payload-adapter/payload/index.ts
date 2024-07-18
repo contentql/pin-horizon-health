@@ -1,5 +1,5 @@
 import configPromise from '@payload-config'
-import type { User } from '@payload-types'
+import type { Doctor } from '@payload-types'
 import { headers as getHeaders } from 'next/headers'
 import { getPayload as getPayloadInstance } from 'payload'
 
@@ -16,7 +16,7 @@ export async function getPayload(): ReturnType<typeof getPayloadInstance> {
  * payload instance, just to make other parts of you code cleaner. We can't get the payload instance in the
  * auth/edge.ts file because that could cause a import loop.
  */
-export async function getCurrentUser(): Promise<User | null> {
+export async function getCurrentUser(): Promise<Doctor | null> {
   const headers = getHeaders()
   const payload = await getPayload()
   const user = await edgeSafeGetCurrentUser({ headers, payload, cache: true })

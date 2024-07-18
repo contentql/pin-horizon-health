@@ -1,11 +1,11 @@
 import { revalidateUser } from '../payload/actions'
-import { User } from '@payload-types'
+import { Doctor } from '@payload-types'
 import NextAuth from 'next-auth'
 import { getFieldsToSign as getFieldsToSignPayload } from 'payload/auth'
 import 'server-only'
 
 import { getPayload } from '@/lib/authjs-payload-adapter/payload'
-import { Users } from '@/payload/collections/Users'
+import { Doctors } from '@/payload/collections/Doctors'
 import { COLLECTION_SLUG_USER } from '@/payload/collections/constants'
 
 import { PayloadAdapter } from './adapter'
@@ -30,8 +30,8 @@ export const { auth, handlers, signIn, signOut, unstable_update } = NextAuth(
           const fieldsToSign = getFieldsToSignPayload({
             // @ts-ignore
             user: dbUser,
-            email: dbUser.email,
-            collectionConfig: Users,
+            email: dbUser.email as string,
+            collectionConfig: Doctors,
           })
           token = {
             ...token,
@@ -46,7 +46,7 @@ export const { auth, handlers, signIn, signOut, unstable_update } = NextAuth(
             // @ts-ignore
             user: token,
             email: session.user.email,
-            collectionConfig: Users,
+            collectionConfig: Doctors,
           })
 
           session.user = {
@@ -59,7 +59,7 @@ export const { auth, handlers, signIn, signOut, unstable_update } = NextAuth(
           return session
         },
         async signIn({ user }) {
-          revalidateUser(user as User, payload as any)
+          revalidateUser(user as Doctor, payload as any)
           return true
         },
       },

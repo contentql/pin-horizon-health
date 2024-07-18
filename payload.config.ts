@@ -16,6 +16,7 @@ import { fileURLToPath } from 'url'
 
 import { Appointments } from '@/payload/collections/Appoinments'
 import { Blogs } from '@/payload/collections/Blogs'
+import { Category } from '@/payload/collections/Category'
 import { Contact } from '@/payload/collections/Contact'
 import { Departments } from '@/payload/collections/Departments'
 import { Doctors } from '@/payload/collections/Doctors'
@@ -96,7 +97,10 @@ export default buildConfig({
     Users,
     Media,
     Doctors,
+    Category,
+
     Departments,
+
     Tags,
     Blogs,
     Pages,
@@ -158,5 +162,4 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-  onInit: () => {},
 })
