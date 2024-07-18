@@ -24,6 +24,7 @@ const DoctorDetailsView = ({ doctorDetails }: { doctorDetails: Doctor }) => {
           imgUrl={appointmentImg}
           sectionTitle='Appointment'
           sectionTitleUp='BOOK AN'
+          doctorId={doctorDetails?.id}
         />
       </Section>
       <Section>

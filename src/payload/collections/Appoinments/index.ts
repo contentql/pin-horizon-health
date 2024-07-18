@@ -1,5 +1,7 @@
 import type { CollectionConfig } from 'payload/types'
 
+import { isAdminOrSelf } from './access/isAdminOrSelf'
+
 export const Appointments: CollectionConfig = {
   slug: 'appointments',
   labels: {
@@ -7,7 +9,10 @@ export const Appointments: CollectionConfig = {
     plural: 'Appointments',
   },
   access: {
-    read: () => true,
+    create: isAdminOrSelf,
+    read: isAdminOrSelf,
+    update: isAdminOrSelf,
+    delete: isAdminOrSelf,
   },
   admin: {
     useAsTitle: 'title',
@@ -92,6 +97,12 @@ export const Appointments: CollectionConfig = {
           ],
         },
       ],
+    },
+    {
+      name: 'doctor',
+      label: 'Doctor',
+      type: 'relationship',
+      relationTo: 'doctors',
     },
   ],
 }

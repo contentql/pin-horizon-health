@@ -15,7 +15,7 @@ import {
 } from '@/lib/validator/appointmentValidator'
 import { trpc } from '@/trpc/client'
 
-export default function AppointmentForm() {
+export default function AppointmentForm({ doctorId }: { doctorId?: string }) {
   const {
     register,
     handleSubmit,
@@ -35,7 +35,7 @@ export default function AppointmentForm() {
     })
 
   const onSubmit = async (data: TAppointmentValidator) => {
-    await appointmentFormData(data)
+    await appointmentFormData({ ...data, doctorId })
 
     console.log(data)
   }

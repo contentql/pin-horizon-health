@@ -1,6 +1,6 @@
 import type { AdapterUser } from '@auth/core/adapters'
 import { env } from '@env'
-import type { User } from '@payload-types'
+import type { Doctor, Media } from '@payload-types'
 import type {
   Adapter,
   AdapterUser as BaseAdapterUser,
@@ -18,7 +18,7 @@ import { PAYLOAD_ADAPTER_CONFIG } from './config'
 
 declare module '@auth/core/adapters' {
   // @ts-ignore
-  interface AdapterUser extends BaseAdapterUser, User {}
+  interface AdapterUser extends BaseAdapterUser, Doctor {}
 }
 
 type CollectionTypeMap = {
@@ -32,7 +32,7 @@ export const getUserByEmail = async ({
 }: {
   payload: Payload
   email: string
-}): Promise<User | null> => {
+}): Promise<Doctor | null> => {
   const { docs } = await (
     await payload
   ).find({
@@ -50,7 +50,7 @@ export const getUserByAccount = async ({
   payload: Payload
   providerAccountId: string
   provider: string
-}): Promise<User | null> => {
+}): Promise<Doctor | null> => {
   const { docs } = await (
     await payload
   ).find({
@@ -94,14 +94,14 @@ export function PayloadAdapter(
     options.collectionNames!.sessions ||
     PAYLOAD_ADAPTER_CONFIG.collectionNames.sessions
 
-  const ensureAdapterUser = (user: User): AdapterUser => {
+  const ensureAdapterUser = (user: Doctor): AdapterUser => {
     return {
       ...user,
       email: user.email,
       id: user.id,
       name: user.name,
-      image: user.imageUrl,
-      role: user.role,
+      image: (user?.doctor_image as Media)?.url as string,
+      role: user?.role,
       emailVerified: user?.emailVerified ? new Date(user.emailVerified) : null,
     }
   }

@@ -16,6 +16,7 @@ import { fileURLToPath } from 'url'
 
 import { Appointments } from '@/payload/collections/Appoinments'
 import { Blogs } from '@/payload/collections/Blogs'
+import { Category } from '@/payload/collections/Category'
 import { Contact } from '@/payload/collections/Contact'
 import { Departments } from '@/payload/collections/Departments'
 import { Doctors } from '@/payload/collections/Doctors'
@@ -25,6 +26,7 @@ import { Sessions } from '@/payload/collections/Sessions'
 import { Tags } from '@/payload/collections/Tags'
 import { Tours } from '@/payload/collections/Tours'
 import { Users } from '@/payload/collections/Users'
+import { Yoga } from '@/payload/collections/Yoga'
 import { COLLECTION_SLUG_PAGE } from '@/payload/collections/constants'
 import { siteSettings } from '@/payload/globals/SiteSettings'
 import Icon from '@/payload/style/icons/Icon'
@@ -42,7 +44,7 @@ const dirname = path.dirname(filename)
 
 export default buildConfig({
   admin: {
-    user: Users.slug,
+    user: Doctors.slug,
     meta: {
       titleSuffix: '- ContentQL',
       // favicon: '/images/favicon.ico',
@@ -96,7 +98,10 @@ export default buildConfig({
     Users,
     Media,
     Doctors,
+    Category,
+
     Departments,
+
     Tags,
     Blogs,
     Pages,
@@ -104,6 +109,7 @@ export default buildConfig({
     Appointments,
     Tours,
     Contact,
+    Yoga,
   ],
 
   globals: [siteSettings],

@@ -15,11 +15,11 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      {
-        source: '/admin/login',
-        destination: '/sign-in',
-        permanent: false,
-      },
+      // {
+      //   source: '/admin/login',
+      //   destination: '/sign-in',
+      //   permanent: false,
+      // },
     ]
   },
   images: {

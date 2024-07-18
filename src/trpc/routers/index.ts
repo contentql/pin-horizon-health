@@ -12,6 +12,8 @@ import { departmentRouter } from './department'
 import { doctorRouter } from './doctor'
 import { toursRouter } from './tours'
 
+import { yogaRouter } from './yoga'
+
 export const appRouter = router({
   page: pageRouter,
   blog: blogRouter,
@@ -24,6 +26,7 @@ export const appRouter = router({
   contact: contactRouter,
   department: departmentRouter,
   tour: toursRouter,
+  yoga: yogaRouter,
 })
 
 export type AppRouter = typeof appRouter

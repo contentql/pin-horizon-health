@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload/types'
 
 import { slugField } from '@/payload/fields'
+import { visibleToAdminOnly } from '@/payload/hidden'
 
 export const Departments: CollectionConfig = {
   slug: 'department',
@@ -17,7 +18,9 @@ export const Departments: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'title',
+    hidden: visibleToAdminOnly,
   },
+
   fields: [
     {
       name: 'title',

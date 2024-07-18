@@ -34,6 +34,11 @@ export const AboutServices_Block: Block = {
           label: 'Sub Title',
           type: 'text',
         },
+        {
+          name: 'service_path',
+          label: 'Service Path',
+          type: 'text',
+        },
       ],
     },
   ],

@@ -73,8 +73,8 @@ export default function DoctorDetails({
             <ListStyle2
               heading={'Contact Info'}
               iconUrl='/images/icons/schedule.svg'
-              phoneNumber={doctorDetails?.phone_number}
-              email={doctorDetails?.mail}
+              phoneNumber={doctorDetails?.phone_number as number}
+              email={doctorDetails?.email as string}
             />
             <Spacing md='66' lg='60' />
             {/* <ListStyle3

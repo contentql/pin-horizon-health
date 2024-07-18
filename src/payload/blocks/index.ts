@@ -70,6 +70,7 @@ import {
 } from './Home'
 import { HospitalHero, Hospital_Hero_Block } from './Hospital'
 import { TravelHero, Travel_Hero_Block } from './Travel'
+import { YogaPosts, YogaPosts_Block } from './Yoga'
 
 export const blocksJSX = {
   Test,
@@ -107,6 +108,7 @@ export const blocksJSX = {
   HospitalHero,
 
   TravelHero,
+  YogaPosts,
 }
 
 export type SlugType = keyof typeof blocksJSX
@@ -147,4 +149,6 @@ export const blocks = [
   Hospital_Hero_Block,
 
   Travel_Hero_Block,
+
+  YogaPosts_Block,
 ]

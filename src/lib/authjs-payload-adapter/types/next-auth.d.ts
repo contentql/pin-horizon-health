@@ -1,4 +1,4 @@
-import { User as PayloadUser } from '@payload-types'
+import { Doctor as PayloadUser } from '@payload-types'
 import { DefaultSession } from 'next-auth'
 import 'next-auth/jwt'
 

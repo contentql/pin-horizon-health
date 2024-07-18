@@ -3,6 +3,7 @@ import type { CollectionConfig } from 'payload/types'
 import { COLLECTION_SLUG_PAGE } from '@/payload/collections/constants'
 import { pathField, slugField } from '@/payload/fields'
 import { blocksField } from '@/payload/fields/blocks'
+import { visibleToAdminOnly } from '@/payload/hidden'
 
 export const Pages: CollectionConfig = {
   slug: COLLECTION_SLUG_PAGE,
@@ -16,6 +17,7 @@ export const Pages: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'path', 'updatedAt', 'createdAt'],
+    hidden: visibleToAdminOnly,
   },
   versions: {
     drafts: {
