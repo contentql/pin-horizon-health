@@ -10,7 +10,7 @@ interface PageProps {
 }
 async function page({ params }: PageProps) {
   const tourDetails = await serverClient.tour.getTourBySlug({
-    slug: 'urban-explorers-city-tour',
+    slug: params?.slug,
   })
   return <TravelToursView tourDetails={tourDetails as Tour} />
 }

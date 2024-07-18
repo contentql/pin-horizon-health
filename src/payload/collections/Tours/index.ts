@@ -104,6 +104,28 @@ export const Tours: CollectionConfig = {
             },
           ],
         },
+        {
+          label: 'Guide Details',
+          fields: [
+            {
+              name: 'guide_name',
+              label: 'Name',
+              type: 'text',
+              required: true,
+            },
+            {
+              name: 'guide_phone',
+              label: 'Phone Number',
+              type: 'number',
+              required: true,
+            },
+            {
+              name: 'guide_email',
+              label: 'Email',
+              type: 'email',
+            },
+          ],
+        },
       ],
     },
     slugField(),

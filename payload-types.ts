@@ -836,6 +836,9 @@ export interface Tour {
         id?: string | null;
       }[]
     | null;
+  guide_name: string;
+  guide_phone: number;
+  guide_email?: string | null;
   slug?: string | null;
   updatedAt: string;
   createdAt: string;
