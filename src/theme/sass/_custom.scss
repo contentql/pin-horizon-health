@@ -362,3 +362,37 @@
 .react-datepicker-wrapper {
   width: 100%;
 }
+
+.tabs-container-custom {
+  width: 100%;
+}
+
+.tabs-custom {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tab-custom {
+  padding: 5px 20px;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  color: black;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.tab-custom:last-child {
+  margin-right: 0;
+}
+
+.tab-custom.active {
+  border: none;
+  color: black;
+  font-weight: bold;
+  border-bottom: 2px solid #307bc4;
+}
+
+.tab-content-custom {
+  padding: 20px;
+}

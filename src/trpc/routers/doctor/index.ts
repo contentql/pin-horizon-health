@@ -58,7 +58,7 @@ export const doctorRouter = router({
     .query(async ({ input }) => {
       const { doctorName } = input
 
-      const doctorDetails = payload.find({
+      const doctorDetails = await payload.find({
         collection: 'doctors',
         where: {
           slug: {
@@ -66,6 +66,6 @@ export const doctorRouter = router({
           },
         },
       })
-      return (await doctorDetails).docs.at(0)
+      return doctorDetails.docs.at(0)
     }),
 })

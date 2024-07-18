@@ -10,6 +10,8 @@ import { appointmentRouter } from './appointment'
 import { contactRouter } from './contact'
 import { departmentRouter } from './department'
 import { doctorRouter } from './doctor'
+import { toursRouter } from './tours'
+
 import { yogaRouter } from './yoga'
 
 export const appRouter = router({
@@ -23,6 +25,7 @@ export const appRouter = router({
   appointment: appointmentRouter,
   contact: contactRouter,
   department: departmentRouter,
+  tour: toursRouter,
   yoga: yogaRouter,
 })
 

@@ -35,7 +35,7 @@ export default function Breadcrumbs() {
                 </li>
               ))}
             </ol>
-            <form action='#' className='cs_search_form'>
+            {/* <form action='#' className='cs_search_form'>
               <input type='text' placeholder='Search Doctors' />
               <button className='cs_search_btn'>
                 <svg
@@ -50,7 +50,7 @@ export default function Breadcrumbs() {
                   />
                 </svg>
               </button>
-            </form>
+            </form> */}
           </div>
         </div>
       </div>

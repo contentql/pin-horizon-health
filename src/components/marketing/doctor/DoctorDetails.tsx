@@ -2,6 +2,8 @@ import Spacing from '../home/Spacing'
 import { Department, Doctor, Media } from '@payload-types'
 import Image from 'next/image'
 
+import Tabs from '@/components/common/Tabs'
+
 import List from './List'
 import List2 from './List/List2'
 import ListStyle2 from './List/ListStyle2'
@@ -11,6 +13,38 @@ export default function DoctorDetails({
 }: {
   doctorDetails: Doctor
 }) {
+  const tabs = [
+    {
+      title: 'Education',
+      content: (
+        <List
+          heading={'Degrees'}
+          iconUrl='/images/icons/graduation.svg'
+          data={doctorDetails?.qualifications}
+        />
+      ),
+    },
+    {
+      title: 'Awards',
+      content: (
+        <List2
+          heading={'Awards/Achievements'}
+          iconUrl='/images/icons/award2.svg'
+          data={doctorDetails?.achievements}
+        />
+      ),
+    },
+    {
+      title: 'Experience',
+      content: (
+        <List2
+          heading={'Experiences'}
+          iconUrl='/images/icons/experience.svg'
+          data={doctorDetails?.experience}
+        />
+      ),
+    },
+  ]
   return (
     <div className='cs_doctor_details'>
       <div
@@ -67,9 +101,9 @@ export default function DoctorDetails({
                 </Link>
               ))}
             </div> */}
-            <Spacing md='200' xl='150' lg='80' />
+            <Spacing md='200' xl='150' lg='150' />
             <Spacing md='35' lg='0' />
-            <List
+            {/* <List
               heading={'Degrees'}
               iconUrl='/images/icons/graduation.svg'
               data={doctorDetails?.qualifications}
@@ -85,7 +119,8 @@ export default function DoctorDetails({
               heading={'Awards/Achievements'}
               iconUrl='/images/icons/award2.svg'
               data={doctorDetails?.achievements}
-            />
+            /> */}
+            <Tabs tabs={tabs} />
           </div>
         </div>
       </div>
