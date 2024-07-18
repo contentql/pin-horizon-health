@@ -146,111 +146,63 @@ export default function AppointmentForm({ doctorId }: { doctorId?: string }) {
               {...register('gender')}
             />
             <label className='cs_radio_label' htmlFor='female'>
-              female
+              Female
             </label>
           </div>
         </div>
         <div className='cs_height_42 cs_height_xl_25' />
       </div>
-
-      <div className='col-lg-12'>
+      <div className='col-lg-6'>
         <label className='cs_input_label cs_heading_color'>
           Reason for Visit
         </label>
-        <div className='cs_radio_group'>
-          <div className='cs_radio_wrap'>
-            <input
-              className='cs_radio_input'
-              type='radio'
-              id='routineCheckup'
-              value='routineCheckup'
-              {...register('reasonForVisit')}
-            />
-            <label className='cs_radio_label' htmlFor='routineCheckup'>
-              Routine Checkup
-            </label>
-          </div>
-          <div className='cs_radio_wrap'>
-            <input
-              className='cs_radio_input'
-              type='radio'
-              id='newPatientVisit'
-              value='newPatientVisit'
-              {...register('reasonForVisit')}
-            />
-            <label className='cs_radio_label' htmlFor='newPatientVisit'>
-              New Patient Visit
-            </label>
-          </div>
-          <div className='cs_radio_wrap'>
-            <input
-              className='cs_radio_input'
-              type='radio'
-              id='specificConcern'
-              value='specificConcern'
-              {...register('reasonForVisit')}
-            />
-            <label className='cs_radio_label' htmlFor='specificConcern'>
-              Specific Concern
-            </label>
-          </div>
+        <div style={{ position: 'relative' }}>
+          <select
+            className='cs_form_field'
+            style={{ WebkitAppearance: 'none' }}
+            {...register('reasonForVisit')}>
+            <option value='routineCheckup'>Routine Checkup</option>
+            <option value='newPatientVisit'>New Patient Visit</option>
+            <option value='specificConcern'>Specific Concern</option>
+          </select>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            height='24px'
+            viewBox='0 -960 960 960'
+            width='24px'
+            fill='#9CA3AF'
+            style={{ position: 'absolute', top: '30%', right: '5%' }}>
+            <path d='M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z' />
+          </svg>
         </div>
         {errors.reasonForVisit && (
           <p className='error'>{errors.reasonForVisit.message as string}</p>
         )}
         <div className='cs_height_42 cs_height_xl_25' />
       </div>
-      <div className='col-lg-12'>
+      <div className='col-lg-6'>
         <label className='cs_input_label cs_heading_color'>Department</label>
-        <div className='cs_radio_group'>
-          <div className='cs_radio_wrap'>
-            <input
-              className='cs_radio_input'
-              type='radio'
-              id='pediatric'
-              value='pediatric'
-              {...register('department')}
-            />
-            <label className='cs_radio_label' htmlFor='pediatric'>
-              Pediatric
-            </label>
-          </div>
-          <div className='cs_radio_wrap'>
-            <input
-              className='cs_radio_input'
-              type='radio'
-              id='obstetricsGynecology'
-              value='obstetricsGynecology'
-              {...register('department')}
-            />
-            <label className='cs_radio_label' htmlFor='obstetricsGynecology'>
+        <div style={{ position: 'relative' }}>
+          <select
+            className='cs_form_field'
+            style={{ WebkitAppearance: 'none' }}
+            {...register('department')}>
+            <option value='pediatric'>Pediatric</option>
+            <option value='obstetricsGynecology'>
               Obstetrics and Gynecology
-            </label>
-          </div>
-          <div className='cs_radio_wrap'>
-            <input
-              className='cs_radio_input'
-              type='radio'
-              id='cardiology'
-              value='cardiology'
-              {...register('department')}
-            />
-            <label className='cs_radio_label' htmlFor='cardiology'>
-              Cardiology
-            </label>
-          </div>
-          <div className='cs_radio_wrap'>
-            <input
-              className='cs_radio_input'
-              type='radio'
-              id='neurology'
-              value='neurology'
-              {...register('department')}
-            />
-            <label className='cs_radio_label' htmlFor='neurology'>
-              Neurology
-            </label>
-          </div>
+            </option>
+            <option value='cardiology'>Cardiology</option>
+            <option value='neurology'>Neurology</option>
+          </select>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            height='24px'
+            viewBox='0 -960 960 960'
+            width='24px'
+            fill='#9CA3AF'
+            style={{ position: 'absolute', top: '30%', right: '5%' }}>
+            <path d='M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z' />
+          </svg>
         </div>
         {errors.department && (
           <p className='error'>{errors.department.message as string}</p>
