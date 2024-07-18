@@ -25,6 +25,14 @@ import {
   Appointment_Banner_Block,
   Appointment_Contact_Block,
 } from './Appointment'
+import {
+  AyurvedaAbout,
+  AyurvedaAbout_Block,
+  AyurvedaHero,
+  AyurvedaHero_Block,
+  AyurvedaPosts,
+  AyurvedaPosts_Block,
+} from './Ayurveda'
 import { AllBlogs, AllBlogs_Block, BlogBanner, BlogBanner_Block } from './Blog'
 import {
   ContactBanner,
@@ -103,6 +111,9 @@ export const blocksJSX = {
   ContactBanner,
   ContactDetails,
   YogaPosts,
+  AyurvedaPosts,
+  AyurvedaHero,
+  AyurvedaAbout,
 }
 
 export type SlugType = keyof typeof blocksJSX
@@ -139,4 +150,7 @@ export const blocks = [
   ContactBanner_Block,
   ContactDetails_Block,
   YogaPosts_Block,
+  AyurvedaPosts_Block,
+  AyurvedaHero_Block,
+  AyurvedaAbout_Block,
 ]
