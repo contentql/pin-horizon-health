@@ -23,7 +23,6 @@ export default function Header({
   const [mobileToggle, setMobileToggle] = useState(false)
   const [sideNav, setSideNav] = useState(false)
   const [searchToggle, setSearchToggle] = useState(false)
-  console.log('links...................', headerData?.menuItems)
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -167,7 +166,7 @@ export default function Header({
               </div>
               <div className='cs_main_header_right'>
                 <div className='cs_toolbox'>
-                  <button
+                  {/* <button
                     className='cs_toolbox_btn cs_search_toggle_btn'
                     type='button'
                     onClick={() => setSearchToggle(!searchToggle)}>
@@ -182,7 +181,7 @@ export default function Header({
                         fill='currentColor'
                       />
                     </svg>
-                  </button>
+                  </button> */}
                   <button
                     className='cs_toolbox_btn cs_sidebar_toggle_btn'
                     type='button'

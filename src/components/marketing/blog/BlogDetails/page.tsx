@@ -69,7 +69,7 @@ export default function BlogDetails({
         <Image
           src={(blogData?.blog_image as Media)?.url || ''}
           alt={(blogData?.blog_image as Media)?.alt || 'Blog Image'}
-          className='w-100 cs_radius_20'
+          className='w-100 cs_radius_20 h-[606px]'
           // placeholder='blur'
           width={1296}
           height={606}

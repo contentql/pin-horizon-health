@@ -18,6 +18,7 @@ export interface Config {
     sessions: Session;
     appointments: Appointment;
     contact: Contact;
+    yoga: Yoga;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -128,6 +129,7 @@ export interface Media {
  */
 export interface Doctor {
   id: string;
+
   name?: string | null;
   designation?: string | null;
   description?: string | null;
@@ -297,6 +299,7 @@ export interface Page {
         | BlogBannerType
         | ContactBannerType
         | ContactDetailsType
+        | YogaPostsType
       )[]
     | null;
   slug?: string | null;
@@ -495,6 +498,8 @@ export interface BannerType {
   title?: string | null;
   sub_title?: string | null;
   image?: string | Media | null;
+  button_text?: string | null;
+  button_path?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'Banner';
@@ -552,6 +557,7 @@ export interface AboutServicesType {
     | {
         title?: string | null;
         sub_title?: string | null;
+        service_path?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -747,6 +753,18 @@ export interface ContactDetailsType {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "YogaPostsType".
+ */
+export interface YogaPostsType {
+  title: string;
+  sub_title: string;
+  image: string | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'YogaPosts';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "sessions".
  */
 export interface Session {
@@ -786,6 +804,36 @@ export interface Contact {
   phoneNumber: string;
   subject: string;
   message: string;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "yoga".
+ */
+export interface Yoga {
+  id: string;
+  title: string;
+  sub_title: string;
+  image: string | Media;
+  slug?: string | null;
+  description: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  description_html?: string | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;

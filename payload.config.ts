@@ -24,6 +24,7 @@ import { Pages } from '@/payload/collections/Pages'
 import { Sessions } from '@/payload/collections/Sessions'
 import { Tags } from '@/payload/collections/Tags'
 import { Users } from '@/payload/collections/Users'
+import { Yoga } from '@/payload/collections/Yoga'
 import { COLLECTION_SLUG_PAGE } from '@/payload/collections/constants'
 import { siteSettings } from '@/payload/globals/SiteSettings'
 import Icon from '@/payload/style/icons/Icon'
@@ -101,8 +102,8 @@ export default buildConfig({
     Pages,
     Sessions,
     Appointments,
-
     Contact,
+    Yoga,
   ],
 
   globals: [siteSettings],

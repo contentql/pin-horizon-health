@@ -1,5 +1,6 @@
 import { BannerType, Media } from '@payload-types'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Banner(data: BannerType) {
   return (
@@ -20,9 +21,28 @@ export default function Banner(data: BannerType) {
         <h2 className='cs_banner_title cs_white_color cs_fs_72'>
           {data?.title}
         </h2>
-        <p className='cs_banner_subtitle cs_heading_color cs_fs_20 cs_medium m-0'>
+        <p className='cs_banner_subtitle cs_heading_color cs_fs_20 cs_medium mb-10'>
           {data?.sub_title}
         </p>
+        <div className='cs_hero_info_col'>
+          <Link href={data?.button_path || '/'} className='cs_btn cs_style_1'>
+            <span>{data?.button_text}</span>
+            <i>
+              <Image
+                src='/images/icons/arrow_white.svg'
+                alt='Icon'
+                height={11}
+                width={16}
+              />
+              <Image
+                src='/images/icons/arrow_white.svg'
+                alt='Icon'
+                height={11}
+                width={16}
+              />
+            </i>
+          </Link>
+        </div>
       </div>
     </div>
   )

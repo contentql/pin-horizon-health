@@ -25,5 +25,15 @@ export const Banner_Block: Block = {
       type: 'upload',
       relationTo: 'media',
     },
+    {
+      name: 'button_text',
+      label: 'Button Text',
+      type: 'text',
+    },
+    {
+      name: 'button_path',
+      label: 'Button Path',
+      type: 'text',
+    },
   ],
 }

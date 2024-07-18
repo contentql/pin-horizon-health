@@ -10,6 +10,7 @@ import { appointmentRouter } from './appointment'
 import { contactRouter } from './contact'
 import { departmentRouter } from './department'
 import { doctorRouter } from './doctor'
+import { yogaRouter } from './yoga'
 
 export const appRouter = router({
   page: pageRouter,
@@ -22,6 +23,7 @@ export const appRouter = router({
   appointment: appointmentRouter,
   contact: contactRouter,
   department: departmentRouter,
+  yoga: yogaRouter,
 })
 
 export type AppRouter = typeof appRouter
