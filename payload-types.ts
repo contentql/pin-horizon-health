@@ -246,15 +246,13 @@ export interface Blog {
         value: string | Doctor;
       }[]
     | null;
-  select_blog_size?: ('1' | '2') | null;
+  tags?: {
+    relationTo: 'tags';
+    value: string | Tag;
+  } | null;
   title: string;
   slug?: string | null;
-  tags?:
-    | {
-        relationTo: 'tags';
-        value: string | Tag;
-      }[]
-    | null;
+  sub_title?: string | null;
   blog_image: string | Media;
   social_media?:
     | {
