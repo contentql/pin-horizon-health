@@ -1,15 +1,15 @@
-import { Ayurveda, Media } from '@payload-types'
+import { Blog, Media } from '@payload-types'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default function AyurvedaItem({ ayurveda }: { ayurveda: Ayurveda }) {
+export default function AyurvedaItem({ ayurveda }: { ayurveda: Blog }) {
   return (
     <div className='cs_team cs_style_1 cs_type_2 cs_radius_20 overflow-hidden text-center'>
       <div className='cs_member_img'>
-        <Link href={`/ayurveda/${ayurveda?.slug}`} className='d-block '>
+        <Link href={`/blog/${ayurveda?.slug}`} className='d-block '>
           <Image
             className='h-96 w-full object-cover'
-            src={(ayurveda?.image as Media)?.url || ''}
+            src={(ayurveda?.blog_image as Media)?.url || ''}
             alt='Ayurveda'
             height={487}
             width={487}
@@ -22,12 +22,16 @@ export default function AyurvedaItem({ ayurveda }: { ayurveda: Ayurveda }) {
       <div className='cs_team_meta cs_white_bg'>
         <div>
           <h3 className='cs_member_name cs_fs_32'>
-            <Link href={`/ayurveda/${ayurveda?.slug!}`}>{ayurveda?.title}</Link>
+            <Link href={`/blog/${ayurveda?.slug!}`}>
+              <span className='line-clamp-2'>{ayurveda?.title}</span>
+            </Link>
           </h3>
           {/* <p className='cs_member_designation cs_heading_color cs_medium'>
             {doctor?.designation}
           </p> */}
-          <p className='cs_member_description'>{ayurveda?.sub_title}</p>
+          <p className='cs_member_description'>
+            <span className='line-clamp-2'>{ayurveda?.sub_title}</span>
+          </p>
         </div>
         <div>
           {/* <div className='cs_social_links'>
