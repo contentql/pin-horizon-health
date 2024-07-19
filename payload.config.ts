@@ -108,10 +108,7 @@ export default buildConfig({
     Appointments,
     Tours,
     Contact,
-    Yoga,
     Hospitals,
-    Ayurveda,
-
   ],
 
   globals: [siteSettings],
