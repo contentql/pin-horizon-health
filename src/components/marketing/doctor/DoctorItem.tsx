@@ -10,7 +10,7 @@ export default function DoctorItem({ doctor }: { doctor: Doctor }) {
           <Image
             src={(doctor?.doctor_image as Media)?.url || ''}
             alt='Doctor'
-            height={487}
+            height={387}
             width={487}
           />
         </Link>
