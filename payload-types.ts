@@ -229,10 +229,7 @@ export interface Category {
 export interface Tag {
   id: string;
   title: string;
-  description: string;
-  tagImage: string | Media;
   slug?: string | null;
-  color?: ('blue' | 'gray' | 'red' | 'green' | 'yellow' | 'indigo' | 'purple' | 'pink') | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
