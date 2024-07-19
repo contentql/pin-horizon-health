@@ -15,7 +15,6 @@ import sharp from 'sharp'
 import { fileURLToPath } from 'url'
 
 import { Appointments } from '@/payload/collections/Appoinments'
-import { Ayurveda } from '@/payload/collections/Ayurveda'
 import { Blogs } from '@/payload/collections/Blogs'
 import { Category } from '@/payload/collections/Category'
 import { Contact } from '@/payload/collections/Contact'
@@ -27,7 +26,6 @@ import { Sessions } from '@/payload/collections/Sessions'
 import { Tags } from '@/payload/collections/Tags'
 import { Tours } from '@/payload/collections/Tours'
 import { Users } from '@/payload/collections/Users'
-import { Yoga } from '@/payload/collections/Yoga'
 import { COLLECTION_SLUG_PAGE } from '@/payload/collections/constants'
 import { siteSettings } from '@/payload/globals/SiteSettings'
 import Icon from '@/payload/style/icons/Icon'
@@ -110,8 +108,6 @@ export default buildConfig({
     Appointments,
     Tours,
     Contact,
-    Yoga,
-    Ayurveda,
   ],
 
   globals: [siteSettings],
