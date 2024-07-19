@@ -24,6 +24,39 @@ export const blogRouter = router({
     }
   }),
 
+  getAllBlogsByTag: publicProcedure
+    .input(z.object({ slug: z.string() }))
+    ?.query(async ({ input }) => {
+      try {
+        const { slug } = input
+        const { docs: tagData } = await payload.find({
+          collection: 'tags',
+          where: {
+            slug: {
+              equals: slug,
+            },
+          },
+        })
+
+        if (!tagData.length) {
+          return
+        }
+
+        const { docs: blogsData } = await payload.find({
+          collection: 'blogs',
+          where: {
+            'tags.value': {
+              contains: tagData?.at(0)?.id,
+            },
+          },
+        })
+        return blogsData
+      } catch (error: any) {
+        console.log(error)
+        throw new Error(error.message)
+      }
+    }),
+
   getBlogBySlug: publicProcedure
     .input(
       z.object({

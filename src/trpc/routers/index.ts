@@ -7,13 +7,10 @@ import { siteSettingsRouter } from '@/trpc/routers/site-settings'
 import { tagRouter } from '@/trpc/routers/tag'
 
 import { appointmentRouter } from './appointment'
-import { ayurvedaRouter } from './ayurveda'
 import { contactRouter } from './contact'
 import { departmentRouter } from './department'
 import { doctorRouter } from './doctor'
 import { toursRouter } from './tours'
-
-import { yogaRouter } from './yoga'
 
 export const appRouter = router({
   page: pageRouter,
@@ -27,8 +24,6 @@ export const appRouter = router({
   contact: contactRouter,
   department: departmentRouter,
   tour: toursRouter,
-  yoga: yogaRouter,
-  ayurveda: ayurvedaRouter,
 })
 
 export type AppRouter = typeof appRouter
