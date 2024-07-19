@@ -10,10 +10,7 @@ import {
 } from '@/lib/authjs-payload-adapter/auth/edge'
 import { revalidateUser } from '@/lib/authjs-payload-adapter/payload/actions'
 import { isAdmin, isAdminOrCurrentUser } from '@/payload/access'
-import {
-  ADMIN_AUTH_GROUP,
-  COLLECTION_SLUG_USER,
-} from '@/payload/collections/constants'
+import { COLLECTION_SLUG_USER } from '@/payload/collections/constants'
 import parseCookieString from '@/utils/parseCookieString'
 
 import { authorAccessAfterUpdate } from './hooks/authorAccessAfterUpdate'
@@ -21,7 +18,6 @@ import { authorAccessAfterUpdate } from './hooks/authorAccessAfterUpdate'
 export const Users: CollectionConfig = {
   slug: 'users',
   admin: {
-    group: ADMIN_AUTH_GROUP,
     useAsTitle: 'email',
   },
 

@@ -21,6 +21,7 @@ import { Category } from '@/payload/collections/Category'
 import { Contact } from '@/payload/collections/Contact'
 import { Departments } from '@/payload/collections/Departments'
 import { Doctors } from '@/payload/collections/Doctors'
+import { Hospitals } from '@/payload/collections/Hospital'
 import { Media } from '@/payload/collections/Media'
 import { Pages } from '@/payload/collections/Pages'
 import { Sessions } from '@/payload/collections/Sessions'
@@ -34,8 +35,7 @@ import Icon from '@/payload/style/icons/Icon'
 import Logo from '@/payload/style/icons/Logo'
 import generateBreadcrumbsUrl from '@/utils/generateBreadcrumbsUrl'
 import {
-  generateDescription,
-  generateImage,
+  generateDescription, // generateImage,
   generateTitle,
   generateURL,
 } from '@/utils/seo'
@@ -111,6 +111,7 @@ export default buildConfig({
     Tours,
     Contact,
     Yoga,
+    Hospitals,
     Ayurveda,
   ],
 
@@ -135,12 +136,12 @@ export default buildConfig({
       },
     }),
     seoPlugin({
-      collections: ['blogs'],
+      collections: ['blogs', 'doctors', 'blogs', 'hospital'],
       uploadsCollection: 'media',
       tabbedUI: true,
       generateTitle,
       generateDescription,
-      generateImage,
+      // generateImage,
       generateURL,
     }),
   ],

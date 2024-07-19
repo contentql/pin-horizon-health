@@ -11,8 +11,8 @@ import { ayurvedaRouter } from './ayurveda'
 import { contactRouter } from './contact'
 import { departmentRouter } from './department'
 import { doctorRouter } from './doctor'
+import { hospitalRouter } from './hospital'
 import { toursRouter } from './tours'
-
 import { yogaRouter } from './yoga'
 
 export const appRouter = router({
@@ -28,6 +28,7 @@ export const appRouter = router({
   department: departmentRouter,
   tour: toursRouter,
   yoga: yogaRouter,
+  hospital: hospitalRouter,
   ayurveda: ayurvedaRouter,
 })
 
