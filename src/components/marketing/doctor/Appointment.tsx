@@ -1,7 +1,8 @@
-import AppointmentForm from '../appointment/AppointmentForm'
 import SectionHeading from '../home/SectionHeading'
 import Spacing from '../home/Spacing'
 import Image from 'next/image'
+
+import CalComponent from '@/components/common/CalComponent'
 
 export default function Appointment({
   bgUrl,
@@ -28,10 +29,10 @@ export default function Appointment({
           <Image src={imgUrl} alt='Appointment' placeholder='blur' />
         </div>
         <div className='row'>
-          <div className='offset-lg-6 col-lg-6'>
+          <div className='offset-lg-6 col-lg-8'>
             <SectionHeading title={sectionTitle} titleUp={sectionTitleUp} />
             <Spacing md='57' />
-            <AppointmentForm doctorId={doctorId} />
+            <CalComponent url='jagadeeshmaripi2001' />
           </div>
         </div>
         <div className='cs_height_120' />
