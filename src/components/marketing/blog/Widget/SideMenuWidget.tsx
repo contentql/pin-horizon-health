@@ -1,3 +1,4 @@
+import { Blog } from '@payload-types'
 import Link from 'next/link'
 
 export default function SideMenuWidget({
@@ -5,18 +6,17 @@ export default function SideMenuWidget({
   data,
 }: {
   title: string
-  data: {
-    title: string
-    url: string
-  }[]
+  data: Blog[]
 }) {
   return (
     <>
       <h2 className='cs_sidebar_widget_title'>{title}</h2>
       <ul>
-        {data?.map((item, index) => (
+        {data?.slice(0, 10)?.map((item, index) => (
           <li key={index}>
-            <Link href={item.url}>{item.title}</Link>
+            <Link href={`/blog/${item?.slug}`}>
+              <span className='line-clamp-2'>{item?.title}</span>
+            </Link>
           </li>
         ))}
       </ul>

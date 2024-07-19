@@ -5,23 +5,13 @@ import Breadcrumb from '../Breadcrumb'
 import Post from '../Post'
 import RichText from '../RichText'
 import Sidebar from '../Sidebar'
-import AuthorWidget from '../Widget/AuthorWidget'
-import CommentsWidget from '../Widget/CommentsWidget'
-import ReplyWidget from '../Widget/ReplyWidget'
 import { Icon } from '@iconify/react'
-import { Blog, Media, User } from '@payload-types'
+import { Blog, Media, Tag, User } from '@payload-types'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import Section from '@/components/common/Section'
-
-const tags = [
-  { tag: 'Emergency', href: '/blog/blog-details' },
-  { tag: 'Pediatric', href: '/blog/blog-details' },
-  { tag: 'Cardiology', href: '/blog/blog-details' },
-  { tag: 'Psychiatry', href: '/blog/blog-details' },
-  { tag: 'Others', href: '/blog/blog-details' },
-]
+import { trpc } from '@/trpc/client'
 
 export default function BlogDetails({
   blogData,
@@ -30,6 +20,9 @@ export default function BlogDetails({
   blogData: Blog
   blogsData: Blog[]
 }) {
+  const { data: blogsByTag } = trpc.blog.getAllBlogsByTag.useQuery({
+    slug: (blogData?.tags?.value as Tag)?.title,
+  })
   const date = new Date(blogData?.createdAt)
   let formattedDate = `${date.getFullYear()}, ${date.toLocaleString('default', { month: 'long' })} ${date.getDate()}`
   return (
@@ -40,13 +33,13 @@ export default function BlogDetails({
       <div className='container'>
         <div className='cs_blog_details_info'>
           <div className='cs_blog_details_info_left'>
-            <div className='cs_blog_details_tags'>
+            {/* <div className='cs_blog_details_tags'>
               {tags.map((item, index) => (
                 <Link key={index} href={item?.href}>
                   {item?.tag}
                 </Link>
               ))}
-            </div>
+            </div> */}
             <div className='cs_blog_details_date'>
               {formattedDate} |{' '}
               {blogData?.author
@@ -55,7 +48,7 @@ export default function BlogDetails({
             </div>
           </div>
           <div className='cs_social_links_wrap'>
-            <h2>Share:</h2>
+            {blogData?.social_media?.length! > 0 && <h2>Share:</h2>}
             <div className='cs_social_links'>
               {blogData?.social_media?.map((social_icon, index) => (
                 <Link key={index} href={social_icon?.url}>
@@ -84,8 +77,8 @@ export default function BlogDetails({
                 blockIndex={0}
               />
             </div>
-            <Spacing md='85' />
-            <AuthorWidget
+            {/* <Spacing md='85' /> */}
+            {/* <AuthorWidget
               imgUrl='/images/blog/author.png'
               name='Author Bio'
               description="John Smith is a freelance writer and content strategist with a passion for helping businesses tell their stories. With over 10 years of experience in the industry, John has worked with a wide range of clients, from startups to Fortune 500 companies. He holds a Bachelor's degree in English from the University of California, Los Angeles (UCLA), and is an avid reader and traveler in his free time. Follow him on Twitter @johnsmithwriter for the latest updates on his work."
@@ -93,14 +86,14 @@ export default function BlogDetails({
             <Spacing md='110' />
             <CommentsWidget title='Comments' />
             <Spacing md='92' />
-            <ReplyWidget title='Leave a Reply' />
+            <ReplyWidget title='Leave a Reply' /> */}
           </div>
           <div className='col-lg-4'>
-            <Sidebar />
+            <Sidebar blogsByTag={blogsByTag as Blog[]} />
           </div>
         </div>
         <Spacing md='135' lg='100' />
-        <h2 className='cs_fs_40 cs_medium mb-0'>Related Articles</h2>
+        <h2 className='cs_fs_40 cs_medium mb-0'>Latest Articles</h2>
         <Spacing md='57' />
         <div className='row cs_gap_y_40'>
           {blogsData?.slice(0, 3)?.map((blogData, index) => (
