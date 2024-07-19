@@ -1,8 +1,11 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
+import { parsePhoneNumber } from 'libphonenumber-js'
 import Image from 'next/image'
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
 import { toast } from 'sonner'
 
 import {
@@ -13,8 +16,10 @@ import { trpc } from '@/trpc/client'
 
 export default function ContactForm() {
   const {
+    control,
     register,
     handleSubmit,
+    trigger,
     formState: { errors },
   } = useForm<TContactForm>({
     resolver: zodResolver(ContactFormValidator),
@@ -28,8 +33,10 @@ export default function ContactForm() {
     })
 
   const onSubmit = (data: TContactForm) => {
+    data.phoneNumber = parsePhoneNumber('+' + data.phoneNumber)
+      .formatInternational()
+      .replace(/[\s+]/g, '')
     contactFormData(data)
-    console.log(data)
   }
 
   return (
@@ -75,14 +82,48 @@ export default function ContactForm() {
             <label className='cs_input_label cs_heading_color'>
               Phone Number
             </label>
-            <input
-              type='text'
-              className='cs_form_field'
-              placeholder='Your Phone Number'
-              {...register('phoneNumber')}
+            <Controller
+              name='phoneNumber'
+              control={control}
+              render={({ field }) => (
+                <PhoneInput
+                  country='us'
+                  prefix='+'
+                  placeholder='Your Phone Number'
+                  value={field.value}
+                  onChange={value => {
+                    field.onChange(value)
+                  }}
+                  onBlur={() => {
+                    trigger('phoneNumber')
+                  }}
+                  inputStyle={{
+                    display: 'block',
+                    width: '100%',
+                    borderRadius: '15px',
+                    transition: 'all 0.3s ease',
+                    border: '1px solid rgba(48, 123, 196, 0.5)',
+                    padding: '26px 30px',
+                    paddingLeft: '120px',
+                    height: '56px',
+                    fontSize: 'medium',
+                    color: 'inherit',
+                    outline: 'none',
+                  }}
+                  buttonStyle={{
+                    borderRadius: '15px',
+                    transition: 'all 0.3s ease',
+                    border: '1px solid rgba(48, 123, 196, 0.5)',
+                    padding: '26px 30px',
+                    background: 'transparent',
+                    fontSize: 'medium',
+                  }}
+                  inputClass='cs_form_field'
+                />
+              )}
             />
-            {errors.phoneNumber && (
-              <p className='error'>{errors.phoneNumber?.message}</p>
+            {errors?.phoneNumber && (
+              <p className='error'>{errors?.phoneNumber?.message}</p>
             )}
             <div className='cs_height_42 cs_height_xl_25' />
           </div>
