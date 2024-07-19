@@ -33,13 +33,11 @@ import { siteSettings } from '@/payload/globals/SiteSettings'
 import Icon from '@/payload/style/icons/Icon'
 import Logo from '@/payload/style/icons/Logo'
 import generateBreadcrumbsUrl from '@/utils/generateBreadcrumbsUrl'
-
-// import {
-//   generateDescription,
-//   generateImage,
-//   generateTitle,
-//   generateURL,
-// } from '@/utils/seo'
+import {
+  generateDescription, // generateImage,
+  generateTitle,
+  generateURL,
+} from '@/utils/seo'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -136,13 +134,13 @@ export default buildConfig({
       },
     }),
     seoPlugin({
-      collections: ['blogs', 'doctors', 'blogs'],
+      collections: ['blogs', 'doctors', 'blogs', 'hospital'],
       uploadsCollection: 'media',
       tabbedUI: true,
-      // generateTitle,
-      // generateDescription,
+      generateTitle,
+      generateDescription,
       // generateImage,
-      // generateURL,
+      generateURL,
     }),
   ],
 
