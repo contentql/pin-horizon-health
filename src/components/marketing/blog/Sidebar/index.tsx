@@ -1,63 +1,22 @@
 import NewsletterStyle5 from '../Widget/NewsletterStyle5'
 import RecentPostWidget from '../Widget/RecentPostWidget'
 import SideMenuWidget from '../Widget/SideMenuWidget'
+import { Blog } from '@payload-types'
 
-const categoryData = [
-  {
-    title: 'Health Tips and Tricks',
-    url: '/',
-  },
-  {
-    title: 'Trends and Analysis',
-    url: '/',
-  },
-  {
-    title: 'Time Management',
-    url: '/',
-  },
-]
-const recentPostData = [
-  {
-    title: `A Parent's Guide to Childhood Vaccinations: What You Need to Know`,
-    author: 'James Brown',
-    date: 'August 10, 2023',
-    href: '/blog/blog-details',
-  },
-  {
-    title: `Preventing Heart Disease: Tips for a Heart-Healthy Lifestyle`,
-    author: 'James Brown',
-    date: 'August 09, 2022',
-    href: '/blog/blog-details',
-  },
-  {
-    title: `Managing Chronic Pain: Treatment Options and Strategies`,
-    author: 'James Brown',
-    date: 'August 08, 2022',
-    href: '/blog/blog-details',
-  },
-  {
-    title: `The Role of Physical Therapy in Injury Recovery and Prevention`,
-    author: 'James Brown',
-    date: 'August 07, 2022',
-    href: '/blog/blog-details',
-  },
-  {
-    title: `Allergies and Asthma: Causes, Symptoms, and Treatment Options`,
-    author: 'James Brown',
-    date: 'August 10, 2023',
-    href: '/blog/blog-details',
-  },
-]
+import { trpc } from '@/trpc/client'
 
-export default function Sidebar() {
+export default function Sidebar({ blogsByTag }: { blogsByTag: Blog[] }) {
+  const { data: latestBlogs } = trpc.blog.getAllBlogs.useQuery()
   return (
     <div className='cs_sidebar'>
       <div className='cs_sidebar_item widget_categories'>
-        <SideMenuWidget title='Popular Categories' data={categoryData} />
+        <SideMenuWidget title='Latest Blogs' data={latestBlogs as Blog[]} />
       </div>
-      <div className='cs_sidebar_item'>
-        <RecentPostWidget title='Popular Articles' data={recentPostData} />
-      </div>
+      {blogsByTag?.length > 0 && (
+        <div className='cs_sidebar_item'>
+          <RecentPostWidget title='Related Articles' data={blogsByTag} />
+        </div>
+      )}
       <div className='cs_sidebar_item widget_categories'>
         <NewsletterStyle5 title='Newsletter Sign Up Form' />
       </div>

@@ -12,6 +12,7 @@ export default function Post({ blogData }: { blogData: Blog }) {
         href={`/blog/${blogData?.slug}`}
         className='cs_post_thumb cs_view_mouse'>
         <Image
+          className='h-64 w-full object-cover'
           src={(blogData?.blog_image as Media)?.url || ''}
           alt={(blogData?.blog_image as Media)?.alt || ''}
           height={309}
@@ -37,7 +38,9 @@ export default function Post({ blogData }: { blogData: Blog }) {
             )}
           </div>
           <h2 className='cs_post_title cs_semibold cs_fs_32'>
-            <Link href={`/blog/${blogData?.slug}`}>{blogData?.title}</Link>
+            <Link href={`/blog/${blogData?.slug}`}>
+              <span className='line-clamp-2'>{blogData?.title}</span>
+            </Link>
           </h2>
         </div>
         {/* {btnText && ( */}

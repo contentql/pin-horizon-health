@@ -1,5 +1,4 @@
 import configPromise from '@payload-config'
-import { Tag } from '@payload-types'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import { z } from 'zod'
 
@@ -42,29 +41,6 @@ export const tagRouter = router({
       }
     }),
 
-  getAllTags: publicProcedure.query(async () => {
-    try {
-      const { docs: allTags } = await payload.find({
-        collection: 'tags',
-      })
-
-      const { docs: allBlogs } = await payload.find({
-        collection: 'blogs',
-      })
-
-      return allTags.map(tag => ({
-        ...tag,
-        count: allBlogs.filter(blog => {
-          const blogTags = blog.tags
-
-          return blogTags?.find(blogTag => (blogTag.value as Tag).id === tag.id)
-        }).length,
-      }))
-    } catch (error: any) {
-      console.log(error)
-      throw new Error(error.message)
-    }
-  }),
   getTagBySlug: publicProcedure
     .input(z.object({ slug: z.string() }))
     .query(async ({ input }) => {

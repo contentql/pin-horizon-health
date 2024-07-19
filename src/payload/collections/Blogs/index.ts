@@ -60,29 +60,12 @@ export const Blogs: CollectionConfig = {
       },
     },
     {
-      name: 'select_blog_size',
-      type: 'select',
-      admin: {
-        isClearable: true,
-        isSortable: true, // use mouse to drag and drop different values, and sort them according to your choice
-      },
-      defaultValue: '1',
-      options: [
-        {
-          label: 'One',
-          value: '1',
-        },
-        {
-          label: 'Two',
-          value: '2',
-        },
-        // {
-        //   label: 'Three',
-        //   value: '3',
-        // },
-      ],
+      name: 'tags',
+      label: 'Tags',
+      type: 'relationship',
+      relationTo: ['tags'],
+      hasMany: false,
     },
-
     {
       name: 'title',
       label: 'Title',
@@ -108,19 +91,13 @@ export const Blogs: CollectionConfig = {
     //     },
     //   },
     // },
+
     {
-      name: 'tags',
-      label: 'Tags',
-      type: 'relationship',
-      relationTo: ['tags'],
-      hasMany: true,
+      name: 'sub_title',
+      label: 'Sub Title',
+      type: 'text',
+      // required: true,
     },
-    // {
-    //   name: 'sub_title',
-    //   label: 'Sub Title',
-    //   type: 'text',
-    //   required: true,
-    // },
     {
       name: 'blog_image',
       label: 'Blog Image',
