@@ -1,5 +1,4 @@
-import { AppointmentContactType, Media } from '@payload-types'
-import Image from 'next/image'
+import { AppointmentContactType } from '@payload-types'
 
 import CalComponent from '@/components/common/CalComponent'
 
@@ -11,12 +10,12 @@ export default function AppointmentWithContactInfoSection({
   return (
     <div className='container'>
       <div className='row'>
-        <div className='col-lg-8'>
-          <h2 className='cs_fs_40 cs_medium mb-0'>Appoinment</h2>
+        <div className='col-lg-12'>
+          <h2 className='cs_fs_40 cs_medium mb-0'>Book An Appoinment</h2>
           <div className='cs_height_42 cs_height_xl_25' />
           <CalComponent url='team/medical-horizon' />
         </div>
-        <div className='col-lg-3 offset-lg-1'>
+        {/* <div className='col-lg-3 offset-lg-1'>
           <div className='cs_height_lg_100' />
           <h2 className='cs_fs_40 cs_medium mb-0'>{contactInfo?.title}</h2>
           <div className='cs_height_60 cs_height_xl_40' />
@@ -49,7 +48,7 @@ export default function AppointmentWithContactInfoSection({
               <p className='cs_heading_color mb-0'>{contactInfo?.location}</p>
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
     </div>
   )

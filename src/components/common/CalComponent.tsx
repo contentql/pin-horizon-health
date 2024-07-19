@@ -5,6 +5,16 @@ import { useEffect } from 'react'
 const CalComponent = ({ url }: { url: string }) => {
   useEffect(() => {
     const script = document.createElement('script')
+    const mainElement = document.querySelector('cal-inline')
+    const main = mainElement?.querySelector('body')
+    const ele = main?.querySelector('main')
+
+    console.log('main ele', { mainElement, main, ele })
+    if (ele) {
+      ele.classList.remove('max-w-3xl')
+      ele.classList.add('max-w-7xl')
+    }
+
     script.type = 'text/javascript'
     script.innerHTML = `
       (function (C, A, L) {
@@ -50,12 +60,12 @@ const CalComponent = ({ url }: { url: string }) => {
     return () => {
       document.body.removeChild(script)
     }
-  }, [])
+  }, [url])
 
   return (
     <div
       id='my-cal-inline'
-      className=' flex items-center justify-center overflow-hidden'
+      className=' flex w-full items-center justify-center overflow-hidden'
     />
   )
 }

@@ -21,6 +21,7 @@ export default function DoctorBanner2({
           {parse(subTitle)}
         </p>
       </div>
+      <div className='cs_height_120' />
     </div>
   )
 }
