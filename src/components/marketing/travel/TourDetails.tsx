@@ -18,10 +18,10 @@ const TourDetails = ({ tourDetails }: { tourDetails: Tour }) => {
   }
   return (
     <div className='container mt-20'>
-      <div className='flex justify-between'>
-        <div className='w-[60%] space-y-8 divide-y-2'>
+      <div className='flex flex-col justify-between sm:w-full md:flex-row'>
+        <div className='space-y-8 divide-y-2'>
           <div>
-            <h2 className='line-clamp-1 text-4xl font-bold text-black'>
+            <h2 className='text-4xl font-bold text-black'>
               {tourDetails?.title}
             </h2>
             <div className='mt-6 flex gap-10'>
