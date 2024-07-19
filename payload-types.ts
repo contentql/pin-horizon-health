@@ -21,6 +21,7 @@ export interface Config {
     tours: Tour;
     contact: Contact;
     yoga: Yoga;
+    hospital: Hospital;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -182,6 +183,11 @@ export interface Doctor {
     relationTo: 'department';
     value: string | Department;
   } | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    image?: string | Media | null;
+  };
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -944,6 +950,48 @@ export interface Yoga {
     [k: string]: unknown;
   };
   description_html?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hospital".
+ */
+export interface Hospital {
+  id: string;
+  title: string;
+  description?: string | null;
+  gallery?:
+    | {
+        image?: string | Media | null;
+        id?: string | null;
+      }[]
+    | null;
+  country: string;
+  location?: string | null;
+  services?:
+    | {
+        service?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  receptionistName: string;
+  phone: number;
+  email?: string | null;
+  highlights?:
+    | {
+        highlight?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  achievements?:
+    | {
+        achievement?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
