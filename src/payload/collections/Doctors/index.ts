@@ -1,4 +1,4 @@
-import { COLLECTION_SLUG_USER } from '../constants'
+import { ADMIN_AUTH_GROUP, COLLECTION_SLUG_USER } from '../constants'
 import type { CollectionConfig } from 'payload/types'
 
 import {
@@ -24,6 +24,7 @@ export const Doctors: CollectionConfig = {
     drafts: true,
   },
   admin: {
+    group: ADMIN_AUTH_GROUP,
     useAsTitle: 'name',
   },
 

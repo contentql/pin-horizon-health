@@ -47,14 +47,17 @@ export const generateDescriptionPrompt: GenerateDescription = (data: any) => {
 }
 
 export const generateImage: GenerateImage = (data: any) => {
+  console.log('Image', data?.doc, 'ENDDDDDDDDDDDD')
   const image =
-    typeof data?.doc?.img?.value === 'string' ? data?.doc?.img?.value : ''
+    typeof data?.doc?.doctor_image?.value === 'string'
+      ? data?.doc?.doctor_image?.value
+      : ''
 
   return image
 }
 
 export const generateURL: GenerateURL = (data: any) => {
-  const url = `${env.PAYLOAD_URL}/${data?.locale ? data?.locale + '/' : ''}${data?.collectionSlug || data?.docConfig?.slug || ''}/${data?.id || ''}`
+  const url = `${env.PAYLOAD_URL}/${data?.locale ? data?.locale + '/' : ''}${data?.collectionSlug || data?.docConfig?.slug || ''}/${data?.initialData?.slug || ''}`
 
   return url || ''
 }
