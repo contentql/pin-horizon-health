@@ -23,7 +23,7 @@ export default async function Layout({
       {/* Navbar */}
       <Header headerData={initData?.header!} variant='cs_heading_color' />
       <div className='flex-grow'>{children}</div>
-      <Footer />
+      <Footer footerData={initData?.footer!} />
       {/* Footer */}
     </div>
   )

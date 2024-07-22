@@ -48,13 +48,17 @@ export default function Header({
             <div className='cs_main_header_in'>
               <div className='cs_main_header_left'>
                 <Link className='cs_site_branding' href='/'>
-                  <Image
-                    src={(headerData?.logo_image as Media)?.url || ''}
-                    alt='Logo'
-                    height={28}
-                    width={173}
-                  />
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <Image
+                      src={(headerData?.logo_image as Media)?.url || ''}
+                      alt='Logo'
+                      height={28}
+                      width={50}
+                    />
+                    <span style={{ marginLeft: '5px' }}>Horizon Health</span>
+                  </div>
                 </Link>
+
                 <nav className='cs_nav'>
                   <ul
                     className={`${
