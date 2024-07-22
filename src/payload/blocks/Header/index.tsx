@@ -12,6 +12,12 @@ import SocialWidget from '@/components/marketing/home/Widget/SocialWidget'
 
 import DropDown from './DropDown'
 
+const listOfIcons = {
+  '1': '/images/contact/icon_1.svg',
+  '2': '/images/contact/icon_2.svg',
+  '3': '/images/contact/icon_3.svg',
+}
+
 export default function Header({
   headerData,
   variant,
@@ -55,7 +61,9 @@ export default function Header({
                       height={28}
                       width={50}
                     />
-                    <span style={{ marginLeft: '5px' }}>Horizon Health</span>
+                    <span style={{ marginLeft: '5px' }}>
+                      {headerData?.app_name}
+                    </span>
                   </div>
                 </Link>
 
@@ -234,43 +242,41 @@ export default function Header({
             />
           </button>
           <div className='cs_logo_box'>
-            <Image
-              src={(headerData?.logo_image as Media)?.url || ''}
-              alt='Logo'
-              height={28}
-              width={173}
-            />
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <Image
+                src={(headerData?.logo_image as Media)?.url || ''}
+                alt='Logo'
+                height={28}
+                width={50}
+              />
+              <span className='text-[#274760]' style={{ marginLeft: '5px' }}>
+                {headerData?.app_name}
+              </span>
+            </div>
             <div className='cs_height_15' />
             <h3 className='cs_fs_24 cs_semibold mb-0'>
-              Your Partner in Health and Wellness
+              {headerData?.app_description}
             </h3>
           </div>
           <Spacing md='35' lg='35' xl='35' />
           <hr />
           <Spacing md='35' lg='50' xl='35' />
-          <IconBoxStyle11
-            title='Phone'
-            subTitle='123-456-7890'
-            iconSrc='/images/contact/icon_1.svg'
-          />
-          <Spacing md='30' lg='30' xl='30' />
-          <IconBoxStyle11
-            title='Email'
-            subTitle='horizonhealth09@gmail.com'
-            iconSrc='/images/contact/icon_2.svg'
-          />
-          <Spacing md='30' lg='30' xl='30' />
-          <IconBoxStyle11
-            title='Location'
-            subTitle='123 Anywhere St., Any City, 12345'
-            iconSrc='/images/contact/icon_3.svg'
-          />
+          {headerData?.personal_details?.map((item, index) => (
+            <div key={index}>
+              <IconBoxStyle11
+                title={item?.title}
+                subTitle={item?.sub_title}
+                iconSrc={listOfIcons[item?.icon]}
+              />
+              <Spacing md='30' lg='30' xl='30' />
+            </div>
+          ))}
           <Spacing md='60' lg='60' xl='60' />
           <Newsletter title='' subTitle='' />
           <Spacing md='70' lg='50' xl='50' />
           <hr />
           <Spacing md='70' lg='50' xl='50' />
-          <SocialWidget />
+          <SocialWidget socialMedia={headerData?.social_media} />
         </div>
       </div>
       <div className={`cs_header_search ${searchToggle ? 'active' : ''}`}>

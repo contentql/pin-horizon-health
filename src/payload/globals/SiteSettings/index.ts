@@ -63,7 +63,64 @@ export const siteSettings: GlobalConfig = {
           name: 'header',
           fields: [
             { type: 'upload', name: 'logo_image', relationTo: 'media' },
+            { type: 'text', name: 'app_name' },
             menuItemsField('menuItems'),
+            { name: 'app_description', label: 'Description', type: 'text' },
+            {
+              type: 'array',
+              name: 'personal_details',
+              label: 'Personal Details',
+              fields: [
+                {
+                  name: 'icon',
+                  label: 'Icon',
+                  type: 'select',
+                  required: true,
+                  options: [
+                    { label: 'Phone', value: '1' },
+                    { label: 'Mail', value: '2' },
+                    { label: 'Location', value: '3' },
+                  ],
+                },
+                {
+                  name: 'title',
+                  label: 'Title',
+                  type: 'text',
+                  required: true,
+                },
+                {
+                  name: 'sub_title',
+                  required: true,
+                  label: 'Sub Title',
+                  type: 'text',
+                },
+              ],
+            },
+            {
+              name: 'social_media',
+              type: 'array',
+              fields: [
+                {
+                  name: 'icon',
+                  type: 'select',
+                  label: 'Icon',
+                  required: true,
+                  options: [
+                    { label: 'Facebook', value: 'fa-brands:facebook-f' },
+                    { label: 'YouTube', value: 'fa-brands:youtube' },
+                    { label: 'Twitter', value: 'fa-brands:twitter' },
+                    { label: 'Linkedin', value: 'fa-brands:linkedin-in' },
+                    { label: 'instagram', value: 'fa-brands:instagram' },
+                  ],
+                },
+                {
+                  name: 'social_media_url',
+                  label: 'Social Media URL',
+                  type: 'text',
+                  required: true,
+                },
+              ],
+            },
           ],
         },
         {
