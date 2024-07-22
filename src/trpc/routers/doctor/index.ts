@@ -47,6 +47,9 @@ export const doctorRouter = router({
               equals: department?.docs?.at(0)?.id,
             },
           }),
+          role: {
+            not_equals: 'admin',
+          },
         },
       })
 
