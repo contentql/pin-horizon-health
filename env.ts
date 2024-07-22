@@ -34,6 +34,8 @@ export const env = createEnv({
     AUTH_GITHUB_SECRET: z.string(),
     OPENAPI_KEY: z.string(),
     SUBSCRIPTION_PLAN: z.string(),
+    TWILIO_ACCOUNT_SID: z.string(),
+    TWILIO_AUTH_TOKEN: z.string(),
   },
   client: {
     NEXT_PUBLIC_IS_LIVE: z.boolean().default(false),
@@ -69,5 +71,7 @@ export const env = createEnv({
     AUTH_GITHUB_SECRET: process.env.AUTH_GITHUB_SECRET,
     OPENAPI_KEY: process.env.OPENAPI_KEY,
     SUBSCRIPTION_PLAN: process.env.SUBSCRIPTION_PLAN,
+    TWILIO_ACCOUNT_SID: process.env.TWILIO_ACCOUNT_SID,
+    TWILIO_AUTH_TOKEN: process.env.TWILIO_AUTH_TOKEN,
   },
 })
