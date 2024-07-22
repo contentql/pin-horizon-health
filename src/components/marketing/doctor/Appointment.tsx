@@ -9,12 +9,14 @@ export default function Appointment({
   sectionTitle,
   sectionTitleUp,
   doctorId,
+  doctorCal,
 }: {
   bgUrl: string
   imgUrl: any
   sectionTitle: string
   sectionTitleUp: string
   doctorId?: string
+  doctorCal: string
 }) {
   return (
     <section
@@ -32,7 +34,7 @@ export default function Appointment({
           <div className='col-lg-12 '>
             <SectionHeading title={sectionTitle} titleUp={sectionTitleUp} />
             <Spacing md='57' />
-            <CalComponent url='akhil' />
+            <CalComponent url={doctorCal} />
           </div>
         </div>
         <div className='cs_height_120' />

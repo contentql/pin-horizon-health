@@ -25,6 +25,7 @@ const DoctorDetailsView = ({ doctorDetails }: { doctorDetails: Doctor }) => {
           sectionTitle='Appointment'
           sectionTitleUp='BOOK AN'
           doctorId={doctorDetails?.id}
+          doctorCal={doctorDetails?.cal_user as string}
         />
       </Section>
       <Section>

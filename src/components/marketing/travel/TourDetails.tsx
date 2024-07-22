@@ -27,22 +27,22 @@ const TourDetails = ({ tourDetails }: { tourDetails: Tour }) => {
             <div className='mt-6 flex gap-10'>
               <div className='text-md inline-flex items-center gap-x-2'>
                 <MdOutlineStar color='#FFC300' size={24} />
-                <p className='text-lg font-bold text-black'>3.5</p>
+                <div className='text-lg font-bold text-black'>3.5</div>
               </div>
               <div className='text-md inline-flex items-center gap-x-2'>
                 <IoLocationOutline color='black' size={24} />
-                <p className='text-lg font-bold text-black'>
+                <div className='text-lg font-bold text-black'>
                   {tourDetails?.location}
-                </p>
+                </div>
               </div>
               <div className='text-md inline-flex items-center gap-x-2'>
                 <GoPeople color='black' size={24} />
-                <p className=''>
+                <div className=''>
                   Tour guide by
                   <span className='pl-1 text-lg font-bold text-black'>
                     {tourDetails?.guide_name}
                   </span>
-                </p>
+                </div>
               </div>
             </div>
           </div>
@@ -128,7 +128,9 @@ const TourDetails = ({ tourDetails }: { tourDetails: Tour }) => {
         <div>
           <div className='w-full rounded-lg bg-white  p-4 shadow-md dark:bg-gray-800 sm:p-6 md:p-8 lg:w-[400px]'>
             <form className='space-y-6' action='#'>
-              <h5 className='text-xl font-medium text-gray-900 '>$850/ tour</h5>
+              <h5 className='text-xl font-medium text-gray-900 '>
+                {tourDetails?.price}/ tour
+              </h5>
               <div>
                 <input
                   type='text'

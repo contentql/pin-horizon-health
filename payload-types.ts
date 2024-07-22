@@ -182,6 +182,7 @@ export interface Doctor {
     relationTo: 'department';
     value: string | Department;
   } | null;
+  cal_user?: string | null;
   meta?: {
     title?: string | null;
     description?: string | null;
@@ -781,6 +782,7 @@ export interface ContactDetailsType {
         id?: string | null;
       }[]
     | null;
+  location?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'ContactDetails';
@@ -882,14 +884,28 @@ export interface Session {
  */
 export interface Appointment {
   id: string;
-  name: string;
-  phoneNumber: string;
-  gender?: ('male' | 'female') | null;
-  medicalRecordNumber: string;
-  preferredDateAndTime?: string | null;
-  reason?: ('routineCheckup' | 'newPatientVisit' | 'specificConcern' | 'other') | null;
-  department?: ('pediatric' | 'obstetricsGynecology' | 'cardiology' | 'neurology') | null;
-  doctor?: (string | null) | Doctor;
+  title?: string | null;
+  attendee_name?: string | null;
+  attendee_email?: string | null;
+  description?: string | null;
+  additional_notes?: string | null;
+  start_time?: string | null;
+  end_time?: string | null;
+  metadata?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  doctor?: {
+    relationTo: 'doctors';
+    value: string | Doctor;
+  } | null;
+  booking_status?: string | null;
+  uid?: string | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -1057,10 +1073,7 @@ export interface SiteSetting {
   appDescription?: string | null;
   header?: {
     logo_image?: string | Media | null;
-    primary_button_text?: string | null;
-    primary_button_path?: string | null;
-    secondary_button_text?: string | null;
-    secondary_button_path?: string | null;
+    app_name?: string | null;
     menuItems?:
       | {
           page?: {
@@ -3764,6 +3777,27 @@ export interface SiteSetting {
                 id?: string | null;
               }[]
             | null;
+          id?: string | null;
+        }[]
+      | null;
+    app_description?: string | null;
+    personal_details?:
+      | {
+          icon: '1' | '2' | '3';
+          title: string;
+          sub_title: string;
+          id?: string | null;
+        }[]
+      | null;
+    social_media?:
+      | {
+          icon:
+            | 'fa-brands:facebook-f'
+            | 'fa-brands:youtube'
+            | 'fa-brands:twitter'
+            | 'fa-brands:linkedin-in'
+            | 'fa-brands:instagram';
+          social_media_url: string;
           id?: string | null;
         }[]
       | null;
@@ -3771,7 +3805,6 @@ export interface SiteSetting {
   footer?: {
     logo_image?: string | Media | null;
     logo?: string | null;
-    copyright?: string | null;
     menuItems?:
       | {
           page?: {
@@ -6478,6 +6511,28 @@ export interface SiteSetting {
           id?: string | null;
         }[]
       | null;
+    personal_information?:
+      | {
+          icon: 'ep:location' | 'fluent:call-24-regular' | 'bi:envelope';
+          title: string;
+          id?: string | null;
+        }[]
+      | null;
+    title?: string | null;
+    sub_title?: string | null;
+    social_media?:
+      | {
+          icon:
+            | 'fa-brands:facebook-f'
+            | 'fa-brands:youtube'
+            | 'fa-brands:twitter'
+            | 'fa-brands:linkedin-in'
+            | 'fa-brands:instagram';
+          social_media_url: string;
+          id?: string | null;
+        }[]
+      | null;
+    copyright?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;

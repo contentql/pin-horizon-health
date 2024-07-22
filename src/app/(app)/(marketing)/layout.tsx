@@ -27,7 +27,7 @@ export default async function Layout({
       <div>
         <PopupCalComponent />
       </div>
-      <Footer />
+      <Footer footerData={initData?.footer!} />
       {/* Footer */}
     </div>
   )
