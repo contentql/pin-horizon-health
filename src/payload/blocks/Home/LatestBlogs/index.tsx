@@ -9,7 +9,13 @@ import { trpc } from '@/trpc/client'
 export default function LatestBlogs(data: LatestBlogsType) {
   const { data: blogsData } = trpc.blog.getAllBlogs.useQuery()
   return (
-    <Section topMd={190} topLg={145} topXl={105}>
+    <Section
+      topMd={190}
+      topLg={145}
+      topXl={105}
+      bottomMd={190}
+      bottomLg={145}
+      bottomXl={105}>
       <div className='container'>
         <SectionHeading title={data?.sub_title} titleUp={data?.title} center />
         <Spacing md='72' lg='50' />
