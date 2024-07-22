@@ -39,14 +39,16 @@ export default function Hero(data: HeroType) {
                   <Image
                     src='/images/icons/arrow_white.svg'
                     alt='Icon'
-                    height={11}
-                    width={16}
+                    height={0}
+                    style={{ width: '120px', height: 'auto' }}
+                    width={0}
                   />
                   <Image
                     src='/images/icons/arrow_white.svg'
                     alt='Icon'
-                    height={11}
-                    width={16}
+                    height={0}
+                    style={{ width: '16px', height: 'auto' }}
+                    width={0}
                   />
                 </i>
               </Link>

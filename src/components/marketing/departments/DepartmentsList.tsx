@@ -18,8 +18,9 @@ export default function DepartmentsList({
                 <Image
                   src='/images/departments/icon_1.svg'
                   alt='Icon'
-                  height={70}
-                  width={66}
+                  height={0}
+                  width={0}
+                  style={{ width: '66px', height: 'auto' }}
                 />
               </div>
               <h2 className='cs_iconbox_title cs_fs_32'>
@@ -32,14 +33,16 @@ export default function DepartmentsList({
                 <Image
                   src='/images/icons/arrow_white.svg'
                   alt='Icon'
-                  height={24}
-                  width={35}
+                  height={0}
+                  width={0}
+                  style={{ width: '35px', height: 'auto' }}
                 />
                 <Image
                   src='/images/icons/arrow_white.svg'
                   alt='Icon'
-                  height={24}
-                  width={35}
+                  height={0}
+                  width={0}
+                  style={{ width: '35px', height: 'auto' }}
                 />
               </Link>
             </div>

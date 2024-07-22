@@ -37,8 +37,8 @@ export default function Footer() {
             src='/images/logo_icon.svg'
             alt='Logo Icon'
             className='cs_footer_brand_icon'
-            height={49}
-            width={51}
+            height={0}
+            width={0}
           />
           <h2 className='cs_footer_brand_text'>Horizon Health</h2>
         </div>
