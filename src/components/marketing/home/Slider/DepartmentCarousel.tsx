@@ -111,8 +111,9 @@ export default function DepartmentCarousel({
                 <Image
                   src={departmentData[department?.department_icon!]}
                   alt='Icon'
-                  height={75}
-                  width={75}
+                  height={0}
+                  width={0}
+                  style={{ width: '75px', height: 'auto' }}
                 />
                 <p className='cs_department_title cs_medium cs_heading_color cs_fs_20 mb-0'>
                   {department?.title}

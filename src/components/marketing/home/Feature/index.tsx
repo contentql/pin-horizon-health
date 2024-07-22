@@ -27,8 +27,9 @@ export default function Feature({
           <Image
             src={featureListData[feature_icon!]}
             alt='Icon'
-            height={25}
-            width={25}
+            height={0}
+            width={0}
+            style={{ width: '120px', height: 'auto' }}
           />
         </span>
         <span>{title}</span>

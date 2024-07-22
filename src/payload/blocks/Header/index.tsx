@@ -7,8 +7,6 @@ import { useEffect, useState } from 'react'
 
 import IconBoxStyle11 from '@/components/marketing/home/IconBox/IconBoxStyle11'
 import Spacing from '@/components/marketing/home/Spacing'
-import Newsletter from '@/components/marketing/home/Widget/Newsletter'
-import SocialWidget from '@/components/marketing/home/Widget/SocialWidget'
 
 import DropDown from './DropDown'
 
@@ -263,6 +261,7 @@ export default function Header({
           <Spacing md='35' lg='35' xl='35' />
           <hr />
           <Spacing md='35' lg='50' xl='35' />
+
           {headerData?.personal_details?.map((item, index) => (
             <div key={index}>
               <IconBoxStyle11
@@ -278,7 +277,6 @@ export default function Header({
           <Spacing md='70' lg='50' xl='50' />
           <hr />
           <Spacing md='70' lg='50' xl='50' />
-          <SocialWidget socialMedia={headerData?.social_media} />
         </div>
       </div>
       <div className={`cs_header_search ${searchToggle ? 'active' : ''}`}>

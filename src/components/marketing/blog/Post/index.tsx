@@ -12,7 +12,7 @@ export default function Post({ blogData }: { blogData: Blog }) {
         href={`/blog/${blogData?.slug}`}
         className='cs_post_thumb cs_view_mouse'>
         <Image
-          className='h-64 w-full object-cover'
+          className='h-64 object-cover'
           src={(blogData?.blog_image as Media)?.url || ''}
           alt={(blogData?.blog_image as Media)?.alt || ''}
           height={309}

@@ -31,14 +31,16 @@ export default function Banner(data: BannerType) {
               <Image
                 src='/images/icons/arrow_white.svg'
                 alt='Icon'
-                height={11}
-                width={16}
+                height={0}
+                width={0}
+                style={{ width: '16px', height: 'auto' }}
               />
               <Image
                 src='/images/icons/arrow_white.svg'
                 alt='Icon'
-                height={11}
-                width={16}
+                height={0}
+                width={0}
+                style={{ width: '16px', height: 'auto' }}
               />
             </i>
           </Link>

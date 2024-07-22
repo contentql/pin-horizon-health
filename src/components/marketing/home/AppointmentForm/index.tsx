@@ -178,14 +178,16 @@ export default function AppointmentForm() {
             <Image
               src='/images/icons/arrow_white.svg'
               alt='Icon'
-              height={11}
-              width={15}
+              height={0}
+              width={0}
+              style={{ height: 'auto', width: '15px' }}
             />
             <Image
               src='/images/icons/arrow_white.svg'
               alt='Icon'
-              height={11}
-              width={15}
+              height={0}
+              width={0}
+              style={{ height: 'auto', width: '15px' }}
             />
           </i>
         </button>
