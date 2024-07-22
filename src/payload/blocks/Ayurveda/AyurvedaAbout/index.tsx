@@ -14,6 +14,7 @@ export default function AyurvedaAbout(data: AyurvedaAboutType) {
               <Spacing md='55' />
               <div className='cs_about_img'>
                 <Image
+                  className='rounded-[20px]'
                   src={(data?.image as Media)?.url || ''}
                   alt={(data?.image as Media)?.alt || 'About'}
                   // placeholder='blur'
@@ -46,7 +47,7 @@ export default function AyurvedaAbout(data: AyurvedaAboutType) {
                           />
                         </svg>
                       </i>
-                      <h3 className='cs_normal cs_fs_32 cs_body_color'>
+                      <h3 className='cs_normal cs_fs_32 cs_heading_color'>
                         {item?.title}
                       </h3>
                       <p className='m-0'>{item?.sub_title}</p>

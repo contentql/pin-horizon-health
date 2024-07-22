@@ -62,7 +62,7 @@ export default function About(data: AboutType) {
                         />
                       </svg>
                     </i>
-                    <h3 className='cs_normal cs_fs_32 cs_body_color'>
+                    <h3 className='cs_normal cs_fs_32 cs_heading_color'>
                       {item?.title}
                     </h3>
                     <p className='m-0'>{item?.sub_title}</p>
