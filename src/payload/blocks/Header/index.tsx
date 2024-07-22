@@ -53,7 +53,9 @@ export default function Header({
           <div className='container'>
             <div className='cs_main_header_in'>
               <div className='cs_main_header_left'>
-                <Link className='cs_site_branding' href='/'>
+                <Link
+                  className='cs_site_branding text-xl font-semibold'
+                  href='/'>
                   <div style={{ display: 'flex', alignItems: 'center' }}>
                     <Image
                       src={(headerData?.logo_image as Media)?.url || ''}
@@ -241,7 +243,7 @@ export default function Header({
               width={28}
             />
           </button>
-          <div className='cs_logo_box'>
+          <div className='cs_logo_box text-xl font-semibold'>
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <Image
                 src={(headerData?.logo_image as Media)?.url || ''}
