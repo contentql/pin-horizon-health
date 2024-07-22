@@ -1057,10 +1057,6 @@ export interface SiteSetting {
   appDescription?: string | null;
   header?: {
     logo_image?: string | Media | null;
-    primary_button_text?: string | null;
-    primary_button_path?: string | null;
-    secondary_button_text?: string | null;
-    secondary_button_path?: string | null;
     menuItems?:
       | {
           page?: {
@@ -3771,7 +3767,6 @@ export interface SiteSetting {
   footer?: {
     logo_image?: string | Media | null;
     logo?: string | null;
-    copyright?: string | null;
     menuItems?:
       | {
           page?: {
@@ -6478,6 +6473,28 @@ export interface SiteSetting {
           id?: string | null;
         }[]
       | null;
+    personal_information?:
+      | {
+          icon: 'ep:location' | 'fluent:call-24-regular' | 'bi:envelope';
+          title: string;
+          id?: string | null;
+        }[]
+      | null;
+    title?: string | null;
+    sub_title?: string | null;
+    social_media?:
+      | {
+          icon:
+            | 'fa-brands:facebook-f'
+            | 'fa-brands:youtube'
+            | 'fa-brands:twitter'
+            | 'fa-brands:linkedin-in'
+            | 'fa-brands:instagram';
+          social_media_url: string;
+          id?: string | null;
+        }[]
+      | null;
+    copyright?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;

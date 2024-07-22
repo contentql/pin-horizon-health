@@ -9,22 +9,6 @@ import Newsletter from '@/components/marketing/home/Widget/Newsletter'
 import SocialWidget from '@/components/marketing/home/Widget/SocialWidget'
 import TextWidget from '@/components/marketing/home/Widget/TextWidget'
 
-const menuDataOne = [
-  { title: 'About Us', href: '/about' },
-  { title: 'Departments', href: '/departments' },
-  { title: 'Doctors', href: '/doctors' },
-  { title: 'Timetable', href: '/timetable' },
-  { title: 'Appointment', href: '/appointments' },
-  { title: 'Testimonials', href: '/' },
-]
-const menuDataTwo = [
-  { title: 'Blog', href: '/blog' },
-  { title: 'Contact Us', href: '/contact' },
-  { title: 'FAQs', href: '/' },
-  { title: 'Privacy Policy', href: '/' },
-  { title: 'Terms and Conditions', href: '/' },
-]
-
 export default function Footer({
   footerData,
 }: {
@@ -50,28 +34,25 @@ export default function Footer({
       </div>
       <div className='cs_footer_main'>
         <div className='container'>
-          <div className='row'>
+          <div className='row flex justify-between'>
             <div className='col-lg-4'>
               <div className='cs_footer_item'>
-                <TextWidget text='Horizon Health & <br />Healthcare Center' />
-                <ContactInfoWidget />
+                <TextWidget text={footerData?.logo} />
+                <ContactInfoWidget
+                  contactInfo={footerData?.personal_information}
+                />
               </div>
             </div>
             <div className='col-lg-2'>
               <div className='cs_footer_item'>
-                <MenuWidget data={menuDataOne} />
-              </div>
-            </div>
-            <div className='col-lg-2'>
-              <div className='cs_footer_item'>
-                <MenuWidget data={menuDataTwo} />
+                <MenuWidget data={footerData?.menuItems} />
               </div>
             </div>
             <div className='col-lg-4'>
               <div className='cs_footer_item'>
                 <Newsletter
-                  title='Be Our Subscribers'
-                  subTitle='To get the latest news about health from our experts'
+                  title={footerData?.title!}
+                  subTitle={footerData?.sub_title!}
                 />
               </div>
             </div>
@@ -81,10 +62,8 @@ export default function Footer({
       <div className='cs_footer_bottom cs_accent_bg'>
         <div className='container'>
           <div className='cs_footer_bottom_in'>
-            <SocialWidget />
-            <div className='cs_copyright'>
-              Copyright © 2024 Horizon Health. All rights reserved.
-            </div>
+            <SocialWidget socialMedia={footerData?.social_media} />
+            <div className='cs_copyright'>{footerData?.copyright}</div>
           </div>
         </div>
       </div>
