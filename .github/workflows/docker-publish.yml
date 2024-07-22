@@ -102,3 +102,5 @@ jobs:
             AUTH_GITHUB_SECRET=${{ secrets.AUTH_GITHUB_SECRET }}
             OPENAPI_KEY=${{ secrets.OPENAPI_KEY }}
             SUBSCRIPTION_PLAN=${{secrets.SUBSCRIPTION_PLAN}}
+            TWILIO_ACCOUNT_SID=${{secrets.TWILIO_ACCOUNT_SID}}
+            TWILIO_AUTH_TOKEN=${{secrets.TWILIO_AUTH_TOKEN}}
