@@ -363,5 +363,14 @@ export const Doctors: CollectionConfig = {
         position: 'sidebar',
       },
     },
+    {
+      name: 'cal_user',
+      label: 'Cal User Name',
+      type: 'text',
+      admin: {
+        description: 'paste the doctor cal user name here',
+        position: 'sidebar',
+      },
+    },
   ],
 }

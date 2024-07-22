@@ -25,84 +25,87 @@ export const Appointments: CollectionConfig = {
   },
   fields: [
     {
-      type: 'row',
-      fields: [
-        {
-          name: 'name',
-          label: 'Name',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'phoneNumber',
-          label: 'Phone Number',
-          type: 'text',
-          required: true,
-        },
-      ],
-    },
-    {
-      name: 'gender',
-      label: 'Gender',
-      type: 'radio',
-      options: [
-        { label: 'Male', value: 'male' },
-        { label: 'Female', value: 'female' },
-      ],
-    },
-
-    {
-      name: 'medicalRecordNumber',
-      label: 'Medical Record Number',
+      name: 'title',
       type: 'text',
-      required: true,
+      label: 'Title',
     },
     {
-      name: 'preferredDateAndTime',
-      label: 'Preferred Date and Time',
-      type: 'date',
-      admin: {
-        date: {
-          pickerAppearance: 'dayAndTime',
-        },
-      },
+      type: 'row',
+      fields: [
+        { name: 'attendee_name', type: 'text', label: 'Attend Name' },
+        { name: 'attendee_email', type: 'email', label: 'Attend Email' },
+      ],
     },
-
     {
       type: 'row',
       fields: [
         {
-          name: 'reason',
-          label: 'Reason for visit',
-          type: 'select',
-          options: [
-            { label: 'Routine Checkup', value: 'routineCheckup' },
-            { label: 'New Patient visit', value: 'newPatientVisit' },
-            { label: 'Specific concern', value: 'specificConcern' },
-            { label: 'Other', value: 'other' },
-          ],
+          name: 'description',
+          type: 'textarea',
+          label: 'Description',
         },
         {
-          name: 'department',
-          label: 'Department',
-          type: 'select',
-          options: [
-            { label: 'Pediatric', value: 'pediatric' },
-            {
-              label: 'Obstetrics and Gynecology',
-              value: 'obstetricsGynecology',
-            },
-            { label: 'Cardiology', value: 'cardiology' },
-            { label: 'Neurology', value: 'neurology' },
-          ],
+          name: 'additional_notes',
+          type: 'textarea',
+          label: 'Additional Notes',
         },
       ],
+    },
+    {
+      type: 'row',
+      fields: [
+        {
+          name: 'start_time',
+          label: 'Meeting Start Time',
+          type: 'date',
+          admin: {
+            date: {
+              pickerAppearance: 'dayAndTime',
+            },
+          },
+        },
+        {
+          name: 'end_time',
+          label: 'Meeting End Time',
+          type: 'date',
+          admin: {
+            date: {
+              pickerAppearance: 'dayAndTime',
+            },
+          },
+        },
+      ],
+    },
+    {
+      name: 'metadata',
+      type: 'json',
+      label: 'Metadata',
     },
     {
       name: 'doctor',
-      label: 'Doctor',
       type: 'relationship',
-      relationTo: 'doctors',
+      relationTo: ['doctors'],
+      label: 'Doctor',
+      admin: {
+        position: 'sidebar',
+      },
+    },
+    {
+      name: 'booking_status',
+      type: 'text',
+      label: 'Booking Status',
+      admin: {
+        position: 'sidebar',
+      },
+    },
+    {
+      name: 'uid',
+      type: 'text',
+      label: 'UID',
+      admin: {
+        readOnly: true,
+        position: 'sidebar',
+      },
     },
   ],
 }
