@@ -65,19 +65,17 @@ export default function CalComponent({ url }: { url: string }) {
 
   useEffect(() => {
     const container = containerRef.current
+    console.log(container)
     if (container) {
-      const elements = container.querySelectorAll('main')
-      // elements.forEach(element => {
-      //   element.style.maxWidth = '80rem' // Adjust the width as needed
-      // })
-
-      console.log(elements)
+      const el = container.firstElementChild
+      console.log('my elm', el)
     }
   }, [])
 
   return (
     <div
       style={{ width: '100%', height: '100%', overflow: 'scroll' }}
+      ref={containerRef}
       id='my-cal-inline'></div>
   )
 }
