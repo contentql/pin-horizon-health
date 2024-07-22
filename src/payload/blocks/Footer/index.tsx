@@ -1,5 +1,6 @@
 'use client'
 
+import { Media, SiteSetting } from '@payload-types'
 import Image from 'next/image'
 
 import ContactInfoWidget from '@/components/marketing/home/Widget/ContactInfoWidget'
@@ -24,7 +25,11 @@ const menuDataTwo = [
   { title: 'Terms and Conditions', href: '/' },
 ]
 
-export default function Footer() {
+export default function Footer({
+  footerData,
+}: {
+  footerData: SiteSetting['footer']
+}) {
   return (
     <footer className='cs_footer cs_style_1 cs_heading_color'>
       <div
@@ -34,13 +39,13 @@ export default function Footer() {
           className='cs_footer_brand'
           style={{ backgroundImage: 'url(/images/footer_logo_bg.svg)' }}>
           <Image
-            src='/images/logo_icon.svg'
+            src={(footerData?.logo_image as Media)?.url!}
             alt='Logo Icon'
             className='cs_footer_brand_icon'
             height={49}
-            width={51}
+            width={50}
           />
-          <h2 className='cs_footer_brand_text'>Horizon Health</h2>
+          <h2 className='cs_footer_brand_text'>{footerData?.logo}</h2>
         </div>
       </div>
       <div className='cs_footer_main'>
