@@ -7,8 +7,6 @@ import { useEffect, useState } from 'react'
 
 import IconBoxStyle11 from '@/components/marketing/home/IconBox/IconBoxStyle11'
 import Spacing from '@/components/marketing/home/Spacing'
-import Newsletter from '@/components/marketing/home/Widget/Newsletter'
-import SocialWidget from '@/components/marketing/home/Widget/SocialWidget'
 
 import DropDown from './DropDown'
 
@@ -261,12 +259,12 @@ export default function Header({
             subTitle='123 Anywhere St., Any City, 12345'
             iconSrc='/images/contact/icon_3.svg'
           />
-          <Spacing md='60' lg='60' xl='60' />
+          {/* <Spacing md='60' lg='60' xl='60' />
           <Newsletter title='' subTitle='' />
           <Spacing md='70' lg='50' xl='50' />
           <hr />
           <Spacing md='70' lg='50' xl='50' />
-          <SocialWidget />
+          <SocialWidget /> */}
         </div>
       </div>
       <div className={`cs_header_search ${searchToggle ? 'active' : ''}`}>

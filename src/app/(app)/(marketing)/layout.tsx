@@ -1,6 +1,7 @@
 import configPromise from '@payload-config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 
+import PopupCalComponent from '@/components/common/PopupCalComponent'
 import { getCurrentUser } from '@/lib/authjs-payload-adapter/payload'
 import Footer from '@/payload/blocks/Footer'
 import Header from '@/payload/blocks/Header'
@@ -23,6 +24,9 @@ export default async function Layout({
       {/* Navbar */}
       <Header headerData={initData?.header!} variant='cs_heading_color' />
       <div className='flex-grow'>{children}</div>
+      <div>
+        <PopupCalComponent />
+      </div>
       <Footer />
       {/* Footer */}
     </div>
