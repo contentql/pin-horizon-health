@@ -128,7 +128,9 @@ const TourDetails = ({ tourDetails }: { tourDetails: Tour }) => {
         <div>
           <div className='w-full rounded-lg bg-white  p-4 shadow-md dark:bg-gray-800 sm:p-6 md:p-8 lg:w-[400px]'>
             <form className='space-y-6' action='#'>
-              <h5 className='text-xl font-medium text-gray-900 '>$850/ tour</h5>
+              <h5 className='text-xl font-medium text-gray-900 '>
+                {tourDetails?.price}/ tour
+              </h5>
               <div>
                 <input
                   type='text'
