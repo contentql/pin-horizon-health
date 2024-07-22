@@ -272,11 +272,11 @@ export default function Header({
               <Spacing md='30' lg='30' xl='30' />
             </div>
           ))}
-          <Spacing md='60' lg='60' xl='60' />
+          {/* <Spacing md='60' lg='60' xl='60' />
           <Newsletter title='' subTitle='' />
           <Spacing md='70' lg='50' xl='50' />
           <hr />
-          <Spacing md='70' lg='50' xl='50' />
+          <Spacing md='70' lg='50' xl='50' /> */}
         </div>
       </div>
       <div className={`cs_header_search ${searchToggle ? 'active' : ''}`}>
