@@ -182,6 +182,7 @@ export interface Doctor {
     relationTo: 'department';
     value: string | Department;
   } | null;
+  cal_user?: string | null;
   meta?: {
     title?: string | null;
     description?: string | null;
@@ -882,14 +883,28 @@ export interface Session {
  */
 export interface Appointment {
   id: string;
-  name: string;
-  phoneNumber: string;
-  gender?: ('male' | 'female') | null;
-  medicalRecordNumber: string;
-  preferredDateAndTime?: string | null;
-  reason?: ('routineCheckup' | 'newPatientVisit' | 'specificConcern' | 'other') | null;
-  department?: ('pediatric' | 'obstetricsGynecology' | 'cardiology' | 'neurology') | null;
-  doctor?: (string | null) | Doctor;
+  title?: string | null;
+  attendee_name?: string | null;
+  attendee_email?: string | null;
+  description?: string | null;
+  additional_notes?: string | null;
+  start_time?: string | null;
+  end_time?: string | null;
+  metadata?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  doctor?: {
+    relationTo: 'doctors';
+    value: string | Doctor;
+  } | null;
+  booking_status?: string | null;
+  uid?: string | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
