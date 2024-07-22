@@ -782,6 +782,7 @@ export interface ContactDetailsType {
         id?: string | null;
       }[]
     | null;
+  location?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'ContactDetails';

@@ -27,22 +27,22 @@ const TourDetails = ({ tourDetails }: { tourDetails: Tour }) => {
             <div className='mt-6 flex gap-10'>
               <div className='text-md inline-flex items-center gap-x-2'>
                 <MdOutlineStar color='#FFC300' size={24} />
-                <p className='text-lg font-bold text-black'>3.5</p>
+                <div className='text-lg font-bold text-black'>3.5</div>
               </div>
               <div className='text-md inline-flex items-center gap-x-2'>
                 <IoLocationOutline color='black' size={24} />
-                <p className='text-lg font-bold text-black'>
+                <div className='text-lg font-bold text-black'>
                   {tourDetails?.location}
-                </p>
+                </div>
               </div>
               <div className='text-md inline-flex items-center gap-x-2'>
                 <GoPeople color='black' size={24} />
-                <p className=''>
+                <div className=''>
                   Tour guide by
                   <span className='pl-1 text-lg font-bold text-black'>
                     {tourDetails?.guide_name}
                   </span>
-                </p>
+                </div>
               </div>
             </div>
           </div>

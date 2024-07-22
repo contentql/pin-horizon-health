@@ -41,5 +41,10 @@ export const ContactDetails_Block: Block = {
         },
       ],
     },
+    {
+      name: 'location',
+      label: 'Location',
+      type: 'text',
+    },
   ],
 }
