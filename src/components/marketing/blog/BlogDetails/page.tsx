@@ -64,7 +64,7 @@ export default function BlogDetails({
         </div>
         <Spacing md='55' />
         <Image
-          src={(blogData?.blog_image as Media)?.url || ''}
+          src={(blogData?.blog_image as Media)?.sizes?.blogImage?.url || ''}
           alt={(blogData?.blog_image as Media)?.alt || 'Blog Image'}
           className='w-100 cs_radius_20 h-[606px]'
           // placeholder='blur'

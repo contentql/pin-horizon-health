@@ -131,6 +131,14 @@ export interface Media {
       filesize?: number | null;
       filename?: string | null;
     };
+    blogImage?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
   };
 }
 /**
