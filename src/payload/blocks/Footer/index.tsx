@@ -25,9 +25,8 @@ export default function Footer({
           <Image
             src={(footerData?.logo_image as Media)?.url!}
             alt='Logo Icon'
-            className='cs_footer_brand_icon'
             height={0}
-            width={0}
+            width={50}
           />
           <h2 className='cs_footer_brand_text'>{footerData?.logo}</h2>
         </div>

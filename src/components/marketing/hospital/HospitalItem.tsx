@@ -8,7 +8,11 @@ export default function HospitalItem({ hospital }: { hospital: Hospital }) {
       <div className='cs_member_img'>
         <Link href={`/hospital/${hospital?.slug!}`} className='d-block'>
           <Image
-            src={(hospital?.gallery?.at(0)?.image as Media)?.url || ''}
+            className='h-[415px] w-full'
+            src={
+              (hospital?.gallery?.at(0)?.image as Media)?.sizes?.doctorImage
+                ?.url || ''
+            }
             alt='hospital'
             height={487}
             width={487}
@@ -18,7 +22,7 @@ export default function HospitalItem({ hospital }: { hospital: Hospital }) {
           {(hospital?.department?.value as Department)?.title}
         </div> */}
       </div>
-      <div className='cs_team_meta cs_white_bg'>
+      <div className='cs_team_meta cs_white_bg h-full'>
         <div>
           <h3 className='cs_member_name cs_fs_32'>
             <Link href={`/hospital/${hospital?.slug!}`}>{hospital?.title}</Link>

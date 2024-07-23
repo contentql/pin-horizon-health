@@ -8,8 +8,8 @@ export default function YogaItem({ yoga }: { yoga: Blog }) {
       <div className='cs_member_img'>
         <Link href={`/blog/${yoga?.slug!}`} className='d-block '>
           <Image
-            className='h-96 w-full object-cover'
-            src={(yoga?.blog_image as Media)?.url || ''}
+            className='h-[415px] w-full'
+            src={(yoga?.blog_image as Media)?.sizes?.doctorImage?.url || ''}
             alt='Yoga'
             height={487}
             width={487}
