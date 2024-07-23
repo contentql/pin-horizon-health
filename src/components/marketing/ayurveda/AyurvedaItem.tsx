@@ -8,8 +8,8 @@ export default function AyurvedaItem({ ayurveda }: { ayurveda: Blog }) {
       <div className='cs_member_img'>
         <Link href={`/blog/${ayurveda?.slug}`} className='d-block '>
           <Image
-            className='h-96 w-full object-cover'
-            src={(ayurveda?.blog_image as Media)?.url || ''}
+            className='h-[415px] w-full'
+            src={(ayurveda?.blog_image as Media)?.sizes?.doctorImage?.url || ''}
             alt='Ayurveda'
             height={487}
             width={487}
