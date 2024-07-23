@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export default function DoctorItem({ doctor }: { doctor: Doctor }) {
   return (
-    <div className='cs_team cs_style_1 cs_type_2 cs_radius_20 h-[660px] overflow-hidden text-center'>
+    <div className='cs_team cs_style_1 cs_type_2 cs_radius_20 overflow-hidden text-center'>
       <div className='cs_member_img'>
         <Link href={`/doctor/${doctor?.slug!}`} className='d-block '>
           <Image
@@ -19,7 +19,7 @@ export default function DoctorItem({ doctor }: { doctor: Doctor }) {
           {(doctor?.department?.value as Department)?.title}
         </div>
       </div>
-      <div className='cs_team_meta cs_white_bg h-[250px]'>
+      <div className='cs_team_meta cs_white_bg h-full w-full'>
         <div>
           <h3 className='cs_member_name cs_fs_32 line-clamp-1'>
             <Link href={`/doctor/${doctor?.slug!}`}>{doctor?.name}</Link>
