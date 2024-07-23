@@ -13,7 +13,7 @@ export default function BlogSectionStyle2() {
   return (
     <div className='container'>
       <div className='row cs_row_gap_50'>
-        {isBlogsPending ? (
+        {true ? (
           <AllBlogsSkelton />
         ) : (
           blogsData?.map((blogData, index) => (
