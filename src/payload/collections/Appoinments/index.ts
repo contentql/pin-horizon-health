@@ -103,6 +103,14 @@ export const Appointments: CollectionConfig = {
       },
     },
     {
+      name: 'cal_video_url',
+      type: 'text',
+      label: 'Cal Video Url',
+      admin: {
+        position: 'sidebar',
+      },
+    },
+    {
       name: 'uid',
       type: 'text',
       label: 'UID',

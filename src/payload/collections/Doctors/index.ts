@@ -14,6 +14,8 @@ import { isAdmin, isAdminOrCurrentUser } from '@/payload/access'
 import { slugField } from '@/payload/fields'
 import parseCookieString from '@/utils/parseCookieString'
 
+import { AfterDoctorCreate } from './hooks/afterDoctorCreate'
+
 export const Doctors: CollectionConfig = {
   slug: 'doctors',
   labels: {
@@ -147,6 +149,7 @@ export const Doctors: CollectionConfig = {
         const payload = req.payload
         await revalidateUser(doc, payload)
       },
+      AfterDoctorCreate,
     ],
   },
   fields: [

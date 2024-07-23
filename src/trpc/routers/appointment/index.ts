@@ -24,6 +24,7 @@ export const appointmentRouter = router({
         uid,
         attendeeEmail,
         attendeeName,
+        videoUrl,
       } = input
       try {
         const doctor = await payload.find({
@@ -47,6 +48,7 @@ export const appointmentRouter = router({
             booking_status: bookingStatus,
             metadata: { ...metadata },
             uid: uid,
+            cal_video_url: videoUrl,
             doctor: {
               relationTo: 'doctors',
               value: doctor?.docs.at(0)?.id as string,
@@ -92,6 +94,8 @@ export const appointmentRouter = router({
         uid: z.string(),
         status: z.string(),
         rescheduleUid: z.string(),
+        metaData: z.any(),
+        videoUrl: z.string(),
       }),
     )
     .mutation(async ({ input }) => {
@@ -101,6 +105,8 @@ export const appointmentRouter = router({
         uid,
         rescheduleUid,
         status,
+        videoUrl,
+        metaData,
       } = input
       try {
         await payload.update({
@@ -110,6 +116,8 @@ export const appointmentRouter = router({
             start_time: rescheduleStartTime,
             end_time: rescheduleEndTime,
             uid: uid,
+            cal_video_url: videoUrl,
+            metadata: { ...metaData },
           },
           where: {
             uid: {

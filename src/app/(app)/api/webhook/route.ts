@@ -19,6 +19,7 @@ export async function POST(req: NextRequest) {
         notes: eventData.payload.additionalNotes,
         doctorEmail: eventData.payload.organizer.email,
         metadata: eventData,
+        videoUrl: eventData.payload.metadata.videoCallUrl,
       })
     } else if (eventData.triggerEvent === 'BOOKING_CANCELLED') {
       await serverClient.appointment.cancelAppointment({
@@ -32,6 +33,8 @@ export async function POST(req: NextRequest) {
         rescheduleStartTime: eventData.payload.startTime,
         rescheduleEndTime: eventData.payload.endTime,
         status: eventData.payload.status,
+        videoUrl: eventData.payload.metadata.videoCallUrl,
+        metaData: eventData,
       })
     }
 

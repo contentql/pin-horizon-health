@@ -20,6 +20,7 @@ export const AppointmentValidator = z.object({
   attendeeEmail: z.string().email(),
   doctorEmail: z.string(),
   metadata: z.any(),
+  videoUrl: z.string(),
 })
 
 export type TAppointmentValidator = z.infer<typeof AppointmentValidator>
