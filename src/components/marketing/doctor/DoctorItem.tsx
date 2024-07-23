@@ -4,12 +4,12 @@ import Link from 'next/link'
 
 export default function DoctorItem({ doctor }: { doctor: Doctor }) {
   return (
-    <div className='cs_team cs_style_1 cs_type_2 cs_radius_20 h-[680px] overflow-hidden text-center'>
+    <div className='cs_team cs_style_1 cs_type_2 cs_radius_20 h-[660px] overflow-hidden text-center'>
       <div className='cs_member_img'>
         <Link href={`/doctor/${doctor?.slug!}`} className='d-block '>
           <Image
-            className='h-[450px] w-full'
-            src={(doctor?.doctor_image as Media)?.url || ''}
+            className='h-[415px] w-full'
+            src={(doctor?.doctor_image as Media)?.sizes?.doctorImage?.url || ''}
             alt='Doctor'
             height={387}
             width={487}
