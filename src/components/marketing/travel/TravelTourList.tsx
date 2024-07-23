@@ -36,11 +36,11 @@ function TravelTourList({ tours }: { tours: Tour[] }) {
             <div className='flex justify-between'>
               <div className='inline-flex items-center gap-x-2 p-4 text-sm'>
                 <FaRegClock />
-                <p>{tour?.duration}</p>
+                <div>{tour?.duration}</div>
               </div>
               <div className='inline-flex items-center gap-x-2 p-4 text-sm'>
                 <MdOutlineStar color='#FFC300' size={24} />
-                <p className='text-lg font-bold text-black'>3.5</p>
+                <div className='text-lg font-bold text-black'>3.5</div>
               </div>
             </div>
           </div>
