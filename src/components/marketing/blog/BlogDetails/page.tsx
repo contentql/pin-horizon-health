@@ -9,6 +9,7 @@ import { Icon } from '@iconify/react'
 import { Blog, Media, Tag, User } from '@payload-types'
 import Image from 'next/image'
 import Link from 'next/link'
+import { notFound } from 'next/navigation'
 
 import Section from '@/components/common/Section'
 import { trpc } from '@/trpc/client'
@@ -25,7 +26,10 @@ export default function BlogDetails({
   })
   const date = new Date(blogData?.createdAt)
   let formattedDate = `${date.getFullYear()}, ${date.toLocaleString('default', { month: 'long' })} ${date.getDate()}`
-  return (
+
+  return blogData === undefined ? (
+    notFound()
+  ) : (
     <>
       <Section topMd={170} bottomMd={54} bottomLg={54}>
         <Breadcrumb heading={blogData?.title} />

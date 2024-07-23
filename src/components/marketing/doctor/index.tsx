@@ -4,6 +4,7 @@ import bannerImg from '../../../../public/images/doctors/banner_img_3.png'
 import appointmentImg from '../../../../public/images/home_2/appointment_img.png'
 import Breadcrumbs from '../../common/Breadcrumbs'
 import { Doctor } from '@payload-types'
+import { notFound } from 'next/navigation'
 
 import Section from '@/components/common/Section'
 
@@ -12,7 +13,9 @@ import DoctorBanner2 from './DoctorBanner2'
 import DoctorDetails from './DoctorDetails'
 
 const DoctorDetailsView = ({ doctorDetails }: { doctorDetails: Doctor }) => {
-  return (
+  return doctorDetails === undefined ? (
+    notFound()
+  ) : (
     <>
       <Breadcrumbs />
       <Section bottomMd={190} bottomLg={150} bottomXl={110}>
