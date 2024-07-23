@@ -7,6 +7,7 @@ import React, { useState } from 'react'
 import { Toaster } from 'sonner'
 
 import { trpc } from '@/trpc/client'
+import PageLoader from '@/utils/pageProgressBar'
 
 export default function Provider({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(() => new QueryClient({}))
@@ -23,6 +24,7 @@ export default function Provider({ children }: { children: React.ReactNode }) {
     <trpc.Provider client={trpcClient} queryClient={queryClient}>
       <QueryClientProvider client={queryClient}>
         <Toaster />
+        <PageLoader />
         {children}
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>

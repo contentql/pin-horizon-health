@@ -5,6 +5,7 @@ import { Department, Doctor } from '@payload-types'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 
+import AllDoctorsSkelton from '@/components/skeltons/AllDoctorsSkelton'
 import { trpc } from '@/trpc/client'
 
 import DoctorItem from './DoctorItem'
@@ -26,9 +27,10 @@ export default function DoctorListItem({
     searchParams.get('department') ? searchParams?.get('department') : 'all',
   )
 
-  const { data: doctorsData } = trpc.doctor.getDoctorsByDepartment.useQuery({
-    slug: filteredData!,
-  })
+  const { data: doctorsData, isPending: isDoctorsPending } =
+    trpc.doctor.getDoctorsByDepartment.useQuery({
+      slug: filteredData!,
+    })
   // Extracting unique categories from teamData
   // const uniqueCategories = [...new Set(data.map(doctor => doctor.category))]
   const handleFilter = (department: string) => {
@@ -99,9 +101,11 @@ export default function DoctorListItem({
       </div>
       <Spacing md='65' />
       <div className={`cs_team_grid cs_${view}_view_wrap`}>
-        {doctorsData?.map((doctor, index) => (
-          <DoctorItem doctor={doctor as Doctor} key={index} />
-        ))}
+        {isDoctorsPending
+          ? [0, 1, 2].map((_, index) => <AllDoctorsSkelton key={index} />)
+          : doctorsData?.map((doctor, index) => (
+              <DoctorItem doctor={doctor as Doctor} key={index} />
+            ))}
       </div>
       <Spacing md='90' />
       {/* <Pagination /> */}
