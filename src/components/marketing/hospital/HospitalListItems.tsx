@@ -5,15 +5,14 @@ import { Hospital } from '@payload-types'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 
+import AllHospitalsSkelton from '@/components/skeltons/AllHospitalsSkelton'
 import { trpc } from '@/trpc/client'
 
 import HospitalItem from './HospitalItem'
 
-export default function HospitalListItem({
-  hospitalDetails,
-}: {
-  hospitalDetails: Hospital[]
-}) {
+export default function HospitalListItem() {
+  const { data: hospitalDetails, isPending: isAllHospitalsPending } =
+    trpc.hospital.getallHospitals.useQuery()
   const searchParams = useSearchParams()
   const pathname = usePathname()
   const router = useRouter()
@@ -26,9 +25,10 @@ export default function HospitalListItem({
     searchParams.get('country') ? searchParams?.get('country') : 'all',
   )
 
-  const { data: hospitalData } = trpc.hospital.getHospitalByCountry.useQuery({
-    slug: filteredData!,
-  })
+  const { data: hospitalData, isPending: isHospitalByCountryPending } =
+    trpc.hospital.getHospitalByCountry.useQuery({
+      slug: filteredData!,
+    })
 
   const handleFilter = (country: string) => {
     const search = new URLSearchParams(searchParams)
@@ -65,10 +65,12 @@ export default function HospitalListItem({
       </div>
       <Spacing md='65' />
       <div className={`cs_team_grid cs_${view}_view_wrap`}>
-        {hospitalData?.map((hospital, index) => (
-          //@ts-ignore
-          <HospitalItem hospital={hospital as Hospital} key={index} />
-        ))}
+        {isHospitalByCountryPending || isAllHospitalsPending
+          ? [0, 1, 2].map((_, index) => <AllHospitalsSkelton key={index} />)
+          : hospitalData?.map((hospital, index) => (
+              //@ts-ignore
+              <HospitalItem hospital={hospital as Hospital} key={index} />
+            ))}
       </div>
       <Spacing md='90' />
       {/* <Pagination /> */}
