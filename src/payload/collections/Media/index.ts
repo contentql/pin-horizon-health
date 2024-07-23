@@ -36,6 +36,12 @@ export const Media: CollectionConfig = {
         height: undefined,
         position: 'centre',
       },
+      {
+        height: 415,
+        width: 415,
+        crop: 'center',
+        name: 'doctorImage',
+      },
     ],
     focalPoint: false,
     crop: false,
