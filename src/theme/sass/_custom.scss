@@ -306,6 +306,25 @@
     }
   }
 }
+.cs_team_grid_not_found {
+  display: grid;
+  grid-gap: 50px 25px;
+  grid-template-columns: 15% 70% 15%;
+  @media (max-width: 767px) {
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 40px 25px;
+  }
+  &.cs_list_view_wrap {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  &.cs_grid_view_wrap {
+    .cs_team.cs_style_1.cs_type_2 {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+}
 .cs_isotop_filter.cs_style1 {
   text-transform: capitalize;
 }

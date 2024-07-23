@@ -1,7 +1,9 @@
 'use client'
 
+import NotFound from '../../../../public/images/not-found.png'
 import Spacing from '../home/Spacing'
 import { Department, Doctor } from '@payload-types'
+import Image from 'next/image'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 
@@ -100,12 +102,25 @@ export default function DoctorListItem({
         </div>
       </div>
       <Spacing md='65' />
-      <div className={`cs_team_grid cs_${view}_view_wrap`}>
-        {isDoctorsPending
-          ? [0, 1, 2].map((_, index) => <AllDoctorsSkelton key={index} />)
-          : doctorsData?.map((doctor, index) => (
-              <DoctorItem doctor={doctor as Doctor} key={index} />
-            ))}
+      <div
+        className={
+          doctorsData?.length === 0
+            ? `cs_team_grid_not_found`
+            : `cs_team_grid cs_${view}_view_wrap`
+        }>
+        {isDoctorsPending ? (
+          [0, 1, 2].map((_, index) => <AllDoctorsSkelton key={index} />)
+        ) : doctorsData?.length === 0 ? (
+          <>
+            <div></div>
+            <Image src={NotFound} alt='Not Found' />
+            <div></div>
+          </>
+        ) : (
+          doctorsData?.map((doctor, index) => (
+            <DoctorItem doctor={doctor as Doctor} key={index} />
+          ))
+        )}
       </div>
       <Spacing md='90' />
       {/* <Pagination /> */}
