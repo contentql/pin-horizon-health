@@ -15,15 +15,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export function Gallery({ images }: { images: Hospital['gallery'] }) {
-  const onInit = () => {
-    console.log('Images', images)
-    console.log('lightGallery has been initialized')
-  }
   return (
     <div className='container mt-10'>
       <div className='w-full'>
         <LightGallery
-          onInit={onInit}
           speed={500}
           elementClassNames='grid grid-cols-2 lg:grid-cols-4 gap-8'
           progressBar={true}

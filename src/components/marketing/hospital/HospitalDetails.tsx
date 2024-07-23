@@ -26,7 +26,7 @@ const HospitalDetails = ({
     trpc.hospital.getHospitalByCountry.useQuery({
       slug: hospitalDetails?.country,
     })
-  console.log('Hospital', hospitalDetails)
+
   return (
     <div className='container mt-20'>
       <div className='flex flex-col justify-between lg:flex-row'>

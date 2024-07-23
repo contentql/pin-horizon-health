@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useLayoutEffect, useRef } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 
 export default function CalComponent({ url }: { url: string }) {
   useLayoutEffect(() => {
@@ -63,14 +63,12 @@ export default function CalComponent({ url }: { url: string }) {
   // }, [])
   const containerRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    const container = containerRef.current
-    console.log(container)
-    if (container) {
-      const el = container.firstElementChild
-      console.log('my elm', el)
-    }
-  }, [])
+  // useEffect(() => {
+  //   const container = containerRef.current
+  //   if (container) {
+  //     const el = container.firstElementChild
+  //   }
+  // }, [])
 
   return (
     <div

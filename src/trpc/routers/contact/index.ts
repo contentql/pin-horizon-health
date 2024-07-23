@@ -10,7 +10,6 @@ export const contactRouter = router({
   ContactFormPostData: publicProcedure
     .input(ContactFormValidator)
     .mutation(async ({ input }) => {
-      console.log('Data', input)
       const { email, message, name, subject, phoneNumber } = input
 
       try {

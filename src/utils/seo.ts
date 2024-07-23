@@ -47,7 +47,6 @@ export const generateDescriptionPrompt: GenerateDescription = (data: any) => {
 }
 
 export const generateImage: GenerateImage = (data: any) => {
-  console.log('Image', data?.doc, 'ENDDDDDDDDDDDD')
   const image =
     typeof data?.doc?.doctor_image?.value === 'string'
       ? data?.doc?.doctor_image?.value

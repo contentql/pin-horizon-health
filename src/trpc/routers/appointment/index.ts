@@ -11,7 +11,6 @@ export const appointmentRouter = router({
   postAppointmentData: publicProcedure
     .input(AppointmentValidator)
     .mutation(async ({ ctx, input }) => {
-      console.log(input)
       const {
         metadata,
         doctorEmail,
