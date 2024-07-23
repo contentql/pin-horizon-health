@@ -905,6 +905,7 @@ export interface Appointment {
     value: string | Doctor;
   } | null;
   booking_status?: string | null;
+  cal_video_url?: string | null;
   uid?: string | null;
   updatedAt: string;
   createdAt: string;
