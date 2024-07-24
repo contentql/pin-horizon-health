@@ -1,10 +1,32 @@
-import Image from 'next/image'
+'use client'
 
-export default function Pagination() {
+import Image from 'next/image'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+
+export default function Pagination({ meta, setPage, page }: any) {
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const pathname = usePathname()
+
+  const handlePageChange = (newPage: number) => {
+    const search = new URLSearchParams(searchParams)
+    console.log('path', meta)
+    search.set('page', newPage.toString())
+    pathname === '/doctors'
+      ? router.push(`${pathname}?${search.toString()}#doctors`)
+      : router.push(`${pathname}?${search.toString()}#pagination`)
+
+    setPage(newPage)
+  }
+
   return (
-    <ul className='cs_pagination_box'>
+    <ul className='cs_pagination_box' id={'pagination'}>
+      {/* Previous page arrow */}
       <li>
-        <button className='cs_pagination_arrow cs_center'>
+        <button
+          className='cs_pagination_arrow cs_center'
+          onClick={() => meta?.hasPrevPage && handlePageChange(page - 1)}
+          disabled={!meta?.hasPrevPage}>
           <Image
             src='/images/icons/left_arrow_blue.svg'
             alt='Icon'
@@ -13,23 +35,24 @@ export default function Pagination() {
           />
         </button>
       </li>
+
+      {/* Page numbers */}
+      {Array.from({ length: meta?.totalPages }, (_, i) => i + 1).map(p => (
+        <li key={p}>
+          <button
+            onClick={() => handlePageChange(p)}
+            className={`cs_pagination_item cs_center ${meta?.currentPage === p ? 'active' : ''}`}>
+            {p}
+          </button>
+        </li>
+      ))}
+
+      {/* Next page arrow */}
       <li>
-        <button className='cs_pagination_item cs_center active'>1</button>
-      </li>
-      <li>
-        <button className='cs_pagination_item cs_center'>2</button>
-      </li>
-      <li>
-        <button className='cs_pagination_item cs_center'>3</button>
-      </li>
-      <li>
-        <span className='cs_pagination_item cs_center'>...</span>
-      </li>
-      <li>
-        <button className='cs_pagination_item cs_center'>8</button>
-      </li>
-      <li>
-        <button className='cs_pagination_arrow cs_center'>
+        <button
+          className='cs_pagination_arrow cs_center'
+          onClick={() => meta?.hasNextPage && handlePageChange(page + 1)}
+          disabled={!meta?.hasNextPage}>
           <Image
             src='/images/icons/right_arrow_blue.svg'
             alt='Icon'

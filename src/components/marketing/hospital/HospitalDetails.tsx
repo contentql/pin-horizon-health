@@ -53,15 +53,17 @@ const HospitalDetails = ({
               Hospital Contact Details
             </h2>
             <div className='grid grid-cols-1 gap-y-6 md:grid-cols-2'>
-              <div className='inline-flex gap-x-2'>
-                <GoPeople size={24} className='font-bold text-black' />
-                <div>
-                  Receptionist Name
-                  <p className='text-lg  text-zinc-800'>
-                    {hospitalDetails?.receptionistName}
-                  </p>
+              {hospitalDetails?.receptionistName && (
+                <div className='inline-flex gap-x-2'>
+                  <GoPeople size={24} className='font-bold text-black' />
+                  <div>
+                    Receptionist Name
+                    <p className='text-lg  text-zinc-800'>
+                      {hospitalDetails?.receptionistName}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              )}
               <div className='inline-flex gap-x-2'>
                 <IoLocationOutline size={24} className='font-bold text-black' />
                 <div>

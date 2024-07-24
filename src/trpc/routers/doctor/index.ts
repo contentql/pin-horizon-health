@@ -13,7 +13,6 @@ export const doctorRouter = router({
     try {
       const doctors = await payload.find({
         collection: 'doctors',
-        depth: 5,
         pagination: false,
         draft: false,
       })
@@ -24,11 +23,12 @@ export const doctorRouter = router({
     }
   }),
   getDoctorsByDepartment: publicProcedure
-    .input(z.object({ slug: z.string() }))
+    .input(z.object({ slug: z.string(), page: z.number() }))
     ?.query(async ({ input }) => {
-      const { slug } = input
+      const { slug, page } = input
       const department = await payload.find({
         collection: 'department',
+
         where: {
           slug: {
             equals: slug,
@@ -39,8 +39,10 @@ export const doctorRouter = router({
       const doctors = await payload.find({
         collection: 'doctors',
         draft: false,
+        page: page,
+        limit: 6,
         depth: 5,
-        pagination: false,
+
         where: {
           ...(slug !== 'all' && {
             'department.value': {
@@ -53,7 +55,14 @@ export const doctorRouter = router({
         },
       })
 
-      return doctors?.docs
+      return {
+        docs: doctors?.docs,
+        meta: {
+          hasNextPage: doctors?.hasNextPage,
+          hasPrevPage: doctors?.hasPrevPage,
+          totalPages: doctors?.totalPages,
+        },
+      }
     }),
 
   getDoctorByName: publicProcedure

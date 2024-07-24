@@ -7,7 +7,7 @@ import Spacing from '@/components/marketing/home/Spacing'
 import { trpc } from '@/trpc/client'
 
 export default function LatestBlogs(data: LatestBlogsType) {
-  const { data: blogsData } = trpc.blog.getAllBlogs.useQuery()
+  const { data: blogsData } = trpc.blog.getAllBlogsWithoutPagination.useQuery()
   return (
     <Section
       topMd={190}

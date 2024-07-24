@@ -9,11 +9,32 @@ const payload = await getPayloadHMR({
 })
 
 export const blogRouter = router({
-  getAllBlogs: publicProcedure.query(async () => {
+  getAllBlogs: publicProcedure
+    .input(z.object({ page: z.number() }))
+    ?.query(async ({ input }) => {
+      const { page } = input
+      try {
+        const { docs, hasPrevPage, hasNextPage, totalPages } =
+          await payload.find({
+            collection: 'blogs',
+            depth: 5,
+            page: page,
+            limit: 6,
+            draft: false,
+          })
+
+        return { docs, meta: { hasPrevPage, hasNextPage, totalPages } }
+      } catch (error: any) {
+        console.log(error)
+        throw new Error(error.message)
+      }
+    }),
+
+  getAllBlogsWithoutPagination: publicProcedure.query(async () => {
     try {
       const { docs } = await payload.find({
         collection: 'blogs',
-        depth: 5,
+        pagination: false,
         draft: false,
       })
 

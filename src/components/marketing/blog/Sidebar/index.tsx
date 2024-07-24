@@ -6,7 +6,8 @@ import { Blog } from '@payload-types'
 import { trpc } from '@/trpc/client'
 
 export default function Sidebar({ blogsByTag }: { blogsByTag: Blog[] }) {
-  const { data: latestBlogs } = trpc.blog.getAllBlogs.useQuery()
+  const { data: latestBlogs } =
+    trpc.blog.getAllBlogsWithoutPagination.useQuery()
   return (
     <div className='cs_sidebar'>
       <div className='cs_sidebar_item widget_categories'>
