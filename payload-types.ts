@@ -1009,7 +1009,7 @@ export interface Hospital {
         id?: string | null;
       }[]
     | null;
-  receptionistName: string;
+  receptionistName?: string | null;
   phone: number;
   highlights?:
     | {

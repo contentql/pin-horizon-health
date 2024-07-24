@@ -1,6 +1,7 @@
 'use client'
 
 import NotFound from '../../../../public/images/not-found.png'
+import Pagination from '../blog/Pagination'
 import Spacing from '../home/Spacing'
 import { Department, Doctor } from '@payload-types'
 import Image from 'next/image'
@@ -28,19 +29,25 @@ export default function DoctorListItem({
   const [filteredData, setFilteredData] = useState(
     searchParams.get('department') ? searchParams?.get('department') : 'all',
   )
+  const [page, setPage] = useState(
+    parseInt(searchParams.get('page') || '1', 10),
+  )
 
-  const { data: doctorsData, isPending: isDoctorsPending } =
+  const { data: completeData, isPending: isDoctorsPending } =
     trpc.doctor.getDoctorsByDepartment.useQuery({
       slug: filteredData!,
+      page: page,
     })
-  // Extracting unique categories from teamData
-  // const uniqueCategories = [...new Set(data.map(doctor => doctor.category))]
+  const doctorsData = completeData?.docs
+
   const handleFilter = (department: string) => {
     const search = new URLSearchParams(searchParams)
     search.set('department', department)
+    search.set('page', '1')
     router.push(`${pathname}?${search.toString()}#doctors`)
     setActive(department)
     setFilteredData(department)
+    setPage(1)
   }
 
   return (
@@ -123,7 +130,7 @@ export default function DoctorListItem({
         )}
       </div>
       <Spacing md='90' />
-      {/* <Pagination /> */}
+      <Pagination meta={completeData?.meta} page={page} setPage={setPage} />
     </div>
   )
 }

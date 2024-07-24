@@ -74,7 +74,6 @@ export const Hospitals: CollectionConfig = {
       name: 'receptionistName',
       label: 'Receptionist Name',
       type: 'text',
-      required: true,
     },
     {
       name: 'phone',
