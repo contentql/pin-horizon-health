@@ -67,7 +67,7 @@ export const blogRouter = router({
           collection: 'blogs',
           where: {
             'tags.value': {
-              contains: tagData?.at(0)?.id,
+              equals: tagData?.at(0)?.id,
             },
           },
         })

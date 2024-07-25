@@ -22,7 +22,7 @@ export default function BlogDetails({
   blogsData: Blog[]
 }) {
   const { data: blogsByTag } = trpc.blog.getAllBlogsByTag.useQuery({
-    slug: (blogData?.tags?.value as Tag)?.title,
+    slug: (blogData?.tags?.value as Tag)?.slug!,
   })
   const date = new Date(blogData?.createdAt)
   let formattedDate = `${date.getFullYear()}, ${date.toLocaleString('default', { month: 'long' })} ${date.getDate()}`
@@ -93,7 +93,10 @@ export default function BlogDetails({
             <ReplyWidget title='Leave a Reply' /> */}
           </div>
           <div className='col-lg-4'>
-            <Sidebar blogsByTag={blogsByTag as Blog[]} />
+            <Sidebar
+              blogsByTag={blogsByTag as Blog[]}
+              tag={blogData?.tags?.value as Tag}
+            />
           </div>
         </div>
         <Spacing md='135' lg='100' />

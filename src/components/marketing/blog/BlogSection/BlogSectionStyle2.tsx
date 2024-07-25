@@ -15,7 +15,7 @@ export default function BlogSectionStyle2() {
     trpc.blog.getAllBlogs.useQuery({ page: page })
 
   return (
-    <div className='container'>
+    <div className='container' id='pagination'>
       <div className='row cs_row_gap_50'>
         {isBlogsPending ? (
           <AllBlogsSkelton />

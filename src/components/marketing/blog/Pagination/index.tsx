@@ -20,7 +20,7 @@ export default function Pagination({ meta, setPage, page }: any) {
   }
 
   return (
-    <ul className='cs_pagination_box' id={'pagination'}>
+    <ul className='cs_pagination_box'>
       {/* Previous page arrow */}
       <li>
         <button

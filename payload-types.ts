@@ -248,7 +248,11 @@ export interface Category {
  */
 export interface Tag {
   id: string;
-  title: string;
+  title?: ('Ayurveda' | 'Yoga' | 'Blog') | null;
+  heading?: string | null;
+  description?: string | null;
+  button_name?: string | null;
+  button_link?: string | null;
   slug?: string | null;
   updatedAt: string;
   createdAt: string;
