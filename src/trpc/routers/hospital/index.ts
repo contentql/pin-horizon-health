@@ -38,7 +38,7 @@ export const hospitalRouter = router({
         const hospitals = await payload.find({
           collection: 'hospital',
           where: {
-            country: {
+            'country.country': {
               equals: slug,
             },
           },
@@ -50,6 +50,20 @@ export const hospitalRouter = router({
         throw new Error(error.message)
       }
     }),
+  getAllCountriesOfHospitals: publicProcedure.query(async () => {
+    try {
+      const countries = await payload.find({
+        collection: 'country',
+        depth: 5,
+
+        draft: false,
+      })
+      return countries?.docs
+    } catch (error: any) {
+      console.log(error)
+      throw new Error(error.message)
+    }
+  }),
   getHospitalByName: publicProcedure
     .input(z.object({ slug: z.string() }))
     .query(async ({ input }) => {

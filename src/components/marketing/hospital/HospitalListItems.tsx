@@ -38,9 +38,11 @@ export default function HospitalListItem() {
     setFilteredData(country)
   }
 
-  // Extract unique countries
+  const { data: countries } =
+    trpc.hospital.getAllCountriesOfHospitals.useQuery()
+
   const uniqueCountries = Array.from(
-    new Set(hospitalDetails?.map(hospital => hospital?.country)),
+    new Set(countries?.map(country => country?.country)),
   )
 
   console.log('unique', uniqueCountries)
@@ -54,9 +56,11 @@ export default function HospitalListItem() {
             <li className={active === 'all' ? 'active' : ''}>
               <span onClick={() => handleFilter('all')}>All</span>
             </li>
-            {uniqueCountries.map((country, index) => (
+            {uniqueCountries?.map((country, index) => (
               <li className={active === country ? 'active' : ''} key={index}>
-                <span onClick={() => handleFilter(country)}>{country}</span>
+                <span onClick={() => handleFilter(country as string)}>
+                  {country as string}
+                </span>
               </li>
             ))}
           </ul>
