@@ -2,6 +2,8 @@ import { env } from '@env'
 import type { Blog } from '@payload-types'
 import type { Metadata } from 'next'
 
+import { generateMetadata } from '@/app/(app)/layout'
+
 import { mergeOpenGraph } from './merge-open-graph'
 
 export const generateMeta = async (args: {
@@ -19,9 +21,11 @@ export const generateMeta = async (args: {
 
   const url = `${env.NEXT_PUBLIC_PUBLIC_URL}/${collectionSlug}/${doc?.id}`
 
+  const defaultMetaData = await generateMetadata()
+
   return {
-    title: doc?.meta?.title || 'ContentQL',
-    description: doc?.meta?.description || 'ContentQL - Description',
+    title: doc?.meta?.title || defaultMetaData?.title,
+    description: doc?.meta?.description || defaultMetaData?.description,
     openGraph: mergeOpenGraph({
       title: doc?.meta?.title!,
       description: doc?.meta?.description!,

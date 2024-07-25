@@ -309,7 +309,7 @@
 .cs_team_grid_not_found {
   display: grid;
   grid-gap: 50px 25px;
-  grid-template-columns: 15% 70% 15%;
+  grid-template-columns: 25% 50% 25%;
   @media (max-width: 767px) {
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 40px 25px;
