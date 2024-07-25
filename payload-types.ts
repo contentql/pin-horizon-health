@@ -499,7 +499,6 @@ export interface TestimonialsType {
  */
 export interface AppointmentBannerType {
   title: string;
-  slug?: string | null;
   description: string;
   image: string | Media;
   id?: string | null;

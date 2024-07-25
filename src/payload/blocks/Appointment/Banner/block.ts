@@ -1,7 +1,5 @@
 import { Block } from 'payload/types'
 
-import { slugField } from '@/payload/fields'
-
 export const Appointment_Banner_Block: Block = {
   slug: 'AppointmentBanner',
 
@@ -17,8 +15,6 @@ export const Appointment_Banner_Block: Block = {
       type: 'text',
       required: true,
     },
-
-    slugField(),
     {
       name: 'description',
       label: 'Description',
