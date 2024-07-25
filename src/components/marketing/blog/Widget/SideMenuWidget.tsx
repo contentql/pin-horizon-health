@@ -12,7 +12,7 @@ export default function SideMenuWidget({
     <>
       <h2 className='cs_sidebar_widget_title'>{title}</h2>
       <ul>
-        {data?.slice(0, 10)?.map((item, index) => (
+        {data?.slice(0, 5)?.map((item, index) => (
           <li key={index}>
             <Link href={`/blog/${item?.slug}`}>
               <span className='line-clamp-2'>{item?.title}</span>

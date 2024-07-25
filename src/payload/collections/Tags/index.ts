@@ -25,9 +25,51 @@ export const Tags: CollectionConfig = {
     {
       name: 'title',
       label: 'Title',
+      type: 'select',
+      options: [
+        { label: 'Ayurveda', value: 'Ayurveda' },
+        { label: 'Yoga', value: 'Yoga' },
+        { label: 'Blog', value: 'Blog' },
+      ],
+    },
+    {
+      name: 'heading',
       type: 'text',
-      required: true,
-      unique: true,
+      label: 'Heading',
+      admin: {
+        condition: data => data.title === 'Yoga' || data.title === 'Ayurveda',
+      },
+    },
+    {
+      type: 'text',
+      label: 'Description',
+      name: 'description',
+      admin: {
+        condition: data => data.title === 'Yoga' || data.title === 'Ayurveda',
+      },
+    },
+    {
+      type: 'row',
+      fields: [
+        {
+          type: 'text',
+          label: 'Button Name',
+          name: 'button_name',
+          admin: {
+            condition: data =>
+              data.title === 'Yoga' || data.title === 'Ayurveda',
+          },
+        },
+        {
+          type: 'text',
+          label: 'Button Link',
+          name: 'button_link',
+          admin: {
+            condition: data =>
+              data.title === 'Yoga' || data.title === 'Ayurveda',
+          },
+        },
+      ],
     },
     slugField(),
   ],
