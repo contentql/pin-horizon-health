@@ -261,7 +261,7 @@ const LexicalContent: React.FC<{
               loading={lazyLoadImages ? 'lazy' : 'eager'}
               fetchPriority={lazyLoadImages ? 'low' : 'high'}
               sizes='(max-width: 768) 65ch, 100vw'
-              className='mx-auto max-w-[calc(100%+40px)] translate-x-[-20px]'
+              className='cs_radius_20 mx-auto max-w-[calc(100%+40px)] translate-x-[-20px]'
               alt={upload?.alt || upload.filename}
               onClick={handleOpenModal}
               style={{ cursor: 'pointer' }}
