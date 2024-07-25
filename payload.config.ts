@@ -18,6 +18,7 @@ import { Appointments } from '@/payload/collections/Appoinments'
 import { Blogs } from '@/payload/collections/Blogs'
 import { Category } from '@/payload/collections/Category'
 import { Contact } from '@/payload/collections/Contact'
+import { Country } from '@/payload/collections/Country'
 import { Departments } from '@/payload/collections/Departments'
 import { Doctors } from '@/payload/collections/Doctors'
 import { Hospitals } from '@/payload/collections/Hospital'
@@ -98,9 +99,7 @@ export default buildConfig({
     Media,
     Doctors,
     Category,
-
     Departments,
-
     Tags,
     Blogs,
     Pages,
@@ -109,6 +108,7 @@ export default buildConfig({
     Tours,
     Contact,
     Hospitals,
+    Country,
   ],
 
   globals: [siteSettings],

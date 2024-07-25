@@ -183,6 +183,17 @@ export const siteSettings: GlobalConfig = {
             { type: 'text', name: 'copyright' },
           ],
         },
+        {
+          label: 'Admin Settings',
+          fields: [
+            { type: 'email', name: 'email', label: 'Admin Email' },
+            {
+              type: 'number',
+              name: 'phone_number',
+              label: 'Admin Phone Number',
+            },
+          ],
+        },
       ],
     },
   ],

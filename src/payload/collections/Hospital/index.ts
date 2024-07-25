@@ -35,6 +35,16 @@ export const Hospitals: CollectionConfig = {
       type: 'textarea',
     },
     {
+      name: 'country',
+      relationTo: 'country',
+      type: 'relationship',
+    },
+    {
+      name: 'location',
+      label: 'Location',
+      type: 'text',
+    },
+    {
       name: 'gallery',
       label: 'Gallery',
       type: 'array',
@@ -47,17 +57,7 @@ export const Hospitals: CollectionConfig = {
         },
       ],
     },
-    {
-      name: 'country',
-      label: 'Country',
-      type: 'text',
-      required: true,
-    },
-    {
-      name: 'location',
-      label: 'Location',
-      type: 'text',
-    },
+
     {
       name: 'services',
       label: 'Services',

@@ -21,6 +21,7 @@ export interface Config {
     tours: Tour;
     contact: Contact;
     hospital: Hospital;
+    country: Country;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -995,14 +996,14 @@ export interface Hospital {
   email?: string | null;
   title: string;
   description?: string | null;
+  country?: (string | null) | Country;
+  location?: string | null;
   gallery?:
     | {
         image?: string | Media | null;
         id?: string | null;
       }[]
     | null;
-  country: string;
-  location?: string | null;
   services?:
     | {
         service?: string | null;
@@ -1029,6 +1030,18 @@ export interface Hospital {
     description?: string | null;
     image?: string | Media | null;
   };
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "country".
+ */
+export interface Country {
+  id: string;
+  country?: string | null;
+  slug?: string | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -6543,6 +6556,8 @@ export interface SiteSetting {
       | null;
     copyright?: string | null;
   };
+  email?: string | null;
+  phone_number?: number | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }

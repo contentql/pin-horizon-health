@@ -1,4 +1,4 @@
-import { Hospital, Media } from '@payload-types'
+import { Country, Hospital, Media } from '@payload-types'
 import Image from 'next/image'
 import Link from 'next/link'
 import { BsTelephone } from 'react-icons/bs'
@@ -24,7 +24,7 @@ const HospitalDetails = ({
   }
   const { data: hospitalsByCountry } =
     trpc.hospital.getHospitalByCountry.useQuery({
-      slug: hospitalDetails?.country,
+      slug: (hospitalDetails?.country as Country)?.country as string,
     })
 
   return (
@@ -43,7 +43,7 @@ const HospitalDetails = ({
               <div className='text-md inline-flex items-center gap-x-2'>
                 <IoLocationOutline color='black' size={24} />
                 <div className='text-lg font-bold text-black'>
-                  {hospitalDetails?.country}
+                  {(hospitalDetails?.country as Country)?.country}
                 </div>
               </div>
             </div>
@@ -113,7 +113,8 @@ const HospitalDetails = ({
             <div className='mx-auto mt-16 max-w-lg overflow-hidden rounded-md bg-white shadow-md'>
               <div className='bg-gray-100 px-4 py-2'>
                 <h2 className='text-xl font-semibold text-gray-800'>
-                  Other hospitals in {hospitalDetails?.country}
+                  Other hospitals in{' '}
+                  {(hospitalDetails?.country as Country)?.country}
                 </h2>
               </div>
               <ul className='divide-y divide-gray-200'>
