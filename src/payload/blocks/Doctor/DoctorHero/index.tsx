@@ -9,7 +9,7 @@ import { trpc } from '@/trpc/client'
 
 function DoctorHero(doctorHero: DoctorHeroType) {
   const { data: departmentDetails } =
-    trpc.department.getDepartmentsByType.useQuery({ name: 'Doctor' })
+    trpc.department.getallDepartments.useQuery()
   return (
     <>
       <Hero

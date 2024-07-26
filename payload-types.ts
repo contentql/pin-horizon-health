@@ -100,6 +100,30 @@ export interface Media {
       filesize?: number | null;
       filename?: string | null;
     };
+    tour_gallery_1?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    tour_card?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    tour_gallery?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
     blog_image_size2?: {
       url?: string | null;
       width?: number | null;
@@ -225,7 +249,6 @@ export interface Department {
   id: string;
   title: string;
   description: string;
-  department_type?: ('Doctor' | 'Hospital' | 'Yoga' | 'Travel')[] | null;
   slug?: string | null;
   updatedAt: string;
   createdAt: string;
