@@ -13,17 +13,26 @@ export const AboutHero_Block: Block = {
       name: 'title',
       type: 'text',
       label: 'Title',
+      admin: {
+        description: 'Enter Hero section Title',
+      },
     },
     {
       name: 'sub_title',
       type: 'text',
       label: 'Sub Title',
+      admin: {
+        description: 'Enter Hero Section Sub Title',
+      },
     },
     {
       name: 'image',
       label: 'Image',
       type: 'upload',
       relationTo: 'media',
+      admin: {
+        description: 'Upload an Image for Hero Section',
+      },
     },
   ],
 }

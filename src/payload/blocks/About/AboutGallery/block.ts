@@ -13,11 +13,17 @@ export const AboutGallery_Block: Block = {
       name: 'title',
       type: 'text',
       label: 'Title',
+      admin: {
+        description: 'Enter title for your gallery section',
+      },
     },
     {
       name: 'sub_title',
       type: 'text',
       label: 'Sub Title',
+      admin: {
+        description: 'Enter sub title for your gallery section',
+      },
     },
     {
       name: 'gallery',
@@ -31,6 +37,9 @@ export const AboutGallery_Block: Block = {
           relationTo: 'media',
         },
       ],
+      admin: {
+        description: 'Upload images for gallery section',
+      },
     },
   ],
 }
