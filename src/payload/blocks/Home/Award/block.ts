@@ -13,6 +13,9 @@ export const Award_Block: Block = {
       name: 'title',
       type: 'text',
       label: 'Title',
+      admin: {
+        description: 'Add Award Section Title',
+      },
     },
     {
       name: 'awards',
@@ -23,19 +26,31 @@ export const Award_Block: Block = {
           name: 'title',
           label: 'Title',
           type: 'text',
+          admin: {
+            description: 'add award title',
+          },
         },
         {
           name: 'sub_title',
           label: 'Sub Title',
           type: 'text',
+          admin: {
+            description: 'add award sub title',
+          },
         },
         {
           name: 'award_image',
           label: 'Award Image',
           type: 'upload',
           relationTo: 'media',
+          admin: {
+            description: 'Upload award Image',
+          },
         },
       ],
+      admin: {
+        description: 'Add your Awards',
+      },
     },
   ],
 }

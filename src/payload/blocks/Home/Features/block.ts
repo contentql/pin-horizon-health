@@ -13,6 +13,9 @@ export const Features_Block: Block = {
       name: 'title',
       type: 'text',
       label: 'Title',
+      admin: {
+        description: 'Add Features Section Title',
+      },
     },
     {
       name: 'features',
@@ -23,11 +26,17 @@ export const Features_Block: Block = {
           name: 'title',
           label: 'Title',
           type: 'text',
+          admin: {
+            description: 'add feature title',
+          },
         },
         {
           name: 'description',
           label: 'Description',
           type: 'text',
+          admin: {
+            description: 'add feature description',
+          },
         },
         {
           name: 'feature_icon',
@@ -40,8 +49,14 @@ export const Features_Block: Block = {
             { label: 'Respect', value: '4' },
             { label: 'Teamwork', value: '5' },
           ],
+          admin: {
+            description: 'Select Icon for Feature',
+          },
         },
       ],
+      admin: {
+        description: 'Add your features',
+      },
     },
   ],
 }

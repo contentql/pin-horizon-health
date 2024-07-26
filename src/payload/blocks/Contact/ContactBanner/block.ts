@@ -13,12 +13,18 @@ export const ContactBanner_Block: Block = {
       name: 'title',
       label: 'Title',
       type: 'text',
+      admin: {
+        description: 'Enter title for hero section',
+      },
     },
 
     {
       name: 'sub_title',
       label: 'Sub Title',
       type: 'text',
+      admin: {
+        description: 'Enter sub title for hero section',
+      },
     },
     {
       name: 'image',
@@ -26,7 +32,7 @@ export const ContactBanner_Block: Block = {
       type: 'upload',
       relationTo: 'media',
       admin: {
-        description: 'contact image',
+        description: 'Upload an image for hero section',
       },
     },
   ],

@@ -13,23 +13,35 @@ export const Hero_Block: Block = {
       name: 'title',
       type: 'text',
       label: 'Title',
+      admin: {
+        description: 'Add Hero Section Title',
+      },
     },
     {
       name: 'sub_title',
       type: 'text',
       label: 'Sub Title',
+      admin: {
+        description: 'Add Hero Section Sub Title',
+      },
     },
     {
       name: 'hero_image',
       type: 'upload',
       relationTo: 'media',
       label: 'Hero Image',
+      admin: {
+        description: 'Upload Hero Section Image',
+      },
     },
     {
       name: 'background_image',
       type: 'upload',
       relationTo: 'media',
       label: 'Background Image',
+      admin: {
+        description: 'Upload Hero Section Background Image',
+      },
     },
     // {
     //   name: 'video_button_text',
@@ -72,11 +84,17 @@ export const Hero_Block: Block = {
       name: 'button_text',
       type: 'text',
       label: 'Button Text',
+      admin: {
+        description: 'Add button name',
+      },
     },
     {
       name: 'button_url',
       type: 'text',
       label: 'Button Url',
+      admin: {
+        description: 'Add button redirecting page name',
+      },
     },
   ],
 }

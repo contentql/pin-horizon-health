@@ -14,28 +14,43 @@ export const About_Block: Block = {
       label: 'Image',
       type: 'upload',
       relationTo: 'media',
+      admin: {
+        description: 'upload about section Image',
+      },
     },
     {
       name: 'spin_image',
       label: 'Spin Image',
       type: 'upload',
       relationTo: 'media',
+      admin: {
+        description: 'upload Image for rotate',
+      },
     },
     {
       name: 'spin_logo',
       label: 'Spin logo',
       type: 'upload',
       relationTo: 'media',
+      admin: {
+        description: 'upload logo image',
+      },
     },
     {
       name: 'title',
       label: 'Title',
       type: 'text',
+      admin: {
+        description: 'add about section title',
+      },
     },
     {
       name: 'sub_title',
       label: 'Sub Title',
       type: 'text',
+      admin: {
+        description: 'add about section sub title',
+      },
     },
     {
       name: 'points',
@@ -46,13 +61,22 @@ export const About_Block: Block = {
           name: 'title',
           label: 'Title',
           type: 'text',
+          admin: {
+            description: 'add about point title',
+          },
         },
         {
           name: 'sub_title',
           label: 'Sub Title',
           type: 'text',
+          admin: {
+            description: 'add about point sub title',
+          },
         },
       ],
+      admin: {
+        description: 'Add about points',
+      },
     },
   ],
 }
