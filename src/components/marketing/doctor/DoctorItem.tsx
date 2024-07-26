@@ -2,17 +2,23 @@ import { Department, Doctor, Media } from '@payload-types'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default function DoctorItem({ doctor }: { doctor: Doctor }) {
+export default function DoctorItem({
+  doctor,
+  bgColor,
+}: {
+  doctor: Doctor
+  bgColor: string
+}) {
   return (
     <div className='cs_team cs_style_1 cs_type_2 cs_radius_20 overflow-hidden text-center'>
       <div className='cs_member_img'>
         <Link href={`/doctor/${doctor?.slug!}`} className='d-block '>
           <Image
-            className='h-[415px] w-full'
+            className={`h-[415px] w-full ${bgColor}  object-contain`}
             src={(doctor?.doctor_image as Media)?.sizes?.doctorImage?.url || ''}
             alt='Doctor'
-            height={387}
-            width={487}
+            height={525}
+            width={525}
           />
         </Link>
         <div className='cs_label cs_white_color cs_accent_bg'>
