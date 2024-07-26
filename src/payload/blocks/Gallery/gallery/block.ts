@@ -19,8 +19,14 @@ export const Gallery_Block: Block = {
           label: 'Image',
           type: 'upload',
           relationTo: 'media',
+          admin: {
+            description: 'Upload an image for gallery',
+          },
         },
       ],
+      admin: {
+        description: 'Upload images to gallery section',
+      },
     },
   ],
 }
