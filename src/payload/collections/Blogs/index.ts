@@ -37,6 +37,7 @@ export const Blogs: CollectionConfig = {
       name: 'author',
       type: 'relationship',
       label: 'Author',
+      required: true,
       relationTo: ['doctors'],
       hasMany: true,
       // defaultValue: ({ user }: { user: User }) => {
@@ -58,12 +59,19 @@ export const Blogs: CollectionConfig = {
           return false
         }
       },
+      admin: {
+        description: 'Select Author for Blog',
+      },
     },
     {
       name: 'tags',
       label: 'Tags',
+      required: true,
       type: 'relationship',
       relationTo: ['tags'],
+      admin: {
+        description: 'Must Select tag for Blog,yoga or Ayurveda',
+      },
       hasMany: false,
     },
     {
@@ -71,6 +79,9 @@ export const Blogs: CollectionConfig = {
       label: 'Title',
       type: 'text',
       required: true,
+      admin: {
+        description: 'Enter title for Blog',
+      },
     },
     slugField(),
     // It will directly use title field to add slug
@@ -96,6 +107,9 @@ export const Blogs: CollectionConfig = {
       name: 'sub_title',
       label: 'Sub Title',
       type: 'text',
+      admin: {
+        description: 'Enter sub title for Blog',
+      },
       // required: true,
     },
     {
@@ -123,12 +137,18 @@ export const Blogs: CollectionConfig = {
             { label: 'Facebook', value: 'fa-brands:facebook-f' },
             { label: 'Twitter', value: 'fa-brands:twitter' },
           ],
+          admin: {
+            description: 'Select social media icon for blog',
+          },
         },
         {
           name: 'url',
           label: 'Url',
           type: 'text',
           required: true,
+          admin: {
+            description: 'Enter url of that social media',
+          },
         },
       ],
     },
