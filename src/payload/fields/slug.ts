@@ -40,6 +40,7 @@ const slugField: Slug = (fieldToUse = 'title', overrides = {}) => {
       required: false, // Need to be false so that we can use beforeValidate hook to set slug.
       admin: {
         position: 'sidebar',
+        description: 'Auto generated field ',
         condition: data => {
           return !data?.isHome
         },

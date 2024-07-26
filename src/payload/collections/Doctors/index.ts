@@ -159,6 +159,10 @@ export const Doctors: CollectionConfig = {
       options: ['admin', 'doctor'],
       defaultValue: 'doctor',
       saveToJWT: true,
+      admin: {
+        description:
+          'Select the role for the user, choosing either Doctor or Admin (with admin panel access)',
+      },
     },
     { name: 'emailVerified', type: 'date' },
     {
@@ -207,6 +211,9 @@ export const Doctors: CollectionConfig = {
               label: 'Name',
               type: 'text',
               saveToJWT: true,
+              admin: {
+                description: ' Enter the name of the doctor ',
+              },
             },
             {
               type: 'row',
@@ -215,6 +222,9 @@ export const Doctors: CollectionConfig = {
                   name: 'designation',
                   label: 'Designation',
                   type: 'text',
+                  admin: {
+                    description: 'Doctor Designation',
+                  },
                 },
               ],
             },
@@ -222,6 +232,10 @@ export const Doctors: CollectionConfig = {
               name: 'description',
               label: 'Description',
               type: 'textarea',
+              admin: {
+                description:
+                  'Provide a description or additional details about the doctor',
+              },
             },
             {
               name: 'doctor_image',
@@ -265,21 +279,36 @@ export const Doctors: CollectionConfig = {
                       value: 'Residency',
                     },
                   ],
+                  admin: {
+                    description: 'select Qualification',
+                  },
                 },
                 {
                   name: 'institute',
                   label: 'Institute',
                   type: 'text',
+                  admin: {
+                    description:
+                      'Specify the name of the institute or organization where the doctor received their education or training',
+                  },
                 },
                 {
                   name: 'year',
                   label: 'Year',
                   type: 'date',
+                  admin: {
+                    description:
+                      'Enter the year in which the doctor graduated or completed their education at the institute',
+                  },
                 },
                 {
                   name: 'specialization',
                   label: 'Major/Specialization',
                   type: 'text',
+                  admin: {
+                    description:
+                      'Specify the area of medical specialization or expertise of the doctor.',
+                  },
                 },
               ],
             },
@@ -298,6 +327,10 @@ export const Doctors: CollectionConfig = {
                   name: 'title',
                   type: 'textarea',
                   label: 'Title',
+                  admin: {
+                    description:
+                      'Provide details about the doctor professional experience, including roles, responsibilities, and duration',
+                  },
                 },
               ],
             },
@@ -310,6 +343,10 @@ export const Doctors: CollectionConfig = {
                   name: 'title',
                   type: 'textarea',
                   label: 'Title',
+                  admin: {
+                    description:
+                      'List any awards or achievements the doctor has received, highlighting notable accomplishments and recognitions.',
+                  },
                 },
               ],
             },
@@ -323,28 +360,31 @@ export const Doctors: CollectionConfig = {
               name: 'phone_number',
               label: 'Phone Number',
               type: 'number',
+              admin: {
+                description: 'Enter the doctor contact phone number',
+              },
             },
 
-            {
-              type: 'row',
-              fields: [
-                {
-                  name: 'linkedin',
-                  type: 'text',
-                  label: 'Linkedin Url',
-                },
-                {
-                  name: 'twitter',
-                  type: 'text',
-                  label: 'Twitter Url',
-                },
-                {
-                  name: 'facebook',
-                  type: 'text',
-                  label: 'Facebook Url',
-                },
-              ],
-            },
+            // {
+            //   type: 'row',
+            //   fields: [
+            //     {
+            //       name: 'linkedin',
+            //       type: 'text',
+            //       label: 'Linkedin Url',
+            //     },
+            //     {
+            //       name: 'twitter',
+            //       type: 'text',
+            //       label: 'Twitter Url',
+            //     },
+            //     {
+            //       name: 'facebook',
+            //       type: 'text',
+            //       label: 'Facebook Url',
+            //     },
+            //   ],
+            // },
           ],
         },
       ],
@@ -364,6 +404,8 @@ export const Doctors: CollectionConfig = {
       // },
       admin: {
         position: 'sidebar',
+        description:
+          'Select the department to which the doctor belongs from the available options',
       },
     },
     {
@@ -371,8 +413,9 @@ export const Doctors: CollectionConfig = {
       label: 'Cal User Name',
       type: 'text',
       admin: {
-        description: 'paste the doctor cal user name here',
         position: 'sidebar',
+        description:
+          "After successfully creating the doctor profile, send a Cal invitation link to the doctor's email. Once the doctor registers, get their username from the doctor and enter their Cal username here.",
       },
     },
   ],
