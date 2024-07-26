@@ -265,16 +265,14 @@ export interface Tag {
  */
 export interface Blog {
   id: string;
-  author?:
-    | {
-        relationTo: 'doctors';
-        value: string | Doctor;
-      }[]
-    | null;
-  tags?: {
+  author: {
+    relationTo: 'doctors';
+    value: string | Doctor;
+  }[];
+  tags: {
     relationTo: 'tags';
     value: string | Tag;
-  } | null;
+  };
   title: string;
   slug?: string | null;
   sub_title?: string | null;
@@ -610,9 +608,9 @@ export interface AboutServicesType {
   sub_title?: string | null;
   services?:
     | {
-        title?: string | null;
-        sub_title?: string | null;
-        service_path?: string | null;
+        title: string;
+        sub_title: string;
+        service_path: string;
         id?: string | null;
       }[]
     | null;
@@ -629,9 +627,9 @@ export interface AboutFeaturesType {
   image?: string | Media | null;
   features?:
     | {
-        title?: string | null;
-        sub_title?: string | null;
-        feature_icon?: ('1' | '2' | '3' | '4') | null;
+        title: string;
+        sub_title: string;
+        feature_icon: '1' | '2' | '3' | '4';
         id?: string | null;
       }[]
     | null;
@@ -646,8 +644,8 @@ export interface AboutFeaturesType {
 export interface AboutStatisticsType {
   statistics?:
     | {
-        number?: string | null;
-        title?: string | null;
+        number: string;
+        title: string;
         id?: string | null;
       }[]
     | null;
@@ -682,8 +680,8 @@ export interface AboutAwardsType {
   description?: string | null;
   awards?:
     | {
-        title?: string | null;
-        image?: string | Media | null;
+        title: string;
+        image: string | Media;
         id?: string | null;
       }[]
     | null;
@@ -796,9 +794,9 @@ export interface ContactDetailsType {
   title?: string | null;
   contact_info?:
     | {
-        title?: string | null;
-        sub_title?: string | null;
-        contact_icon?: ('1' | '2' | '3') | null;
+        title: string;
+        sub_title: string;
+        contact_icon: '1' | '2' | '3';
         id?: string | null;
       }[]
     | null;
