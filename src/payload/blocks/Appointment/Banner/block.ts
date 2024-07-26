@@ -14,12 +14,18 @@ export const Appointment_Banner_Block: Block = {
       label: 'Title',
       type: 'text',
       required: true,
+      admin: {
+        description: 'Enter title for Appointment hero section',
+      },
     },
     {
       name: 'description',
       label: 'Description',
       type: 'textarea',
       required: true,
+      admin: {
+        description: 'Enter description for Appointment hero section',
+      },
     },
     {
       name: 'image',
@@ -28,7 +34,7 @@ export const Appointment_Banner_Block: Block = {
       relationTo: 'media',
       required: true,
       admin: {
-        description: 'Doctor image',
+        description: 'Upload an image for Appointment hero section',
       },
     },
   ],
