@@ -33,12 +33,20 @@ export const Tours: CollectionConfig = {
               type: 'text',
               required: true,
               unique: true,
+              admin: {
+                description:
+                  "Enter the title of the tour (e.g., 'Guided City Tour')",
+              },
             },
             {
               name: 'hero_url',
               type: 'upload',
               label: 'Image',
               relationTo: 'media',
+              admin: {
+                description:
+                  'Upload a hero image for the tour card to visually represent the tour',
+              },
             },
             {
               name: 'gallery',
@@ -50,6 +58,10 @@ export const Tours: CollectionConfig = {
                   label: 'Image',
                   type: 'upload',
                   relationTo: 'media',
+                  admin: {
+                    description:
+                      'Upload gallery images to showcase various aspects of the tour, providing a visual preview of the experience',
+                  },
                 },
               ],
             },
@@ -57,21 +69,36 @@ export const Tours: CollectionConfig = {
               name: 'description',
               label: 'Description',
               type: 'richText',
+              admin: {
+                description:
+                  'Provide a brief overview of the tour, highlighting key features and attractions',
+              },
             },
             {
               name: 'price',
               label: 'Price',
               type: 'number',
+              admin: {
+                description: 'Enter the price for the tour (e.g., 2000)',
+              },
             },
             {
               name: 'duration',
               label: 'Duration',
               type: 'text',
+              admin: {
+                description:
+                  'Specify the duration of the tour (e.g., 2 days 1 night)',
+              },
             },
             {
               name: 'location',
               label: 'Location',
               type: 'text',
+              admin: {
+                description:
+                  'Enter the location where the tour takes place (e.g., city, landmark, or venue)',
+              },
             },
           ],
         },
@@ -82,6 +109,10 @@ export const Tours: CollectionConfig = {
               name: 'services',
               label: 'Services',
               type: 'array',
+              admin: {
+                description:
+                  'List the services included in the tour (e.g., guided tours, transportation, meals).',
+              },
               fields: [
                 {
                   name: 'service',
@@ -94,6 +125,10 @@ export const Tours: CollectionConfig = {
               name: 'highlights',
               label: 'Highlights',
               type: 'array',
+              admin: {
+                description:
+                  'Outline the main attractions and standout features of the tour',
+              },
               fields: [
                 {
                   name: 'highlight',
@@ -112,17 +147,29 @@ export const Tours: CollectionConfig = {
               label: 'Name',
               type: 'text',
               required: true,
+              admin: {
+                description:
+                  'Enter the name of the tour guide who will lead the tour',
+              },
             },
             {
               name: 'guide_phone',
               label: 'Phone Number',
               type: 'number',
               required: true,
+              admin: {
+                description:
+                  'Provide the phone number of the tour guide for contact during the tour',
+              },
             },
             {
               name: 'guide_email',
               label: 'Email',
               type: 'email',
+              admin: {
+                description:
+                  'Enter the email address of the tour guide for communication and inquiries.',
+              },
             },
           ],
         },
