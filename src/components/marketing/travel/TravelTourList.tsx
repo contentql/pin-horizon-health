@@ -15,10 +15,10 @@ function TravelTourList({ tours }: { tours: Tour[] }) {
             <div className='relative h-64 w-full'>
               <Image
                 className='h-full w-full rounded-t-lg object-cover object-center'
-                src={(tour?.hero_url as Media)?.url!}
+                src={(tour?.hero_url as Media)?.sizes?.tour_card?.url!}
                 alt=''
-                width={80}
-                height={40}
+                width={320}
+                height={256}
               />
               <p className='absolute left-2 top-2 rounded-lg bg-zinc-800 px-2 py-1 text-sm font-semibold text-white'>
                 ${tour?.price}

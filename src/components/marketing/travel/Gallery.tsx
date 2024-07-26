@@ -30,9 +30,13 @@ export function Gallery({ images }: { images: Tour['gallery'] }) {
               className={`${index === 0 ? 'col-span-2 row-span-2' : ''}`}>
               <Image
                 alt='img1'
-                src={(image?.image as Media)?.url!}
-                width={100}
-                height={100}
+                src={
+                  index === 0
+                    ? (image?.image as Media)?.sizes?.tour_gallery!.url || ''
+                    : (image?.image as Media)?.sizes?.tour_gallery_1!.url || ''
+                }
+                width={index === 0 ? 797 : 382}
+                height={index === 0 ? 797 : 382}
                 quality={100}
                 className={` h-full w-full rounded-xl brightness-90 transition-all duration-300 hover:scale-105 hover:brightness-100`}
               />

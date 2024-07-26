@@ -19,6 +19,24 @@ export const Media: CollectionConfig = {
         position: 'centre',
       },
       {
+        name: 'tour_gallery_1',
+        width: undefined,
+        height: 320,
+        position: 'centre',
+      },
+      {
+        name: 'tour_card',
+        width: 320,
+        height: undefined,
+        position: 'centre',
+      },
+      {
+        name: 'tour_gallery',
+        width: undefined,
+        height: 797,
+        position: 'centre',
+      },
+      {
         name: 'blog_image_size2',
         width: 986,
         height: undefined,
@@ -37,8 +55,8 @@ export const Media: CollectionConfig = {
         position: 'centre',
       },
       {
-        height: 415,
-        width: 415,
+        height: undefined,
+        width: 525,
         crop: 'center',
         name: 'doctorImage',
       },

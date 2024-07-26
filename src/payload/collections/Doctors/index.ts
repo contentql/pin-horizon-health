@@ -355,13 +355,13 @@ export const Doctors: CollectionConfig = {
       label: 'Department',
       type: 'relationship',
       relationTo: ['department'],
-      filterOptions: ({ relationTo, data, siblingData }) => {
-        return {
-          department_type: {
-            contains: 'Doctor',
-          },
-        }
-      },
+      // filterOptions: ({ relationTo, data, siblingData }) => {
+      //   return {
+      //     department_type: {
+      //       contains: 'Doctor',
+      //     },
+      //   }
+      // },
       admin: {
         position: 'sidebar',
       },

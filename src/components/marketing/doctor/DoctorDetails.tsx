@@ -6,7 +6,6 @@ import Tabs from '@/components/common/Tabs'
 
 import List from './List'
 import List2 from './List/List2'
-import ListStyle2 from './List/ListStyle2'
 
 export default function DoctorDetails({
   doctorDetails,
@@ -59,7 +58,7 @@ export default function DoctorDetails({
           <div className='col-lg-5'>
             <div className='cs_single_doctor cs_radius_20 overflow-hidden'>
               <Image
-                src={(doctorDetails?.doctor_image as Media)?.url!}
+                src={(doctorDetails?.doctor_image as Media)?.url || ''}
                 alt='Doctor'
                 className='w-100'
                 height={736}
@@ -70,13 +69,13 @@ export default function DoctorDetails({
               </h3>
             </div>
             <Spacing md='94' lg='60' />
-            <ListStyle2
+            {/* <ListStyle2
               heading={'Contact Info'}
               iconUrl='/images/icons/schedule.svg'
               phoneNumber={doctorDetails?.phone_number as number}
               email={doctorDetails?.email as string}
             />
-            <Spacing md='66' lg='60' />
+            <Spacing md='66' lg='60' /> */}
             {/* <ListStyle3
               heading={scheduleHeading}
               iconUrl='/images/icons/schedule.svg'

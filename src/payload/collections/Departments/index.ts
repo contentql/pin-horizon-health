@@ -36,18 +36,18 @@ export const Departments: CollectionConfig = {
       required: true,
     },
 
-    {
-      name: 'department_type',
-      type: 'select',
-      hasMany: true,
-      label: 'Department',
-      options: [
-        { label: 'Doctor', value: 'Doctor' },
-        { label: 'Hospital', value: 'Hospital' },
-        { label: 'Yoga', value: 'Yoga' },
-        { label: 'Travel', value: 'Travel' },
-      ],
-    },
+    // {
+    //   name: 'department_type',
+    //   type: 'select',
+    //   hasMany: true,
+    //   label: 'Department Type',
+    //   options: [
+    //     { label: 'Doctor', value: 'Doctor' },
+    //     { label: 'Hospital', value: 'Hospital' },
+    //     { label: 'Yoga', value: 'Yoga' },
+    //     { label: 'Travel', value: 'Travel' },
+    //   ],
+    // },
     slugField(),
   ],
 }
