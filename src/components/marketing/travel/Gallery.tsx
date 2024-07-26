@@ -27,6 +27,7 @@ export function Gallery({ images }: { images: Tour['gallery'] }) {
             <Link
               key={index}
               href={(image?.image as Media)?.url!}
+              data-disable-nprogress={true}
               className={`${index === 0 ? 'col-span-2 row-span-2' : ''}`}>
               <Image
                 alt='img1'

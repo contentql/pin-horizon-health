@@ -1,11 +1,11 @@
 'use client'
 
+import { Gallery } from '../travel/Gallery'
 import { Hospital } from '@payload-types'
 import { notFound } from 'next/navigation'
 
 import Breadcrumbs from '@/components/common/Breadcrumbs'
 
-import { Gallery } from './Gallery'
 import HospitalDetails from './HospitalDetails'
 
 const HospitalView = ({ hospitalDetails }: { hospitalDetails: Hospital }) => {
