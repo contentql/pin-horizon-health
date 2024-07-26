@@ -215,9 +215,6 @@ export interface Doctor {
       }[]
     | null;
   phone_number?: number | null;
-  linkedin?: string | null;
-  twitter?: string | null;
-  facebook?: string | null;
   slug?: string | null;
   department?: {
     relationTo: 'department';
