@@ -20,6 +20,7 @@ export default function ContactForm() {
     register,
     handleSubmit,
     trigger,
+    reset,
     formState: { errors },
   } = useForm<TContactForm>({
     resolver: zodResolver(ContactFormValidator),
@@ -28,7 +29,15 @@ export default function ContactForm() {
   const { mutate: contactFormData } =
     trpc.contact.ContactFormPostData.useMutation({
       onSuccess: () => {
-        toast.success('Contact form is submitted!!')
+        reset()
+        toast.success('Contact form is submitted!!', {
+          position: 'bottom-left',
+        })
+      },
+      onError: err => {
+        toast.error('Failed to submit contact form, Please try again.', {
+          position: 'bottom-left',
+        })
       },
     })
 
