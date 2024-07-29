@@ -1,4 +1,4 @@
-import { ClientUser } from 'payload/auth'
+import { ClientUser } from 'payload'
 
 export const visibleToAdminOnly = ({ user }: ClientUser) => {
   return !(user?.role === 'admin')

@@ -1,4 +1,4 @@
-import { Blog, User } from '@payload-types'
+import { Blog, Doctor } from '@payload-types'
 
 function AuthorPostsView({
   blogsData,
@@ -9,7 +9,7 @@ function AuthorPostsView({
   blogsData: Blog[]
   totalBlogs: number
   authorTags: any
-  author: User
+  author: Doctor
 }) {
   return (
     <div className='flex items-center justify-center'>

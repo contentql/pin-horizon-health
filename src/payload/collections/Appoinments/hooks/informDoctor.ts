@@ -1,5 +1,5 @@
 import { env } from '@env'
-import { CollectionAfterChangeHook } from 'payload/types'
+import { CollectionAfterChangeHook } from 'payload'
 
 import { formatDateTime } from '@/utils/dateTimeFormater'
 

@@ -16,7 +16,6 @@
     "format:fix": "prettier . --write"
   },
   "dependencies": {
-    "@auth/core": "^0.31.0",
     "@fontsource-variable/inter": "^5.0.18",
     "@hookform/resolvers": "^3.4.0",
     "@iconify/react": "^5.0.1",
@@ -50,7 +49,6 @@
     "libphonenumber-js": "^1.11.4",
     "lightgallery": "^2.7.2",
     "next": "15.0.0-canary.58",
-    "next-auth": "5.0.0-beta.18",
     "next-nprogress-bar": "^2.3.13",
     "path-to-regexp": "^6.2.2",
     "payload": "beta",

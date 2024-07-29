@@ -1,5 +1,5 @@
 import { env } from '@env'
-import { CollectionAfterChangeHook } from 'payload/types'
+import { CollectionAfterChangeHook } from 'payload'
 
 export const AfterDoctorCreate: CollectionAfterChangeHook = async ({
   operation,

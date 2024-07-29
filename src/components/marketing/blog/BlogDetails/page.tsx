@@ -6,7 +6,7 @@ import Post from '../Post'
 import RichText from '../RichText'
 import Sidebar from '../Sidebar'
 import { Icon } from '@iconify/react'
-import { Blog, Media, Tag, User } from '@payload-types'
+import { Blog, Doctor, Media, Tag } from '@payload-types'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -48,7 +48,7 @@ export default function BlogDetails({
               {formattedDate} |{' '}
               {blogData?.author
                 ?.slice(0, 2)
-                ?.map(author => (author?.value as User)?.name)}
+                ?.map(author => (author?.value as Doctor)?.name)}
             </div>
           </div>
           <div className='cs_social_links_wrap'>

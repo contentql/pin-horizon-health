@@ -1,4 +1,4 @@
-import { CollectionAfterChangeHook } from 'payload/types'
+import { CollectionAfterChangeHook } from 'payload'
 
 import { tempContactForm } from '@/email-templates/tempContactEmail'
 

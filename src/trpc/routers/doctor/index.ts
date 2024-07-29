@@ -2,13 +2,18 @@ import configPromise from '@payload-config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import { z } from 'zod'
 
-import { publicProcedure, router } from '@/trpc'
+import { publicProcedure, router, userProcedure } from '@/trpc'
 
 const payload = await getPayloadHMR({
   config: configPromise,
 })
 
 export const doctorRouter = router({
+  getUser: userProcedure.query(async ({ ctx }) => {
+    const { user } = ctx
+
+    return user
+  }),
   getallDoctors: publicProcedure.query(async () => {
     try {
       const doctors = await payload.find({

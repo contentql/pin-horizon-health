@@ -1,5 +1,5 @@
 import { Icon } from '@iconify/react'
-import { Blog, User } from '@payload-types'
+import { Blog, Doctor } from '@payload-types'
 import Link from 'next/link'
 
 export default function RecentPostWidget({
@@ -30,7 +30,7 @@ export default function RecentPostWidget({
                   <Link href='/'>
                     {item?.author
                       ?.slice(0, 1)
-                      ?.map(author => (author?.value as User)?.name)}
+                      ?.map(author => (author?.value as Doctor)?.name)}
                   </Link>
                 </li>
                 <li className='cs_posted_by'>
