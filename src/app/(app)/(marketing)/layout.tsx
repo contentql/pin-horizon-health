@@ -2,9 +2,9 @@ import configPromise from '@payload-config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 
 import PopupCalComponent from '@/components/common/PopupCalComponent'
-import { getCurrentUser } from '@/lib/authjs-payload-adapter/payload'
 import Footer from '@/payload/blocks/Footer'
 import Header from '@/payload/blocks/Header'
+import { getCurrentUser } from '@/utils/getCurrentUser'
 
 export const revalidate = 60000
 
