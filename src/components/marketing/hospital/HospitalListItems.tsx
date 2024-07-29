@@ -45,8 +45,6 @@ export default function HospitalListItem() {
     new Set(countries?.map(country => country?.country)),
   )
 
-  console.log('unique', uniqueCountries)
-
   return (
     <div className='container'>
       <div className='cs_doctors_heading' id='hospitals'>
