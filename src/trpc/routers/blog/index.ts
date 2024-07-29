@@ -45,7 +45,7 @@ export const blogRouter = router({
     }
   }),
 
-  getAllBlogsByTag: publicProcedure
+  getAllBlogsByTagWithPagination: publicProcedure
     .input(z.object({ slug: z.string(), page: z.number() }))
     ?.query(async ({ input }) => {
       try {
@@ -78,6 +78,38 @@ export const blogRouter = router({
           limit: 6,
         })
         return { blogsData, meta: { hasPrevPage, hasNextPage, totalPages } }
+      } catch (error: any) {
+        console.log(error)
+        throw new Error(error.message)
+      }
+    }),
+
+  getAllBlogsByTag: publicProcedure
+    .input(z.object({ slug: z.string() }))
+    ?.query(async ({ input }) => {
+      try {
+        const { slug } = input
+        const { docs: tagData } = await payload.find({
+          collection: 'tags',
+          where: {
+            slug: {
+              equals: slug,
+            },
+          },
+        })
+
+        if (!tagData.length) {
+          return
+        }
+        const { docs: blogsData } = await payload.find({
+          collection: 'blogs',
+          where: {
+            'tags.value': {
+              equals: tagData?.at(0)?.id,
+            },
+          },
+        })
+        return blogsData
       } catch (error: any) {
         console.log(error)
         throw new Error(error.message)
