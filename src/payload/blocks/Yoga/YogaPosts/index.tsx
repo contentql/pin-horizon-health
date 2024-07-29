@@ -15,7 +15,7 @@ function YogaPosts(data: YogaPostsType) {
   const yogaSkeltons = 3
   const [page, setPage] = useState(1)
   const { data: yogaData, isPending: isYogaPending } =
-    trpc.blog.getAllBlogsByTag.useQuery({
+    trpc.blog.getAllBlogsByTagWithPagination.useQuery({
       slug: 'yoga',
       page: page,
     })

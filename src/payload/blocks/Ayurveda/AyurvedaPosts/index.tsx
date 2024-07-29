@@ -11,10 +11,11 @@ import { trpc } from '@/trpc/client'
 
 const AyurvedaPosts = (data: AyurvedaPostsType) => {
   const [page, setPage] = useState(1)
-  const { data: ayurvedaData } = trpc.blog.getAllBlogsByTag.useQuery({
-    slug: 'ayurveda',
-    page: page,
-  })
+  const { data: ayurvedaData } =
+    trpc.blog.getAllBlogsByTagWithPagination.useQuery({
+      slug: 'ayurveda',
+      page: page,
+    })
   return (
     <div className='flex items-center justify-center'>
       <div className='w-96 px-4 pt-9 2xl:container sm:w-auto md:px-6 md:pt-12 lg:px-20 lg:pt-16 2xl:mx-auto'>
