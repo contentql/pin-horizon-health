@@ -46,10 +46,10 @@ export const blogRouter = router({
   }),
 
   getAllBlogsByTag: publicProcedure
-    .input(z.object({ slug: z.string() }))
+    .input(z.object({ slug: z.string(), page: z.number() }))
     ?.query(async ({ input }) => {
       try {
-        const { slug } = input
+        const { slug, page } = input
         const { docs: tagData } = await payload.find({
           collection: 'tags',
           where: {
@@ -62,16 +62,22 @@ export const blogRouter = router({
         if (!tagData.length) {
           return
         }
-
-        const { docs: blogsData } = await payload.find({
+        const {
+          docs: blogsData,
+          hasNextPage,
+          hasPrevPage,
+          totalPages,
+        } = await payload.find({
           collection: 'blogs',
           where: {
             'tags.value': {
               equals: tagData?.at(0)?.id,
             },
           },
+          page: page,
+          limit: 6,
         })
-        return blogsData
+        return { blogsData, meta: { hasPrevPage, hasNextPage, totalPages } }
       } catch (error: any) {
         console.log(error)
         throw new Error(error.message)
