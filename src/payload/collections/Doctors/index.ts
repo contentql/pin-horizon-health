@@ -1,5 +1,5 @@
 import { ADMIN_AUTH_GROUP, COLLECTION_SLUG_USER } from '../constants'
-import type { CollectionConfig } from 'payload/types'
+import type { CollectionConfig } from 'payload'
 
 import {
   ADMIN_ACCESS_ROLES,

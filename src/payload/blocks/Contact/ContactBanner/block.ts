@@ -1,4 +1,4 @@
-import { Block } from 'payload/types'
+import { Block } from 'payload'
 
 export const ContactBanner_Block: Block = {
   slug: 'ContactBanner',
