@@ -1,8 +1,7 @@
-import { DoctorHeroType, Media, Tour } from '@payload-types'
+import { DoctorHeroType, Media } from '@payload-types'
 
-import Section from '@/components/common/Section'
 import Hero from '@/components/marketing/doctor/Hero'
-import TravelTourList from '@/components/marketing/travel/TravelTourList'
+import TravelContactForm from '@/components/marketing/travel/TravelContactForm'
 import { trpc } from '@/trpc/client'
 
 function TravelHero(doctorHero: DoctorHeroType) {
@@ -15,9 +14,13 @@ function TravelHero(doctorHero: DoctorHeroType) {
         title={doctorHero?.title}
         subTitle={doctorHero?.sub_title}
       />
-      <Section topMd={65} bottomMd={200} bottomLg={150} bottomXl={110}>
-        <TravelTourList tours={tours as Tour[]} />
-      </Section>
+      <div className='cs_mt_minus_110 container pb-24'>
+        <div className='row'>
+          <div className='col-lg-10 offset-lg-1'>
+            <TravelContactForm />
+          </div>
+        </div>
+      </div>
     </>
   )
 }

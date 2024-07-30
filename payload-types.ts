@@ -22,6 +22,7 @@ export interface Config {
     contact: Contact;
     hospital: Hospital;
     country: Country;
+    tourists: Tourist;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -978,7 +979,6 @@ export interface Tour {
     };
     [k: string]: unknown;
   } | null;
-  price?: number | null;
   duration?: string | null;
   location?: string | null;
   services?:
@@ -1071,6 +1071,21 @@ export interface Country {
   id: string;
   country?: string | null;
   slug?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tourists".
+ */
+export interface Tourist {
+  id: string;
+  name?: string | null;
+  email?: string | null;
+  date?: string | null;
+  phoneNumber?: string | null;
+  message?: string | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
