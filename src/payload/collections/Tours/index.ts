@@ -75,14 +75,6 @@ export const Tours: CollectionConfig = {
               },
             },
             {
-              name: 'price',
-              label: 'Price',
-              type: 'number',
-              admin: {
-                description: 'Enter the price for the tour (e.g., 2000)',
-              },
-            },
-            {
               name: 'duration',
               label: 'Duration',
               type: 'text',

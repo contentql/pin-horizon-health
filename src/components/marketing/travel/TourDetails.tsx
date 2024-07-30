@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import { BsTelephone } from 'react-icons/bs'
 import { FaRegClock } from 'react-icons/fa'
 import { GoPeople } from 'react-icons/go'
-import { IoLocationOutline, IoPricetagsOutline } from 'react-icons/io5'
+import { IoLocationOutline } from 'react-icons/io5'
 import { MdOutlineStar } from 'react-icons/md'
 import { toast } from 'sonner'
 
@@ -90,18 +90,6 @@ const TourDetails = ({ tourDetails }: { tourDetails: Tour }) => {
             </h2>
             <div className='grid grid-cols-1 gap-y-6 md:grid-cols-2'>
               <div className='inline-flex gap-x-2'>
-                <IoPricetagsOutline
-                  size={24}
-                  className='font-bold text-black'
-                />
-                <div>
-                  Price
-                  <p className='text-lg  text-zinc-800'>
-                    ${tourDetails?.price}
-                  </p>
-                </div>
-              </div>
-              <div className='inline-flex gap-x-2'>
                 <GoPeople size={24} className='font-bold text-black' />
                 <div>
                   Contact Name
@@ -167,7 +155,7 @@ const TourDetails = ({ tourDetails }: { tourDetails: Tour }) => {
           <div className='w-full rounded-lg bg-white  p-4 shadow-md dark:bg-gray-800 sm:p-6 md:p-8 lg:w-[400px]'>
             <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
               <h5 className='text-xl font-medium text-gray-900 '>
-                {tourDetails?.price}/ tour
+                Tourist Details
               </h5>
               <div>
                 <input
