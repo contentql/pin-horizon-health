@@ -1,14 +1,52 @@
 import RichText from '../blog/RichText'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { Tour } from '@payload-types'
+import { useForm } from 'react-hook-form'
 import { BsTelephone } from 'react-icons/bs'
 import { FaRegClock } from 'react-icons/fa'
 import { GoPeople } from 'react-icons/go'
 import { IoLocationOutline, IoPricetagsOutline } from 'react-icons/io5'
 import { MdOutlineStar } from 'react-icons/md'
+import { toast } from 'sonner'
+
+import {
+  TTouristsForm,
+  TouristsFormValidator,
+} from '@/lib/validator/touristsValidator'
+import { trpc } from '@/trpc/client'
 
 import List2 from './List'
 
 const TourDetails = ({ tourDetails }: { tourDetails: Tour }) => {
+  const {
+    control,
+    register,
+    handleSubmit,
+    trigger,
+    reset,
+    formState: { errors },
+  } = useForm<TTouristsForm>({
+    resolver: zodResolver(TouristsFormValidator),
+  })
+
+  const { mutate: touristFormData } =
+    trpc.tourist.postTouristFormData.useMutation({
+      onSuccess: () => {
+        reset()
+        toast.success('Details submitted successfully!!', {
+          position: 'bottom-left',
+        })
+      },
+      onError: err => {
+        toast.error('Failed to submit Details, Please try again.', {
+          position: 'bottom-left',
+        })
+      },
+    })
+
+  const onSubmit = (data: TTouristsForm) => {
+    touristFormData(data)
+  }
   const handleFocus = (event: any) => {
     event.target.type = 'date'
   }
@@ -127,37 +165,47 @@ const TourDetails = ({ tourDetails }: { tourDetails: Tour }) => {
         </div>
         <div>
           <div className='w-full rounded-lg bg-white  p-4 shadow-md dark:bg-gray-800 sm:p-6 md:p-8 lg:w-[400px]'>
-            <form className='space-y-6' action='#'>
+            <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
               <h5 className='text-xl font-medium text-gray-900 '>
                 {tourDetails?.price}/ tour
               </h5>
               <div>
                 <input
                   type='text'
-                  name='date'
                   id='date'
                   onFocus={handleFocus}
-                  onBlur={handleBlur}
+                  // onBlur={handleBlur}
                   placeholder='MM/DD//YY'
                   className='placeholder-font-bold placeholder-text-lg tex-xl w-full rounded-lg border border-gray-300 bg-gray-50 p-6 text-gray-900 placeholder-gray-500 placeholder-opacity-75 focus:border-blue-500 focus:ring-blue-500 '
                   required
+                  {...register('date')}
                 />
               </div>
               <div>
                 <input
                   type='text'
-                  name='text'
-                  id='text'
-                  placeholder='Guests'
+                  id='name'
+                  placeholder='Stive Smith'
                   className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-6 text-xl  text-gray-900 focus:border-blue-500 focus:ring-blue-500 '
                   required
+                  {...register('name')}
+                />
+              </div>
+              <div>
+                <input
+                  type='email'
+                  id='email'
+                  placeholder='stivesmith@gmail.com'
+                  className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-6 text-xl  text-gray-900 focus:border-blue-500 focus:ring-blue-500 '
+                  required
+                  {...register('email')}
                 />
               </div>
 
               <button
                 type='submit'
                 className='w-full rounded-lg bg-zinc-800 px-5 py-2.5 text-center text-lg font-medium text-white'>
-                Reserve
+                Submit Contact Details
               </button>
             </form>
           </div>
