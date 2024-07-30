@@ -23,6 +23,9 @@ export const TouristDetailsEmailToAdmin: CollectionAfterChangeHook = async ({
       html: touristContactForm({
         userName: doc.name,
         email: doc.email,
+        date: doc.date,
+        message: doc.message,
+        phoneNumber: doc.phoneNumber,
       }),
     })
   }
