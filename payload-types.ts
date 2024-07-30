@@ -979,7 +979,6 @@ export interface Tour {
     };
     [k: string]: unknown;
   } | null;
-  price?: number | null;
   duration?: string | null;
   location?: string | null;
   services?:
@@ -1085,6 +1084,8 @@ export interface Tourist {
   name?: string | null;
   email?: string | null;
   date?: string | null;
+  phoneNumber?: string | null;
+  message?: string | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
