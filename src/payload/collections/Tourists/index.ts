@@ -36,5 +36,15 @@ export const Tourists: CollectionConfig = {
       label: 'Date',
       type: 'date',
     },
+    {
+      name: 'phoneNumber',
+      label: 'Phone Number',
+      type: 'text',
+    },
+    {
+      name: 'message',
+      label: 'Message',
+      type: 'textarea',
+    },
   ],
 }
