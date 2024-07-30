@@ -3,11 +3,17 @@ import { env } from 'process'
 interface UserContactEmailProps {
   userName: 'string'
   email: 'string'
+  date: any
+  message: 'string'
+  phoneNumber: 'string'
 }
 
 export const touristContactForm = ({
   userName,
   email,
+  date,
+  message,
+  phoneNumber,
 }: UserContactEmailProps) => {
   const imageUrl = `${env.PAYLOAD_URL}/images/about/banner_img.png`
   return `<!DOCTYPE html>
@@ -15,7 +21,7 @@ export const touristContactForm = ({
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Form Submission</title>
+    <title>Tourist Contact Form Submission</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -65,9 +71,12 @@ export const touristContactForm = ({
             <h2>Contact Details</h2>
             <p><strong>Name:</strong> ${userName}</p>
             <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Phone Number:</strong> ${phoneNumber}</p>
+            <p><strong>Tour Date:</strong> ${date}</p>
+             <p><strong>Message:</strong> ${message}</p>
         </div>
         <div class="footer">
-            <p>This email was generated from a contact form submission.</p>
+            <p>This email was generated from a Tourist contact form submission.</p>
         </div>
     </div>
 </body>
