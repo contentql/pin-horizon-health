@@ -44,9 +44,9 @@ const TourDetails = ({ tourDetails }: { tourDetails: Tour }) => {
       },
     })
 
-  const onSubmit = (data: TTouristsForm) => {
-    touristFormData(data)
-  }
+  // const onSubmit = (data: TTouristsForm) => {
+  //   touristFormData(data)
+  // }
   const handleFocus = (event: any) => {
     event.target.type = 'date'
   }
@@ -153,7 +153,7 @@ const TourDetails = ({ tourDetails }: { tourDetails: Tour }) => {
         </div>
         <div>
           <div className='w-full rounded-lg bg-white  p-4 shadow-md dark:bg-gray-800 sm:p-6 md:p-8 lg:w-[400px]'>
-            <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
+            <form className='space-y-6'>
               <h5 className='text-xl font-medium text-gray-900 '>
                 Tourist Details
               </h5>

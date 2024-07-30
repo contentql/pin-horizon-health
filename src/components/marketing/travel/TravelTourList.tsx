@@ -20,9 +20,9 @@ function TravelTourList({ tours }: { tours: Tour[] }) {
                 width={320}
                 height={256}
               />
-              <p className='absolute left-2 top-2 rounded-lg bg-zinc-800 px-2 py-1 text-sm font-semibold text-white'>
+              {/* <p className='absolute left-2 top-2 rounded-lg bg-zinc-800 px-2 py-1 text-sm font-semibold text-white'>
                 ${tour?.price}
-              </p>
+              </p> */}
             </div>
             <div className='p-4'>
               <p className='text-sm text-gray-500'>{tour?.location}</p>
