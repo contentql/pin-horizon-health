@@ -1,11 +1,11 @@
-import { Blog, Tag, User } from '@payload-types'
+import { Blog, Doctor, Tag } from '@payload-types'
 
 const BlogsByAuthorAndTagView = ({
   tagDetails,
   authorDetails,
   blogsData,
 }: {
-  authorDetails: User
+  authorDetails: Doctor
   tagDetails: Tag
   blogsData: Blog[]
 }) => {

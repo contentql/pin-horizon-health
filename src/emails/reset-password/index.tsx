@@ -17,7 +17,7 @@ import {
 
 interface ResetPasswordEmailProps {
   appName?: string
-  userFirstname: string
+  userFirstName: string
   resetPasswordLink: string
 }
 
@@ -25,7 +25,7 @@ const baseUrl = env.NEXT_PUBLIC_PUBLIC_URL
 
 export default function Email({
   appName = 'Payload',
-  userFirstname,
+  userFirstName,
   resetPasswordLink,
 }: ResetPasswordEmailProps) {
   return (
@@ -61,7 +61,7 @@ export default function Email({
             </Column>
           </Row>
           <Section>
-            <Text className='dark:text-zinc-300'>Hi {userFirstname},</Text>
+            <Text className='dark:text-zinc-300'>Hi {userFirstName},</Text>
             <Text className='dark:text-zinc-300'>
               Someone recently requested a password change for your {appName}{' '}
               account. If this was you, you can set a new password here:

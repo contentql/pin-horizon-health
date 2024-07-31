@@ -1,15 +1,19 @@
 'use client'
 
-import { BottomGradient, Input, LabelInputContainer } from '../common/fields'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { type ComponentProps, useEffect, useState, useTransition } from 'react'
+import { type ComponentProps } from 'react'
 import { useForm } from 'react-hook-form'
 import { FaGithub } from 'react-icons/fa'
 import { z } from 'zod'
 
-import { signInWithCredentials } from './actions'
+import {
+  BottomGradient,
+  Input,
+  LabelInputContainer,
+} from '@/components/common/fields'
+import { trpc } from '@/trpc/client'
 
 export const loginFormSchema = z.object({
   email: z
@@ -33,10 +37,6 @@ const Separator = ({ children }: ComponentProps<'div'>) => (
 
 const SignInForm = () => {
   const router = useRouter()
-  const [isPending, startTransition] = useTransition()
-  const [backendLoginResponse, setBackendLoginResponse] = useState<Awaited<
-    ReturnType<typeof signInWithCredentials>
-  > | null>(null)
 
   const form = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
@@ -52,43 +52,41 @@ const SignInForm = () => {
     handleSubmit,
     formState: { errors },
     watch,
+    reset,
   } = form
 
   const [email, password] = watch(['email', 'password'])
 
-  useEffect(() => {
-    if (backendLoginResponse && backendLoginResponse.success === false) {
-      setBackendLoginResponse(null)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [email, password])
+  const {
+    mutate: signInMutation,
+    isError,
+    error,
+    isSuccess,
+    isPending,
+  } = trpc.auth.signIn.useMutation({
+    onSuccess: result => {
+      reset()
+      if (result.token) {
+        router.push('/')
+      }
+    },
+  })
 
   const onSubmit = (data: z.infer<typeof loginFormSchema>) => {
-    startTransition(() => {
-      signInWithCredentials({ ...data, redirectTo: '/' }).then(result => {
-        if (!result) return
-        if (result.success === true) {
-          router.push('/')
-        }
-        if ('error' in result) {
-          setBackendLoginResponse(result)
-        }
-      })
-    })
+    signInMutation(data)
   }
-
   return (
     <div className='flex min-h-screen bg-black'>
       <div className='flex w-full items-center justify-center'>
         <div className='mx-auto w-full max-w-md rounded-none drop-shadow-2xl md:rounded-2xl'>
           <div className='w-full max-w-md p-6'>
-            {backendLoginResponse && 'error' in backendLoginResponse ? (
+            {isError ? (
               <p className='text-center text-red-500'>
-                {backendLoginResponse?.error?.code === 'credentials' &&
+                {error?.message ||
                   'Sign in failed. Check the details you provided are incorrect.'}
               </p>
             ) : null}
-            {backendLoginResponse && backendLoginResponse?.success === true ? (
+            {isSuccess ? (
               <p className='text-center text-green-500'>
                 Successfully logged in! Redirecting...
               </p>
@@ -166,8 +164,8 @@ const SignInForm = () => {
               <button
                 className=' group/btn relative flex h-10 w-full items-center justify-start space-x-2 rounded-md bg-gray-50 px-4 font-medium text-black shadow-input dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]'
                 type='submit'>
-                <FaGithub className='text-neutral-800 dark:text-neutral-300 h-4 w-4' />
-                <span className='text-neutral-700 dark:text-neutral-300 text-sm'>
+                <FaGithub className='h-4 w-4 text-neutral-800 dark:text-neutral-300' />
+                <span className='text-sm text-neutral-700 dark:text-neutral-300'>
                   GitHub
                 </span>
                 <BottomGradient />
@@ -175,8 +173,8 @@ const SignInForm = () => {
               <button
                 className=' group/btn relative flex h-10 w-full items-center justify-start space-x-2 rounded-md bg-gray-50 px-4 font-medium text-black shadow-input dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]'
                 type='submit'>
-                <FaGithub className='text-neutral-800 dark:text-neutral-300 h-4 w-4' />
-                <span className='text-neutral-700 dark:text-neutral-300 text-sm'>
+                <FaGithub className='h-4 w-4 text-neutral-800 dark:text-neutral-300' />
+                <span className='text-sm text-neutral-700 dark:text-neutral-300'>
                   Google
                 </span>
                 <BottomGradient />

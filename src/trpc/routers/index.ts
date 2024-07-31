@@ -7,6 +7,7 @@ import { siteSettingsRouter } from '@/trpc/routers/site-settings'
 import { tagRouter } from '@/trpc/routers/tag'
 
 import { appointmentRouter } from './appointment'
+import { authRouter } from './auth'
 import { contactRouter } from './contact'
 import { departmentRouter } from './department'
 import { doctorRouter } from './doctor'
@@ -29,7 +30,9 @@ export const appRouter = router({
   tour: toursRouter,
   hospital: hospitalRouter,
   message: messageRouter,
+  auth: authRouter,
   tourist: touristsRouter,
+
 })
 
 export type AppRouter = typeof appRouter

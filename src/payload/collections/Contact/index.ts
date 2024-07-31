@@ -1,4 +1,4 @@
-import type { CollectionConfig } from 'payload/types'
+import type { CollectionConfig } from 'payload'
 
 import { ContactEmailToAdmin } from './hooks/contactEmailToAdmin'
 import { ContactEmailToUser } from './hooks/contactEmailToUser'

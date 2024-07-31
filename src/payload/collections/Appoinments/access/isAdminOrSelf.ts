@@ -1,4 +1,4 @@
-import { Access } from 'payload/config'
+import { Access } from 'payload'
 
 export const isAdminOrSelf: Access = ({ req: { user } }) => {
   if (user) {
@@ -7,7 +7,7 @@ export const isAdminOrSelf: Access = ({ req: { user } }) => {
     if (role?.includes('admin')) return true
 
     return {
-      doctor: {
+      'doctor.value': {
         equals: user.id,
       },
     }

@@ -1,6 +1,7 @@
-import type { CollectionConfig } from 'payload/types'
+import type { CollectionConfig } from 'payload'
 
 import { slugField } from '@/payload/fields'
+import { visibleToAdminOnly } from '@/payload/hidden'
 
 export const Tags: CollectionConfig = {
   slug: 'tags',
@@ -13,6 +14,7 @@ export const Tags: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'title',
+    hidden: visibleToAdminOnly,
     defaultColumns: ['title', 'path', 'updatedAt', 'createdAt'],
   },
   versions: {
