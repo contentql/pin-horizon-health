@@ -16,7 +16,7 @@ export const TravelFormValidator = z.object({
     },
   ),
   message: z.string().min(1, 'Message is required'),
-  date: z.coerce.date(),
+  date: z.any(),
   no_of_persons: z.coerce.number(),
 })
 
