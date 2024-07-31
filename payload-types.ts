@@ -1094,6 +1094,7 @@ export interface Tourist {
   email?: string | null;
   date?: string | null;
   phoneNumber?: string | null;
+  no_of_persons?: number | null;
   message?: string | null;
   updatedAt: string;
   createdAt: string;
