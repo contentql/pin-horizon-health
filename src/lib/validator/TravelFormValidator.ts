@@ -16,8 +16,8 @@ export const TravelFormValidator = z.object({
     },
   ),
   message: z.string().min(1, 'Message is required'),
-  date: z.any(),
-  no_of_persons: z.number(),
+  date: z.coerce.date(),
+  no_of_persons: z.coerce.number(),
 })
 
 export type TTravelContactForm = z.infer<typeof TravelFormValidator>
