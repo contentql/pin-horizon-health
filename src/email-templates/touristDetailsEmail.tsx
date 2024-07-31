@@ -1,85 +1,184 @@
-import { env } from 'process'
+import { env } from '@env'
+import {
+  Body,
+  Column,
+  Container,
+  Head,
+  Heading,
+  Html,
+  Img,
+  Preview,
+  Row,
+  Section,
+  Text,
+  render,
+} from '@react-email/components'
 
 interface UserContactEmailProps {
-  userName: 'string'
-  email: 'string'
+  userName: string
+  email: string
   date: any
-  message: 'string'
-  phoneNumber: 'string'
+  message: string
+  phoneNumber: string
 }
 
-export const touristContactForm = ({
+const baseUrl = env.NEXT_PUBLIC_PUBLIC_URL
+
+export const TouristDetailsEmail = ({
   userName,
   email,
   date,
-  message,
   phoneNumber,
+  message,
 }: UserContactEmailProps) => {
-  const imageUrl = `${env.PAYLOAD_URL}/images/about/banner_img.png`
-  return `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tourist Contact Form Submission</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            border-radius: 8px 8px 0 0;
-        }
-        .content {
-            padding: 20px;
-        }
-        .content h2 {
-            color: #333;
-        }
-        .content p {
-            margin: 10px 0;
-            color: #555;
-        }
-        .footer {
-            text-align: center;
-            padding: 10px;
-            font-size: 12px;
-            color: #aaa;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>Contact Form Submission</h1>
-        </div>
-        <div class="content">
-            <h2>Contact Details</h2>
-            <p><strong>Name:</strong> ${userName}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Phone Number:</strong> ${phoneNumber}</p>
-            <p><strong>Tour Date:</strong> ${date}</p>
-             <p><strong>Message:</strong> ${message}</p>
-        </div>
-        <div class="footer">
-            <p>This email was generated from a Tourist contact form submission.</p>
-        </div>
-    </div>
-</body>
-</html>
-`
+  const dateObj = new Date(date)
+  const year = dateObj.getFullYear()
+  const month = String(dateObj.getMonth() + 1).padStart(2, '0')
+  const day = String(dateObj.getDate()).padStart(2, '0')
+  const formattedDate = `${year}/${month}/${day}`
+
+  return (
+    <Html>
+      <Head />
+      <Preview>Health Horizon Traveler Details</Preview>
+      <Body style={main}>
+        <Container>
+          <Section style={logo}>
+            <Img src={`${baseUrl}/images/horizonLogo.webp`} />
+          </Section>
+
+          <Section style={content}>
+            <Row>
+              <Img
+                style={image}
+                width={620}
+                src={`${baseUrl}/images/email/emailTravel.webp`}
+              />
+            </Row>
+
+            <Row style={{ ...boxInfos, paddingBottom: '0' }}>
+              <Column>
+                <Heading
+                  style={{
+                    fontSize: 32,
+                    fontWeight: 'bold',
+                    textAlign: 'center',
+                  }}>
+                  Hi Admin,
+                </Heading>
+                <Heading
+                  as='h2'
+                  style={{
+                    fontSize: 26,
+                    fontWeight: 'bold',
+                    textAlign: 'center',
+                  }}>
+                  New Traveler Details Received
+                </Heading>
+
+                <Text style={paragraph}>
+                  <b>Name: </b>
+                  {userName}
+                </Text>
+                <Text style={{ ...paragraph, marginTop: -5 }}>
+                  <b>Email: </b>
+                  {email}
+                </Text>
+                <Text style={{ ...paragraph, marginTop: -5 }}>
+                  <b>Contact Number: </b>
+                  {phoneNumber}
+                </Text>
+                <Text style={{ ...paragraph, marginTop: -5 }}>
+                  <b>Tour Date: </b>
+                  {formattedDate}
+                </Text>
+                <Text style={{ ...paragraph, marginTop: -5 }}>
+                  <b>Message: </b>
+                  {message}
+                </Text>
+                <Text
+                  style={{
+                    color: 'rgb(0,0,0, 0.5)',
+                    fontSize: 14,
+                    marginTop: -5,
+                  }}>
+                  *Please contact the traveler using the details provided in the
+                  received email.
+                </Text>
+              </Column>
+            </Row>
+          </Section>
+
+          <Section style={containerImageFooter}>
+            <Img
+              style={image}
+              width={620}
+              src={`${baseUrl}/images/email/emailFooter.png`}
+            />
+          </Section>
+          <Text
+            style={{
+              textAlign: 'center',
+              fontSize: 12,
+              color: 'rgb(0,0,0, 0.7)',
+            }}>
+            Copyright © 2024 Horizon Health. All rights reserved.
+          </Text>
+        </Container>
+      </Body>
+    </Html>
+  )
+}
+
+export default TouristDetailsEmail
+
+export const newTouristContactForm = (props: UserContactEmailProps) =>
+  render(<TouristDetailsEmail {...props} />, { pretty: true })
+
+const main = {
+  backgroundColor: '#fff',
+  fontFamily:
+    '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
+}
+
+const paragraph = {
+  fontSize: 16,
+}
+
+const logo = {
+  padding: '30px 20px',
+}
+
+const containerButton = {
+  display: 'flex',
+  justifyContent: 'center',
+  width: '100%',
+}
+
+const button = {
+  backgroundColor: '#e00707',
+  borderRadius: 3,
+  color: '#FFF',
+  fontWeight: 'bold',
+  border: '1px solid rgb(0,0,0, 0.1)',
+  cursor: 'pointer',
+  padding: '12px 30px',
+}
+
+const content = {
+  border: '1px solid rgb(0,0,0, 0.1)',
+  borderRadius: '3px',
+  overflow: 'hidden',
+}
+
+const image = {
+  maxWidth: '100%',
+}
+
+const boxInfos = {
+  padding: '20px',
+}
+
+const containerImageFooter = {
+  padding: '45px 0 0 0',
 }

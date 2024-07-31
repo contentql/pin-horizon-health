@@ -1,6 +1,6 @@
 import { CollectionAfterChangeHook } from 'payload'
 
-import { touristContactForm } from '@/email-templates/touristDetailsEmail'
+import { newTouristContactForm } from '@/email-templates/touristDetailsEmail'
 
 const OPERATION = 'create'
 const SUBJECT = 'New Tourist details submission'
@@ -20,7 +20,7 @@ export const TouristDetailsEmailToAdmin: CollectionAfterChangeHook = async ({
       to: siteSettings?.email,
       from: process.env.RESEND_SENDER_EMAIL,
       subject: `Hello Admin, New Tourist Details`,
-      html: touristContactForm({
+      html: newTouristContactForm({
         userName: doc.name,
         email: doc.email,
         date: doc.date,
