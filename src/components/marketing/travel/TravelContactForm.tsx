@@ -9,12 +9,12 @@ import 'react-phone-input-2/lib/style.css'
 import { toast } from 'sonner'
 
 import {
-  ContactFormValidator,
-  TContactForm,
-} from '@/lib/validator/contactValidator'
+  TTravelContactForm,
+  TravelFormValidator,
+} from '@/lib/validator/TravelFormValidator'
 import { trpc } from '@/trpc/client'
 
-export default function ContactForm() {
+export default function TravelContactForm() {
   const {
     control,
     register,
@@ -22,35 +22,40 @@ export default function ContactForm() {
     trigger,
     reset,
     formState: { errors },
-  } = useForm<TContactForm>({
-    resolver: zodResolver(ContactFormValidator),
+  } = useForm<TTravelContactForm>({
+    resolver: zodResolver(TravelFormValidator),
   })
 
-  const { mutate: contactFormData } =
-    trpc.contact.ContactFormPostData.useMutation({
+  const { mutate: travelContactFormData } =
+    trpc.tourist.postTouristFormData.useMutation({
       onSuccess: () => {
         reset()
-        toast.success('Contact form is submitted!!', {
+        toast.success('Form submitted Successfully!', {
           position: 'bottom-left',
         })
       },
       onError: err => {
-        toast.error('Failed to submit contact form, Please try again.', {
+        toast.error('Failed to submit form, Please try again.', {
           position: 'bottom-left',
         })
       },
     })
 
-  const onSubmit = (data: TContactForm) => {
+  const onSubmit = (data: TTravelContactForm) => {
     data.phoneNumber = parsePhoneNumber('+' + data.phoneNumber)
       .formatInternational()
       .replace(/[\s+]/g, '')
-    contactFormData(data)
+    travelContactFormData(data)
   }
 
   return (
     <div className='cs_contact_form cs_style_1 cs_white_bg cs_radius_30'>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <h2>Traveler Details</h2>
+        <p>
+          Please provide your contact details so our travel team can reach out
+          to you.
+        </p>
         <div className='row'>
           <div className='col-lg-6'>
             <label className='cs_input_label cs_heading_color'>Name</label>
@@ -64,6 +69,20 @@ export default function ContactForm() {
             <div className='cs_height_42 cs_height_xl_25' />
           </div>
           <div className='col-lg-6'>
+            <label className='cs_input_label cs_heading_color'>Date</label>
+            <input
+              type='date'
+              className='cs_form_field'
+              placeholder='Select a date'
+              {...register('date')}
+            />
+            {errors.date && (
+              <p className='error'>{errors.date.message as String}</p>
+            )}
+            <div className='cs_height_42 cs_height_xl_25' />
+          </div>
+
+          <div className='col-lg-12'>
             <label className='cs_input_label cs_heading_color'>Email</label>
             <input
               type='email'
@@ -72,19 +91,6 @@ export default function ContactForm() {
               {...register('email')}
             />
             {errors.email && <p className='error'>{errors.email.message}</p>}
-            <div className='cs_height_42 cs_height_xl_25' />
-          </div>
-          <div className='col-lg-12'>
-            <label className='cs_input_label cs_heading_color'>Subject</label>
-            <input
-              type='text'
-              className='cs_form_field'
-              placeholder='Your subject'
-              {...register('subject')}
-            />
-            {errors.subject && (
-              <p className='error'>{errors.subject.message}</p>
-            )}
             <div className='cs_height_42 cs_height_xl_25' />
           </div>
           <div className='col-lg-12'>

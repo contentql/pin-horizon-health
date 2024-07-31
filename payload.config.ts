@@ -26,6 +26,7 @@ import { Media } from '@/payload/collections/Media'
 import { Pages } from '@/payload/collections/Pages'
 import { Sessions } from '@/payload/collections/Sessions'
 import { Tags } from '@/payload/collections/Tags'
+import { Tourists } from '@/payload/collections/Tourists'
 import { Tours } from '@/payload/collections/Tours'
 import { Users } from '@/payload/collections/Users'
 import { COLLECTION_SLUG_PAGE } from '@/payload/collections/constants'
@@ -109,6 +110,7 @@ export default buildConfig({
     Contact,
     Hospitals,
     Country,
+    Tourists,
   ],
 
   globals: [siteSettings],

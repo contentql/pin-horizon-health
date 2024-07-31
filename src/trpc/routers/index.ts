@@ -12,6 +12,7 @@ import { contactRouter } from './contact'
 import { departmentRouter } from './department'
 import { doctorRouter } from './doctor'
 import { hospitalRouter } from './hospital'
+import { touristsRouter } from './tourists'
 import { toursRouter } from './tours'
 import { messageRouter } from './whatsapp'
 
@@ -30,6 +31,8 @@ export const appRouter = router({
   hospital: hospitalRouter,
   message: messageRouter,
   auth: authRouter,
+  tourist: touristsRouter,
+
 })
 
 export type AppRouter = typeof appRouter

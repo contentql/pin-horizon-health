@@ -10,7 +10,6 @@ export default function Pagination({ meta, setPage, page }: any) {
 
   const handlePageChange = (newPage: number) => {
     const search = new URLSearchParams(searchParams)
-    console.log('path', meta)
     search.set('page', newPage.toString())
     pathname === '/doctors'
       ? router.push(`${pathname}?${search.toString()}#doctors`)
