@@ -20,6 +20,7 @@ interface UserContactEmailProps {
   date: any
   message: string
   phoneNumber: string
+  no_of_persons: number
 }
 
 const baseUrl = env.NEXT_PUBLIC_PUBLIC_URL
@@ -30,6 +31,7 @@ export const TouristDetailsEmail = ({
   date,
   phoneNumber,
   message,
+  no_of_persons,
 }: UserContactEmailProps) => {
   const dateObj = new Date(date)
   const year = dateObj.getFullYear()
@@ -91,6 +93,10 @@ export const TouristDetailsEmail = ({
                 <Text style={{ ...paragraph, marginTop: -5 }}>
                   <b>Tour Date: </b>
                   {formattedDate}
+                </Text>
+                <Text style={{ ...paragraph, marginTop: -5 }}>
+                  <b>Number Of Travelers: </b>
+                  {no_of_persons}
                 </Text>
                 <Text style={{ ...paragraph, marginTop: -5 }}>
                   <b>Message: </b>
