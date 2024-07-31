@@ -1,14 +1,14 @@
 import { Access } from 'payload'
 
-export const isAdminOrSelf: Access = ({ req: { user } }) => {
+export const self: Access = ({ req: { user, context } }) => {
   if (user) {
     const { role } = user
 
     if (role?.includes('admin')) return true
 
     return {
-      'doctor.value': {
-        equals: user.id,
+      'author.value': {
+        equals: user?.id,
       },
     }
   }

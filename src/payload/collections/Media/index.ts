@@ -1,5 +1,7 @@
 import type { CollectionConfig, Field } from 'payload'
 
+import { visibleToAdminOnly } from '@/payload/hidden'
+
 const urlField: Field = {
   name: 'url',
   type: 'text',
@@ -9,6 +11,9 @@ export const Media: CollectionConfig = {
   slug: 'media',
   access: {
     read: () => true,
+  },
+  admin: {
+    hidden: visibleToAdminOnly,
   },
   upload: {
     imageSizes: [

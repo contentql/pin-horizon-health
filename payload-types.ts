@@ -198,7 +198,7 @@ export interface Doctor {
   id: string;
   role?: ('admin' | 'doctor') | null;
   emailVerified?: string | null;
-  name?: string | null;
+  name: string;
   designation?: string | null;
   description?: string | null;
   doctor_image?: string | Media | null;

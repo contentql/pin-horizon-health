@@ -4,6 +4,8 @@ import type { CollectionConfig } from 'payload'
 import { isAdmin, isAdminOrCurrentUser } from '@/payload/access'
 import { slugField } from '@/payload/fields'
 
+import { self } from './access/self'
+
 const DEFAULT_USER_ROLE = 'doctor'
 const ADMIN_ACCESS_ROLES = ['admin', 'doctor']
 
@@ -32,7 +34,7 @@ export const Doctors: CollectionConfig = {
       return ADMIN_ACCESS_ROLES.includes(req?.user?.role || DEFAULT_USER_ROLE)
     },
     read: isAdminOrCurrentUser,
-    create: () => true,
+    create: self,
     update: isAdmin,
     delete: isAdminOrCurrentUser,
   },
@@ -80,6 +82,16 @@ export const Doctors: CollectionConfig = {
       },
     },
     { name: 'emailVerified', type: 'date' },
+    {
+      name: 'name',
+      label: 'Name',
+      type: 'text',
+      saveToJWT: true,
+      required: true,
+      admin: {
+        description: ' Enter the name of the doctor ',
+      },
+    },
 
     {
       type: 'tabs',
@@ -89,15 +101,6 @@ export const Doctors: CollectionConfig = {
         {
           label: 'Personal Details',
           fields: [
-            {
-              name: 'name',
-              label: 'Name',
-              type: 'text',
-              saveToJWT: true,
-              admin: {
-                description: ' Enter the name of the doctor ',
-              },
-            },
             {
               type: 'row',
               fields: [

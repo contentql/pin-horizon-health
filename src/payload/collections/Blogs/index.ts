@@ -8,6 +8,7 @@ import type { CollectionConfig } from 'payload'
 
 import { slugField } from '@/payload/fields'
 
+import { self } from './access/self'
 import { assignUserId } from './field-level-hooks/assignUserId'
 
 // import { CustomSlugComponent } from '@/payload/fields/custom-slug-component'
@@ -19,7 +20,10 @@ export const Blogs: CollectionConfig = {
     plural: 'Blogs',
   },
   access: {
-    read: () => true,
+    read: self,
+    create: self,
+    update: self,
+    delete: self,
   },
   admin: {
     useAsTitle: 'title',
