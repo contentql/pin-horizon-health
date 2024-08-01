@@ -23,7 +23,7 @@ interface UserContactEmailProps {
   no_of_persons: number
 }
 
-const baseUrl = env.NEXT_PUBLIC_PUBLIC_URL
+const baseUrl = env.PAYLOAD_URL
 
 export const TouristDetailsEmail = ({
   userName,
@@ -46,7 +46,19 @@ export const TouristDetailsEmail = ({
       <Body style={main}>
         <Container>
           <Section style={logo}>
-            <Img src={`${baseUrl}/images/horizonLogo.webp`} />
+            <Img
+              src={`${baseUrl}/images/horizonLogo.webp`}
+              height={50}
+              width={50}
+              alt='Logo'
+            />
+            <Text
+              style={{
+                marginLeft: '5px',
+                fontSize: '20px',
+              }}>
+              Medical Health Horizon
+            </Text>
           </Section>
 
           <Section style={content}>
@@ -153,8 +165,9 @@ const paragraph = {
 
 const logo = {
   padding: '30px 20px',
+  display: 'flex',
+  alignItems: 'center',
 }
-
 const containerButton = {
   display: 'flex',
   justifyContent: 'center',
