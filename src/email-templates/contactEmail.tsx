@@ -11,6 +11,7 @@ import {
   Preview,
   Row,
   Section,
+  Tailwind,
   Text,
   render,
 } from '@react-email/components'
@@ -33,55 +34,63 @@ export const ContactEmail = ({
 
   return (
     <Html>
-      <Head />
-      <Preview>{previewText}</Preview>
+      <Tailwind>
+        <Head />
+        <Preview>{previewText}</Preview>
 
-      <Body style={main}>
-        <Container style={container}>
-          <Section>
-            <Link href={baseUrl}>
-              <Img
-                src={`${baseUrl}/images/logo-removebg-preview.png`}
-                width='50'
-                height='50'
-                alt='logo'
-              />
-            </Link>
-          </Section>
-          <Row>
-            <Img
-              style={image}
-              width={620}
-              src={`${baseUrl}/images/mail-header.png`}
-            />
-          </Row>
-          <Section style={{ paddingBottom: '20px' }}>
+        <Body style={main}>
+          <Container style={container}>
+            <Section>
+              <Link href={baseUrl} className='flex items-center'>
+                <Img
+                  src={`${baseUrl}/images/logo-removebg-preview.png`}
+                  width='60'
+                  height='60'
+                  alt='logo'
+                />
+                <Text style={{ color: 'black', fontSize: '30px' }}>
+                  Medical Horizon
+                </Text>
+              </Link>
+            </Section>
             <Row>
-              <Text style={heading}>Dear Admin,</Text>
-              <Text style={review}>
-                We are pleased to inform you that we have received a new contact
-                form submission on our website. The user has shared the
-                following message with us.{' '}
-              </Text>
-              <Text style={paragraph}>
-                <strong>Message</strong>: {message}
-              </Text>
-              <Text style={{ ...paragraph, paddingBottom: '16px' }}>
-                We kindly ask you to review this message and take the necessary
-                actions at your earliest convenience. Your prompt attention to
-                this matter will help us maintain our high standards of customer
-                service and satisfaction.
-              </Text>
-
-              <Button style={button} href={baseUrl}>
-                Contact Details
-              </Button>
+              <Img
+                style={image}
+                width={620}
+                src={`${baseUrl}/images/mail-header.png`}
+              />
             </Row>
-          </Section>
+            <Section style={{ paddingBottom: '20px' }}>
+              <Row>
+                <Text style={heading}>Dear Admin,</Text>
+                <Text style={review}>
+                  We are pleased to inform you that we have received a new
+                  contact form submission on our website. The user has shared
+                  the following message with us.{' '}
+                </Text>
+                <Text style={paragraph}>
+                  <strong>from</strong>: {email}
+                </Text>
+                <Text style={paragraph}>
+                  <strong>Message</strong>: {message}
+                </Text>
+                <Text style={{ ...paragraph, paddingBottom: '16px' }}>
+                  We kindly ask you to review this message and take the
+                  necessary actions at your earliest convenience. Your prompt
+                  attention to this matter will help us maintain our high
+                  standards of customer service and satisfaction.
+                </Text>
 
-          <Hr style={hr} />
-        </Container>
-      </Body>
+                <Button style={button} href={baseUrl}>
+                  Contact Details
+                </Button>
+              </Row>
+            </Section>
+
+            <Hr style={hr} />
+          </Container>
+        </Body>
+      </Tailwind>
     </Html>
   )
 }

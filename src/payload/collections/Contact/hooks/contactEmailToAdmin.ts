@@ -19,7 +19,7 @@ export const ContactEmailToAdmin: CollectionAfterChangeHook = async ({
     req.payload.sendEmail({
       to: siteSettings?.email,
       from: process.env.RESEND_SENDER_EMAIL,
-      subject: `Hi Admin, ${doc.subject}`,
+      subject: `Hello Admin 👋`,
       html: newContactForm({
         userName: doc.name,
         email: doc.email,
