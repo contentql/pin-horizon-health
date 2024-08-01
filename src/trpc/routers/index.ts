@@ -2,7 +2,6 @@ import { router } from '@/trpc'
 import { authorRouter } from '@/trpc/routers/author'
 import { blogRouter } from '@/trpc/routers/blog'
 import { pageRouter } from '@/trpc/routers/page'
-import { seedRouter } from '@/trpc/routers/seed'
 import { siteSettingsRouter } from '@/trpc/routers/site-settings'
 import { tagRouter } from '@/trpc/routers/tag'
 
@@ -23,7 +22,6 @@ export const appRouter = router({
   tag: tagRouter,
   author: authorRouter,
   doctor: doctorRouter,
-  seed: seedRouter,
   appointment: appointmentRouter,
   contact: contactRouter,
   department: departmentRouter,
@@ -32,7 +30,6 @@ export const appRouter = router({
   message: messageRouter,
   auth: authRouter,
   tourist: touristsRouter,
-
 })
 
 export type AppRouter = typeof appRouter

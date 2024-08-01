@@ -46,9 +46,7 @@ export default function BlogDetails({
             </div> */}
             <div className='cs_blog_details_date'>
               {formattedDate} |{' '}
-              {blogData?.author
-                ?.slice(0, 2)
-                ?.map(author => (author?.value as Doctor)?.name)}
+              {(blogData?.author?.at(0)?.value as Doctor)?.name}
             </div>
           </div>
           <div className='cs_social_links_wrap'>
