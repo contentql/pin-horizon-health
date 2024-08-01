@@ -39,7 +39,7 @@ export const ContactEmail = ({
               <Column>
                 <Img
                   style={sectionLogo}
-                  src={`${baseUrl}/images/logo-removebg-preview.webp`}
+                  src={`${baseUrl}/images/logo-removebg-preview.png`}
                   width='155'
                   height='31'
                   alt='Logo'

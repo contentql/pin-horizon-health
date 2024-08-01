@@ -18,7 +18,7 @@ interface UserAcknowledgmentEmailProps {
 export const UserAcknowledgmentEmail = ({
   userName,
 }: UserAcknowledgmentEmailProps) => {
-  const baseUrl = env.NEXT_PUBLIC_PUBLIC_URL
+  const baseUrl = env.PAYLOAD_URL
   return (
     <Html>
       <Head />
@@ -28,7 +28,7 @@ export const UserAcknowledgmentEmail = ({
           {/* @ts-ignore */}
           <Section style={headerSection}>
             <Img
-              src={`${baseUrl}/images/logo-removebg-preview.webp`}
+              src={`${baseUrl}/images/logo-removebg-preview.png`}
               width='150'
               height='40'
               alt='Company Logo'
