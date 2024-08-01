@@ -1,10 +1,7 @@
 'use client'
 
-import { AnimatePresence, motion } from 'framer-motion'
 import { usePathname, useRouter } from 'next/navigation'
 import { useState } from 'react'
-
-import { trpc } from '@/trpc/client'
 
 const CLIENT_ID = '1'
 
@@ -22,7 +19,6 @@ export function PageNotFound() {
       const data = event.data && JSON.parse(event?.data)
 
       if (data.started) {
-        seedMutate()
         return
       }
 
@@ -41,22 +37,6 @@ export function PageNotFound() {
     return () => {
       eventSource.close()
     }
-  }
-
-  const { mutate: seedMutate } = trpc.seed.startSeeding.useMutation({
-    onSettled: async () => {
-      setTimeout(() => {
-        setSeedingStatus(prev => [...prev, 'Refreshing current page'])
-        setTimeout(() => {
-          window.location.reload()
-        }, 1000)
-      }, 1000)
-    },
-  })
-
-  const seedData = () => {
-    setLoading(true)
-    startSSE()
   }
 
   return (
@@ -325,117 +305,7 @@ export function PageNotFound() {
         <p className='mb-4 p-2 text-sm  md:text-base'>
           The stuff you were looking for doesn&apos;t exist
         </p>
-        {pathname === '/' ? (
-          loading ? (
-            <>
-              <div className='absolute left-0 top-0 w-full'>
-                <div className='h-1.5 w-full overflow-hidden bg-pink-100'>
-                  <div className='h-full w-full origin-left-right animate-progress bg-[#3179c1]'></div>
-                </div>
-              </div>
-              <motion.div
-                className='mt-4 rounded-lg border border-gray-300 bg-white p-4 shadow-lg dark:border-slate-700 dark:bg-slate-800'
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}>
-                <AnimatePresence mode='wait'>
-                  <motion.div
-                    key='seeding-status'
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.5 }}
-                    className='text-lg font-bold'>
-                    {seedingStatus.map((status, index) => (
-                      <p key={index}>{status}</p>
-                    ))}
-                    <div
-                      aria-label='Loading...'
-                      role='status'
-                      className='flex items-center justify-center space-x-2'>
-                      <svg
-                        className='h-6 w-6 animate-spin stroke-gray-500'
-                        viewBox='0 0 256 256'>
-                        <line
-                          x1='128'
-                          y1='32'
-                          x2='128'
-                          y2='64'
-                          strokeLinecap='round'
-                          strokeLinejoin='round'
-                          strokeWidth='24'></line>
-                        <line
-                          x1='195.9'
-                          y1='60.1'
-                          x2='173.3'
-                          y2='82.7'
-                          strokeLinecap='round'
-                          strokeLinejoin='round'
-                          strokeWidth='24'></line>
-                        <line
-                          x1='224'
-                          y1='128'
-                          x2='192'
-                          y2='128'
-                          strokeLinecap='round'
-                          strokeLinejoin='round'
-                          strokeWidth='24'></line>
-                        <line
-                          x1='195.9'
-                          y1='195.9'
-                          x2='173.3'
-                          y2='173.3'
-                          strokeLinecap='round'
-                          strokeLinejoin='round'
-                          strokeWidth='24'></line>
-                        <line
-                          x1='128'
-                          y1='224'
-                          x2='128'
-                          y2='192'
-                          strokeLinecap='round'
-                          strokeLinejoin='round'
-                          strokeWidth='24'></line>
-                        <line
-                          x1='60.1'
-                          y1='195.9'
-                          x2='82.7'
-                          y2='173.3'
-                          strokeLinecap='round'
-                          strokeLinejoin='round'
-                          strokeWidth='24'></line>
-                        <line
-                          x1='32'
-                          y1='128'
-                          x2='64'
-                          y2='128'
-                          strokeLinecap='round'
-                          strokeLinejoin='round'
-                          strokeWidth='24'></line>
-                        <line
-                          x1='60.1'
-                          y1='60.1'
-                          x2='82.7'
-                          y2='82.7'
-                          strokeLinecap='round'
-                          strokeLinejoin='round'
-                          strokeWidth='24'></line>
-                      </svg>
-                      <span className='text-sm'>Loading...</span>
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
-              </motion.div>
-            </>
-          ) : (
-            <button
-              onClick={() => seedData()}
-              className='rounded border border-[#3179c1] bg-transparent px-4 py-2 text-[#3179c1] shadow hover:border-transparent hover:bg-[#3179c1] hover:text-white hover:shadow-lg'>
-              Load demo data
-            </button>
-          )
-        ) : (
+        {pathname === '/' && (
           <button
             onClick={() => router.back()}
             className='rounded border border-[#3179c1] bg-transparent px-4 py-2 shadow hover:border-transparent hover:bg-[#3179c1] hover:text-white hover:shadow-lg'>

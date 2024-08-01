@@ -1,12 +1,13 @@
 import { env } from '@env'
 import {
   Body,
-  Column,
+  Button,
   Container,
   Head,
   Hr,
   Html,
   Img,
+  Link,
   Preview,
   Row,
   Section,
@@ -28,131 +29,144 @@ export const ContactEmail = ({
   message,
 }: UserContactEmailProps) => {
   const baseUrl = env.PAYLOAD_URL
+  const previewText = `Read ${userName}'s message from contact form`
+
   return (
     <Html>
       <Head />
-      <Preview>Contact form submission</Preview>
+      <Preview>{previewText}</Preview>
+
       <Body style={main}>
         <Container style={container}>
           <Section>
+            <Link href={baseUrl}>
+              <Img
+                src={`${baseUrl}/images/logo-removebg-preview.png`}
+                width='50'
+                height='50'
+                alt='logo'
+              />
+            </Link>
+          </Section>
+          <Row>
+            <Img
+              style={image}
+              width={620}
+              src={`${baseUrl}/images/mail-header.png`}
+            />
+          </Row>
+          <Section style={{ paddingBottom: '20px' }}>
             <Row>
-              <Column>
-                <Img
-                  style={sectionLogo}
-                  src={`${baseUrl}/images/logo-removebg-preview.png`}
-                  width='155'
-                  height='31'
-                  alt='Logo'
-                />
-              </Column>
+              <Text style={heading}>Dear Admin,</Text>
+              <Text style={review}>
+                We are pleased to inform you that we have received a new contact
+                form submission on our website. The user has shared the
+                following message with us.{' '}
+              </Text>
+              <Text style={paragraph}>
+                <strong>Message</strong>: {message}
+              </Text>
+              <Text style={{ ...paragraph, paddingBottom: '16px' }}>
+                We kindly ask you to review this message and take the necessary
+                actions at your earliest convenience. Your prompt attention to
+                this matter will help us maintain our high standards of customer
+                service and satisfaction.
+              </Text>
+
+              <Button style={button} href={baseUrl}>
+                Contact Details
+              </Button>
             </Row>
           </Section>
 
-          <Section style={paragraphContent}>
-            <Hr style={hr} />
-            <Text style={heading}>New Contact Form Submission</Text>
-            <Text style={paragraph}>
-              You have received a new contact form submission with the following
-              details:
-            </Text>
-            <Text style={paragraph}>
-              <strong>Name:</strong> {userName}
-            </Text>
-            <Text style={paragraph}>
-              <strong>Email:</strong> {email}
-            </Text>
-            <Text style={paragraph}>
-              <strong>Subject:</strong> {subject}
-            </Text>
-            <Text style={paragraph}>
-              <strong>Message:</strong> {message}
-            </Text>
-            <Hr style={hr} />
-          </Section>
-
-          <Section style={paragraphContent}>
-            <Text style={paragraph}>Thank you,</Text>
-            <Text style={{ ...paragraph, fontSize: '20px' }}>
-              The Medical health horizon team
-            </Text>
-          </Section>
-
-          <Section style={{ ...paragraphContent, paddingBottom: 30 }}>
-            <Text
-              style={{
-                ...paragraph,
-                fontSize: '12px',
-                textAlign: 'center',
-                margin: 0,
-              }}>
-              © 2024 Medical health horizon
-            </Text>
-            <Text
-              style={{
-                ...paragraph,
-                fontSize: '12px',
-                textAlign: 'center',
-                margin: 0,
-              }}>
-              You have received this email because a contact form was submitted
-              on your website.
-            </Text>
-          </Section>
+          <Hr style={hr} />
         </Container>
       </Body>
     </Html>
   )
 }
 
-export default ContactEmail
-
-export const newContactForm = (props: UserContactEmailProps) =>
-  render(<ContactEmail {...props} />, { pretty: true })
-
 const main = {
-  backgroundColor: '#dbddde',
+  backgroundColor: '#ffffff',
   fontFamily:
     '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
 }
 
-const sectionLogo = {
-  padding: '0 40px',
-}
-
-const headerBlue = {
-  marginTop: '-1px',
-}
-
 const container = {
-  margin: '30px auto',
-  backgroundColor: '#fff',
-  borderRadius: 5,
-  overflow: 'hidden',
+  margin: '0 auto',
+  padding: '20px 0 48px',
+  width: '580px',
+  maxWidth: '100%',
+}
+
+const userImage = {
+  margin: '0 auto',
+  marginBottom: '16px',
+  borderRadius: '50%',
 }
 
 const heading = {
-  fontSize: '14px',
-  lineHeight: '26px',
+  fontSize: '24px',
+  lineHeight: '1.3',
   fontWeight: '700',
-  color: '#004dcf',
+  color: '#484848',
 }
 
-const paragraphContent = {
-  padding: '0 40px',
+const image = {
+  marginTop: '15px',
+  maxWidth: '100%',
 }
 
 const paragraph = {
-  fontSize: '14px',
-  lineHeight: '22px',
-  color: '#3c4043',
+  fontSize: '18px',
+  lineHeight: '1.4',
+  color: '#484848',
+}
+
+const review = {
+  ...paragraph,
+  padding: '24px',
+  backgroundColor: '#f2f3f3',
+  borderRadius: '4px',
+}
+
+const button = {
+  backgroundColor: '#307AC0',
+  borderRadius: '8px',
+  color: '#fff',
+  fontSize: '18px',
+  paddingTop: '19px',
+  paddingBottom: '19px',
+  textDecoration: 'none',
+  textAlign: 'center' as const,
+  display: 'block',
+  width: '100%',
 }
 
 const link = {
   ...paragraph,
-  color: '#004dcf',
+  color: '#ff5a5f',
+  display: 'block',
+}
+
+const reportLink = {
+  fontSize: '14px',
+  color: '#9ca299',
+  textDecoration: 'underline',
 }
 
 const hr = {
-  borderColor: '#e8eaed',
+  borderColor: '#cccccc',
   margin: '20px 0',
 }
+
+const footer = {
+  color: '#9ca299',
+  fontSize: '14px',
+  marginBottom: '10px',
+}
+
+export default ContactEmail
+
+export const newContactForm = (props: UserContactEmailProps) =>
+  render(<ContactEmail {...props} />, { pretty: true })

@@ -28,7 +28,7 @@ export default function Footer({
             height={0}
             width={50}
           />
-          <h2 className='cs_footer_brand_text'>{footerData?.logo}</h2>
+          <h2 className='cs_footer_brand_text  '>{footerData?.logo}</h2>
         </div>
       </div>
       <div className='cs_footer_main'>
