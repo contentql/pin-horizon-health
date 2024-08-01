@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload'
 
 import { TouristDetailsEmailToAdmin } from './hooks/TouristDetailsEmailToAdmin'
+import { SuccessEmailToTourist } from './hooks/successEmailToTourist'
 
 export const Tourists: CollectionConfig = {
   slug: 'tourists',
@@ -18,7 +19,7 @@ export const Tourists: CollectionConfig = {
     useAsTitle: 'title',
   },
   hooks: {
-    afterChange: [TouristDetailsEmailToAdmin],
+    afterChange: [TouristDetailsEmailToAdmin, SuccessEmailToTourist],
   },
   fields: [
     {
