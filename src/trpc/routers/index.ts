@@ -1,12 +1,10 @@
 import { router } from '@/trpc'
-import { authorRouter } from '@/trpc/routers/author'
 import { blogRouter } from '@/trpc/routers/blog'
 import { pageRouter } from '@/trpc/routers/page'
 import { siteSettingsRouter } from '@/trpc/routers/site-settings'
 import { tagRouter } from '@/trpc/routers/tag'
 
 import { appointmentRouter } from './appointment'
-import { authRouter } from './auth'
 import { contactRouter } from './contact'
 import { departmentRouter } from './department'
 import { doctorRouter } from './doctor'
@@ -20,7 +18,6 @@ export const appRouter = router({
   blog: blogRouter,
   siteSettings: siteSettingsRouter,
   tag: tagRouter,
-  author: authorRouter,
   doctor: doctorRouter,
   appointment: appointmentRouter,
   contact: contactRouter,
@@ -28,7 +25,6 @@ export const appRouter = router({
   tour: toursRouter,
   hospital: hospitalRouter,
   message: messageRouter,
-  auth: authRouter,
   tourist: touristsRouter,
 })
 

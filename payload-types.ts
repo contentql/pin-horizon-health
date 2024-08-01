@@ -8,11 +8,9 @@
 
 export interface Config {
   auth: {
-    users: UserAuthOperations;
     doctors: DoctorAuthOperations;
   };
   collections: {
-    users: User;
     media: Media;
     doctors: Doctor;
     category: Category;
@@ -37,28 +35,8 @@ export interface Config {
     'site-settings': SiteSetting;
   };
   locale: null;
-  user:
-    | (User & {
-        collection: 'users';
-      })
-    | (Doctor & {
-        collection: 'doctors';
-      });
-}
-export interface UserAuthOperations {
-  forgotPassword: {
-    email: string;
-  };
-  login: {
-    email: string;
-    password: string;
-  };
-  registerFirstUser: {
-    email: string;
-    password: string;
-  };
-  unlock: {
-    email: string;
+  user: Doctor & {
+    collection: 'doctors';
   };
 }
 export interface DoctorAuthOperations {
@@ -76,27 +54,6 @@ export interface DoctorAuthOperations {
   unlock: {
     email: string;
   };
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
- */
-export interface User {
-  id: string;
-  username?: string | null;
-  imageUrl?: string | null;
-  role?: ('admin' | 'user' | 'author') | null;
-  emailVerified?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
-  password?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1106,15 +1063,10 @@ export interface Tourist {
  */
 export interface PayloadPreference {
   id: string;
-  user:
-    | {
-        relationTo: 'users';
-        value: string | User;
-      }
-    | {
-        relationTo: 'doctors';
-        value: string | Doctor;
-      };
+  user: {
+    relationTo: 'doctors';
+    value: string | Doctor;
+  };
   key?: string | null;
   value?:
     | {

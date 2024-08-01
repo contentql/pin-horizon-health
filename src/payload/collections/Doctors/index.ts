@@ -1,7 +1,7 @@
 import { ADMIN_AUTH_GROUP } from '../constants'
 import type { CollectionConfig } from 'payload'
 
-import { isAdmin, isAdminOrCurrentUser } from '@/payload/access'
+import { isAdminOrCurrentUser } from '@/payload/access'
 import { slugField } from '@/payload/fields'
 
 import { self } from './access/self'
@@ -35,7 +35,7 @@ export const Doctors: CollectionConfig = {
     },
     read: isAdminOrCurrentUser,
     create: self,
-    update: isAdmin,
+    update: isAdminOrCurrentUser,
     delete: isAdminOrCurrentUser,
   },
   hooks: {
