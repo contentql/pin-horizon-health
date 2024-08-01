@@ -81,7 +81,9 @@ export const ContactEmail = ({
                   standards of customer service and satisfaction.
                 </Text>
 
-                <Button style={button} href={baseUrl}>
+                <Button
+                  style={button}
+                  href={`${baseUrl}/admin/collections/contact`}>
                   Contact Details
                 </Button>
               </Row>
