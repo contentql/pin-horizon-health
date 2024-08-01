@@ -1,5 +1,7 @@
 import type { CollectionConfig } from 'payload'
 
+import { visibleToAdminOnly } from '@/payload/hidden'
+
 import { TouristDetailsEmailToAdmin } from './hooks/TouristDetailsEmailToAdmin'
 import { SuccessEmailToTourist } from './hooks/successEmailToTourist'
 
@@ -17,6 +19,7 @@ export const Tourists: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'title',
+    hidden: visibleToAdminOnly,
   },
   hooks: {
     afterChange: [TouristDetailsEmailToAdmin, SuccessEmailToTourist],

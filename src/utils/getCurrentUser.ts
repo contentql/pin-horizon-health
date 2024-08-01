@@ -13,8 +13,6 @@ export const getCurrentUser = async (headers?: any) => {
 
       const { user } = await res.json()
 
-      console.log(user, 'from get Current user, client side')
-
       return user
     } catch (error) {
       throw new Error('not authenticated')
@@ -26,7 +24,6 @@ export const getCurrentUser = async (headers?: any) => {
     })
     const { user } = await payload.auth({ headers })
 
-    console.log(user, 'from get Current user, server side')
     return user
   }
 }
