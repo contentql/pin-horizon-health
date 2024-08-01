@@ -2,10 +2,8 @@ import { DoctorHeroType, Media } from '@payload-types'
 
 import Hero from '@/components/marketing/doctor/Hero'
 import TravelContactForm from '@/components/marketing/travel/TravelContactForm'
-import { trpc } from '@/trpc/client'
 
 function TravelHero(doctorHero: DoctorHeroType) {
-  const { data: tours } = trpc.tour.getTours.useQuery()
   return (
     <>
       <Hero

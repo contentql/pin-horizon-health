@@ -10,12 +10,12 @@ export const touristsRouter = router({
   postTouristFormData: publicProcedure
     .input(TravelFormValidator)
     .mutation(async ({ input }) => {
-      const { email, name, date, message, phoneNumber } = input
+      const { email, name, date, message, phoneNumber, no_of_persons } = input
 
       try {
         await payload.create({
           collection: 'tourists',
-          data: { email, name, date, message, phoneNumber },
+          data: { email, name, date, message, phoneNumber, no_of_persons },
         })
 
         return { success: 'true' }

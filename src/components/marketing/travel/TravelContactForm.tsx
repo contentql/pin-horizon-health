@@ -82,7 +82,7 @@ export default function TravelContactForm() {
             <div className='cs_height_42 cs_height_xl_25' />
           </div>
 
-          <div className='col-lg-12'>
+          <div className='col-lg-6'>
             <label className='cs_input_label cs_heading_color'>Email</label>
             <input
               type='email'
@@ -91,6 +91,22 @@ export default function TravelContactForm() {
               {...register('email')}
             />
             {errors.email && <p className='error'>{errors.email.message}</p>}
+            <div className='cs_height_42 cs_height_xl_25' />
+          </div>
+
+          <div className='col-lg-6'>
+            <label className='cs_input_label cs_heading_color'>
+              Number of Travelers
+            </label>
+            <input
+              type='number'
+              className='cs_form_field'
+              placeholder='Ex: 4'
+              {...register('no_of_persons')}
+            />
+            {errors.no_of_persons && (
+              <p className='error'>{errors?.no_of_persons?.message}</p>
+            )}
             <div className='cs_height_42 cs_height_xl_25' />
           </div>
           <div className='col-lg-12'>

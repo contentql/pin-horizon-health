@@ -42,6 +42,11 @@ export const Tourists: CollectionConfig = {
       type: 'text',
     },
     {
+      name: 'no_of_persons',
+      label: 'No. of persons',
+      type: 'number',
+    },
+    {
       name: 'message',
       label: 'Message',
       type: 'textarea',
