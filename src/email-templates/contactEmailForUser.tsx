@@ -30,24 +30,22 @@ export const UserAcknowledgmentEmail = ({
           <Container style={container}>
             {/* @ts-ignore */}
             <Section style={headerSection}>
-              <Link href={baseUrl}>
-                <section className='flex items-center'>
-                  <Img
-                    src={`${baseUrl}/images/logo-removebg-preview.png`}
-                    alt='Logo'
-                    className='self-center'
-                    height={40}
-                    width={50}
-                  />
-                  <Text
-                    style={{
-                      marginLeft: '5px',
-                      fontSize: '20px',
-                      color: '#000312',
-                    }}>
-                    Medical Health Horizon
-                  </Text>
-                </section>
+              <Link href={baseUrl} className='flex items-center'>
+                <Img
+                  src={`${baseUrl}/images/logo-removebg-preview.png`}
+                  alt='Logo'
+                  className='self-center'
+                  height={50}
+                  width={50}
+                />
+                <Text
+                  style={{
+                    marginLeft: '5px',
+                    fontSize: '20px',
+                    color: '#000312',
+                  }}>
+                  Medical Health Horizon
+                </Text>
               </Link>
             </Section>
 
