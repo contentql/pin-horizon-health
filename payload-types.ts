@@ -962,7 +962,6 @@ export interface Contact {
  */
 export interface Hospital {
   id: string;
-  email?: string | null;
   title: string;
   description?: string | null;
   country?: (string | null) | Country;
@@ -981,6 +980,7 @@ export interface Hospital {
     | null;
   receptionistName?: string | null;
   phone: number;
+  email?: string | null;
   highlights?:
     | {
         highlight?: string | null;
@@ -994,11 +994,6 @@ export interface Hospital {
       }[]
     | null;
   slug?: string | null;
-  meta?: {
-    title?: string | null;
-    description?: string | null;
-    image?: string | Media | null;
-  };
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
