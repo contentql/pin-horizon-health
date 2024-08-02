@@ -23,7 +23,6 @@ import { Doctors } from '@/payload/collections/Doctors'
 import { Hospitals } from '@/payload/collections/Hospital'
 import { Media } from '@/payload/collections/Media'
 import { Pages } from '@/payload/collections/Pages'
-import { Sessions } from '@/payload/collections/Sessions'
 import { Tags } from '@/payload/collections/Tags'
 import { Tourists } from '@/payload/collections/Tourists'
 import { Tours } from '@/payload/collections/Tours'
@@ -100,7 +99,6 @@ export default buildConfig({
     Tags,
     Blogs,
     Pages,
-    Sessions,
     Appointments,
     Tours,
     Contact,
