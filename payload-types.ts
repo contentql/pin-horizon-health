@@ -17,7 +17,6 @@ export interface Config {
     tags: Tag;
     blogs: Blog;
     pages: Page;
-    sessions: Session;
     appointments: Appointment;
     tours: Tour;
     contact: Contact;
@@ -857,18 +856,6 @@ export interface AyurvedaAboutType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'AyurvedaAbout';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "sessions".
- */
-export interface Session {
-  id: string;
-  user: string | Doctor;
-  sessionToken: string;
-  expires?: string | null;
-  updatedAt: string;
-  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
