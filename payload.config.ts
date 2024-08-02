@@ -62,12 +62,14 @@ export default buildConfig({
           return `${baseUrl}/blog/${data.slug}`
         } else if (collectionConfig?.slug === 'hospital') {
           return `${baseUrl}/hospital/${data.slug}`
+        } else if (collectionConfig?.slug === 'doctors') {
+          return `${baseUrl}/doctor/${data.slug}`
         } else {
           return `${baseUrl}/${data.slug}${locale ? `?locale=${locale.code}` : ''}`
         }
       },
 
-      collections: ['pages', 'blogs', 'hospital'],
+      collections: ['pages', 'blogs', 'hospital', 'doctors'],
 
       breakpoints: [
         {

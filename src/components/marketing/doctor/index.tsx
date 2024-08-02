@@ -3,16 +3,40 @@
 import bannerImg from '../../../../public/images/doctors/banner_img_3.png'
 import appointmentImg from '../../../../public/images/home_2/appointment_img.png'
 import Breadcrumbs from '../../common/Breadcrumbs'
+import { env } from '@env'
 import { Doctor } from '@payload-types'
+import { useLivePreview } from '@payloadcms/live-preview-react'
 import { notFound } from 'next/navigation'
 
 import Section from '@/components/common/Section'
+import { trpc } from '@/trpc/client'
 
 import Appointment from './Appointment'
 import DoctorBanner2 from './DoctorBanner2'
 import DoctorDetails from './DoctorDetails'
 
-const DoctorDetailsView = ({ doctorDetails }: { doctorDetails: Doctor }) => {
+const DoctorDetailsView = ({
+  initialDoctorDetails,
+  slugName,
+}: {
+  initialDoctorDetails: Doctor
+  slugName: string
+}) => {
+  const { data: doctorData } = trpc.doctor.getDoctorByName.useQuery(
+    { doctorName: slugName },
+    { initialData: initialDoctorDetails },
+  )
+
+  // Fetch page data for live preview
+  const { data: livePreviewData } = useLivePreview<Doctor | undefined>({
+    initialData: undefined,
+    serverURL: env.NEXT_PUBLIC_PUBLIC_URL,
+    depth: 2,
+  })
+
+  // Determine which data to use based on whether live preview data is available
+  const doctorDetails = (livePreviewData || doctorData) as Doctor
+
   return doctorDetails === undefined ? (
     notFound()
   ) : (

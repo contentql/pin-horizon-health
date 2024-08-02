@@ -9,11 +9,16 @@ interface PageProps {
   params: { doctorName: string }
 }
 const page = async ({ params }: PageProps) => {
-  const doctorDetails = await serverClient.doctor.getDoctorByName({
+  const initialDoctorDetails = await serverClient.doctor.getDoctorByName({
     doctorName: params?.doctorName,
   })
 
-  return <DoctorDetailsView doctorDetails={doctorDetails as Doctor} />
+  return (
+    <DoctorDetailsView
+      slugName={params?.doctorName}
+      initialDoctorDetails={initialDoctorDetails as Doctor}
+    />
+  )
 }
 
 export const generateStaticParams = async () => {
