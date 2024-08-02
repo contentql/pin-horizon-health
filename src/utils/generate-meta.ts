@@ -1,5 +1,5 @@
 import { env } from '@env'
-import type { Blog } from '@payload-types'
+import type { Blog, Doctor } from '@payload-types'
 import type { Metadata } from 'next'
 
 import { generateMetadata } from '@/app/(app)/layout'
@@ -7,7 +7,7 @@ import { generateMetadata } from '@/app/(app)/layout'
 import { mergeOpenGraph } from './merge-open-graph'
 
 export const generateMeta = async (args: {
-  doc: Blog | null
+  doc: Blog | Doctor | null
   collectionSlug: string
 }): Promise<Metadata> => {
   // ? collectionSlug is the name of the page eg.: http://localhost:3000/blog/[id] (`blog` is the collectionSlug)
@@ -19,7 +19,7 @@ export const generateMeta = async (args: {
     'url' in doc?.meta?.image &&
     doc.meta.image.url
 
-  const url = `${env.NEXT_PUBLIC_PUBLIC_URL}/${collectionSlug}/${doc?.id}`
+  const url = `${env.PAYLOAD_URL}/${collectionSlug}/${doc?.slug}`
 
   const defaultMetaData = await generateMetadata()
 

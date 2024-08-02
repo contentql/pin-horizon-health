@@ -3,12 +3,12 @@ import type { Metadata } from 'next'
 
 const defaultOpenGraph: Metadata['openGraph'] = {
   type: 'website',
-  siteName: 'ContentQL',
-  title: 'ContentQL',
-  description: 'An blog site built with Payload and Next.js.',
+  siteName: 'Horizon',
+  title: 'Horizon',
+  description: 'An medical tourism website.',
   images: [
     {
-      url: `${env.PAYLOAD_URL}/images/favicon.ico`,
+      url: `${env.PAYLOAD_URL}/public/favicon.ico`,
     },
   ],
 }

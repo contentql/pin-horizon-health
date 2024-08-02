@@ -25,23 +25,23 @@ const Page = async ({ params }: PageProps) => {
   return <BlogDetails blogData={blog as Blog} blogsData={blogsData} />
 }
 
-export async function generateStaticParams() {
+export const generateStaticParams = async () => {
   const allBlogs = await serverClient.blog.getAllBlogsWithoutPagination()
 
-  const blogIdsArray = allBlogs?.map(blog => ({ blogId: blog.id }))
+  const blogIdsArray = allBlogs?.map(blog => ({ blogSlug: blog.slug }))
 
   return blogIdsArray
 }
 
 export const generateMetadata = async ({
-  params: { slug },
+  params: { blogSlug },
 }: {
-  params: { slug: string }
+  params: { blogSlug: string }
 }): Promise<Metadata> => {
   let blog: Blog | null = null
 
   try {
-    const result = await serverClient.blog.getBlogBySlug({ slug })
+    const result = await serverClient.blog.getBlogBySlug({ slug: blogSlug })
 
     blog = result as Blog
   } catch (error) {
