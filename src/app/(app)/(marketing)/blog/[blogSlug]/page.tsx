@@ -19,10 +19,16 @@ const Page = async ({ params }: PageProps) => {
 
   const decodedSlug = decodeURIComponent(blogSlug)
 
-  const blog = await serverClient.blog.getBlogBySlug({ slug: decodedSlug })
+  const blogData = await serverClient.blog.getBlogBySlug({ slug: decodedSlug })
   const blogsData = await serverClient.blog.getAllBlogsWithoutPagination()
 
-  return <BlogDetails blogData={blog as Blog} blogsData={blogsData} />
+  return (
+    <BlogDetails
+      blogSlug={blogSlug}
+      initialBlogData={blogData as Blog}
+      blogsData={blogsData}
+    />
+  )
 }
 
 export const generateStaticParams = async () => {

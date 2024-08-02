@@ -28,12 +28,18 @@ export const Departments: CollectionConfig = {
       type: 'text',
       required: true,
       unique: true,
+      admin: {
+        description: 'Enter doctors department name',
+      },
     },
     {
       name: 'description',
       label: 'Description',
       type: 'textarea',
       required: true,
+      admin: {
+        description: 'Enter description about department',
+      },
     },
 
     // {

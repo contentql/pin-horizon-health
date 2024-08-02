@@ -11,6 +11,8 @@ export const Tags: CollectionConfig = {
   },
   access: {
     read: () => true,
+    create: () => false,
+    delete: () => false,
   },
   admin: {
     useAsTitle: 'title',
