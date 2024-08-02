@@ -5,8 +5,10 @@ import Breadcrumb from '../Breadcrumb'
 import Post from '../Post'
 import RichText from '../RichText'
 import Sidebar from '../Sidebar'
+import { env } from '@env'
 import { Icon } from '@iconify/react'
 import { Blog, Doctor, Media, Tag } from '@payload-types'
+import { useLivePreview } from '@payloadcms/live-preview-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -15,15 +17,35 @@ import Section from '@/components/common/Section'
 import { trpc } from '@/trpc/client'
 
 export default function BlogDetails({
-  blogData,
+  blogSlug,
+  initialBlogData,
   blogsData,
 }: {
-  blogData: Blog
+  blogSlug: string
+  initialBlogData: Blog
   blogsData: Blog[]
 }) {
   const { data: blogsByTag } = trpc.blog.getAllBlogsByTag.useQuery({
-    slug: (blogData?.tags?.value as Tag)?.slug!,
+    slug: (initialBlogData?.tags?.value as Tag)?.slug!,
   })
+
+  const { data: blog } = trpc.blog.getBlogBySlug.useQuery(
+    { slug: blogSlug },
+    {
+      initialData: initialBlogData,
+    },
+  )
+
+  // Fetch page data for live preview
+  const { data: livePreviewData } = useLivePreview<Blog | undefined>({
+    initialData: undefined,
+    serverURL: env.NEXT_PUBLIC_PUBLIC_URL,
+    depth: 2,
+  })
+
+  // Determine which data to use based on whether live preview data is available
+  const blogData = (livePreviewData || blog) as Blog
+
   const date = new Date(blogData?.createdAt)
   let formattedDate = `${date.getFullYear()}, ${date.toLocaleString('default', { month: 'long' })} ${date.getDate()}`
 

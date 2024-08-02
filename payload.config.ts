@@ -25,7 +25,6 @@ import { Media } from '@/payload/collections/Media'
 import { Pages } from '@/payload/collections/Pages'
 import { Tags } from '@/payload/collections/Tags'
 import { Tourists } from '@/payload/collections/Tourists'
-import { Tours } from '@/payload/collections/Tours'
 import { COLLECTION_SLUG_PAGE } from '@/payload/collections/constants'
 import { siteSettings } from '@/payload/globals/SiteSettings'
 import Icon from '@/payload/style/icons/Icon'
@@ -56,16 +55,18 @@ export default buildConfig({
     },
     livePreview: {
       url: ({ data, collectionConfig, locale }) => {
-        const baseUrl = env.NEXT_PUBLIC_PUBLIC_URL
+        const baseUrl = env.PAYLOAD_URL
 
         if (collectionConfig?.slug === 'blogs') {
           return `${baseUrl}/blog/${data.slug}`
+        } else if (collectionConfig?.slug === 'hospital') {
+          return `${baseUrl}/hospital/${data.slug}`
         } else {
           return `${baseUrl}/${data.slug}${locale ? `?locale=${locale.code}` : ''}`
         }
       },
 
-      collections: ['pages', 'blogs'],
+      collections: ['pages', 'blogs', 'hospital'],
 
       breakpoints: [
         {
@@ -100,7 +101,6 @@ export default buildConfig({
     Blogs,
     Pages,
     Appointments,
-    Tours,
     Contact,
     Hospitals,
     Country,
