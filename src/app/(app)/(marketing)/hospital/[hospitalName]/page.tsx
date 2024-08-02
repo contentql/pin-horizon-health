@@ -9,10 +9,15 @@ interface PageProps {
   }
 }
 async function page({ params }: PageProps) {
-  const hospitalDetails = await serverClient.hospital.getHospitalByName({
+  const initialHospitalDetails = await serverClient.hospital.getHospitalByName({
     slug: params?.hospitalName,
   })
-  return <HospitalView hospitalDetails={hospitalDetails as Hospital} />
+  return (
+    <HospitalView
+      slugName={params?.hospitalName}
+      initialHospitalDetails={initialHospitalDetails as Hospital}
+    />
+  )
 }
 
 export default page
