@@ -13,7 +13,6 @@ export interface Config {
   collections: {
     media: Media;
     doctors: Doctor;
-    category: Category;
     department: Department;
     tags: Tag;
     blogs: Blog;
@@ -213,18 +212,6 @@ export interface Department {
   id: string;
   title: string;
   description: string;
-  slug?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "category".
- */
-export interface Category {
-  id: string;
-  title: string;
   slug?: string | null;
   updatedAt: string;
   createdAt: string;

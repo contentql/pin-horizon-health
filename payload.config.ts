@@ -16,7 +16,6 @@ import { fileURLToPath } from 'url'
 
 import { Appointments } from '@/payload/collections/Appoinments'
 import { Blogs } from '@/payload/collections/Blogs'
-import { Category } from '@/payload/collections/Category'
 import { Contact } from '@/payload/collections/Contact'
 import { Country } from '@/payload/collections/Country'
 import { Departments } from '@/payload/collections/Departments'
@@ -97,7 +96,6 @@ export default buildConfig({
   collections: [
     Media,
     Doctors,
-    Category,
     Departments,
     Tags,
     Blogs,
