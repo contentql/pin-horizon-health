@@ -30,6 +30,12 @@ export const generateDescription: GenerateDescription = (data: any) => {
         ? data?.publishedDoc?.description
         : ''
     return description
+  } else if (data?.collectionSlug === 'hospital') {
+    const description =
+      typeof data?.publishedDoc?.description === 'string'
+        ? data?.publishedDoc?.description
+        : ''
+    return description
   }
   return ''
 }
