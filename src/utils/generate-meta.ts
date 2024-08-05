@@ -33,7 +33,7 @@ export const generateMeta = async (args: {
       images: ogImage
         ? [
             {
-              url: ogImage,
+              url: env.PAYLOAD_URL + ogImage,
             },
           ]
         : undefined,
