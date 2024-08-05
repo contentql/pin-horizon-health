@@ -31,6 +31,7 @@ export const generateDescription: GenerateDescription = (data: any) => {
         : ''
     return description
   }
+  return ''
 }
 
 export const generateImage: GenerateImage = (data: any) => {
@@ -43,7 +44,13 @@ export const generateImage: GenerateImage = (data: any) => {
 }
 
 export const generateURL: GenerateURL = (data: any) => {
-  const url = `${env.PAYLOAD_URL}/${data?.locale ? data?.locale + '/' : ''}${data?.collectionSlug || data?.docConfig?.slug || ''}/${data?.initialData?.slug || ''}`
+  const slug =
+    data?.collectionSlug === 'blogs'
+      ? 'blog'
+      : data?.collectionSlug === 'doctors'
+        ? 'doctor'
+        : ''
+  const url = `${env.PAYLOAD_URL}/${data?.locale ? data?.locale + '/' : ''}${slug}/${data?.initialData?.slug || ''}`
 
   return url || ''
 }
