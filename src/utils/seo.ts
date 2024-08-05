@@ -55,7 +55,7 @@ export const generateURL: GenerateURL = (data: any) => {
       ? 'blog'
       : data?.collectionSlug === 'doctors'
         ? 'doctor'
-        : ''
+        : data?.collectionSlug
   const url = `${env.PAYLOAD_URL}/${data?.locale ? data?.locale + '/' : ''}${slug}/${data?.initialData?.slug || ''}`
 
   return url || ''
