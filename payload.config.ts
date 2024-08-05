@@ -69,7 +69,7 @@ export default buildConfig({
         }
       },
 
-      collections: ['pages', 'blogs', 'hospital', 'doctors'],
+      // collections: ['pages', 'blogs', 'hospital', 'doctors'],
 
       breakpoints: [
         {
