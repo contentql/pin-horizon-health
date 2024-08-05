@@ -35,6 +35,9 @@ const RenderBlocks: React.FC<RenderBlocksProps> = ({
 
   // Determine which data to use based on whether live preview data is available
   const dataToUse = livePreviewData?.blocks || pageData?.blocks
+  console.log('livePreview Data', livePreviewData)
+  console.log('dataTOUse Data', dataToUse)
+  console.log('page Data', pageData)
 
   // if (isPageLoading) {
   //   return <Loading />
