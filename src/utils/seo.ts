@@ -17,33 +17,20 @@ export const generateTitle: GenerateTitle = (data: any) => {
   return title
 }
 
-export const generateTitlePrompt: GenerateTitle = (data: any) => {
-  const title =
-    typeof data?.doc?.title?.value === 'string'
-      ? data?.doc?.title?.value
-      : typeof data?.title === 'string'
-        ? data.title
-        : ''
-
-  return `Generate a SEO title for a blog post for ${title} in 50-60 chars`
-}
-
 export const generateDescription: GenerateDescription = (data: any) => {
-  const description =
-    typeof data?.doc?.description?.value === 'string'
-      ? data?.doc?.description?.value
-      : ''
-
-  return description
-}
-
-export const generateDescriptionPrompt: GenerateDescription = (data: any) => {
-  const description =
-    typeof data?.doc?.description?.value === 'string'
-      ? data?.doc?.description?.value
-      : ''
-
-  return `Generate a summarized description for a blog post with description ${description} in 100-150 chars`
+  if (data?.collectionSlug === 'blogs') {
+    const description =
+      typeof data?.publishedDoc?.sub_title === 'string'
+        ? data?.publishedDoc?.sub_title
+        : ''
+    return description
+  } else if (data?.collectionSlug === 'doctors') {
+    const description =
+      typeof data?.publishedDoc?.description === 'string'
+        ? data?.publishedDoc?.description
+        : ''
+    return description
+  }
 }
 
 export const generateImage: GenerateImage = (data: any) => {
