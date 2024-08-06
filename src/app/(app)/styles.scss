@@ -1,0 +1,8 @@
+// slate text editor content ui
+.prose img {
+  @apply mx-auto h-auto w-full rounded-xl object-cover transition-all duration-300 hover:-translate-y-2 lg:h-[600px];
+}
+
+.prose ul li {
+  @apply -m-8 ml-8 list-disc;
+}
