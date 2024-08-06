@@ -1,6 +1,7 @@
-import RichText from '../blog/RichText'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Tour } from '@payload-types'
+import { payloadSlateToHtmlConfig, slateToHtml } from '@slate-serializers/html'
+import DOMPurify from 'dompurify'
 import { useForm } from 'react-hook-form'
 import { BsTelephone } from 'react-icons/bs'
 import { FaRegClock } from 'react-icons/fa'
@@ -54,6 +55,10 @@ const TourDetails = ({ tourDetails }: { tourDetails: Tour }) => {
   const handleBlur = (event: any) => {
     event.target.type = 'text'
   }
+
+  const html = slateToHtml(tourDetails?.description!, payloadSlateToHtmlConfig)
+  const sanitizeHtml = DOMPurify.sanitize(html)
+
   return (
     <div className='container mt-20'>
       <div className='flex flex-col justify-between sm:w-full md:flex-row'>
@@ -144,10 +149,9 @@ const TourDetails = ({ tourDetails }: { tourDetails: Tour }) => {
               data={tourDetails?.services}
             />
             <h2 className='mb-4 mt-16 text-2xl font-semibold'>Tour Program</h2>
-            <RichText
-              content={tourDetails?.description!}
-              locale={''}
-              blockIndex={0}
+            <div
+              className='prose !max-w-none md:prose-xl'
+              dangerouslySetInnerHTML={{ __html: sanitizeHtml }}
             />
           </div>
         </div>
