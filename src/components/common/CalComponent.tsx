@@ -4,9 +4,10 @@ import { useLayoutEffect, useRef } from 'react'
 
 export default function CalComponent({ url }: { url: string }) {
   useLayoutEffect(() => {
-    const script = document.createElement('script')
-    script.type = 'text/javascript'
-    script.innerHTML = `
+    if (url) {
+      const script = document.createElement('script')
+      script.type = 'text/javascript'
+      script.innerHTML = `
             (function (C, A, L) { 
                 let p = function (a, ar) { a.q.push(ar); }; 
                 let d = C.document; 
@@ -44,11 +45,12 @@ export default function CalComponent({ url }: { url: string }) {
 
             Cal.ns["30min"]("ui", {"theme":"light","styles":{"branding":{"brandColor":"#69cbe5"}},"hideEventTypeDetails":false,"layout":"month_view"});
         `
-    document.body.appendChild(script)
-    return () => {
-      document.body.removeChild(script)
+      document.body.appendChild(script)
+      return () => {
+        document.body.removeChild(script)
+      }
     }
-  }, [])
+  }, [url])
 
   // useEffect(() => {
   //   const mainElement = document.querySelector('.max-w-3xl')
