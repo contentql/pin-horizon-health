@@ -1145,6 +1145,7 @@ export interface SiteSetting {
   };
   email?: string | null;
   phone_number?: number | null;
+  cal_team?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }

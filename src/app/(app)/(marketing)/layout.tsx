@@ -27,7 +27,7 @@ export default async function Layout({
       <Header headerData={initData?.header!} variant='cs_heading_color' />
       <div className='flex-grow'>{children}</div>
       <div>
-        <PopupCalComponent />
+        <PopupCalComponent initData={initData} />
       </div>
       <Footer footerData={initData?.footer!} />
       {/* Footer */}

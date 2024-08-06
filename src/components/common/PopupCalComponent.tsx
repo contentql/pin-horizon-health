@@ -1,6 +1,7 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import { SiteSetting } from '@payload-types'
+import { useEffect } from 'react'
 
 declare global {
   interface Window {
@@ -8,7 +9,7 @@ declare global {
   }
 }
 
-const PopupCalComponent: React.FC = () => {
+const PopupCalComponent = ({ initData }: { initData: SiteSetting }) => {
   useEffect(() => {
     ;(function (C, A, L) {
       let p = function (a: any, ar: any) {
@@ -50,7 +51,7 @@ const PopupCalComponent: React.FC = () => {
     window.Cal('init', 'testing', { origin: 'https://cal.com' })
 
     window.Cal.ns.testing('floatingButton', {
-      calLink: 'team/medical-horizon',
+      calLink: initData?.cal_team,
       buttonText: 'Book Appointment',
       buttonColor: '#307ac0',
     })
