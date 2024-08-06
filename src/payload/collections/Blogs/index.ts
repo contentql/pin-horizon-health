@@ -152,7 +152,7 @@ export const Blogs: CollectionConfig = {
       ],
     },
     {
-      name: 'description',
+      name: 'content',
       type: 'richText',
       label: 'Content',
       required: true,

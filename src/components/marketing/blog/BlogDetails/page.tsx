@@ -38,7 +38,7 @@ export default function BlogDetails({
     },
   )
 
-  const html = slateToHtml(blog?.description as any, payloadSlateToHtmlConfig)
+  const html = slateToHtml(blog?.content!, payloadSlateToHtmlConfig)
   const sanitizeHtml = DOMPurify.sanitize(html)
 
   // Fetch page data for live preview
@@ -100,13 +100,6 @@ export default function BlogDetails({
         <div className='row'>
           <div className='col-lg-8'>
             <div className='cs_blog_details'>
-              {/* <RichText
-                content={blogData?.description}
-                locale={''}
-                blockIndex={0}
-              /> */}
-              {/* <SlateContent>{blogData?.description}</SlateContent> */}
-
               <div
                 className='prose !max-w-none md:prose-xl'
                 dangerouslySetInnerHTML={{ __html: sanitizeHtml }}
