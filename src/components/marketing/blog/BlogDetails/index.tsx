@@ -1,14 +1,16 @@
 'use client'
 
+import '../../../../app/(app)/styles.scss'
 import Spacing from '../../home/Spacing'
 import Breadcrumb from '../Breadcrumb'
 import Post from '../Post'
-import RichText from '../RichText'
 import Sidebar from '../Sidebar'
 import { env } from '@env'
 import { Icon } from '@iconify/react'
 import { Blog, Doctor, Media, Tag } from '@payload-types'
 import { useLivePreview } from '@payloadcms/live-preview-react'
+import { payloadSlateToHtmlConfig, slateToHtml } from '@slate-serializers/html'
+import DOMPurify from 'dompurify'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -35,6 +37,9 @@ export default function BlogDetails({
       initialData: initialBlogData,
     },
   )
+
+  const html = slateToHtml(blog?.content!, payloadSlateToHtmlConfig)
+  const sanitizeHtml = DOMPurify.sanitize(html)
 
   // Fetch page data for live preview
   const { data: livePreviewData } = useLivePreview<Blog | undefined>({
@@ -95,10 +100,9 @@ export default function BlogDetails({
         <div className='row'>
           <div className='col-lg-8'>
             <div className='cs_blog_details'>
-              <RichText
-                content={blogData?.description}
-                locale={''}
-                blockIndex={0}
+              <div
+                className='prose !max-w-none md:prose-xl'
+                dangerouslySetInnerHTML={{ __html: sanitizeHtml }}
               />
             </div>
             {/* <Spacing md='85' /> */}

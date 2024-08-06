@@ -32,9 +32,9 @@ export default function CalComponent({ url }: { url: string }) {
                     } 
                     p(cal, ar); 
                 }; 
-            })(window, "https://cal.contentql.io/embed/embed.js", "init");
+            })(window, "https://app.cal.com/embed/embed.js", "init");
 
-            Cal("init", "30min", { origin: "https://cal.contentql.io" });
+            Cal("init", "30min", { origin: "https://cal.com" });
               
             Cal.ns["30min"]("inline", {
               elementOrSelector: "#my-cal-inline",

@@ -45,9 +45,9 @@ const PopupCalComponent: React.FC = () => {
           }
           p(cal, ar)
         }
-    })(window, 'https://cal.contentql.io/embed/embed.js', 'init')
+    })(window, 'https://app.cal.com/embed/embed.js', 'init')
 
-    window.Cal('init', 'testing', { origin: 'https://cal.contentql.io' })
+    window.Cal('init', 'testing', { origin: 'https://cal.com' })
 
     window.Cal.ns.testing('floatingButton', {
       calLink: 'team/medical-horizon',

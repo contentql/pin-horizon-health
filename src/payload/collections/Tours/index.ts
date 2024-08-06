@@ -1,3 +1,4 @@
+import { slateEditor } from '@payloadcms/richtext-slate'
 import type { CollectionConfig } from 'payload'
 
 import { slugField } from '@/payload/fields'
@@ -69,6 +70,7 @@ export const Tours: CollectionConfig = {
               name: 'description',
               label: 'Description',
               type: 'richText',
+              editor: slateEditor({}),
               admin: {
                 description:
                   'Provide a brief overview of the tour, highlighting key features and attractions',

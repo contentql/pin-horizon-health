@@ -257,22 +257,9 @@ export interface Blog {
         id?: string | null;
       }[]
     | null;
-  description: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
+  content: {
     [k: string]: unknown;
-  };
-  description_html?: string | null;
+  }[];
   meta?: {
     title?: string | null;
     description?: string | null;
@@ -994,21 +981,11 @@ export interface Tour {
         id?: string | null;
       }[]
     | null;
-  description?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
+  description?:
+    | {
         [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
+      }[]
+    | null;
   duration?: string | null;
   location?: string | null;
   services?:

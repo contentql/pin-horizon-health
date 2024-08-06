@@ -1,5 +1,4 @@
-import RichText from '../../components/marketing/blog/RichText'
-
+// We are not using this component
 import { Test } from '@/payload/blocks/Test'
 
 // const Test = dynamic(() => import('@/payload/blocks/Test') as Promise<any>)
@@ -11,7 +10,6 @@ export type AdditionalBlockProps = {
 
 const blockComponents = {
   Test,
-  RichText,
 }
 
 const Blocks = ({ blocks, locale }: any) => {
