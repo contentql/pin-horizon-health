@@ -66,7 +66,7 @@ export default buildConfig({
         }
       },
 
-      collections: ['pages', 'blogs', 'hospital', 'doctors'],
+      // collections: ['pages', 'blogs', 'hospital', 'doctors'],
 
       breakpoints: [
         {
@@ -129,7 +129,7 @@ export default buildConfig({
       },
     }),
     seoPlugin({
-      collections: ['blogs', 'doctors'],
+      collections: ['blogs', 'doctors', 'hospital'],
       uploadsCollection: 'media',
       tabbedUI: true,
       generateTitle,
