@@ -40,6 +40,7 @@ export interface Config {
 export interface DoctorAuthOperations {
   forgotPassword: {
     email: string;
+    password: string;
   };
   login: {
     email: string;
@@ -51,6 +52,7 @@ export interface DoctorAuthOperations {
   };
   unlock: {
     email: string;
+    password: string;
   };
 }
 /**

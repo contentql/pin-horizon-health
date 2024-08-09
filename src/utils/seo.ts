@@ -46,7 +46,7 @@ export const generateImage: GenerateImage = (data: any) => {
       ? data?.doc?.doctor_image?.value
       : ''
 
-  return image
+  return data.doc.blog_image
 }
 
 export const generateURL: GenerateURL = (data: any) => {
