@@ -1052,37 +1052,40 @@ export interface SiteSetting {
   id: string;
   appName?: string | null;
   appDescription?: string | null;
+  logoImage: string | Media;
   header?: {
-    logo_image?: string | Media | null;
-    app_name?: string | null;
-    menuItems?:
+    menuLinks?:
       | {
-          page?: {
-            relationTo: 'pages';
-            value: string | Page;
-          } | null;
-          subMenuItems?:
-            | {
-                page?: {
-                  relationTo: 'pages';
-                  value: string | Page;
-                } | null;
-                subMenuItems?:
-                  | {
-                      page?: {
-                        relationTo: 'pages';
-                        value: string | Page;
-                      } | null;
-                      id?: string | null;
-                    }[]
-                  | null;
-                id?: string | null;
-              }[]
-            | null;
+          group?: boolean | null;
+          menuLink?: {
+            externalLink?: boolean | null;
+            newPage?: boolean | null;
+            page?: {
+              relationTo: 'pages';
+              value: string | Page;
+            } | null;
+            label?: string | null;
+            link?: string | null;
+          };
+          menuLinkGroup?: {
+            groupTitle: string;
+            groupLinks?:
+              | {
+                  externalLink?: boolean | null;
+                  newPage?: boolean | null;
+                  page?: {
+                    relationTo: 'pages';
+                    value: string | Page;
+                  } | null;
+                  label?: string | null;
+                  link?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+          };
           id?: string | null;
         }[]
       | null;
-    app_description?: string | null;
     personal_details?:
       | {
           icon: '1' | '2' | '3';
@@ -1093,32 +1096,35 @@ export interface SiteSetting {
       | null;
   };
   footer?: {
-    logo_image?: string | Media | null;
-    logo?: string | null;
-    menuItems?:
+    links?:
       | {
-          page?: {
-            relationTo: 'pages';
-            value: string | Page;
-          } | null;
-          subMenuItems?:
-            | {
-                page?: {
-                  relationTo: 'pages';
-                  value: string | Page;
-                } | null;
-                subMenuItems?:
-                  | {
-                      page?: {
-                        relationTo: 'pages';
-                        value: string | Page;
-                      } | null;
-                      id?: string | null;
-                    }[]
-                  | null;
-                id?: string | null;
-              }[]
-            | null;
+          group?: boolean | null;
+          menuLink?: {
+            externalLink?: boolean | null;
+            newPage?: boolean | null;
+            page?: {
+              relationTo: 'pages';
+              value: string | Page;
+            } | null;
+            label?: string | null;
+            link?: string | null;
+          };
+          menuLinkGroup?: {
+            groupTitle: string;
+            groupLinks?:
+              | {
+                  externalLink?: boolean | null;
+                  newPage?: boolean | null;
+                  page?: {
+                    relationTo: 'pages';
+                    value: string | Page;
+                  } | null;
+                  label?: string | null;
+                  link?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+          };
           id?: string | null;
         }[]
       | null;
@@ -1131,15 +1137,15 @@ export interface SiteSetting {
       | null;
     title?: string | null;
     sub_title?: string | null;
-    social_media?:
+    socialLinks?:
       | {
-          icon:
+          socialMedia:
             | 'fa-brands:facebook-f'
             | 'fa-brands:youtube'
             | 'fa-brands:twitter'
             | 'fa-brands:linkedin-in'
             | 'fa-brands:instagram';
-          social_media_url: string;
+          socialMediaLink: string;
           id?: string | null;
         }[]
       | null;

@@ -1,52 +1,195 @@
 import { revalidateTag } from 'next/cache'
-import type { Field, GlobalConfig } from 'payload'
+import { Field, GlobalConfig } from 'payload'
+import { z } from 'zod'
 
 import { COLLECTION_SLUG_PAGE } from '@/payload/collections/constants'
-import { visibleToAdminOnly } from '@/payload/hidden'
+
+// import iconField from '@/payload/fields/icon'
 
 export const GLOBAL_SETTINGS_SLUG = 'site-settings'
 
-const menuItemsField = (
-  name: 'subMenuItems' | 'menuItems',
-  depth: number = 2,
-): Field => {
-  const label = name === 'menuItems' ? 'Menu Items' : 'Sub Menu Items'
-  const fields: Field[] = [
-    {
-      type: 'row',
-      fields: [
-        {
-          type: 'relationship',
-          name: 'page',
-          relationTo: [COLLECTION_SLUG_PAGE],
-          admin: {
-            description: 'Select page to diaplay as link',
-          },
+const validateURL = z
+  .string({
+    required_error: 'Name is required',
+    invalid_type_error: 'Name must be a string',
+  })
+  .url()
+
+const menuItem: Field[] = [
+  {
+    type: 'row',
+    fields: [
+      {
+        name: 'externalLink',
+        type: 'checkbox',
+        label: 'External Link',
+        defaultValue: false,
+        admin: {
+          description: 'Other website link',
         },
-      ],
+      },
+      {
+        name: 'newPage',
+        type: 'checkbox',
+        label: 'New Page',
+        defaultValue: false,
+        admin: {
+          condition: (_data, siblingData) => siblingData.externalLink,
+          description: 'Open website in new-page',
+        },
+      },
+    ],
+  },
+  {
+    type: 'relationship',
+    name: 'page',
+    relationTo: [COLLECTION_SLUG_PAGE],
+    admin: {
+      condition: (_data, siblingData) => !siblingData.externalLink,
     },
-  ]
+  },
+  {
+    type: 'row',
+    fields: [
+      {
+        name: 'label',
+        type: 'text',
+        label: 'Label',
+        admin: {
+          condition: (_data, siblingData) => siblingData.externalLink,
+        },
+      },
+      {
+        name: 'link',
+        type: 'text',
+        label: 'Link',
+        admin: {
+          condition: (_data, siblingData) => siblingData.externalLink,
+        },
+        validate: value => {
+          const { success } = validateURL.safeParse(value)
+          return success || 'Link is not valid'
+        },
+      },
+    ],
+  },
+]
 
-  if (depth > 0) {
-    fields.push(menuItemsField('subMenuItems', depth - 1))
-  }
+const menuGroupItem: Field = {
+  type: 'group',
+  name: 'menuLinkGroup',
+  label: 'Link Group',
+  fields: [
+    {
+      type: 'text',
+      name: 'groupTitle',
+      label: 'Group Title',
+      required: true,
+    },
+    {
+      type: 'array',
+      name: 'groupLinks',
+      label: 'Links',
+      fields: menuItem,
+    },
+  ],
+  admin: {
+    condition: (_data, siblingData) => siblingData.group,
+  },
+}
 
-  return {
-    type: 'array',
-    name,
-    label,
-    fields,
-  }
+const menuField: Field[] = [
+  {
+    type: 'checkbox',
+    name: 'group',
+    label: 'Group',
+    defaultValue: false,
+    admin: {
+      description: 'Check to create group of links',
+    },
+  },
+  {
+    name: 'menuLink',
+    type: 'group',
+    label: 'Link',
+    fields: menuItem,
+    admin: {
+      condition: (_data, siblingData) => !siblingData.group,
+    },
+  },
+  menuGroupItem,
+]
+
+const logoField: Field[] = [
+  {
+    name: 'imageUrl',
+    type: 'upload',
+    required: true,
+    relationTo: 'media',
+    label: 'Image',
+  },
+  {
+    type: 'row',
+    fields: [
+      {
+        label: 'Height',
+        name: 'height',
+        type: 'number',
+        admin: {
+          description: 'Adjust to the height of the logo',
+        },
+      },
+      {
+        label: 'Width',
+        name: 'width',
+        type: 'number',
+        admin: {
+          description: 'Adjust to the width of the logo',
+        },
+      },
+    ],
+  },
+]
+
+const socialLinksField: Field = {
+  type: 'row',
+  fields: [
+    {
+      type: 'select',
+      name: 'socialMedia',
+      label: 'Social Media',
+      required: true,
+      options: [
+        { label: 'Facebook', value: 'fa-brands:facebook-f' },
+        { label: 'YouTube', value: 'fa-brands:youtube' },
+        { label: 'Twitter', value: 'fa-brands:twitter' },
+        { label: 'Linkedin', value: 'fa-brands:linkedin-in' },
+        { label: 'instagram', value: 'fa-brands:instagram' },
+      ],
+      admin: { description: 'Select social media icon' },
+    },
+    {
+      type: 'text',
+      name: 'socialMediaLink',
+      label: 'Social Media Link',
+      required: true,
+      validate: (socialMediaLink, args) => {
+        const { success } = validateURL.safeParse(socialMediaLink)
+        // console.log({ success, operation }, success || 'Link is not valid')
+
+        // return text(value, args)
+
+        return success || 'Link is not valid'
+      },
+    },
+  ],
 }
 
 export const siteSettings: GlobalConfig = {
   slug: GLOBAL_SETTINGS_SLUG,
-  // access: {
-  //   read: isAdminOrCurrentUser,
-  //   update: isAdmin,
-  // },
-  admin: {
-    hidden: visibleToAdminOnly,
+  access: {
+    read: () => true,
+    // update: isAdmin,
   },
   hooks: {
     afterChange: [async () => revalidateTag('site-settings')],
@@ -69,30 +212,26 @@ export const siteSettings: GlobalConfig = {
               name: 'appDescription',
               admin: { description: 'Enter your app description' },
             },
+            {
+              name: 'logoImage',
+              type: 'upload',
+              required: true,
+              relationTo: 'media',
+              label: 'Logo Image',
+              admin: {
+                description: 'We recommend a maximum size of 256 * 256 pixels',
+              },
+            },
           ],
         },
         {
           name: 'header',
           fields: [
             {
-              type: 'upload',
-              name: 'logo_image',
-              relationTo: 'media',
-              admin: {
-                description: 'Upload an image of your application logo',
-              },
-            },
-            {
-              type: 'text',
-              name: 'app_name',
-              admin: { description: 'Enter your app name' },
-            },
-            menuItemsField('menuItems'),
-            {
-              name: 'app_description',
-              label: 'Description',
-              type: 'text',
-              admin: { description: 'Enter your app description' },
+              name: 'menuLinks',
+              label: 'Menu Links',
+              type: 'array',
+              fields: menuField,
             },
             {
               type: 'array',
@@ -139,19 +278,11 @@ export const siteSettings: GlobalConfig = {
           name: 'footer',
           fields: [
             {
-              type: 'upload',
-              name: 'logo_image',
-              relationTo: 'media',
-              admin: {
-                description: 'Upload an image of your application logo',
-              },
+              name: 'links',
+              type: 'array',
+              label: 'Links',
+              fields: menuField,
             },
-            {
-              type: 'text',
-              name: 'logo',
-              admin: { description: 'Enter your app name' },
-            },
-            menuItemsField('menuItems'),
             {
               name: 'personal_information',
               type: 'array',
@@ -198,38 +329,15 @@ export const siteSettings: GlobalConfig = {
               },
             },
             {
-              name: 'social_media',
               type: 'array',
-              fields: [
-                {
-                  name: 'icon',
-                  type: 'select',
-                  label: 'Icon',
-                  required: true,
-                  options: [
-                    { label: 'Facebook', value: 'fa-brands:facebook-f' },
-                    { label: 'YouTube', value: 'fa-brands:youtube' },
-                    { label: 'Twitter', value: 'fa-brands:twitter' },
-                    { label: 'Linkedin', value: 'fa-brands:linkedin-in' },
-                    { label: 'instagram', value: 'fa-brands:instagram' },
-                  ],
-                  admin: { description: 'Select social media icon' },
-                },
-                {
-                  name: 'social_media_url',
-                  label: 'Social Media URL',
-                  type: 'text',
-                  required: true,
-                  admin: {
-                    description: 'Enter social media url for selected icon',
-                  },
-                },
-              ],
-              admin: { description: 'Add your social media' },
+              name: 'socialLinks',
+              label: 'Social Links',
+              fields: [socialLinksField],
             },
             {
               type: 'text',
               name: 'copyright',
+              label: 'Copyright',
               admin: { description: 'Enter copyrights of your application' },
             },
           ],
