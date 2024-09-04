@@ -3,7 +3,7 @@
 import { Media, Page, SiteSetting } from '@payload-types'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import IconBoxStyle11 from '@/components/marketing/home/IconBox/IconBoxStyle11'
 import Spacing from '@/components/marketing/home/Spacing'
@@ -17,10 +17,10 @@ const listOfIcons = {
 }
 
 export default function Header({
-  headerData,
+  initSiteSettingsData,
   variant,
 }: {
-  headerData: SiteSetting['header']
+  initSiteSettingsData: SiteSetting
   variant: string
 }) {
   const [isSticky, setIsSticky] = useState(false)
@@ -56,115 +56,82 @@ export default function Header({
                   href='/'>
                   <div style={{ display: 'flex', alignItems: 'center' }}>
                     <Image
-                      src={(headerData?.logo_image as Media)?.url || ''}
+                      src={
+                        (initSiteSettingsData?.logoImage as Media)?.url || ''
+                      }
                       alt='Logo'
                       height={28}
                       width={50}
                     />
                     <span style={{ marginLeft: '5px' }}>
-                      {headerData?.app_name}
+                      {initSiteSettingsData?.appName}
                     </span>
                   </div>
                 </Link>
 
                 <nav className='cs_nav'>
                   <ul
-                    className={`${
-                      mobileToggle ? 'cs_nav_list cs_active' : 'cs_nav_list'
-                    }`}>
-                    {/* <li className="menu-item-has-children">
-                      <Link href="/">Home</Link>
-                      <DropDown>
-                        <ul>
-                          <li>
-                            <Link href="/">Home Version-1</Link>
-                          </li>
-                          <li>
-                            <Link href="/home-v2">Home Version-2</Link>
-                          </li>
-                          <li>
-                            <Link href="/home-v3">Home Version-3</Link>
-                          </li>
-                          <li>
-                            <Link href="/home-v4">Home Version-4</Link>
-                          </li>
-                        </ul>
-                      </DropDown>
-                    </li> */}
-                    {headerData?.menuItems?.map((link, index) =>
-                      link?.subMenuItems?.length === 0 ? (
-                        <li key={index}>
-                          <Link href={(link?.page?.value as Page)?.path || ''}>
-                            {(link?.page?.value as Page)?.title}
-                          </Link>
-                        </li>
-                      ) : (
-                        <li key={index} className='menu-item-has-children'>
-                          <Link href={''}>Services</Link>
-                          <DropDown>
-                            <ul>
-                              {link?.subMenuItems?.map((subMenu, index) => (
-                                <li key={index}>
-                                  <Link
-                                    href={
-                                      (subMenu?.page?.value as Page)?.path || ''
-                                    }>
-                                    {(subMenu?.page?.value as Page)?.title}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          </DropDown>
-                        </li>
+                    className={`${mobileToggle ? 'cs_nav_list cs_active' : 'cs_nav_list'}`}>
+                    {initSiteSettingsData?.header?.menuLinks?.map(
+                      (headerLink, index) => (
+                        <React.Fragment key={index}>
+                          {headerLink?.group ? (
+                            <li className='menu-item-has-children'>
+                              <Link href=''>
+                                {headerLink?.menuLinkGroup?.groupTitle}
+                              </Link>
+                              <DropDown>
+                                <ul>
+                                  {headerLink?.menuLinkGroup?.groupLinks?.map(
+                                    (link, subIndex) =>
+                                      link?.externalLink ? (
+                                        <li key={subIndex}>
+                                          <Link
+                                            href={link?.link!}
+                                            target={`${link?.newPage ? '_blank' : '_self'}`}>
+                                            {link.label}
+                                          </Link>
+                                        </li>
+                                      ) : (
+                                        <li key={subIndex}>
+                                          <Link
+                                            href={
+                                              (link?.page?.value as Page)?.slug!
+                                            }
+                                            target={`${link?.newPage ? '_blank' : '_self'}`}>
+                                            {(link?.page?.value as Page)?.title}
+                                          </Link>
+                                        </li>
+                                      ),
+                                  )}
+                                </ul>
+                              </DropDown>
+                            </li>
+                          ) : headerLink?.menuLink?.externalLink ? (
+                            <li>
+                              <Link
+                                href={headerLink?.menuLink?.link!}
+                                target={`${headerLink?.menuLink?.newPage ? '_blank' : '_self'}`}>
+                                {headerLink?.menuLink?.label!}
+                              </Link>
+                            </li>
+                          ) : (
+                            <li>
+                              <Link
+                                target={`${headerLink?.menuLink?.newPage ? '_blank' : '_self'}`}
+                                href={`/${(headerLink?.menuLink?.page?.value as Page)?.slug!}`}>
+                                {
+                                  (headerLink?.menuLink?.page?.value as Page)
+                                    ?.title
+                                }
+                              </Link>
+                            </li>
+                          )}
+                        </React.Fragment>
                       ),
                     )}
-                    {/* <li>
-                      <Link href='/doctors'>Find Doctor</Link>
-                    </li>
-                    <li>
-                      <Link href='/blog'>Blog</Link>
-                    </li>
-                    <li>
-
-                      <Link href='/appointment'>Appointment</Link>
-                      {/* <DropDown>
-
-                        <ul>
-                          <li>
-                            <Link href='/appointments'>Appointments</Link>
-                          </li>
-                          <li>
-                            <Link href='/departments'>Departments</Link>
-                          </li>
-                          <li>
-                            <Link href='/departments/department-details'>
-                              Department Details
-                            </Link>
-                          </li>
-                          <li>
-                            <Link href='/doctors'>Doctors</Link>
-                          </li>
-                          <li>
-                            <Link href='doctors/doctor-details'>
-                              Doctor Details
-                            </Link>
-                          </li>
-                          <li>
-                            <Link href='/pricing-plan'>Pricing Plan</Link>
-                          </li>
-                          <li>
-                            <Link href='/gallery'>Gallery</Link>
-                          </li>
-                          <li>
-                            <Link href='/timetable'>Timetable</Link>
-                          </li>
-                        </ul>
-                      </DropDown> */}
-                    {/* </li>
-                    <li>
-                      <Link href='/contact'>Contact</Link>
-                    </li> */}
                   </ul>
+
                   <span
                     className={
                       mobileToggle
@@ -244,34 +211,36 @@ export default function Header({
           <div className='cs_logo_box text-xl font-semibold'>
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <Image
-                src={(headerData?.logo_image as Media)?.url || ''}
+                src={(initSiteSettingsData?.logoImage as Media)?.url || ''}
                 alt='Logo'
                 height={28}
                 width={50}
               />
               <span className='text-[#274760]' style={{ marginLeft: '5px' }}>
-                {headerData?.app_name}
+                {initSiteSettingsData?.appName}
               </span>
             </div>
             <div className='cs_height_15' />
             <h3 className='cs_fs_24 cs_semibold mb-0'>
-              {headerData?.app_description}
+              {initSiteSettingsData?.appDescription}
             </h3>
           </div>
           <Spacing md='35' lg='35' xl='35' />
           <hr />
           <Spacing md='35' lg='50' xl='35' />
 
-          {headerData?.personal_details?.map((item, index) => (
-            <div key={index}>
-              <IconBoxStyle11
-                title={item?.title}
-                subTitle={item?.sub_title}
-                iconSrc={listOfIcons[item?.icon]}
-              />
-              <Spacing md='30' lg='30' xl='30' />
-            </div>
-          ))}
+          {initSiteSettingsData?.header?.personal_details?.map(
+            (item, index) => (
+              <div key={index}>
+                <IconBoxStyle11
+                  title={item?.title}
+                  subTitle={item?.sub_title}
+                  iconSrc={listOfIcons[item?.icon]}
+                />
+                <Spacing md='30' lg='30' xl='30' />
+              </div>
+            ),
+          )}
           {/* <Spacing md='60' lg='60' xl='60' />
           <Newsletter title='' subTitle='' />
           <Spacing md='70' lg='50' xl='50' />
