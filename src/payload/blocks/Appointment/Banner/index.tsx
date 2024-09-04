@@ -7,7 +7,6 @@ import { trpc } from '@/trpc/client'
 
 export default function AppointmentBanner(data: AppointmentBannerType) {
   const { data: siteSettings } = trpc.siteSettings.getSiteSettings.useQuery()
-  console.log('site settings', siteSettings)
   return (
     <>
       <BannerSectionStyle
