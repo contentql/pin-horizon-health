@@ -1,7 +1,7 @@
 import SectionHeading from '../home/SectionHeading'
 import Spacing from '../home/Spacing'
 
-import CalComponent from '@/components/common/CalComponent'
+// import CalComponent from '@/components/common/CalComponent'
 
 export default function Appointment({
   bgUrl,
@@ -34,7 +34,7 @@ export default function Appointment({
           <div className='col-lg-12 '>
             <SectionHeading title={sectionTitle} titleUp={sectionTitleUp} />
             <Spacing md='57' />
-            <CalComponent url={doctorCal} />
+            {/* <CalComponent url={doctorCal} /> */}
           </div>
         </div>
         <div className='cs_height_120' />
