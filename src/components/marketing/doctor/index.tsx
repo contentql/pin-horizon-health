@@ -1,6 +1,6 @@
 'use client'
 
-import bannerImg from '../../../../public/images/doctors/banner_img_3.png'
+import bannerImg from '../../../../public/images/general.jpg'
 import Breadcrumbs from '../../common/Breadcrumbs'
 import { env } from '@env'
 import { Doctor } from '@payload-types'
