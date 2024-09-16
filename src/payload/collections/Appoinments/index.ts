@@ -1,7 +1,6 @@
 import type { CollectionConfig } from 'payload'
 
 import { isAdminOrSelf } from './access/isAdminOrSelf'
-import { informDoctor } from './hooks/informDoctor'
 
 export const Appointments: CollectionConfig = {
   slug: 'appointments',
@@ -10,13 +9,13 @@ export const Appointments: CollectionConfig = {
     plural: 'Appointments',
   },
   access: {
-    create: isAdminOrSelf,
-    read: isAdminOrSelf,
+    create: () => true,
+    read: () => true,
     update: isAdminOrSelf,
     delete: isAdminOrSelf,
   },
   admin: {
-    useAsTitle: 'title',
+    useAsTitle: 'name',
   },
   versions: {
     drafts: {
@@ -24,100 +23,128 @@ export const Appointments: CollectionConfig = {
     },
     maxPerDoc: 10,
   },
-  hooks: {
-    afterChange: [informDoctor],
-  },
+  // hooks: {
+  //   afterChange: [informDoctor],
+  // },
   fields: [
+    // {
+    //   name: 'title',
+    //   type: 'text',
+    //   label: 'Title',
+    // },
+    // {
+    //   type: 'row',
+    //   fields: [
+    //     { name: 'attendee_name', type: 'text', label: 'Attend Name' },
+    //     { name: 'attendee_email', type: 'email', label: 'Attend Email' },
+    //   ],
+    // },
+    // {
+    //   type: 'row',
+    //   fields: [
+    //     {
+    //       name: 'description',
+    //       type: 'textarea',
+    //       label: 'Description',
+    //     },
+    //     {
+    //       name: 'additional_notes',
+    //       type: 'textarea',
+    //       label: 'Additional Notes',
+    //     },
+    //   ],
+    // },
+    // {
+    //   type: 'row',
+    //   fields: [
+    //     {
+    //       name: 'start_time',
+    //       label: 'Meeting Start Time',
+    //       type: 'date',
+    //       admin: {
+    //         date: {
+    //           pickerAppearance: 'dayAndTime',
+    //         },
+    //       },
+    //     },
+    //     {
+    //       name: 'end_time',
+    //       label: 'Meeting End Time',
+    //       type: 'date',
+    //       admin: {
+    //         date: {
+    //           pickerAppearance: 'dayAndTime',
+    //         },
+    //       },
+    //     },
+    //   ],
+    // },
+    // {
+    //   name: 'metadata',
+    //   type: 'json',
+    //   label: 'Metadata',
+    // },
+    // {
+    //   name: 'doctor',
+    //   type: 'relationship',
+    //   relationTo: ['doctors'],
+    //   label: 'Doctor',
+    //   admin: {
+    //     position: 'sidebar',
+    //   },
+    // },
+    // {
+    //   name: 'booking_status',
+    //   type: 'text',
+    //   label: 'Booking Status',
+    //   admin: {
+    //     position: 'sidebar',
+    //   },
+    // },
+    // {
+    //   name: 'cal_video_url',
+    //   type: 'text',
+    //   label: 'Cal Video Url',
+    //   admin: {
+    //     position: 'sidebar',
+    //   },
+    // },
+    // {
+    //   name: 'uid',
+    //   type: 'text',
+    //   label: 'UID',
+    //   admin: {
+    //     readOnly: true,
+    //     position: 'sidebar',
+    //   },
+    // },
     {
-      name: 'title',
+      name: 'name',
+      label: 'Name',
       type: 'text',
-      label: 'Title',
+      required: true,
     },
     {
-      type: 'row',
-      fields: [
-        { name: 'attendee_name', type: 'text', label: 'Attend Name' },
-        { name: 'attendee_email', type: 'email', label: 'Attend Email' },
-      ],
+      name: 'email',
+      label: 'E-mail',
+      type: 'email',
     },
     {
-      type: 'row',
-      fields: [
-        {
-          name: 'description',
-          type: 'textarea',
-          label: 'Description',
-        },
-        {
-          name: 'additional_notes',
-          type: 'textarea',
-          label: 'Additional Notes',
-        },
-      ],
-    },
-    {
-      type: 'row',
-      fields: [
-        {
-          name: 'start_time',
-          label: 'Meeting Start Time',
-          type: 'date',
-          admin: {
-            date: {
-              pickerAppearance: 'dayAndTime',
-            },
-          },
-        },
-        {
-          name: 'end_time',
-          label: 'Meeting End Time',
-          type: 'date',
-          admin: {
-            date: {
-              pickerAppearance: 'dayAndTime',
-            },
-          },
-        },
-      ],
-    },
-    {
-      name: 'metadata',
-      type: 'json',
-      label: 'Metadata',
-    },
-    {
-      name: 'doctor',
-      type: 'relationship',
-      relationTo: ['doctors'],
-      label: 'Doctor',
-      admin: {
-        position: 'sidebar',
-      },
-    },
-    {
-      name: 'booking_status',
+      name: 'phoneNumber',
+      label: 'Phone Number',
       type: 'text',
-      label: 'Booking Status',
-      admin: {
-        position: 'sidebar',
-      },
+      required: true,
     },
     {
-      name: 'cal_video_url',
+      name: 'medicalRecordNumber',
+      label: 'Medical Record Number',
       type: 'text',
-      label: 'Cal Video Url',
-      admin: {
-        position: 'sidebar',
-      },
     },
     {
-      name: 'uid',
-      type: 'text',
-      label: 'UID',
-      admin: {
-        readOnly: true,
-        position: 'sidebar',
-      },
+      name: 'reasonForVisit',
+      label: 'Reason for Visit',
+      type: 'textarea',
+      required: true,
     },
   ],
 }
