@@ -1,9 +1,8 @@
 import Button from '../../about/Button'
+import AppointmentForm from '../AppointmentForm'
+// import CalComponent from '@/components/common/CalComponent'
 import parse from 'html-react-parser'
 import Image from 'next/image'
-
-// import CalComponent from '@/components/common/CalComponent'
-import Section from '@/components/common/Section'
 
 import Spacing from './spacing'
 
@@ -45,23 +44,13 @@ export default function BannerSectionStyle({
           </div>
         </div>
       </section>
-      <Section
-        topMd={200}
-        topLg={150}
-        topXl={110}
-        bottomMd={200}
-        bottomLg={150}
-        bottomXl={110}>
-        <div className='container'>
-          <div className='row'>
-            <div className='col-lg-12'>
-              <h2 className='cs_fs_40 cs_medium mb-0'>Book An Appoinment</h2>
-              <div className='cs_height_42 cs_height_xl_25' />
-              {/* <CalComponent url={siteSettings} /> */}
-            </div>
+      <div className='cs_mt_minus_110 container pb-24'>
+        <div className='row'>
+          <div className='col-lg-10 offset-lg-1'>
+            <AppointmentForm />
           </div>
         </div>
-      </Section>
+      </div>
     </>
   )
 }
