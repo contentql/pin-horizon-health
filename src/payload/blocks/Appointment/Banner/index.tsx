@@ -14,7 +14,7 @@ export default function AppointmentBanner(data: AppointmentBannerType) {
         imgUrl={(data?.image as Media)?.url as string}
         title={data?.title}
         subTitle={data?.description}
-        siteSettings={siteSettings?.cal_team}
+        // siteSettings={siteSettings?.cal_team}
       />
     </>
   )
