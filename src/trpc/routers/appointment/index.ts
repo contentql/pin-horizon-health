@@ -135,8 +135,14 @@ export const appointmentRouter = router({
   createAppointment: publicProcedure
     .input(AppointmentValidator)
     .mutation(async ({ input }) => {
-      const { email, reasonForVisit, name, medicalRecordNumber, phoneNumber } =
-        input
+      const {
+        email,
+        reasonForVisit,
+        name,
+        medicalRecordNumber,
+        phoneNumber,
+        preferredDateAndTime,
+      } = input
 
       try {
         await payload.create({
@@ -147,6 +153,7 @@ export const appointmentRouter = router({
             name,
             medicalRecordNumber,
             phoneNumber,
+            preferredDateAndTime,
           },
         })
 

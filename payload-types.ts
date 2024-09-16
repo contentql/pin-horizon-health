@@ -856,6 +856,7 @@ export interface Appointment {
   phoneNumber: string;
   medicalRecordNumber?: string | null;
   reasonForVisit: string;
+  preferredDateAndTime?: string | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;

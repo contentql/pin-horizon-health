@@ -146,5 +146,15 @@ export const Appointments: CollectionConfig = {
       type: 'textarea',
       required: true,
     },
+    {
+      name: 'preferredDateAndTime',
+      label: 'Preferred Date and Time',
+      type: 'date',
+      admin: {
+        date: {
+          pickerAppearance: 'dayAndTime',
+        },
+      },
+    },
   ],
 }

@@ -1,8 +1,11 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
+import { Icon } from '@iconify/react'
 import { parsePhoneNumber } from 'libphonenumber-js'
 import Image from 'next/image'
+import { useState } from 'react'
+import DatePicker from 'react-datepicker'
 import { Controller, useForm } from 'react-hook-form'
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
@@ -25,6 +28,8 @@ export default function AppointmentForm() {
   } = useForm<TAppointmentValidator>({
     resolver: zodResolver(AppointmentValidator),
   })
+
+  const [selectedDate, setSelectedDate] = useState<any>(null)
 
   const { mutate: appointmentFormData } =
     trpc.appointment.createAppointment.useMutation({
@@ -137,6 +142,43 @@ export default function AppointmentForm() {
             />
             {errors?.phoneNumber && (
               <p className='error'>{errors?.phoneNumber?.message}</p>
+            )}
+            <div className='cs_height_42 cs_height_xl_25' />
+          </div>
+          <div className='col-lg-6'>
+            <label className='cs_input_label cs_heading_color'>
+              Preferred Date
+            </label>
+            <div className='cs_with_icon_input'>
+              <Controller
+                control={control}
+                name='preferredDateAndTime'
+                render={({ field }) => (
+                  //@ts-ignore
+                  <DatePicker
+                    {...field}
+                    selected={field.value}
+                    onChange={date => {
+                      setSelectedDate(date)
+                      field.onChange(date)
+                    }}
+                    dateFormat='MMMM d, yyyy h:mm aa'
+                    showTimeSelect
+                    todayButton
+                    minDate={new Date()}
+                    isClearable
+                    placeholderText='MMMM d, yyyy h:mm'
+                  />
+                )}
+              />
+              <i>
+                <Icon icon='fa6-solid:calendar-days' />
+              </i>
+            </div>
+            {errors.preferredDateAndTime && (
+              <p className='error'>
+                {errors.preferredDateAndTime.message as string}
+              </p>
             )}
             <div className='cs_height_42 cs_height_xl_25' />
           </div>

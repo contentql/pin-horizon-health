@@ -17,6 +17,7 @@ export const AppointmentValidator = z.object({
   ),
   medicalRecordNumber: z.string()?.optional(),
   reasonForVisit: z.string().min(1, 'Reason is required'),
+  preferredDateAndTime: z.any(),
   // title: z.string(),
   // uid: z.string(),
   // description: z.string(),
