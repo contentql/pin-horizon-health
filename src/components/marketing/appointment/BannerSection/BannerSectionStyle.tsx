@@ -2,7 +2,7 @@ import Button from '../../about/Button'
 import parse from 'html-react-parser'
 import Image from 'next/image'
 
-import CalComponent from '@/components/common/CalComponent'
+// import CalComponent from '@/components/common/CalComponent'
 import Section from '@/components/common/Section'
 
 import Spacing from './spacing'
@@ -57,7 +57,7 @@ export default function BannerSectionStyle({
             <div className='col-lg-12'>
               <h2 className='cs_fs_40 cs_medium mb-0'>Book An Appoinment</h2>
               <div className='cs_height_42 cs_height_xl_25' />
-              <CalComponent url={siteSettings} />
+              {/* <CalComponent url={siteSettings} /> */}
             </div>
           </div>
         </div>

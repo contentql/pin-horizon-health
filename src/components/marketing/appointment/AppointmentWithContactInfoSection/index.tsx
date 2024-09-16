@@ -1,6 +1,6 @@
 import { AppointmentContactType } from '@payload-types'
 
-import CalComponent from '@/components/common/CalComponent'
+// import CalComponent from '@/components/common/CalComponent'
 
 export default function AppointmentWithContactInfoSection({
   contactInfo,
@@ -13,7 +13,7 @@ export default function AppointmentWithContactInfoSection({
         <div className='col-lg-12'>
           <h2 className='cs_fs_40 cs_medium mb-0'>Book An Appoinment</h2>
           <div className='cs_height_42 cs_height_xl_25' />
-          <CalComponent url='team/medical-horizon' />
+          {/* <CalComponent url='team/medical-horizon' /> */}
         </div>
         {/* <div className='col-lg-3 offset-lg-1'>
           <div className='cs_height_lg_100' />
