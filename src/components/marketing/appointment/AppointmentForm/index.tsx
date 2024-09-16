@@ -145,7 +145,7 @@ export default function AppointmentForm() {
             )}
             <div className='cs_height_42 cs_height_xl_25' />
           </div>
-          <div className='col-lg-6'>
+          <div className='col-lg-12'>
             <label className='cs_input_label cs_heading_color'>
               Preferred Date
             </label>
