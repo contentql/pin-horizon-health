@@ -360,12 +360,12 @@ export const siteSettings: GlobalConfig = {
               label: 'Admin Phone Number',
               admin: { description: 'Enter admin phone number' },
             },
-            {
-              type: 'text',
-              name: 'cal_team',
-              label: 'Cal Team Url',
-              admin: { description: 'Enter cal team url' },
-            },
+            // {
+            //   type: 'text',
+            //   name: 'cal_team',
+            //   label: 'Cal Team Url',
+            //   admin: { description: 'Enter cal team url' },
+            // },
           ],
         },
       ],

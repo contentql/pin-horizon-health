@@ -187,7 +187,6 @@ export interface Doctor {
     relationTo: 'department';
     value: string | Department;
   } | null;
-  cal_user?: string | null;
   meta?: {
     title?: string | null;
     description?: string | null;
@@ -1153,7 +1152,6 @@ export interface SiteSetting {
   };
   email?: string | null;
   phone_number?: number | null;
-  cal_team?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }

@@ -294,15 +294,15 @@ export const Doctors: CollectionConfig = {
           'Select the department to which the doctor belongs from the available options',
       },
     },
-    {
-      name: 'cal_user',
-      label: 'Cal User Name',
-      type: 'text',
-      admin: {
-        position: 'sidebar',
-        description:
-          "After successfully creating the doctor profile, send a Cal invitation link to the doctor's email. Once the doctor registers, get their username from the doctor and enter their Cal username here.",
-      },
-    },
+    // {
+    //   name: 'cal_user',
+    //   label: 'Cal User Name',
+    //   type: 'text',
+    //   admin: {
+    //     position: 'sidebar',
+    //     description:
+    //       "After successfully creating the doctor profile, send a Cal invitation link to the doctor's email. Once the doctor registers, get their username from the doctor and enter their Cal username here.",
+    //   },
+    // },
   ],
 }

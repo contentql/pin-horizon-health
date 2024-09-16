@@ -2,7 +2,6 @@ import configPromise from '@payload-config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import { headers } from 'next/headers'
 
-import PopupCalComponent from '@/components/common/PopupCalComponent'
 import Footer from '@/payload/blocks/Footer'
 import Header from '@/payload/blocks/Header'
 
@@ -28,9 +27,9 @@ export default async function Layout({
         variant='cs_heading_color'
       />
       <div className='flex-grow'>{children}</div>
-      <div>
+      {/* <div>
         <PopupCalComponent initData={initSiteSettingsData} />
-      </div>
+      </div> */}
       <Footer initSiteSettingsData={initSiteSettingsData} />
       {/* Footer */}
     </div>

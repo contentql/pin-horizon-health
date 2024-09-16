@@ -1,7 +1,6 @@
 'use client'
 
 import bannerImg from '../../../../public/images/doctors/banner_img_3.png'
-import appointmentImg from '../../../../public/images/home_2/appointment_img.png'
 import Breadcrumbs from '../../common/Breadcrumbs'
 import { env } from '@env'
 import { Doctor } from '@payload-types'
@@ -11,7 +10,6 @@ import { notFound } from 'next/navigation'
 import Section from '@/components/common/Section'
 import { trpc } from '@/trpc/client'
 
-import Appointment from './Appointment'
 import DoctorBanner2 from './DoctorBanner2'
 import DoctorDetails from './DoctorDetails'
 
@@ -45,7 +43,7 @@ const DoctorDetailsView = ({
       <Section bottomMd={190} bottomLg={150} bottomXl={110}>
         <DoctorDetails doctorDetails={doctorDetails} />
       </Section>
-      <Section bottomMd={200} bottomLg={150} bottomXl={110}>
+      {/* <Section bottomMd={200} bottomLg={150} bottomXl={110}>
         <Appointment
           bgUrl='/images/home_2/appointment_bg.svg'
           imgUrl={appointmentImg}
@@ -54,7 +52,7 @@ const DoctorDetailsView = ({
           doctorId={doctorDetails?.id}
           doctorCal={doctorDetails?.cal_user as string}
         />
-      </Section>
+      </Section> */}
       <Section>
         <DoctorBanner2
           title='Don’t Let Your Health <br />Take a Backseat!'
