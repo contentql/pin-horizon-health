@@ -88,7 +88,7 @@ export default function AppointmentForm() {
             <input
               type='text'
               className='cs_form_field'
-              placeholder='Your subject'
+              placeholder='Your  medical record number'
               {...register('medicalRecordNumber')}
             />
             {errors.medicalRecordNumber && (

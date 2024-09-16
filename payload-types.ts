@@ -852,7 +852,7 @@ export interface AyurvedaAboutType {
 export interface Appointment {
   id: string;
   name: string;
-  email?: string | null;
+  email: string;
   phoneNumber: string;
   medicalRecordNumber?: string | null;
   reasonForVisit: string;

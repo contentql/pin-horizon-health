@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload'
 
 import { isAdminOrSelf } from './access/isAdminOrSelf'
+import { informDoctor } from './hooks/informDoctor'
 
 export const Appointments: CollectionConfig = {
   slug: 'appointments',
@@ -23,9 +24,9 @@ export const Appointments: CollectionConfig = {
     },
     maxPerDoc: 10,
   },
-  // hooks: {
-  //   afterChange: [informDoctor],
-  // },
+  hooks: {
+    afterChange: [informDoctor],
+  },
   fields: [
     // {
     //   name: 'title',
@@ -128,6 +129,7 @@ export const Appointments: CollectionConfig = {
       name: 'email',
       label: 'E-mail',
       type: 'email',
+      required: true,
     },
     {
       name: 'phoneNumber',
