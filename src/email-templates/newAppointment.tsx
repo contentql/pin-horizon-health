@@ -22,7 +22,7 @@ interface newAppointmentProps {
   preview: string
 }
 
-const baseUrl = env.NEXT_PUBLIC_PUBLIC_URL
+const baseUrl = env.PAYLOAD_URL
 
 const NewAppointmentTemplate = ({
   username,

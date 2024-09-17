@@ -20,14 +20,18 @@ interface newAppointmentProps {
   username?: string
   date?: string
   preview: string
+  phoneNumber: string
+  email: string
 }
 
-const baseUrl = env.NEXT_PUBLIC_PUBLIC_URL
+const baseUrl = env.PAYLOAD_URL
 
 const NewAppointmentTemplate = ({
   username,
   date,
   preview,
+  email,
+  phoneNumber,
 }: newAppointmentProps) => {
   return (
     <Html>
@@ -60,7 +64,15 @@ const NewAppointmentTemplate = ({
             </Text>
             <Section>
               <Text>who</Text>
-              <strong>{username}</strong>
+              <p>
+                Name: <span>{username}</span>
+              </p>
+              <p>
+                Phone Number: <span>{phoneNumber}</span>
+              </p>
+              <p>
+                Email: <span>{email}</span>
+              </p>
               <Text>when</Text>
               <strong>{formatDateTime(date!)}</strong>
             </Section>

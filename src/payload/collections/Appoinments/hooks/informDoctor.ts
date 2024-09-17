@@ -34,6 +34,8 @@ export const informDoctor: CollectionAfterChangeHook = async ({
         preview: 'New Appointment',
         date: doc?.preferredDateAndTime,
         username: doc?.name,
+        email: doc?.email,
+        phoneNumber: doc?.phoneNumber,
       }),
     })
 
