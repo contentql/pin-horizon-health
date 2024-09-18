@@ -222,6 +222,16 @@ export const siteSettings: GlobalConfig = {
                 description: 'We recommend a maximum size of 256 * 256 pixels',
               },
             },
+            {
+              name: 'ogImage',
+              type: 'upload',
+              required: true,
+              relationTo: 'media',
+              label: 'Og Image',
+              admin: {
+                description: 'add quality image',
+              },
+            },
           ],
         },
         {

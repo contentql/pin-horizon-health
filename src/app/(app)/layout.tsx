@@ -1,5 +1,7 @@
 import '../../theme/sass/index.scss'
+import { env } from '@env'
 import configPromise from '@payload-config'
+import { Media } from '@payload-types'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -18,6 +20,24 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: initData?.appName as string,
     description: initData?.appDescription as string,
+    metadataBase: new URL(env.PAYLOAD_URL),
+    openGraph: {
+      siteName: initData?.appName as string,
+      type: 'website',
+      locale: 'en_US',
+      url: new URL(env.PAYLOAD_URL),
+      description: initData?.appDescription as string,
+      images: [
+        {
+          url: initData?.ogImage
+            ? (initData?.ogImage as Media)?.url!
+            : '/images/horizon-screensort.png',
+          height: 630,
+          width: 1200,
+          alt: 'OG Image',
+        },
+      ],
+    },
   }
 }
 

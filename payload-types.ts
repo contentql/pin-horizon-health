@@ -1035,6 +1035,7 @@ export interface SiteSetting {
   appName?: string | null;
   appDescription?: string | null;
   logoImage: string | Media;
+  ogImage: string | Media;
   header?: {
     menuLinks?:
       | {
