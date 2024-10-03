@@ -45,7 +45,7 @@ export const doctorRouter = router({
         collection: 'doctors',
         draft: false,
         page: page,
-        limit: 6,
+        limit: 9,
         depth: 5,
 
         where: {

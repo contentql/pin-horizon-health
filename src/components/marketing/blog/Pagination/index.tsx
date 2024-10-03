@@ -8,6 +8,9 @@ export default function Pagination({ meta, setPage, page }: any) {
   const searchParams = useSearchParams()
   const pathname = usePathname()
 
+  const currentPage = searchParams?.get('page')
+  const next = meta?.nextPage - 1
+
   const handlePageChange = (newPage: number) => {
     const search = new URLSearchParams(searchParams)
     search.set('page', newPage.toString())
@@ -17,6 +20,7 @@ export default function Pagination({ meta, setPage, page }: any) {
 
     setPage(newPage)
   }
+  console.log('pagination', currentPage, meta, page)
 
   return (
     <ul className='cs_pagination_box'>
@@ -40,7 +44,7 @@ export default function Pagination({ meta, setPage, page }: any) {
         <li key={p}>
           <button
             onClick={() => handlePageChange(p)}
-            className={`cs_pagination_item cs_center ${meta?.currentPage === p ? 'active' : ''}`}>
+            className={`cs_pagination_item cs_center  ${p === page ? 'active' : ''}`}>
             {p}
           </button>
         </li>

@@ -87,7 +87,7 @@ export default function DoctorListItem({
             ))}
           </ul>
         </div>
-        <div className='cs_view_box'>
+        <div className='cs_view_box' id='pagination'>
           <span>Showing {doctorsData?.length} items</span>
           <div className='cs_view_box_in'>
             <button
