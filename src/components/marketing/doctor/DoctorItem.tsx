@@ -13,13 +13,25 @@ export default function DoctorItem({
     <div className='cs_team cs_style_1 cs_type_2 cs_radius_20 overflow-hidden text-center'>
       <div className='cs_member_img'>
         <Link href={`/doctor/${doctor?.slug!}`} className={`d-block h-[415px]`}>
-          <Image
-            className={`h-full  w-full object-bottom`}
-            src={(doctor?.doctor_image as Media)?.sizes?.doctorImage?.url || ''}
-            alt='Doctor'
-            height={120}
-            width={525}
-          />
+          {doctor?.doctor_image !== null || undefined ? (
+            <Image
+              className={`h-full  w-full object-bottom`}
+              src={
+                (doctor?.doctor_image as Media)?.sizes?.doctorImage?.url || ''
+              }
+              alt='Doctor'
+              height={120}
+              width={525}
+            />
+          ) : (
+            <Image
+              className={`h-full  w-full object-bottom`}
+              src='./images/doctors/profile-doctor.png'
+              alt='Doctor'
+              height={120}
+              width={525}
+            />
+          )}
         </Link>
         <div className='cs_label cs_white_color cs_accent_bg'>
           {(doctor?.department?.value as Department)?.title}
