@@ -22,7 +22,8 @@ export default function List({
         {data?.map((item, index) => (
           <li key={index}>
             <p className='cs_medium cs_heading_color mb-0'>
-              {item.institute}, {formatDate(item?.year!)}
+              {item.institute} {item?.year && <span>,</span>}{' '}
+              {item?.year && formatDate(item?.year!)}
             </p>
 
             <p className='mb-0'>

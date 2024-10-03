@@ -88,8 +88,8 @@ export default function DoctorDetails({
                 </Link>
               ))}
             </div> */}
-            <Spacing md='200' xl='150' lg='150' />
-            <Spacing md='35' lg='0' />
+
+            <Spacing md='35' lg='40' />
             <Tabs
               defaultActiveKey={getDefaultActiveTab()}
               transition={true}
