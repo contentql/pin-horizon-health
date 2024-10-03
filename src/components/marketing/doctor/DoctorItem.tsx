@@ -12,7 +12,7 @@ export default function DoctorItem({
   return (
     <div className='cs_team cs_style_1 cs_type_2 cs_radius_20 overflow-hidden text-center'>
       <div className='cs_member_img'>
-        <Link href={`/doctor/${doctor?.slug!}`} className={`d-block h-[415px]`}>
+        <Link href={`/doctor/${doctor?.slug!}`} className={`d-block h-[350px]`}>
           {doctor?.doctor_image !== null || undefined ? (
             <Image
               className={`h-full  w-full object-bottom`}
@@ -20,8 +20,8 @@ export default function DoctorItem({
                 (doctor?.doctor_image as Media)?.sizes?.doctorImage?.url || ''
               }
               alt='Doctor'
-              height={120}
-              width={525}
+              height={415}
+              width={320}
             />
           ) : (
             <Image
