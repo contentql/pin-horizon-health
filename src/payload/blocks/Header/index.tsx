@@ -87,7 +87,7 @@ export default function Header({
                                       link?.externalLink ? (
                                         <li key={subIndex}>
                                           <Link
-                                            href={link?.link!}
+                                            href={`/${link?.link!}`}
                                             target={`${link?.newPage ? '_blank' : '_self'}`}>
                                             {link.label}
                                           </Link>
@@ -95,9 +95,7 @@ export default function Header({
                                       ) : (
                                         <li key={subIndex}>
                                           <Link
-                                            href={
-                                              (link?.page?.value as Page)?.slug!
-                                            }
+                                            href={`/${(link?.page?.value as Page)?.slug!}`}
                                             target={`${link?.newPage ? '_blank' : '_self'}`}>
                                             {(link?.page?.value as Page)?.title}
                                           </Link>

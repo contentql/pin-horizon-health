@@ -34,12 +34,12 @@ export default function DoctorDetails({
 
   return (
     <div className='cs_doctor_details'>
-      <div
+      {/* <div
         className='cs_doctor_details_bg cs_bg_filed'
         style={{
           backgroundImage: 'url(/images/doctors/doctor_details_bg.svg)',
         }}
-      />
+      /> */}
       <Spacing md='85' />
       <div className='container'>
         <div className='row'>
