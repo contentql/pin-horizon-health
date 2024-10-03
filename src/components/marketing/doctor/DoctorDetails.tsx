@@ -1,8 +1,8 @@
 import Spacing from '../home/Spacing'
 import { Department, Doctor, Media } from '@payload-types'
 import Image from 'next/image'
-
-import Tabs from '@/components/common/Tabs'
+import Tab from 'react-bootstrap/Tab'
+import Tabs from 'react-bootstrap/Tabs'
 
 import List from './List'
 import List2 from './List/List2'
@@ -12,38 +12,26 @@ export default function DoctorDetails({
 }: {
   doctorDetails: Doctor
 }) {
-  const tabs = [
-    {
-      title: 'Education',
-      content: (
-        <List
-          heading={'Degrees'}
-          iconUrl='/images/icons/graduation.svg'
-          data={doctorDetails?.qualifications}
-        />
-      ),
-    },
-    {
-      title: 'Awards',
-      content: (
-        <List2
-          heading={'Awards/Achievements'}
-          iconUrl='/images/icons/award2.svg'
-          data={doctorDetails?.achievements}
-        />
-      ),
-    },
-    {
-      title: 'Experience',
-      content: (
-        <List2
-          heading={'Experiences'}
-          iconUrl='/images/icons/experience.svg'
-          data={doctorDetails?.experience}
-        />
-      ),
-    },
-  ]
+  const getDefaultActiveTab = () => {
+    const educationLength = doctorDetails?.qualifications?.length || 0
+    const awardsLength = doctorDetails?.achievements?.length || 0
+    const experienceLength = doctorDetails?.experience?.length || 0
+
+    if (educationLength > 0 && experienceLength > 0 && awardsLength > 0) {
+      return 'awards'
+    } else if (educationLength > 0 && awardsLength > 0) {
+      return 'education'
+    } else if (educationLength > 0) {
+      return 'education'
+    } else if (awardsLength > 0) {
+      return 'awards'
+    } else if (experienceLength > 0) {
+      return 'experiences'
+    } else {
+      return 'education'
+    }
+  }
+
   return (
     <div className='cs_doctor_details'>
       <div
@@ -102,24 +90,40 @@ export default function DoctorDetails({
             </div> */}
             <Spacing md='200' xl='150' lg='150' />
             <Spacing md='35' lg='0' />
-            {/* <List
-              heading={'Degrees'}
-              iconUrl='/images/icons/graduation.svg'
-              data={doctorDetails?.qualifications}
-            />
-            <Spacing md='70' lg='50' />
-            <List2
-              heading={'Experiences'}
-              iconUrl='/images/icons/experience.svg'
-              data={doctorDetails?.experience}
-            />
-            <Spacing md='70' lg='50' />
-            <List2
-              heading={'Awards/Achievements'}
-              iconUrl='/images/icons/award2.svg'
-              data={doctorDetails?.achievements}
-            /> */}
-            <Tabs tabs={tabs} />
+            <Tabs
+              defaultActiveKey={getDefaultActiveTab()}
+              transition={true}
+              id='noanim-tab-example'
+              className='mb-3'>
+              {doctorDetails?.qualifications?.length! > 0 && (
+                <Tab eventKey='education' title='Education'>
+                  <List
+                    heading={'Degrees'}
+                    iconUrl='/images/icons/graduation.svg'
+                    data={doctorDetails?.qualifications}
+                  />
+                </Tab>
+              )}
+
+              {doctorDetails?.achievements?.length! > 0 && (
+                <Tab eventKey='awards' title='Awards/Achievements'>
+                  <List2
+                    heading={'Awards/Achievements'}
+                    iconUrl='/images/icons/award2.svg'
+                    data={doctorDetails?.achievements}
+                  />
+                </Tab>
+              )}
+              {doctorDetails?.experience?.length! > 0 && (
+                <Tab eventKey='experiences' title='Experiences'>
+                  <List2
+                    heading={'Experiences'}
+                    iconUrl='/images/icons/experience.svg'
+                    data={doctorDetails?.experience}
+                  />
+                </Tab>
+              )}
+            </Tabs>
           </div>
         </div>
       </div>

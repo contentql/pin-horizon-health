@@ -1,6 +1,5 @@
 'use client'
 
-import bannerImg from '../../../../public/images/general.jpg'
 import Breadcrumbs from '../../common/Breadcrumbs'
 import { env } from '@env'
 import { Doctor } from '@payload-types'
@@ -10,7 +9,6 @@ import { notFound } from 'next/navigation'
 import Section from '@/components/common/Section'
 import { trpc } from '@/trpc/client'
 
-import DoctorBanner2 from './DoctorBanner2'
 import DoctorDetails from './DoctorDetails'
 
 const DoctorDetailsView = ({
@@ -54,11 +52,11 @@ const DoctorDetailsView = ({
         />
       </Section> */}
       <Section>
-        <DoctorBanner2
+        {/* <DoctorBanner2
           title='Don’t Let Your Health <br />Take a Backseat!'
           subTitle='Schedule an appointment with one of our experienced <br />medical professionals today!'
           imgUrl={bannerImg}
-        />
+        /> */}
       </Section>
     </>
   )
