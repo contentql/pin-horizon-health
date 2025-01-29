@@ -74,11 +74,20 @@
 @import './components/forms/field-types/Textarea';
 @import './components/forms/field-types/Upload';
 @import './components/forms/field-types/RichText';
+@import './components/custom/logoutButton.scss';
+@import './components/custom/navbar.scss';
 
 // views
 @import './components/views/Account';
 @import './components/views/Dashboard';
 @import './components/views/collections/Edit/Auth';
 
-// ! testing
 @import './components/custom/table';
+@import './components/custom/buttons';
+
+// layout
+@import './components/custom/sidebar.scss';
+
+// Theme-setting scss
+@import './components/custom/colorField.scss';
+@import './components/custom/radiusField.scss';

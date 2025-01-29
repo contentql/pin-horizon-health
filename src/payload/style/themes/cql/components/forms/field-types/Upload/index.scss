@@ -2,9 +2,21 @@
   position: relative;
   max-width: 100%;
 
-  &__wrap {
-    background: var(--theme-elevation-50);
-    padding: base(1);
+  .upload__dropzoneContent__orText {
+    align-self: center;
+  }
+
+  //Theme updates
+  // &__wrap {
+  //   background: var(--theme-elevation-50);
+  //   padding: base(1);
+  // }
+
+  .upload-relationship-details {
+    .thumbnail {
+      height: 5rem;
+      width: 5rem;
+    }
   }
 
   &__buttons {
@@ -63,4 +75,25 @@ html[data-theme='dark'] {
       }
     }
   }
+}
+.upload-field-card {
+  border-radius: var(--style-radius-m);
+}
+
+.dropzone {
+  border-radius: var(--style-radius-m);
+  padding: calc(var(--base) * 0.5);
+}
+.dropzone .btn {
+  background-color: var(--theme-elevation-150);
+  border-radius: var(--style-radius-m);
+}
+
+.upload__dropzoneContent__buttons .btn__label {
+  font-weight: 400;
+  color: var(--theme-elevation-800);
+}
+
+.file-field__orText {
+  align-self: center;
 }

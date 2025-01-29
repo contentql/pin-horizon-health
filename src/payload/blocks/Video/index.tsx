@@ -8,9 +8,9 @@ const Video = (videoData: VideoType) => {
 
   return (
     <div className='container mb-20 mt-28'>
-      <div className='flex w-full flex-col items-center'>
-        <h2 className='max-w-2xl'>{videoData?.title}</h2>
-        <p className='max-w-3xl'>{videoData?.description}</p>
+      <div className='mx-auto flex flex-col items-center justify-center text-center'>
+        <h2 className='max-w-3xl'>{videoData?.title}</h2>
+        <p className='max-w-4xl'>{videoData?.description}</p>
       </div>
       <div style={{ position: 'relative' }}>
         {/* {!isLoaded && <LoadingSkeleton className={loaderClass} />} */}
