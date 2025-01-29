@@ -23,6 +23,9 @@ export const Video_Block: Block = {
       name: 'youtubeUrl',
       label: 'YouTube URL',
       required: true,
+      admin: {
+        description: 'Eg: https://www.youtube.com/embed/uOGmj7RWZWY',
+      },
     },
   ],
 }

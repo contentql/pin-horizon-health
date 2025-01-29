@@ -280,7 +280,6 @@ export interface Page {
   isHome?: boolean | null;
   blocks?:
     | (
-        | TestType
         | HeroType
         | FeaturesType
         | AboutType
@@ -311,6 +310,7 @@ export interface Page {
         | ContactDetailsType
         | VideoType
         | HospitalHeroType
+        | PdfType
         | TravelHeroType
         | YogaPostsType
         | AyurvedaPostsType
@@ -332,16 +332,6 @@ export interface Page {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "TestType".
- */
-export interface TestType {
-  message?: string | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'Test';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -791,6 +781,18 @@ export interface HospitalHeroType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'HospitalHero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PdfType".
+ */
+export interface PdfType {
+  title?: string | null;
+  description?: string | null;
+  pdf?: string | Media | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'Pdf';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

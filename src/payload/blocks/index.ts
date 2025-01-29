@@ -1,8 +1,5 @@
 // This is just to consolidate all the existing blocks and it's respective jsx
 // Always prefer to individually import, the required block or jsx
-import { Test } from '@/payload/blocks/Test'
-import { Test_Block } from '@/payload/blocks/Test/block'
-
 import {
   AboutAwards,
   AboutAwards_Block,
@@ -77,13 +74,14 @@ import {
   Testimonials_Block,
 } from './Home'
 import { HospitalHero, Hospital_Hero_Block } from './Hospital'
+import Pdf from './PdfViewer'
+import { Pdf_Block } from './PdfViewer/block'
 import { TravelHero, Travel_Hero_Block } from './Travel'
 import Video from './Video'
 import { Video_Block } from './Video/block'
 import { YogaPosts, YogaPosts_Block } from './Yoga'
 
 export const blocksJSX = {
-  Test,
   Hero,
   Features,
   About,
@@ -106,7 +104,6 @@ export const blocksJSX = {
   AboutBanner,
   AllBlogs,
   LatestBlogs,
-
   DepartmentHero,
   DepartmentBanner,
 
@@ -116,7 +113,7 @@ export const blocksJSX = {
   ContactDetails,
   Video,
   HospitalHero,
-
+  Pdf,
   TravelHero,
   YogaPosts,
   AyurvedaPosts,
@@ -127,7 +124,6 @@ export const blocksJSX = {
 export type SlugType = keyof typeof blocksJSX
 
 export const blocks = [
-  Test_Block,
   Hero_Block,
   Features_Block,
   About_Block,
@@ -160,7 +156,7 @@ export const blocks = [
   ContactDetails_Block,
   Video_Block,
   Hospital_Hero_Block,
-
+  Pdf_Block,
   Travel_Hero_Block,
 
   YogaPosts_Block,
