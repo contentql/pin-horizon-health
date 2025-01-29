@@ -78,6 +78,8 @@ import {
 } from './Home'
 import { HospitalHero, Hospital_Hero_Block } from './Hospital'
 import { TravelHero, Travel_Hero_Block } from './Travel'
+import Video from './Video'
+import { Video_Block } from './Video/block'
 import { YogaPosts, YogaPosts_Block } from './Yoga'
 
 export const blocksJSX = {
@@ -112,7 +114,7 @@ export const blocksJSX = {
   BlogBanner,
   ContactBanner,
   ContactDetails,
-
+  Video,
   HospitalHero,
 
   TravelHero,
@@ -156,7 +158,7 @@ export const blocks = [
   BlogBanner_Block,
   ContactBanner_Block,
   ContactDetails_Block,
-
+  Video_Block,
   Hospital_Hero_Block,
 
   Travel_Hero_Block,

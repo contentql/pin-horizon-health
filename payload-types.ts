@@ -309,6 +309,7 @@ export interface Page {
         | BlogBannerType
         | ContactBannerType
         | ContactDetailsType
+        | VideoType
         | HospitalHeroType
         | TravelHeroType
         | YogaPostsType
@@ -765,6 +766,18 @@ export interface ContactDetailsType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'ContactDetails';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VideoType".
+ */
+export interface VideoType {
+  title?: string | null;
+  description?: string | null;
+  youtubeUrl: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'Video';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
