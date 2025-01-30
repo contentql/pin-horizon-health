@@ -8,10 +8,12 @@ WORKDIR /app
 
 # Install dependencies based on the preferred package manager
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
+
+
 RUN \
   if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
   elif [ -f package-lock.json ]; then npm ci; \
-  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile; \
+  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i @libsql/linux-x64-musl && pnpm i --frozen-lockfile; \
   else echo "Lockfile not found." && exit 1; \
   fi
 
@@ -23,15 +25,17 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 
+
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the build.
 ENV NEXT_TELEMETRY_DISABLED 1
 
+ARG DATABASE_URI
+ARG DATABASE_SECRET
+ARG PAYLOAD_SECRET
 ARG NEXT_PUBLIC_PUBLIC_URL
 ARG PAYLOAD_URL
-ARG DATABASE_URI
-ARG PAYLOAD_SECRET
 ARG S3_ENDPOINT
 ARG S3_ACCESS_KEY_ID
 ARG S3_SECRET_ACCESS_KEY
@@ -40,25 +44,14 @@ ARG S3_REGION
 ARG RESEND_API_KEY
 ARG RESEND_SENDER_EMAIL
 ARG RESEND_SENDER_NAME
-ARG NEXT_PUBLIC_IS_LIVE
-ARG PAYLOAD_PUBLIC_DRAFT_SECRET
-ARG NEXT_PRIVATE_DRAFT_SECRET
-ARG REVALIDATION_KEY
-ARG NEXT_PRIVATE_REVALIDATION_KEY
-ARG AUTH_SECRET
-ARG AUTH_TRUST_HOST
-ARG AUTH_VERPOSE
-ARG AUTH_GITHUB_ID
-ARG AUTH_GITHUB_SECRET
 ARG OPENAPI_KEY
 ARG SUBSCRIPTION_PLAN
-ARG TWILIO_ACCOUNT_SID
-ARG TWILIO_AUTH_TOKEN
 
+ENV DATABASE_URI=$DATABASE_URI
+ENV DATABASE_SECRET=$DATABASE_SECRET
+ENV PAYLOAD_SECRET=$PAYLOAD_SECRET
 ENV NEXT_PUBLIC_PUBLIC_URL=$NEXT_PUBLIC_PUBLIC_URL
 ENV PAYLOAD_URL=$PAYLOAD_URL
-ENV DATABASE_URI=$DATABASE_URI
-ENV PAYLOAD_SECRET=$PAYLOAD_SECRET
 ENV S3_ENDPOINT=$S3_ENDPOINT
 ENV S3_ACCESS_KEY_ID=$S3_ACCESS_KEY_ID
 ENV S3_SECRET_ACCESS_KEY=$S3_SECRET_ACCESS_KEY
@@ -67,20 +60,8 @@ ENV S3_REGION=$S3_REGION
 ENV RESEND_API_KEY=$RESEND_API_KEY
 ENV RESEND_SENDER_EMAIL=$RESEND_SENDER_EMAIL
 ENV RESEND_SENDER_NAME=$RESEND_SENDER_NAME
-ENV NEXT_PUBLIC_IS_LIVE=$NEXT_PUBLIC_IS_LIVE
-ENV PAYLOAD_PUBLIC_DRAFT_SECRET=$PAYLOAD_PUBLIC_DRAFT_SECRET
-ENV NEXT_PRIVATE_DRAFT_SECRET=$NEXT_PRIVATE_DRAFT_SECRET
-ENV REVALIDATION_KEY=$REVALIDATION_KEY
-ENV NEXT_PRIVATE_REVALIDATION_KEY=$NEXT_PRIVATE_REVALIDATION_KEY
-ENV AUTH_SECRET=$AUTH_SECRET
-ENV AUTH_TRUST_HOST=$AUTH_TRUST_HOST
-ENV AUTH_VERPOSE=$AUTH_VERPOSE
-ENV AUTH_GITHUB_ID=$AUTH_GITHUB_ID
-ENV AUTH_GITHUB_SECRET=$AUTH_GITHUB_SECRET
 ENV OPENAPI_KEY=$OPENAPI_KEY
 ENV SUBSCRIPTION_PLAN=$SUBSCRIPTION_PLAN
-ENV TWILIO_ACCOUNT_SID=$TWILIO_ACCOUNT_SID
-ENV TWILIO_AUTH_TOKEN=$TWILIO_AUTH_TOKEN
 
 RUN \
   if [ -f yarn.lock ]; then yarn run build; \
@@ -100,8 +81,9 @@ ENV NODE_ENV production
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
+# Adding @libsql/linux-x64-musl again
+RUN corepack enable pnpm &&  pnpm i @libsql/linux-x64-musl
 COPY --from=builder /app/public ./public
-# COPY --from=builder /app/media ./media
 
 # Set the correct permission for prerender cache
 RUN mkdir .next
@@ -111,6 +93,8 @@ RUN chown nextjs:nodejs .next
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+
 
 USER nextjs
 
