@@ -1,11 +1,11 @@
 import { Block } from 'payload'
 
-export const YogaPosts_Block: Block = {
-  slug: 'YogaPosts',
-  interfaceName: 'YogaPostsType',
+export const Common_Hero_Block: Block = {
+  slug: 'CommonHero',
+  interfaceName: 'CommonHeroType',
   labels: {
-    singular: 'YogaPosts Block',
-    plural: 'YogaPosts Blocks',
+    singular: 'Common Hero Block',
+    plural: 'Common Hero Blocks',
   },
   fields: [
     {
@@ -27,13 +27,22 @@ export const YogaPosts_Block: Block = {
       },
     },
     {
-      name: 'image',
+      name: 'imgUrl',
       type: 'upload',
       relationTo: 'media',
-      label: 'Image',
+      label: 'Hero Image',
       required: true,
       admin: {
         description: 'Upload an image for hero section',
+      },
+    },
+    {
+      name: 'bgUrl',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'Background Image',
+      admin: {
+        description: 'Upload background image for hero section',
       },
     },
   ],

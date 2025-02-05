@@ -282,6 +282,7 @@ export interface Page {
         | HeroType
         | FeaturesType
         | AboutType
+        | CommonHeroType
         | DepartmentType
         | AwardType
         | TestimonialsType
@@ -301,6 +302,7 @@ export interface Page {
         | AboutBannerType
         | AllBlogsType
         | LatestBlogsType
+        | ListType
         | DepartmentBannerType
         | DepartmentHeroType
         | GalleryType
@@ -311,7 +313,6 @@ export interface Page {
         | HospitalHeroType
         | PdfType
         | TravelHeroType
-        | YogaPostsType
         | AyurvedaPostsType
         | AyurvedaHeroType
         | AyurvedaAboutType
@@ -389,6 +390,19 @@ export interface AboutType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'About';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CommonHeroType".
+ */
+export interface CommonHeroType {
+  title: string;
+  sub_title: string;
+  imgUrl: string | Media;
+  bgUrl?: string | Media | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'CommonHero';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -679,6 +693,17 @@ export interface LatestBlogsType {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ListType".
+ */
+export interface ListType {
+  title?: string | null;
+  collectionSlug?: ('doctors' | 'hospitals' | 'yoga' | 'ayurveda' | 'blogs') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'List';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "DepartmentBannerType".
  */
 export interface DepartmentBannerType {
@@ -809,18 +834,6 @@ export interface TravelHeroType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'TravelHero';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "YogaPostsType".
- */
-export interface YogaPostsType {
-  title: string;
-  sub_title: string;
-  image: string | Media;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'YogaPosts';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

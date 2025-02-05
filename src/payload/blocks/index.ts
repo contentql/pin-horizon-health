@@ -31,6 +31,8 @@ import {
   AyurvedaPosts_Block,
 } from './Ayurveda'
 import { AllBlogs, AllBlogs_Block, BlogBanner, BlogBanner_Block } from './Blog'
+import CommonHero from './CommonHero'
+import { Common_Hero_Block } from './CommonHero/block'
 import {
   ContactBanner,
   ContactBanner_Block,
@@ -74,15 +76,17 @@ import {
   Testimonials_Block,
 } from './Home'
 import { HospitalHero, Hospital_Hero_Block } from './Hospital'
+import List from './List'
+import List_Block from './List/block'
 import Pdf from './PdfViewer'
 import { Pdf_Block } from './PdfViewer/block'
 import { TravelHero, Travel_Hero_Block } from './Travel'
 import Video from './Video'
 import { Video_Block } from './Video/block'
-import { YogaPosts, YogaPosts_Block } from './Yoga'
 
 export const blocksJSX = {
   Hero,
+  CommonHero,
   Features,
   About,
   Department,
@@ -106,7 +110,7 @@ export const blocksJSX = {
   LatestBlogs,
   DepartmentHero,
   DepartmentBanner,
-
+  List,
   Gallery,
   BlogBanner,
   ContactBanner,
@@ -115,7 +119,6 @@ export const blocksJSX = {
   HospitalHero,
   Pdf,
   TravelHero,
-  YogaPosts,
   AyurvedaPosts,
   AyurvedaHero,
   AyurvedaAbout,
@@ -127,6 +130,7 @@ export const blocks = [
   Hero_Block,
   Features_Block,
   About_Block,
+  Common_Hero_Block,
   Department_Block,
   Award_Block,
   Testimonials_Block,
@@ -146,7 +150,7 @@ export const blocks = [
   AboutBanner_Block,
   AllBlogs_Block,
   LatestBlogs_Block,
-
+  List_Block,
   Department_Banner_Block,
   Department_Hero_Block,
 
@@ -158,8 +162,6 @@ export const blocks = [
   Hospital_Hero_Block,
   Pdf_Block,
   Travel_Hero_Block,
-
-  YogaPosts_Block,
   AyurvedaPosts_Block,
   AyurvedaHero_Block,
   AyurvedaAbout_Block,
