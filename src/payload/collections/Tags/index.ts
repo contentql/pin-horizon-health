@@ -1,6 +1,6 @@
 import type { CollectionConfig } from 'payload'
 
-import { slugField } from '@/payload/fields'
+import { slugField } from '@/payload/fields/slug'
 import { visibleToAdminOnly } from '@/payload/hidden'
 
 export const Tags: CollectionConfig = {
@@ -75,6 +75,6 @@ export const Tags: CollectionConfig = {
         },
       ],
     },
-    slugField(),
+    slugField({ fieldToUse: 'title' }),
   ],
 }

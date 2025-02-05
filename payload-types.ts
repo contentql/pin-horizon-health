@@ -277,8 +277,7 @@ export interface Blog {
 export interface Page {
   id: string;
   title: string;
-  isHome?: boolean | null;
-  blocks?:
+  layout?:
     | (
         | HeroType
         | FeaturesType
@@ -318,7 +317,11 @@ export interface Page {
         | AyurvedaAboutType
       )[]
     | null;
+  isHome?: boolean | null;
+  isDynamic?: boolean | null;
+  slugMode?: ('generate' | 'custom') | null;
   slug?: string | null;
+  pathMode?: ('generate' | 'custom') | null;
   path?: string | null;
   parent?: (string | null) | Page;
   breadcrumbs?:

@@ -1,6 +1,6 @@
 import type { CollectionConfig } from 'payload'
 
-import { slugField } from '@/payload/fields'
+import { slugField } from '@/payload/fields/slug'
 
 export const Country: CollectionConfig = {
   slug: 'country',
@@ -27,6 +27,6 @@ export const Country: CollectionConfig = {
       type: 'text',
     },
 
-    slugField(),
+    slugField({ fieldToUse: 'country' }),
   ],
 }

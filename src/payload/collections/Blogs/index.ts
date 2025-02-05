@@ -1,7 +1,7 @@
 import { slateEditor } from '@payloadcms/richtext-slate'
 import type { CollectionConfig } from 'payload'
 
-import { slugField } from '@/payload/fields'
+import { slugField } from '@/payload/fields/slug'
 
 import { self } from './access/self'
 import { assignUserId } from './field-level-hooks/assignUserId'
@@ -82,7 +82,7 @@ export const Blogs: CollectionConfig = {
         description: 'Enter title for Blog',
       },
     },
-    slugField(),
+    slugField({ fieldToUse: 'title' }),
     // It will directly use title field to add slug
     // {
     //   name: 'slug',

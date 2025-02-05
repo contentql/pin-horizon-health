@@ -1,6 +1,6 @@
 import type { CollectionConfig } from 'payload'
 
-import { slugField } from '@/payload/fields'
+import { slugField } from '@/payload/fields/slug'
 import { visibleToAdminOnly } from '@/payload/hidden'
 
 export const Hospitals: CollectionConfig = {
@@ -144,6 +144,6 @@ export const Hospitals: CollectionConfig = {
         description: 'Add your hospital achievements',
       },
     },
-    slugField(),
+    slugField({ fieldToUse: 'title' }),
   ],
 }

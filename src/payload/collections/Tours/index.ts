@@ -1,7 +1,7 @@
 import { slateEditor } from '@payloadcms/richtext-slate'
 import type { CollectionConfig } from 'payload'
 
-import { slugField } from '@/payload/fields'
+import { slugField } from '@/payload/fields/slug'
 
 export const Tours: CollectionConfig = {
   slug: 'tours',
@@ -169,6 +169,6 @@ export const Tours: CollectionConfig = {
         },
       ],
     },
-    slugField(),
+    slugField({ fieldToUse: 'title' }),
   ],
 }

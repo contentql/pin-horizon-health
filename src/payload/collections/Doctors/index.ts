@@ -2,7 +2,7 @@ import { ADMIN_AUTH_GROUP } from '../constants'
 import type { CollectionConfig } from 'payload'
 
 import { isAdminOrCurrentUser } from '@/payload/access'
-import { slugField } from '@/payload/fields'
+import { slugField } from '@/payload/fields/slug'
 
 import { self } from './access/self'
 
@@ -275,7 +275,7 @@ export const Doctors: CollectionConfig = {
         },
       ],
     },
-    slugField('name'),
+    slugField({ fieldToUse: 'name' }),
     {
       name: 'department',
       label: 'Department',
