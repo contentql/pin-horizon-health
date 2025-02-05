@@ -3,9 +3,9 @@ import { getPayloadHMR } from '@payloadcms/next/utilities'
 import { TRPCError } from '@trpc/server'
 import { z } from 'zod'
 
-import { COLLECTION_SLUG_PAGE } from '@/payload/collections/constants'
 import { publicProcedure, router } from '@/trpc'
-import ensurePath from '@/utils/ensurePath'
+import { ensurePath } from '@/utils/ensurePath'
+import { matchNextJsPath } from '@/utils/matchNextJsPath'
 
 const payload = await getPayloadHMR({
   config: configPromise,
@@ -25,17 +25,34 @@ export const pageRouter = router({
         if (Array.isArray(path)) path = path.join('/')
         if (path !== '/') path = ensurePath(path).replace(/\/$/, '')
 
-        const { docs } = await payload.find({
-          collection: COLLECTION_SLUG_PAGE,
-          where: { path: { equals: path } },
+        const { docs: allPages } = await payload.find({
+          collection: 'pages',
           depth: 3,
         })
 
-        if (!docs?.length) {
+        if (!allPages?.length) {
+          throw new TRPCError({
+            code: 'NOT_FOUND',
+            message: 'Pages not found',
+            cause: 'INITIAL_SETUP',
+          })
+        }
+
+        if (!allPages?.length) {
           throw new TRPCError({ code: 'NOT_FOUND', message: 'Page not found' })
         }
 
-        return docs.at(0)
+        const correctMatching = allPages.find(page => page.path === path)
+
+        const matchingPage =
+          correctMatching ??
+          allPages.find(page => matchNextJsPath(path, page.path!))
+
+        if (!matchingPage) {
+          throw new TRPCError({ code: 'NOT_FOUND', message: 'Page not found' })
+        }
+
+        return matchingPage
       } catch (error: any) {
         if (error instanceof TRPCError) {
           throw error
