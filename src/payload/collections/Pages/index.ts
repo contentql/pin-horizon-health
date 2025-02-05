@@ -1,23 +1,30 @@
+import { slugField, slugModeField } from '../../fields/slug'
 import type { CollectionConfig } from 'payload'
 
-import { COLLECTION_SLUG_PAGE } from '@/payload/collections/constants'
-import { pathField, slugField } from '@/payload/fields'
-import { blocksField } from '@/payload/fields/blocks'
-import { visibleToAdminOnly } from '@/payload/hidden'
+import { blocks } from '@/payload/blocks'
+import { layoutField } from '@/payload/fields/layout'
+import { pathField, pathModeField } from '@/payload/fields/path'
+
+// import { layoutField } from '@/payload/fields/layout'
+// import { pathField, pathModeField } from '@/payload/fields/path'
+// import { slugField, slugModeField } from '@/payload/fields/slug'
 
 export const Pages: CollectionConfig = {
-  slug: COLLECTION_SLUG_PAGE,
+  slug: 'pages',
   labels: {
     singular: 'Page',
     plural: 'Pages',
   },
   access: {
     read: () => true,
+    update: () => true,
+    create: () => true,
+    delete: () => true,
   },
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'path', 'updatedAt', 'createdAt'],
-    hidden: visibleToAdminOnly,
+    group: 'Content',
   },
   versions: {
     drafts: {
@@ -27,22 +34,47 @@ export const Pages: CollectionConfig = {
   },
   fields: [
     {
-      name: 'title',
-      type: 'text',
-      required: true,
-      unique: true,
+      type: 'tabs',
+      tabs: [
+        {
+          label: 'Page',
+          fields: [
+            {
+              name: 'title',
+              type: 'text',
+              required: true,
+              unique: true,
+            },
+            layoutField({
+              blocks: blocks,
+            }),
+          ],
+        },
+      ],
     },
     {
-      name: 'isHome',
-      label: 'HomePage',
-      type: 'checkbox',
-      defaultValue: false,
+      type: 'row',
+      fields: [
+        {
+          name: 'isHome',
+          label: 'Home Page',
+          type: 'checkbox',
+          defaultValue: false,
+        },
+        {
+          name: 'isDynamic',
+          label: 'Dynamic Page',
+          type: 'checkbox',
+          defaultValue: false,
+        },
+      ],
       admin: {
         position: 'sidebar',
       },
     },
-    blocksField(),
-    slugField(),
+    slugModeField(),
+    slugField({ fieldToUse: 'title' }),
+    pathModeField(),
     pathField(),
   ],
 }
