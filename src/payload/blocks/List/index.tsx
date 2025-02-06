@@ -14,7 +14,7 @@ interface ListProps extends ListType {
 
 const List: React.FC<ListProps> = ({ params, ...block }) => {
   switch (block?.collectionSlug) {
-    case 'hospitals': {
+    case 'hospital': {
       return <HospitalsList />
     }
     case 'yoga': {

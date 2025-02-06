@@ -303,6 +303,7 @@ export interface Page {
         | AllBlogsType
         | LatestBlogsType
         | ListType
+        | DetailsType
         | DepartmentBannerType
         | DepartmentHeroType
         | GalleryType
@@ -318,6 +319,11 @@ export interface Page {
         | AyurvedaAboutType
       )[]
     | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    image?: string | Media | null;
+  };
   isHome?: boolean | null;
   isDynamic?: boolean | null;
   slugMode?: ('generate' | 'custom') | null;
@@ -697,10 +703,20 @@ export interface LatestBlogsType {
  */
 export interface ListType {
   title?: string | null;
-  collectionSlug?: ('doctors' | 'hospitals' | 'yoga' | 'ayurveda' | 'blogs') | null;
+  collectionSlug?: ('doctors' | 'hospital' | 'yoga' | 'ayurveda' | 'blogs') | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'List';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DetailsType".
+ */
+export interface DetailsType {
+  collectionSlug?: ('blogs' | 'doctors' | 'hospital') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'Details';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

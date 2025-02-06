@@ -27,7 +27,7 @@ const List_Block: Block = {
         },
         {
           label: 'Hospitals',
-          value: 'hospitals',
+          value: 'hospital',
         },
         {
           label: 'Yoga',
