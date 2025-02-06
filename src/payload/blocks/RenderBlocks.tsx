@@ -33,7 +33,7 @@ const RenderBlocks: React.FC<RenderBlocksProps> = ({
   // })
 
   // Determine which data to use based on whether live preview data is available
-  const dataToUse = pageData?.layout
+  const dataToUse = pageData?.blocks
 
   return (
     <div className='space-y-20'>

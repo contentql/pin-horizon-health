@@ -1,3 +1,5 @@
+'use client'
+
 import { Blog, LatestBlogsType } from '@payload-types'
 
 import Section from '@/components/common/Section'

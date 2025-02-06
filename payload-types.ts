@@ -277,7 +277,7 @@ export interface Blog {
 export interface Page {
   id: string;
   title: string;
-  layout?:
+  blocks?:
     | (
         | HeroType
         | FeaturesType
@@ -713,7 +713,7 @@ export interface ListType {
  * via the `definition` "DetailsType".
  */
 export interface DetailsType {
-  collectionSlug?: ('blogs' | 'doctors' | 'hospital') | null;
+  collectionSlug?: ('blogs' | 'hospital' | 'doctors') | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'Details';

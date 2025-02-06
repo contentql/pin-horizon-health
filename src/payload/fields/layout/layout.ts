@@ -31,7 +31,7 @@ import { LayoutField } from './types'
 const layoutField: LayoutField = (overrides = {}) => {
   return deepMerge<Field, Partial<Field>>(
     {
-      name: 'layout',
+      name: 'blocks',
       label: 'Page Layout',
       type: 'blocks',
       minRows: 1,

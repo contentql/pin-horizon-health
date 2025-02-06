@@ -27,7 +27,7 @@ const Page: NextPage<PageProps> = async ({ params }) => {
     })
     return (
       <div className='space-y-20'>
-        {pageData?.layout?.map((block, index) => {
+        {pageData?.blocks?.map((block, index) => {
           // Casting to 'React.FC<any>' to bypass TypeScript error related to 'Params' type incompatibility.
           const Block = blocksJSX[block.blockType] as React.FC<any>
 
@@ -76,7 +76,7 @@ export async function generateMetadata({
 
     let metadata = pageData?.meta
 
-    const block = pageData?.layout
+    const block = pageData?.blocks
       ?.filter(block => block.blockType === 'Details')
       ?.at(0)
 
@@ -181,8 +181,8 @@ export async function generateStaticParams(): Promise<StaticRoute[]> {
     }
 
     // If the route is dynamic (contains `[`)
-    if (page?.path?.includes('[') && page.layout) {
-      const blockData = page.layout.find(block => block.blockType === 'Details')
+    if (page?.path?.includes('[') && page.blocks) {
+      const blockData = page.blocks.find(block => block.blockType === 'Details')
 
       // If it has a Details block with a valid collectionSlug
       if (blockData?.blockType === 'Details' && blockData.collectionSlug) {
