@@ -3,13 +3,17 @@ import { Blog, Media } from '@payload-types'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import getSlugs from '@/utils/getSlugs'
+import { useMetadata } from '@/utils/metadataContext'
+
 export default function Post({ blogData }: { blogData: Blog }) {
   const date = new Date(blogData?.createdAt)
+  const { redirectionLinks } = useMetadata()
   let formattedDate = `${date.getFullYear()}, ${date.toLocaleString('default', { month: 'long' })} ${date.getDate()}`
   return (
     <div className={`cs_post cs_style_1`}>
       <Link
-        href={`/blog/${blogData?.slug}`}
+        href={`${getSlugs({ redirectionLinks })?.blog}/${blogData?.slug}`}
         className='cs_post_thumb cs_view_mouse'>
         <Image
           className='h-64 w-full object-cover'
@@ -38,7 +42,8 @@ export default function Post({ blogData }: { blogData: Blog }) {
             )}
           </div>
           <h2 className='cs_post_title cs_semibold cs_fs_32'>
-            <Link href={`/blog/${blogData?.slug}`}>
+            <Link
+              href={`${getSlugs({ redirectionLinks })?.blog}/${blogData?.slug}`}>
               <span className='line-clamp-2'>{blogData?.title}</span>
             </Link>
           </h2>
@@ -46,7 +51,9 @@ export default function Post({ blogData }: { blogData: Blog }) {
         {/* {btnText && ( */}
         {true && (
           <div className='cs_heading_color cs_medium'>
-            <Link href={`/blog/${blogData?.slug}`} className='cs_post_btn'>
+            <Link
+              href={`${getSlugs({ redirectionLinks })?.blog}/${blogData?.slug}`}
+              className='cs_post_btn'>
               Learn more
             </Link>
           </div>

@@ -8,6 +8,7 @@ import { Inter } from 'next/font/google'
 
 import '@/app/(app)/globals.css'
 import Provider from '@/trpc/Provider'
+import { MetadataProvider } from '@/utils/metadataContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -41,15 +42,22 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const payload = await getPayloadHMR({ config: configPromise })
+  const metadata = await payload.findGlobal({
+    slug: 'site-settings',
+    draft: false,
+  })
   return (
     <html lang='en' className='dark'>
       <body className={`${inter.className}`}>
-        <Provider>{children}</Provider>
+        <MetadataProvider metadata={metadata}>
+          <Provider>{children}</Provider>
+        </MetadataProvider>
       </body>
     </html>
   )

@@ -1181,6 +1181,28 @@ export interface SiteSetting {
       | null;
     copyright?: string | null;
   };
+  redirectionLinks?: {
+    blogLink?: {
+      relationTo: 'pages';
+      value: string | Page;
+    } | null;
+    yogaLink?: {
+      relationTo: 'pages';
+      value: string | Page;
+    } | null;
+    doctorLink?: {
+      relationTo: 'pages';
+      value: string | Page;
+    } | null;
+    hospitalLink?: {
+      relationTo: 'pages';
+      value: string | Page;
+    } | null;
+    ayurvedaLink?: {
+      relationTo: 'pages';
+      value: string | Page;
+    } | null;
+  };
   email?: string | null;
   phone_number?: number | null;
   updatedAt?: string | null;

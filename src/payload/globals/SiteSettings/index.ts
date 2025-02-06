@@ -353,6 +353,62 @@ export const siteSettings: GlobalConfig = {
           ],
         },
         {
+          label: 'Redirection Links',
+          name: 'redirectionLinks',
+          fields: [
+            {
+              name: 'blogLink',
+              type: 'relationship',
+              relationTo: ['pages'],
+              label: 'Blog redirect link',
+              maxDepth: 1,
+              admin: {
+                description: 'This redirects to a blog details page',
+              },
+            },
+            {
+              name: 'yogaLink',
+              type: 'relationship',
+              relationTo: ['pages'],
+              label: 'yoga redirect link',
+              maxDepth: 1,
+              admin: {
+                description: 'This redirect to a yoga details page',
+              },
+            },
+            {
+              name: 'doctorLink',
+              type: 'relationship',
+              relationTo: ['pages'],
+              label: 'doctor redirect link',
+              maxDepth: 1,
+              admin: {
+                description: 'This redirects to a doctor details page',
+              },
+            },
+            {
+              name: 'hospitalLink',
+              type: 'relationship',
+              relationTo: ['pages'],
+              label: 'Hospital redirect link',
+              maxDepth: 1,
+              admin: {
+                description: 'This redirects to a hospital details page',
+              },
+            },
+            {
+              name: 'ayurvedaLink',
+              type: 'relationship',
+              relationTo: ['pages'],
+              label: 'Ayurveda redirect link',
+              maxDepth: 1,
+              admin: {
+                description: 'This redirects to a ayurveda details page',
+              },
+            },
+          ],
+        },
+        {
           label: 'Admin Settings',
           fields: [
             {
