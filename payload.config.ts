@@ -129,7 +129,7 @@ export default buildConfig({
       },
     }),
     seoPlugin({
-      collections: ['blogs', 'doctors', 'hospital'],
+      collections: ['blogs', 'doctors', 'hospital', 'pages'],
       uploadsCollection: 'media',
       tabbedUI: true,
       generateTitle,
