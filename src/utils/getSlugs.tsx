@@ -7,8 +7,8 @@ const getSlugs = ({
 }) => {
   const ayurvedaLink = redirectionLinks?.ayurvedaLink?.value as Page
   const blogLink = redirectionLinks?.blogLink?.value as Page
-  const hospitalLink = redirectionLinks?.blogLink?.value as Page
-  const yogaLink = redirectionLinks?.blogLink?.value as Page
+  const hospitalLink = redirectionLinks?.hospitalLink?.value as Page
+  const yogaLink = redirectionLinks?.yogaLink?.value as Page
   const doctorLink = redirectionLinks?.doctorLink?.value as Page
   const blogSlug =
     blogLink && typeof blogLink !== 'string' ? blogLink.path! : ''

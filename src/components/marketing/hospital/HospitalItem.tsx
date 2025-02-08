@@ -2,11 +2,17 @@ import { Hospital, Media } from '@payload-types'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import getSlugs from '@/utils/getSlugs'
+import { useMetadata } from '@/utils/metadataContext'
+
 export default function HospitalItem({ hospital }: { hospital: Hospital }) {
+  const { redirectionLinks } = useMetadata()
   return (
     <div className='cs_team cs_style_1 cs_type_2 cs_radius_20 overflow-hidden text-center'>
       <div className='cs_member_img'>
-        <Link href={`/hospital/${hospital?.slug!}`} className='d-block'>
+        <Link
+          href={`${getSlugs({ redirectionLinks })?.hospital}${hospital?.slug!}`}
+          className='d-block'>
           <Image
             className='h-[415px] w-full'
             src={
@@ -25,7 +31,10 @@ export default function HospitalItem({ hospital }: { hospital: Hospital }) {
       <div className='cs_team_meta cs_white_bg h-full'>
         <div>
           <h3 className='cs_member_name cs_fs_32'>
-            <Link href={`/hospital/${hospital?.slug!}`}>{hospital?.title}</Link>
+            <Link
+              href={`${getSlugs({ redirectionLinks })?.hospital}${hospital?.slug!}`}>
+              {hospital?.title}
+            </Link>
           </h3>
           {/* <p className='cs_member_designation cs_heading_color cs_medium'>
             {hospital?.designation}
