@@ -2,6 +2,9 @@ import { Department, Doctor, Media } from '@payload-types'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import getSlugs from '@/utils/getSlugs'
+import { useMetadata } from '@/utils/metadataContext'
+
 export default function DoctorItem({
   doctor,
   bgColor,
@@ -9,10 +12,13 @@ export default function DoctorItem({
   doctor: Doctor
   bgColor: string
 }) {
+  const { redirectionLinks } = useMetadata()
   return (
     <div className='cs_team cs_style_1 cs_type_2 cs_radius_20 overflow-hidden text-center'>
       <div className='cs_member_img'>
-        <Link href={`/doctor/${doctor?.slug!}`} className={`d-block h-[350px]`}>
+        <Link
+          href={`${getSlugs({ redirectionLinks })?.doctor}${doctor?.slug!}`}
+          className={`d-block h-[350px]`}>
           {doctor?.doctor_image !== null || undefined ? (
             <Image
               className={`h-full  w-full object-bottom`}
@@ -40,7 +46,10 @@ export default function DoctorItem({
       <div className='cs_team_meta cs_white_bg h-full w-full'>
         <div>
           <h3 className='cs_member_name cs_fs_32 line-clamp-1'>
-            <Link href={`/doctor/${doctor?.slug!}`}>{doctor?.name}</Link>
+            <Link
+              href={`${getSlugs({ redirectionLinks })?.doctor}/${doctor?.slug!}`}>
+              {doctor?.name}
+            </Link>
           </h3>
           <p className='cs_member_designation cs_heading_color cs_medium line-clamp-1'>
             {doctor?.designation}
