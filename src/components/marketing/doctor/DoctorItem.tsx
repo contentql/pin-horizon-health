@@ -47,7 +47,7 @@ export default function DoctorItem({
         <div>
           <h3 className='cs_member_name cs_fs_32 line-clamp-1'>
             <Link
-              href={`${getSlugs({ redirectionLinks })?.doctor}/${doctor?.slug!}`}>
+              href={`${getSlugs({ redirectionLinks })?.doctor}${doctor?.slug!}`}>
               {doctor?.name}
             </Link>
           </h3>
