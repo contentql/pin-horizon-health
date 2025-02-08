@@ -1,3 +1,5 @@
+'use client'
+
 import { Department, DepartmentHeroType, Media } from '@payload-types'
 import parse from 'html-react-parser'
 import Image from 'next/image'
