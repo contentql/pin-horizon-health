@@ -106,7 +106,7 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
 # Adding @libsql/linux-x64-musl again
-RUN corepack enable pnpm &&  pnpm i @libsql/linux-x64-musl
+RUN corepack enable && corepack prepare pnpm@9.15.2 --activate pnpm &&  pnpm i @libsql/linux-x64-musl
 COPY --from=builder /app/public ./public
 
 # Set the correct permission for prerender cache
