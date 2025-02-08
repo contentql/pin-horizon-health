@@ -2,11 +2,17 @@ import { Blog, Media } from '@payload-types'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import getSlugs from '@/utils/getSlugs'
+import { useMetadata } from '@/utils/metadataContext'
+
 export default function AyurvedaItem({ ayurveda }: { ayurveda: Blog }) {
+  const { redirectionLinks } = useMetadata()
   return (
     <div className='cs_team cs_style_1 cs_type_2 cs_radius_20 overflow-hidden text-center'>
       <div className='cs_member_img'>
-        <Link href={`/blog/${ayurveda?.slug}`} className='d-block '>
+        <Link
+          href={`${getSlugs({ redirectionLinks })?.ayurveda}${ayurveda?.slug}`}
+          className='d-block '>
           <Image
             className='h-[415px] w-full'
             src={(ayurveda?.blog_image as Media)?.sizes?.doctorImage?.url || ''}
@@ -22,7 +28,8 @@ export default function AyurvedaItem({ ayurveda }: { ayurveda: Blog }) {
       <div className='cs_team_meta cs_white_bg'>
         <div>
           <h3 className='cs_member_name cs_fs_32'>
-            <Link href={`/blog/${ayurveda?.slug!}`}>
+            <Link
+              href={`${getSlugs({ redirectionLinks })?.ayurveda}${ayurveda?.slug!}`}>
               <span className='line-clamp-2'>{ayurveda?.title}</span>
             </Link>
           </h3>

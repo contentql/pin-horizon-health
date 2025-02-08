@@ -1,6 +1,11 @@
+'use client'
+
 import { Icon } from '@iconify/react'
 import { Blog, Doctor } from '@payload-types'
 import Link from 'next/link'
+
+import getSlugs from '@/utils/getSlugs'
+import { useMetadata } from '@/utils/metadataContext'
 
 export default function RecentPostWidget({
   title,
@@ -14,6 +19,7 @@ export default function RecentPostWidget({
     let formattedDate = `${date.getFullYear()}, ${date.toLocaleString('default', { month: 'long' })} ${date.getDate()}`
     return formattedDate
   }
+  const { redirectionLinks } = useMetadata()
   return (
     <>
       <h2 className='cs_sidebar_widget_title'>{title}</h2>
@@ -22,7 +28,10 @@ export default function RecentPostWidget({
           <li key={index}>
             <div className='cs_popular_post'>
               <h2 className='cs_popular_post_title'>
-                <Link href={`/blog/${item?.slug}`}>{item?.title}</Link>
+                <Link
+                  href={`${getSlugs({ redirectionLinks })?.blog}${item?.slug}`}>
+                  {item?.title}
+                </Link>
               </h2>
               <ul className='cs_popular_post_meta'>
                 <li className='cs_posted_author'>
