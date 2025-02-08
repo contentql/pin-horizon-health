@@ -13,7 +13,7 @@ COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
 RUN \
   if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
   elif [ -f package-lock.json ]; then npm ci; \
-  elif [ -f pnpm-lock.yaml ]; then corepack enable && corepack prepare pnpm@9.15.2 --activate pnpm && pnpm i @libsql/linux-x64-musl && pnpm i --frozen-lockfile; \
+  elif [ -f pnpm-lock.yaml ]; then npm i -g pnpm@9.12.3 && corepack prepare pnpm@9.12.3 --activate pnpm && pnpm i @libsql/linux-x64-musl && pnpm i --frozen-lockfile; \
   else echo "Lockfile not found." && exit 1; \
   fi
 
@@ -90,7 +90,7 @@ ENV TWILIO_AUTH_TOKEN=$TWILIO_AUTH_TOKEN
 RUN \
   if [ -f yarn.lock ]; then yarn run build; \
   elif [ -f package-lock.json ]; then npm run build; \
-  elif [ -f pnpm-lock.yaml ]; then corepack enable && corepack prepare pnpm@9.15.2 --activate pnpm && pnpm run build; \
+  elif [ -f pnpm-lock.yaml ]; then npm i -g pnpm@9.12.3 && corepack prepare pnpm@9.12.3 --activate pnpm && pnpm run build; \
   else echo "Lockfile not found." && exit 1; \
   fi
 
