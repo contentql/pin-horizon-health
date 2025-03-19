@@ -22,7 +22,7 @@ export default function IconBoxStyle4({
         />
       </div>
       <h2 className='cs_iconbox_title cs_fs_32'>{service?.title}</h2>
-      <p className='cs_iconbox_subtitle m-0 line-clamp-3'>
+      <p className='cs_iconbox_subtitle m-0 line-clamp-5'>
         {service?.sub_title}
       </p>
       <Link
