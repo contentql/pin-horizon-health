@@ -23,8 +23,9 @@
     height: 100%;
   }
   img {
-    width: initial;
+    width: 600px;
     height: 100%;
+    object-fit: contain;
   }
 }
 .cs_hero.cs_style_1 {
