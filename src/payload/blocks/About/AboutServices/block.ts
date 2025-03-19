@@ -44,6 +44,7 @@ export const AboutServices_Block: Block = {
           label: 'Sub Title',
           type: 'text',
           required: true,
+          maxLength: 170,
           admin: {
             description: 'Enter sub title for service',
           },

@@ -26,7 +26,7 @@ export default function DepartmentsList({
               <h2 className='cs_iconbox_title cs_fs_32'>
                 {parser(department?.title)}
               </h2>
-              <p className='cs_iconbox_subtitle m-0'>
+              <p className='cs_iconbox_subtitle m-0 clamped-text-8'>
                 {parser(department?.description)}
               </p>
               <Link href='#' className='cs_iconbox_btn cs_center'>

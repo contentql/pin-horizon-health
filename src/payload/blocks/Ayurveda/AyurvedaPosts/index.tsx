@@ -18,7 +18,7 @@ const AyurvedaPosts = (data: AyurvedaPostsType) => {
     })
   return (
     <div className='flex items-center justify-center'>
-      <div className='w-96 px-4 pt-9 2xl:container sm:w-auto md:px-6 md:pt-12 lg:px-20 lg:pt-16 2xl:mx-auto'>
+      <div className='w-96 px-4 2xl:container sm:w-auto md:px-6 lg:px-20 2xl:mx-auto'>
         <div role='main' className='flex flex-col items-center justify-center'>
           <h1 className='text-center text-4xl font-semibold leading-9'>
             {data?.title}
@@ -28,7 +28,7 @@ const AyurvedaPosts = (data: AyurvedaPostsType) => {
           </p>
         </div>
         <div className='container'>
-          <Section topMd={65} bottomMd={200} bottomLg={150} bottomXl={110}>
+          <Section topMd={65} bottomMd={80}>
             <div className={`cs_team_grid cs_${'grid'}_view_wrap`}>
               {ayurvedaData?.blogsData?.map((ayurveda, index) => (
                 <AyurvedaItem ayurveda={ayurveda as Blog} key={index} />

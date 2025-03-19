@@ -28,7 +28,7 @@ const AyurvedaList = () => {
           </p>
         </div> */}
         <div className='container'>
-          <Section topMd={65} bottomMd={200} bottomLg={150} bottomXl={110}>
+          <Section>
             <div className={`cs_team_grid cs_${'grid'}_view_wrap`}>
               {ayurvedaData?.blogsData?.map((ayurveda, index) => (
                 <AyurvedaItem ayurveda={ayurveda as Blog} key={index} />

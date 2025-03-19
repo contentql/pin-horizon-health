@@ -26,7 +26,7 @@ const Page: NextPage<PageProps> = async ({ params }) => {
       path: syncParams?.route,
     })
     return (
-      <div className='space-y-20'>
+      <div className='space-y-24'>
         {pageData?.blocks?.map((block, index) => {
           // Casting to 'React.FC<any>' to bypass TypeScript error related to 'Params' type incompatibility.
           const Block = blocksJSX[block.blockType] as React.FC<any>

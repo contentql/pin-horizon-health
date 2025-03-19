@@ -23,8 +23,9 @@
     height: 100%;
   }
   img {
-    width: initial;
+    width: 600px;
     height: 100%;
+    object-fit: contain;
   }
 }
 .cs_hero.cs_style_1 {
@@ -414,4 +415,15 @@
 
 .tab-content-custom {
   padding: 20px;
+}
+
+@mixin line-clamp($lines) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.clamped-text-8 {
+  @include line-clamp(8);
 }

@@ -36,6 +36,7 @@ export const Departments: CollectionConfig = {
       name: 'description',
       label: 'Description',
       type: 'textarea',
+      maxLength: 220,
       required: true,
       admin: {
         description: 'Enter description about department',

@@ -13,8 +13,8 @@ export default function Banner(data: BannerType) {
             src={(data?.image as Media)?.url || ''}
             alt={(data?.image as Media)?.alt || 'Banner'}
             // placeholder='blur'
-            width={535}
-            height={560}
+            width={1000}
+            height={1000}
           />
         </div>
 
