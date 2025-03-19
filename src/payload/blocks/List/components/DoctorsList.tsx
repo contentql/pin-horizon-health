@@ -10,7 +10,7 @@ const DoctorsList = () => {
   const { data: departmentDetails } =
     trpc.department.getallDepartments.useQuery()
   return (
-    <Section topMd={65} bottomMd={200} bottomLg={150} bottomXl={110}>
+    <Section bottomMd={80}>
       <DoctorListItem departmentDetails={departmentDetails as Department[]} />
     </Section>
   )

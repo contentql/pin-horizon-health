@@ -4,7 +4,7 @@ import BlogSectionStyle2 from '@/components/marketing/blog/BlogSection/BlogSecti
 const BlogsList = () => {
   return (
     <>
-      <Section bottomMd={200} bottomLg={150} bottomXl={110}>
+      <Section bottomMd={80}>
         <BlogSectionStyle2 />
       </Section>
     </>

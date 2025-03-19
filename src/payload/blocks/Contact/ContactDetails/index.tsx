@@ -5,13 +5,7 @@ import ContactInfoSection from '@/components/marketing/ContactForm/ContactInfoSe
 
 const ContactDetails = (data: ContactDetailsType) => {
   return (
-    <Section
-      topMd={200}
-      topLg={150}
-      topXl={100}
-      bottomMd={200}
-      bottomLg={150}
-      bottomXl={110}>
+    <Section bottomMd={80}>
       <ContactInfoSection contactDetails={data} />
     </Section>
   )

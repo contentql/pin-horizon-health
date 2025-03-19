@@ -34,7 +34,7 @@ export default function DepartmentHero(heroData: DepartmentHeroType) {
           </div>
         </div>
       </section>
-      <Section bottomMd={140} bottomLg={100} bottomXl={60}>
+      <Section bottomMd={80}>
         <DepartmentsList departments={departments as Department[]} />
       </Section>
     </>

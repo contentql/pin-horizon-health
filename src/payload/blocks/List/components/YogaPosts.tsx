@@ -20,7 +20,7 @@ const YogaPosts = () => {
     })
   return (
     <div className='container'>
-      <Section topMd={65} bottomMd={200} bottomLg={150} bottomXl={110}>
+      <Section bottomMd={80}>
         <div className={`cs_team_grid cs_${'grid'}_view_wrap`}>
           {isYogaPending
             ? Array.from({ length: yogaSkeltons })?.map((_, index) => (
