@@ -21,13 +21,13 @@ export default function DoctorItem({
           className={`d-block h-[350px]`}>
           {doctor?.doctor_image !== null || undefined ? (
             <Image
-              className={`h-full  w-full object-bottom`}
+              className={`h-full  w-full object-contain`}
               src={
                 (doctor?.doctor_image as Media)?.sizes?.doctorImage?.url || ''
               }
               alt='Doctor'
-              height={415}
-              width={320}
+              height={1000}
+              width={1000}
             />
           ) : (
             <Image
