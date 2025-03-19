@@ -415,3 +415,14 @@
 .tab-content-custom {
   padding: 20px;
 }
+
+@mixin line-clamp($lines) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.clamped-text-8 {
+  @include line-clamp(8);
+}
