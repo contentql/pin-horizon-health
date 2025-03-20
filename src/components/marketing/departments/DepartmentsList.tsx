@@ -10,11 +10,11 @@ export default function DepartmentsList({
 }) {
   return (
     <div className='cs_mt_minus_110 container'>
-      <div className='row justify-content-end'>
+      <div className='row'>
         {departments?.map((department, index) => (
           <div className='col-xl-4 col-md-6' key={index}>
             <div className='cs_iconbox cs_style_7'>
-              <div className='cs_iconbox_icon'>
+              {/* <div className='cs_iconbox_icon'>
                 <Image
                   src='/images/departments/icon_1.svg'
                   alt='Icon'
@@ -22,11 +22,11 @@ export default function DepartmentsList({
                   width={0}
                   style={{ width: '66px', height: 'auto' }}
                 />
-              </div>
+              </div> */}
               <h2 className='cs_iconbox_title cs_fs_32'>
                 {parser(department?.title)}
               </h2>
-              <p className='cs_iconbox_subtitle m-0 clamped-text-8'>
+              <p className='cs_iconbox_subtitle clamped-text-8 m-0'>
                 {parser(department?.description)}
               </p>
               <Link href='#' className='cs_iconbox_btn cs_center'>
