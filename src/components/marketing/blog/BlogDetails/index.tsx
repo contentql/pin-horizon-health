@@ -88,20 +88,22 @@ export default function BlogDetails({
           </div>
         </div>
         <Spacing md='55' />
+
         <Image
           src={(blogData?.blog_image as Media)?.sizes?.blogImage?.url || ''}
           alt={(blogData?.blog_image as Media)?.alt || 'Blog Image'}
-          className='w-100 cs_radius_20 h-auto lg:max-h-screen'
+          className='cs_radius_20 h-auto w-full object-cover object-top lg:max-h-screen'
           // placeholder='blur'
           width={1296}
           height={606}
         />
+
         <Spacing md='90' lg='50' />
         <div className='row'>
           <div className='col-lg-8'>
             <div className='cs_blog_details'>
               <div
-                className='prose !max-w-none md:prose-xl'
+                className='md:prose-xl prose-img:mx-auto prose-img:aspect-video prose-img:w-full prose-img:rounded-md prose-img:bg-gray-200 prose-img:object-contain'
                 dangerouslySetInnerHTML={{ __html: sanitizeHtml }}
               />
             </div>
